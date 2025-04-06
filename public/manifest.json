@@ -1,0 +1,47 @@
+{
+  "name": "RTN Global - Web Development & Digital Marketing Agency",
+  "short_name": "RTN Global",
+  "description": "We create stunning websites and effective digital marketing strategies for businesses of all sizes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "prefer_related_applications": false,
+  "categories": ["business", "web design", "marketing"],
+  "shortcuts": [
+    {
+      "name": "Contact Us",
+      "url": "/contact",
+      "description": "Get in touch with us"
+    },
+    {
+      "name": "Services",
+      "url": "/services",
+      "description": "View our services"
+    },
+    {
+      "name": "Portfolio",
+      "url": "/portfolio",
+      "description": "See our work"
+    }
+  ]
+} 
