@@ -2,14 +2,57 @@
  * Service worker registration utilities
  */
 
+// Define proper Workbox event types
+interface WorkboxEvent extends Event {
+  isUpdate?: boolean;
+  isExternal?: boolean;
+}
+
 // Extending Window interface to include workbox
 declare global {
   interface Window {
     workbox: {
-      Workbox: new (scriptURL: string, options?: object) => any;
+      Workbox: new (scriptURL: string, options?: object) => WorkboxInstance;
     };
   }
 }
+
+// Define WorkboxInstance interface
+interface WorkboxInstance {
+  addEventListener(event: string, callback: (event: WorkboxEvent) => void): void;
+  register(options?: object): Promise<void>;
+  update(): Promise<void>;
+  messageSkipWaiting(): void;
+}
+
+// Style for update notification
+const UPDATE_NOTIFICATION_STYLES = `
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ffffff;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 16px;
+  z-index: 9999;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease-out;
+`;
+
+const UPDATE_BUTTON_STYLES = `
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-top: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+`;
 
 /**
  * Registers the service worker
@@ -19,30 +62,83 @@ export const registerServiceWorker = async (): Promise<void> => {
     const { Workbox } = window.workbox;
     
     try {
-      const wb = new Workbox('/service-worker.js');
+      const wb = new Workbox('/service-worker.js', {
+        // Additional registration options can be added here
+        scope: '/'
+      });
       
       // Add event listeners for various service worker states
-      wb.addEventListener('installed', (e: React.SyntheticEvent) => {
-        if (event.isUpdate) {
-          // If it's an update, show a notification that a new version is available
-          if (confirm('New version available. Reload to update?')) {
-            window.location.reload();
-          }
+      wb.addEventListener('installed', (event: WorkboxEvent) => {
+        if (!event.isUpdate) {
+          console.log('Service Worker installed successfully');
+        } else {
+          console.log('Service Worker updated');
         }
       });
       
-      wb.addEventListener('activated', (e: React.SyntheticEvent) => {
-        // Optional: handle activation events
-        console.log('Service worker activated:', event);
+      wb.addEventListener('activated', (event: WorkboxEvent) => {
+        // Handle activation events
+        if (!event.isExternal) {
+          // When the service worker is activated, claim clients
+          // This ensures the service worker takes control immediately
+          console.log('Service worker activated');
+        }
       });
       
-      wb.addEventListener('waiting', (e: React.SyntheticEvent) => {
-        // Handle waiting service worker
-        console.log('Service worker waiting:', event);
+      wb.addEventListener('waiting', (event: WorkboxEvent) => {
+        // When a new service worker is waiting
+        console.log('New service worker is waiting to activate',event);
+        
+        // Create a more user-friendly update notification
+        const updateNotification = document.createElement('div');
+        updateNotification.className = 'update-notification';
+        updateNotification.setAttribute('style', UPDATE_NOTIFICATION_STYLES);
+        updateNotification.innerHTML = `
+          <div class="update-content">
+            <p style="margin: 0 0 8px 0; font-weight: 500;">New version available</p>
+            <p style="margin: 0; color: #666; font-size: 14px;">A new version of the application is available. Update now for the latest features and improvements.</p>
+            <button id="update-button" style="${UPDATE_BUTTON_STYLES}">Update Now</button>
+          </div>
+        `;
+        
+        document.body.appendChild(updateNotification);
+        
+        document.getElementById('update-button')?.addEventListener('click', () => {
+          // Skip waiting and refresh to activate the new service worker
+          wb.messageSkipWaiting();
+          window.location.reload();
+        });
+      });
+      
+      wb.addEventListener('controlling', () => {
+        // This event fires when the service worker takes control
+        console.log('Service worker is controlling the page');
+      });
+      
+      wb.addEventListener('redundant', () => {
+        // This fires when the service worker is discarded
+        console.log('Service worker has become redundant');
+      });
+      
+      // Handle offline mode
+      if (!navigator.onLine) {
+        console.log('Application is offline, loading from cache');
+        // You could show an offline notification to the user here
+      }
+      
+      // Listen for online/offline events
+      window.addEventListener('online', () => {
+        console.log('Application is back online');
+        // You could update the UI to reflect online status
+      });
+      
+      window.addEventListener('offline', () => {
+        console.log('Application is offline');
+        // You could update the UI to reflect offline status
       });
       
       // Register the service worker
-      wb.register();
+      await wb.register();
       console.log('Service Worker registered successfully');
       
     } catch (error) {
@@ -66,6 +162,22 @@ export const unregisterServiceWorker = async (): Promise<void> => {
       console.log('Service worker unregistered');
     } catch (error) {
       console.error('Service worker unregistration failed:', error);
+    }
+  }
+};
+
+/**
+ * Checks if the service worker needs an update.
+ * This can be called periodically to check for updates.
+ */
+export const checkForServiceWorkerUpdate = async (): Promise<void> => {
+  if (typeof window !== 'undefined' && 'serviceWorker' in navigator && window.workbox !== undefined) {
+    try {
+      const { Workbox } = window.workbox;
+      const wb = new Workbox('/service-worker.js');
+      await wb.update();
+    } catch (error) {
+      console.error('Service Worker update check failed:', error);
     }
   }
 }; 

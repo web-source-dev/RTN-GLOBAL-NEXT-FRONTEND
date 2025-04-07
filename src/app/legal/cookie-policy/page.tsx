@@ -218,7 +218,7 @@ export default function CookiePolicyPage() {
                 <section id="cookie-preferences">
                   <h2>Cookie Preference Center</h2>
                   <p>
-                    In addition to browser settings, we provide a Cookie Preference Center on our website that allows you to customize your cookie preferences for our site. You can access this center by clicking on the "Manage Preferences" button in the cookie banner that appears when you first visit our site, or by clicking the "Manage Preferences" button located at the bottom of this page.
+                    In addition to browser settings, we provide a Cookie Preference Center on our website that allows you to customize your cookie preferences for our site. You can access this center by clicking on the &quot;Manage Preferences&quot; button in the cookie banner that appears when you first visit our site, or by clicking the &quot;Manage Preferences&quot; button located at the bottom of this page.
                   </p>
                   <p>
                     Through our Cookie Preference Center, you can:

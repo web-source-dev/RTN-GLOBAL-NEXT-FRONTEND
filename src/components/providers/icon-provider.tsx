@@ -9,7 +9,7 @@ type IconComponentProps = {
   color?: string;
   className?: string;
   style?: React.CSSProperties;
-  [key: string]: any; // For any other props that icon libraries might accept
+  [key: string]: unknown; // For any other props that icon libraries might accept
 };
 
 // Context to hold dynamically loaded icons

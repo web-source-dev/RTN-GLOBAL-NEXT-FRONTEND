@@ -48,10 +48,10 @@ interface PortfolioItem {
 }
 
 interface Industry {
-  title: string;
-  name?: string;
-  description: string;
+  name: string;
+  shortDescription: string;
   slug: string;
+  id: string;
 }
 
 interface CaseStudy {
@@ -134,13 +134,11 @@ function SearchPageContent() {
       router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       performSearch(searchQuery);
       setShowSuggestions(false);
+      setSortBy('relevance')
     }
   };
 
-  // Add this to fix the unused variable warning
-  const handleSortChange = (value: string) => {
-    setSortBy(value);
-  };
+
 
   // Perform quick search for suggestions
   const getSearchSuggestions = (query: string): SearchSuggestion[] | null => {
@@ -206,20 +204,20 @@ function SearchPageContent() {
     try {
       const allIndustries = getAllIndustries();
       const industryResults = allIndustries
-        .filter((industry: any) => {
+        .filter((industry: Industry) => {
           if (!industry) return false;
           return (
-            (industry.title && industry.title.toLowerCase().includes(lowerQuery)) ||
-            (industry.description && industry.description.toLowerCase().includes(lowerQuery))
+            (industry.name && industry.name.toLowerCase().includes(lowerQuery)) ||
+            (industry.shortDescription && industry.shortDescription.toLowerCase().includes(lowerQuery))
           );
         })
         .slice(0, 2);
       
-      industryResults.forEach((industry: any) => {
+      industryResults.forEach((industry: Industry) => {
         if (!industry) return;
         suggestions.push({
-          title: industry.title || "Untitled Industry",
-          description: (industry.description || "").substring(0, 80) + "...",
+          title: industry.name || "Untitled Industry",
+          description: (industry.shortDescription || "").substring(0, 80) + "...",
           url: `/industries/${industry.slug || ""}`,
           type: "Industry",
           icon: <Layers className="h-4 w-4" />
@@ -308,10 +306,10 @@ function SearchPageContent() {
     
     // Search in industries
     const allIndustries = getAllIndustries();
-    const industryResults = allIndustries.filter((industry: any) => {
+    const industryResults = allIndustries.filter((industry: Industry) => {
       return (
-        industry.title.toLowerCase().includes(lowerQuery) ||
-        industry.description.toLowerCase().includes(lowerQuery)
+        industry.name.toLowerCase().includes(lowerQuery) ||
+        industry.shortDescription.toLowerCase().includes(lowerQuery)
       );
     });
     
@@ -427,13 +425,21 @@ function SearchPageContent() {
     const { services, portfolio, industries, caseStudies, knowledge, blog } = results;
     
     // Apply sorting to each array
-    const sortResults = <T extends { title: string; publishDate?: string; lastUpdated?: string }>(arr: T[]): T[] => {
+    const sortResults = <T extends { title?: string; name?: string; publishDate?: string; lastUpdated?: string }>(arr: T[]): T[] => {
       const sorted = [...arr];
       switch (sortBy) {
         case "a-z":
-          return sorted.sort((a, b) => a.title.localeCompare(b.title));
+          return sorted.sort((a, b) => {
+            const titleA = a.title || a.name || "";
+            const titleB = b.title || b.name || "";
+            return titleA.localeCompare(titleB);
+          });
         case "z-a":
-          return sorted.sort((a, b) => b.title.localeCompare(a.title));
+          return sorted.sort((a, b) => {
+            const titleA = a.title || a.name || "";
+            const titleB = b.title || b.name || "";
+            return titleB.localeCompare(titleA);
+          });
         case "recent":
           return sorted.sort((a, b) => {
             // Use publishDate for blog, lastUpdated for knowledge, and fallback
@@ -684,8 +690,8 @@ function SearchPageContent() {
                         results={sortedResults.industries.slice(0, 3)}
                         renderItem={(industry: Industry) => (
                           <ResultCard
-                            title={industry.title}
-                            description={industry.description}
+                            title={industry.name}
+                            description={industry.shortDescription}
                             href={`/industries/${industry.slug}`}
                             category="Industry"
                           />
@@ -795,8 +801,8 @@ function SearchPageContent() {
                       results={sortedResults.industries}
                       renderItem={(industry: Industry) => (
                         <ResultCard
-                          title={industry.title}
-                          description={industry.description}
+                          title={industry.name}
+                          description={industry.shortDescription}
                           href={`/industries/${industry.slug}`}
                           category="Industry"
                         />

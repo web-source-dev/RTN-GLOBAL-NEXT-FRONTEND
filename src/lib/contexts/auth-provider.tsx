@@ -27,19 +27,32 @@ interface ApiError extends Error {
   };
 }
 
+// Define return types for auth functions
+interface LoginResponse {
+  user?: User;
+  requireTwoFactor?: boolean;
+  token?: string;
+  message?: string;
+}
+
+interface VerificationResponse {
+  success: boolean;
+  message: string;
+}
+
 // Auth context interface
 interface AuthContextType {
   user: User | null
   isAuthenticated: boolean
   isLoading: boolean
-  login: (email: string, password: string) => Promise<any>
+  login: (email: string, password: string) => Promise<LoginResponse>
   register: (firstName: string, lastName: string, email: string, password: string, company?: string, phone?: string) => Promise<void>
   logout: () => Promise<void>
   forgotPassword: (email: string) => Promise<void>
   resetPassword: (token: string, password: string) => Promise<void>
   validateResetToken: (token: string) => Promise<void>
   verifyEmail: (email: string, code: string) => Promise<void>
-  resendVerificationCode: (email: string) => Promise<any>
+  resendVerificationCode: (email: string) => Promise<VerificationResponse>
   updateProfile: (profileData: Partial<User>) => Promise<void>
   changePassword: (currentPassword: string, newPassword: string) => Promise<void>
   deleteAccount: () => Promise<void>
@@ -50,14 +63,14 @@ const AuthContext = createContext<AuthContextType>({
   user: null,
   isAuthenticated: false,
   isLoading: true,
-  login: async () => null,
+  login: async () => ({ message: 'Not implemented' }),
   register: async () => {},
   logout: async () => {},
   forgotPassword: async () => {},
   resetPassword: async () => {},
   validateResetToken: async () => {},
   verifyEmail: async () => {},
-  resendVerificationCode: async () => null,
+  resendVerificationCode: async () => ({ success: false, message: '' }),
   updateProfile: async () => {},
   changePassword: async () => {},
   deleteAccount: async () => {},
@@ -85,7 +98,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           setIsAuthenticated(true)
         }
       } catch (error) {
-        // If request fails, user is not authenticated
+        console.error(error)
         setUser(null)
         setIsAuthenticated(false)
       } finally {

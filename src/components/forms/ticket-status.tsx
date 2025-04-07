@@ -70,6 +70,7 @@ export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }
   const { toast } = useToast();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState<UserData | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Check if user is logged in
   useEffect(() => {
@@ -79,20 +80,13 @@ export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }
         setCurrentUser(response.data);
         setIsLoggedIn(true);
       } catch (error) {
+        console.error(error)
         setIsLoggedIn(false);
       }
     };
     
     checkAuth();
   }, []);
-
-  // If ticket number is provided as a prop, fetch it on mount
-  useEffect(() => {
-    if (ticketNumber) {
-      fetchTicket(ticketNumber);
-    }
-  }, [ticketNumber]);
-
   const fetchTicket = useCallback(async (ticketNum: string) => {
     if (!ticketNum.trim()) {
       toast({
@@ -117,7 +111,8 @@ export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }
         });
         setTicket(null);
       }
-    } catch (error) {
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : 'An error occurred');
       toast({
         title: "Error fetching ticket",
         description: "There was an error retrieving your ticket information",
@@ -128,6 +123,14 @@ export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }
       setIsLoading(false);
     }
   }, [toast]);
+  // If ticket number is provided as a prop, fetch it on mount
+  useEffect(() => {
+    if (ticketNumber) {
+      fetchTicket(ticketNumber);
+    }
+  }, [ticketNumber,fetchTicket]);
+
+
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -173,14 +176,9 @@ export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }
       // Refresh ticket data
       fetchTicket(ticket.ticketNumber);
       setComment("");
-    } catch (error) {
-      console.error("Error adding comment:", error);
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : 'An error occurred');
       
-      const errorMessage = 
-        (error as { response?: { data?: { message?: string, error?: string } } })?.response?.data?.message || 
-        (error as { response?: { data?: { message?: string, error?: string } } })?.response?.data?.error || 
-        (error instanceof Error ? error.message : "There was an error adding your comment");
-        
       toast({
         title: "Error adding comment",
         description: errorMessage,

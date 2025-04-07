@@ -1,8 +1,8 @@
-import { type ClassValue, clsx } from "clsx"
+import { type ClassValue as ClsxClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import React from "react"
 
-export function cn(...inputs: ClassValue[]) {
+export function cn(...inputs: ClsxClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
@@ -73,7 +73,9 @@ export function slugify(str: string): string {
  * Utility to lazy load React Icon libraries which are
  * extremely large and hurting performance
  */
-export function createDeferredIconComponent(importFunction: () => Promise<any>, fallback = null) {
+export function createDeferredIconComponent<P = object>(
+  importFunction: () => Promise<{ default: React.ComponentType<P> }>
+): React.LazyExoticComponent<React.ComponentType<P>> {
   return React.lazy(() => 
     importFunction().then(module => {
       // Small delay to ensure it doesn't block LCP
@@ -89,6 +91,3 @@ export function createDeferredIconComponent(importFunction: () => Promise<any>, 
     })
   );
 }
-
-// Usage example:
-// const SiReact = createDeferredIconComponent(() => import('react-icons/si').then(mod => ({ default: mod.SiReact }))); 

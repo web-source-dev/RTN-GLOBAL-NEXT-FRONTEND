@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Mail, Send, Check, AlertCircle, ArrowRight } from "lucide-react"
+import { Mail, Check, AlertCircle, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 
 type SubscriptionStatus = "idle" | "loading" | "success" | "error"
@@ -36,6 +36,7 @@ export function NewsletterSection() {
         setMessage("")
       }, 5000)
     } catch (error) {
+      console.error(error)
       setStatus("error")
       setMessage("An error occurred. Please try again.")
       

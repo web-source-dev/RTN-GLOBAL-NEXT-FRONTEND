@@ -100,16 +100,7 @@ export default function LiveChat({ sessionId: propSessionId, isAdmin = false, on
     };
   }, []);
 
-  // Initialize the chat session
-  useEffect(() => {
-    if (propSessionId) {
-      setSessionId(propSessionId);
-      fetchSession(propSessionId, true);
-    } else {
-      startChatSession();
-    }
-  }, [propSessionId]);
-
+  
   // Periodic polling function that handles state updates carefully
   const pollForUpdates = useCallback(async (sid: string) => {
     if (!sid || !pollingActiveRef.current) return;
@@ -165,6 +156,8 @@ export default function LiveChat({ sessionId: propSessionId, isAdmin = false, on
     }
   }, [storeCursorPosition, restoreCursorPosition]);
   
+
+
   // Start polling
   const startPolling = useCallback((sid: string) => {
     if (pollTimeoutRef.current) {
@@ -175,8 +168,8 @@ export default function LiveChat({ sessionId: propSessionId, isAdmin = false, on
     pollForUpdates(sid);
   }, [pollForUpdates]);
   
-  // Initialize chat session
-  const startChatSession = async () => {
+  // Wrap startChatSession in useCallback to stabilize its reference
+  const startChatSession = useCallback(async () => {
     try {
       setLoading(true);
       const response = await API.post("/api/chat/session");
@@ -204,10 +197,10 @@ export default function LiveChat({ sessionId: propSessionId, isAdmin = false, on
     } finally {
       setLoading(false);
     }
-  };
+  }, [startPolling]);
 
-  // Fetch session once (used for initial fetch or manual refresh)
-  const fetchSession = async (id: string, startPollingAfter = false) => {
+  // Wrap fetchSession in useCallback to stabilize its reference
+  const fetchSession = useCallback(async (id: string, startPollingAfter = false) => {
     try {
       // Save cursor position
       storeCursorPosition();
@@ -237,7 +230,17 @@ export default function LiveChat({ sessionId: propSessionId, isAdmin = false, on
       // Restore cursor position
       setTimeout(restoreCursorPosition, 0);
     }
-  };
+  }, [storeCursorPosition, restoreCursorPosition, startPolling]);
+
+  // Update the useEffect to include the wrapped functions
+  useEffect(() => {
+    if (propSessionId) {
+      fetchSession(propSessionId, true);
+    } else {
+      startChatSession();
+    }
+  }, [propSessionId, fetchSession, startChatSession]);
+
 
   // Send a new message
   const handleSendMessage = async (event: React.FormEvent) => {

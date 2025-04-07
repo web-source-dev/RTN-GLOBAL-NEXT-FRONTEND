@@ -75,6 +75,7 @@ export default function SupportForm() {
         setCurrentUser(response.data);
         setIsLoggedIn(true);
       } catch (error) {
+        console.log(error)
         setIsLoggedIn(false);
         // Redirect to login page
         router.push("/login?redirect=/support");

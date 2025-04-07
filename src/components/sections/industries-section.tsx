@@ -13,31 +13,6 @@ export function IndustriesSection() {
   
   // Select a few industries to display
   const displayedIndustries = industries.slice(0, 6);
-  
-  // Get a sample case study from each industry
-  const industryCaseStudies = displayedIndustries.map(industry => {
-    if (industry.caseStudies.length > 0) {
-      return {
-        industry: industry.name,
-        industrySlug: industry.slug,
-        caseStudy: industry.caseStudies[0]
-      };
-    }
-    return null;
-  }).filter(Boolean) as Array<{
-    industry: string;
-    industrySlug: string;
-    caseStudy: {
-      title: string;
-      slug: string;
-      client: string;
-      description: string;
-      image: string;
-      results: Array<{ label: string; value: string }>;
-    };
-  }>;
-  
-
   return (
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">

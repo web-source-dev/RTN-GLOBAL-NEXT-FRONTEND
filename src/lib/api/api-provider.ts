@@ -83,7 +83,25 @@ interface Blog {
   content?: string;
   category?: string;
   tags?: string[];
-  [key: string]: any; // For other properties we're not explicitly checking
+  author?: {
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    avatar?: string;
+    _id?: string;
+  };
+  image?: string;
+  isActive?: boolean;
+  isFeatured?: boolean;
+  slug?: string;
+  views?: number;
+  likes?: string[];
+  shares?: string[];
+  comments?: Array<unknown>;
+  createdAt?: string;
+  updatedAt?: string;
+  _id?: string;
+  [key: string]: unknown; // For other properties we're not explicitly checking
 }
 
 // API endpoint groups for better organization
@@ -269,4 +287,14 @@ export const ChatAPI = {
     API.get('/api/chat/active-sessions'),
 };
 
-export default API; 
+export default API;
+
+// Replace any with a more specific type or unknown
+export const handleApiError = (error: unknown, defaultMessage = "An error occurred") => {
+  // Type checking and narrowing
+  if (error && typeof error === 'object' && 'response' in error) {
+    const errorResponse = error.response as { data?: { message?: string }};
+    return errorResponse?.data?.message || defaultMessage;
+  }
+  return defaultMessage;
+}; 
