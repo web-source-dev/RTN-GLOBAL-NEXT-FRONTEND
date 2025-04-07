@@ -33,6 +33,9 @@ interface LoginResponse {
   requireTwoFactor?: boolean;
   token?: string;
   message?: string;
+  accountLocked?: boolean;
+  lockExpires?: string;
+  requireVerification?: boolean;
 }
 
 interface VerificationResponse {

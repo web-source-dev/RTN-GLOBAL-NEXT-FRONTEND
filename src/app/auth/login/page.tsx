@@ -85,7 +85,7 @@ export default function LoginPage() {
       const response = await login(email, password)
       
       // Handle response from login function
-      if (response && response.requiresTwoFactor) {
+      if (response && response.requireTwoFactor) {
         setShowTwoFactor(true)
         setIsLoading(false)
         
