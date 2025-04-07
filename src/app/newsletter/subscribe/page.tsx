@@ -1,5 +1,5 @@
 import NewsletterForm from '@/components/forms/newsletter-form';
-import { ArrowRight, Mail, Bell, Award } from 'lucide-react';
+import { Mail, Bell, Award } from 'lucide-react';
 
 export default function NewsletterSubscribePage() {
   return (

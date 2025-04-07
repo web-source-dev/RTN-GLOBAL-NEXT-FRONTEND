@@ -14,10 +14,6 @@ import {
   AlertCircle, 
   Code, 
   FileQuestion,
-  ChevronRight,
-  Clock,
-  Eye,
-  Star,
   ArrowRight,
   BookOpen,
   TrendingUp
@@ -116,94 +112,6 @@ const featuredArticles = [
     category: "troubleshooting",
     icon: HelpCircle,
     color: "bg-red-100 text-red-600 dark:bg-red-950/30 dark:text-red-400"
-  }
-];
-
-// Popular articles
-const popularArticles = [
-  {
-    id: "getting-started/platform-overview",
-    title: "Platform Overview: Getting Started with RTN Global",
-    category: "Getting Started",
-    readTime: "5 min read",
-    views: 12543,
-    path: "/knowledge-base/getting-started/platform-overview"
-  },
-  {
-    id: "account-access/reset-password",
-    title: "How to Reset Your Password",
-    category: "Account Access",
-    readTime: "3 min read",
-    views: 9876,
-    path: "/knowledge-base/account-access/reset-password"
-  },
-  {
-    id: "api/authentication",
-    title: "API Authentication Guide",
-    category: "API References",
-    readTime: "7 min read",
-    views: 8654,
-    path: "/knowledge-base/api/authentication"
-  },
-  {
-    id: "billing/update-payment-method",
-    title: "Update Your Payment Method",
-    category: "Billing",
-    readTime: "4 min read",
-    views: 7532,
-    path: "/knowledge-base/billing/update-payment-method"
-  },
-  {
-    id: "troubleshooting/common-errors",
-    title: "Troubleshooting Common Platform Errors",
-    category: "Troubleshooting",
-    readTime: "8 min read",
-    views: 6891,
-    path: "/knowledge-base/troubleshooting/common-errors"
-  },
-  {
-    id: "best-practices/security",
-    title: "Security Best Practices",
-    category: "Best Practices",
-    readTime: "6 min read",
-    views: 5421,
-    path: "/knowledge-base/best-practices/security"
-  }
-];
-
-// Recent articles
-const recentArticles = [
-  {
-    id: "releases/latest-update",
-    title: "June 2023 Platform Updates",
-    category: "Release Notes",
-    readTime: "5 min read",
-    date: "June 15, 2023",
-    path: "/knowledge-base/releases/latest-update"
-  },
-  {
-    id: "api/new-endpoints",
-    title: "New API Endpoints for Analytics",
-    category: "API References",
-    readTime: "7 min read",
-    date: "June 10, 2023",
-    path: "/knowledge-base/api/new-endpoints"
-  },
-  {
-    id: "technical/performance-optimization",
-    title: "Performance Optimization Techniques",
-    category: "Technical Documentation",
-    readTime: "9 min read",
-    date: "June 5, 2023",
-    path: "/knowledge-base/technical/performance-optimization"
-  },
-  {
-    id: "best-practices/data-management",
-    title: "Data Management Best Practices",
-    category: "Best Practices",
-    readTime: "6 min read",
-    date: "June 1, 2023",
-    path: "/knowledge-base/best-practices/data-management"
   }
 ];
 

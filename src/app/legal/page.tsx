@@ -178,7 +178,7 @@ export default function LegalHomePage() {
 }
 
 // Helper function to render legal document cards
-function renderLegalCard(slug: string, title: string, description: string, Icon: React.ComponentType<any>) {
+function renderLegalCard(slug: string, title: string, description: string, Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>) {
   return (
     <Link href={`/legal/${slug}`} className="group">
       <Card className="h-full p-6 hover:border-primary/50 transition-colors">

@@ -101,7 +101,7 @@ export default function PrivacyPolicyPage() {
                 <section id="introduction">
                   <h2>Introduction</h2>
                   <p>
-                    At RTN Global Ltd. ("RTN Global," "we," "us," or &quot;our&quot;), we respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website rtnglobal.site, use our services, or interact with us in any way.
+                    At RTN Global Ltd. (&quot;RTN Global,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), we respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website rtnglobal.site, use our services, or interact with us in any way.
                   </p>
                   <p>
                     Please read this Privacy Policy carefully to understand our practices regarding your personal data and how we will treat it. By accessing or using our services, you acknowledge that you have read and understand this Privacy Policy.

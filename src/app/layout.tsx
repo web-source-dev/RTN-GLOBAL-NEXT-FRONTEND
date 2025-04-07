@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/lib/contexts/theme-provider";
-import { AuthProvider } from "@/lib/contexts/auth-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { Footer } from "./footer";
 import ChatWidget from "@/components/support/ChatWidget";

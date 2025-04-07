@@ -23,10 +23,81 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getAllServices, services } from "@/data/services";
+import { getAllServices } from "@/data/services";
 import { portfolioItems } from "@/data/portfolio-items";
-import { getAllIndustries, industries } from "@/data/industries";
+import { getAllIndustries } from "@/data/industries";
 import { caseStudies } from "@/data/case-studies";
+
+// Define interfaces for different content types
+interface Service {
+  title: string;
+  description: string;
+  fullDescription?: string;
+  category: string;
+  slug: string;
+}
+
+interface PortfolioItem {
+  title: string;
+  description: string;
+  slug: string;
+  category?: string;
+  client?: string;
+  industry?: string;
+  tags: string[];
+}
+
+interface Industry {
+  title: string;
+  name?: string;
+  description: string;
+  slug: string;
+}
+
+interface CaseStudy {
+  title: string;
+  slug: string;
+  client: string;
+  industry: string;
+  summary?: string;
+  challenge?: string;
+  solution?: string;
+  services: string[];
+}
+
+interface KnowledgeArticle {
+  title: string;
+  description: string;
+  category: string;
+  url: string;
+  lastUpdated: string;
+}
+
+interface BlogPost {
+  title: string;
+  description: string;
+  category: string;
+  url: string;
+  publishDate: string;
+  author: string;
+}
+
+interface SearchResults {
+  services: Service[];
+  portfolio: PortfolioItem[];
+  industries: Industry[];
+  caseStudies: CaseStudy[];
+  knowledge: KnowledgeArticle[];
+  blog: BlogPost[];
+}
+
+interface SearchSuggestion {
+  title: string;
+  url: string;
+  type: string;
+  icon: JSX.Element;
+  description?: string;
+}
 
 // Create a client component that uses useSearchParams
 function SearchPageContent() {
@@ -36,14 +107,7 @@ function SearchPageContent() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [isSearching, setIsSearching] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [searchResults, setSearchResults] = useState<{
-    services: any[],
-    portfolio: any[],
-    industries: any[],
-    caseStudies: any[],
-    knowledge: any[],
-    blog: any[]
-  }>({
+  const [searchResults, setSearchResults] = useState<SearchResults>({
     services: [],
     portfolio: [],
     industries: [],
@@ -74,17 +138,11 @@ function SearchPageContent() {
   };
 
   // Perform quick search for suggestions
-  const getSearchSuggestions = (query: string) => {
+  const getSearchSuggestions = (query: string): SearchSuggestion[] | null => {
     if (!query.trim()) return null;
     
     const lowerQuery = query.toLowerCase();
-    const suggestions: {
-      title: string;
-      url: string;
-      type: string;
-      icon: JSX.Element;
-      description?: string;
-    }[] = [];
+    const suggestions: SearchSuggestion[] = [];
     
     // Get service suggestions (max 2)
     try {
@@ -246,7 +304,7 @@ function SearchPageContent() {
     // Search in industries
     const allIndustries = getAllIndustries();
     const industryResults = allIndustries.filter(industry => {
-      // Since we don&apos;t have the actual structure, do a safe check on common properties
+      // Since we&apos;re not using the actual structure, do a safe check on common properties
       const industryObj = industry as any;
       return (
         (industryObj.name?.toLowerCase().includes(lowerQuery) || false) ||
@@ -326,7 +384,7 @@ function SearchPageContent() {
       blog: blogResults
     };
     
-    setSearchResults(results);
+    setSearchResults(results as unknown as SearchResults);
     setTotalResults(
       serviceResults.length + 
       portfolioResults.length + 
@@ -340,7 +398,7 @@ function SearchPageContent() {
   };
 
   // Filter results based on active category
-  const getFilteredResults = () => {
+  const getFilteredResults = (): SearchResults => {
     if (activeCategory === "all") {
       return {
         services: searchResults.services,
@@ -362,18 +420,12 @@ function SearchPageContent() {
     };
   };
 
-  // Get total for filtered results
-  const getFilteredTotal = () => {
-    const filtered = getFilteredResults();
-    return Object.values(filtered).reduce((sum, arr) => sum + arr.length, 0);
-  };
-
   // Sort results by selected criterion
-  const getSortedResults = (results: any) => {
+  const getSortedResults = (results: SearchResults): SearchResults => {
     const { services, portfolio, industries, caseStudies, knowledge, blog } = results;
     
     // Apply sorting to each array
-    const sortResults = (arr: any[]) => {
+    const sortResults = <T extends { title: string; publishDate?: string; lastUpdated?: string }>(arr: T[]): T[] => {
       const sorted = [...arr];
       switch (sortBy) {
         case "a-z":
@@ -498,7 +550,7 @@ function SearchPageContent() {
                         className="w-full text-primary"
                         onClick={handleSubmit}
                       >
-                        View all results for &quot;{searchQuery}&quot;
+                        View all results for {searchQuery}
                       </Button>
                     </div>
                   </div>
@@ -518,7 +570,7 @@ function SearchPageContent() {
               <div>
                 <h2 className="text-2xl font-bold mb-2">
                   {isSearching ? "Searching..." : 
-                   `${totalResults} results for "${searchParams.get("q")}"`}
+                   `${totalResults} results for ${searchParams.get("q")}`}
                 </h2>
                 {!isSearching && totalResults === 0 && (
                   <p className="text-muted-foreground">
@@ -950,15 +1002,15 @@ export default function SearchPage() {
 }
 
 // Helper components
-type ResultSectionProps = {
+interface ResultSectionProps<T> {
   title: string;
   icon: React.ReactNode;
-  results: unknown[];
-  renderItem: (item: unknown) => React.ReactNode;
+  results: T[];
+  renderItem: (item: T) => React.ReactNode;
   viewAllLink?: { href: string; onClick?: () => void };
 }
 
-const ResultSection = ({ title, icon, results, renderItem, viewAllLink }: ResultSectionProps) => {
+function ResultSection<T>({ title, icon, results, renderItem, viewAllLink }: ResultSectionProps<T>) {
   return (
     <section>
       <div className="flex items-center justify-between mb-6">

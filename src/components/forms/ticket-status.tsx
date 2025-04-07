@@ -9,7 +9,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -54,6 +53,14 @@ interface TicketData {
   userId: string;
 }
 
+interface UserData {
+  _id: string;
+  name?: string;
+  email?: string;
+  role?: string;
+  avatar?: string;
+}
+
 export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }) {
   const [searchTicket, setSearchTicket] = useState(ticketNumber || "");
   const [ticket, setTicket] = useState<TicketData | null>(null);
@@ -62,7 +69,7 @@ export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }
   const [isSubmittingComment, setIsSubmittingComment] = useState(false);
   const { toast } = useToast();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [currentUser, setCurrentUser] = useState<UserData | null>(null);
 
   // Check if user is logged in
   useEffect(() => {
@@ -71,7 +78,7 @@ export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }
         const response = await AuthAPI.getMe();
         setCurrentUser(response.data);
         setIsLoggedIn(true);
-      } catch (error) {
+      } catch (error: unknown) {
         setIsLoggedIn(false);
       }
     };
@@ -166,14 +173,13 @@ export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }
       // Refresh ticket data
       fetchTicket(ticket.ticketNumber);
       setComment("");
-    } catch (error: Error | any) {
+    } catch (error: unknown) {
       console.error("Error adding comment:", error);
       
       const errorMessage = 
-        error.response?.data?.message || 
-        error.response?.data?.error || 
-        error.message || 
-        "There was an error adding your comment";
+        (error as any)?.response?.data?.message || 
+        (error as any)?.response?.data?.error || 
+        (error instanceof Error ? error.message : "There was an error adding your comment");
         
       toast({
         title: "Error adding comment",

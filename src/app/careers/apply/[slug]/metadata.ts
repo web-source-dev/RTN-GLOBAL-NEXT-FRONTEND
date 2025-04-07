@@ -17,7 +17,7 @@ type PageParams = {
 };
 
 // Function to fetch job details specifically for metadata generation
-async function getJobDetails(slug: string) {
+async function getJobDetails(slug: string): Promise<{ job: Job } | null> {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/careers/jobs/${slug}`, {
       next: { revalidate: 60 } // Revalidate every minute

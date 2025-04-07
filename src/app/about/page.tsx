@@ -605,7 +605,7 @@ export default function AboutPage() {
             </div>
             <h2 id="timeline-heading" className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Key Milestones</h2>
             <p className="text-lg text-muted-foreground">
-              From our humble beginnings to where we are today, here's how our story has unfolded.
+              From our humble beginnings to where we are today, here&apos;s how our story has unfolded.
             </p>
           </motion.div>
           
@@ -675,7 +675,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">What Our <span className="text-primary">Clients Say</span></h2>
             <div className="w-24 h-1.5 bg-primary/30 rounded-full mx-auto mb-8"></div>
             <p className="text-lg md:text-xl text-muted-foreground">
-              Don&apos;t just take our word for it—hear what our clients have to say about working with RTN Global.
+              Dont just take our word for it—hear what our clients have to say about working with RTN Global.
             </p>
           </motion.div>
           

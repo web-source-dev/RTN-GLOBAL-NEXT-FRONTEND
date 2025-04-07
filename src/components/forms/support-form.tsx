@@ -20,12 +20,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { toast } from "@/components/ui/use-toast";
 import { Loader2, UploadCloud } from "lucide-react";
 import API from "@/lib/api/api-provider";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { AuthAPI } from "@/lib/api/api-provider";
+
+// Create a User interface for proper typing
+interface User {
+  name?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  id?: string;
+}
 
 export default function SupportForm() {
   const [activeStep, setActiveStep] = useState(0);
@@ -34,7 +42,7 @@ export default function SupportForm() {
   const router = useRouter();
   const { toast } = useToast();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   const [formData, setFormData] = useState({
     issueCategory: "",
@@ -54,7 +62,7 @@ export default function SupportForm() {
         const response = await AuthAPI.getMe();
         setCurrentUser(response.data);
         setIsLoggedIn(true);
-      } catch (error) {
+      } catch (_) {
         setIsLoggedIn(false);
         // Redirect to login page
         router.push("/login?redirect=/support");
@@ -202,19 +210,19 @@ export default function SupportForm() {
 
       // Redirect to ticket status page
       router.push(`/support/tickets/${response.data.ticketNumber}`);
-    } catch (error: Error | any) {
+    } catch (error: unknown) {
       console.error("Error submitting support ticket:", error);
       console.error("Error details:", {
-        message: error.message,
-        response: error.response?.data,
-        status: error.response?.status
+        message: error instanceof Error ? error.message : "Unknown error",
+        response: (error as any)?.response?.data,
+        status: (error as any)?.response?.status
       });
       
       // Better error message handling
       const errorMessage = 
-        error.response?.data?.message || 
-        error.response?.data?.error || 
-        error.message || 
+        (error as any)?.response?.data?.message || 
+        (error as any)?.response?.data?.error || 
+        (error instanceof Error ? error.message : "Unknown error") || 
         "Please try again later";
       
       toast({

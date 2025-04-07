@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { OptimizedImage } from "@/components/ui/optimized-image";
 import { Avatar } from "@/components/ui/avatar";
 import { formatTimeAgo } from "@/lib/utils";
 import { Heart, Reply, Send, Loader2 } from "lucide-react";
@@ -34,7 +33,7 @@ interface CommentProps {
     createdAt: string;
     updatedAt: string;
   };
-  currentUser: any | null;
+  currentUser: Author | null;
   isLoggedIn: boolean;
   isSubmitting: boolean;
   onLikeComment: (commentId: string) => Promise<void>;

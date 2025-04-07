@@ -53,7 +53,7 @@ export default function SearchBar({ defaultValue = '' }: SearchBarProps) {
       {searchValue && (
         <div className="mt-3 text-sm flex justify-center">
           <span className="text-muted-foreground">
-            Searching for: <span className="font-medium text-foreground">"{searchValue}"</span> 
+            Searching for: <span className="font-medium text-foreground">{searchValue}</span> 
             <Button 
               variant="link" 
               className="p-0 h-auto ml-2" 

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Layout } from "@/components/layout/layout";
-import { HeroSection } from "@/components/sections/hero-section";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { 

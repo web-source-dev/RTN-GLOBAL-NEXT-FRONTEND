@@ -191,7 +191,7 @@ export default function CookiePolicyPage() {
                   </p>
                   <ul>
                     <li><strong>Google Analytics:</strong> We use Google Analytics to understand how visitors interact with our website. The cookies collect information about the number of visitors to the site, where visitors have come from, and the pages they visited. You can learn more about Google Analytics cookies <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage" target="_blank" className="text-primary hover:underline">here</a>.</li>
-                    <li><strong>HubSpot:</strong> We use HubSpot for marketing automation and to analyze website performance. HubSpot cookies help track visitor information and provide personalized content. More information about HubSpot cookies can be found <a href="https://knowledge.hubspot.com/reports/what-cookies-does-hubspot-set-in-a-visitor-s-browser" target="_blank" className="text-primary hover:underline">here</a>.</li>
+                    <li><strong>HubSpot:</strong> We use HubSpot for marketing automation and to analyze website performance. HubSpot cookies help track visitor information and provide personalized content. More information about HubSpot cookies can be found <a href="https://knowledge.hubspot.com/reports/what-cookies-does-hubspot-set-in-a-visitor&apos;s-browser" target="_blank" className="text-primary hover:underline">here</a>.</li>
                     <li><strong>Social Media Platforms:</strong> Our website includes social media features, such as the Facebook, Twitter, and LinkedIn buttons. These features may collect your IP address, which page you are visiting on our site, and may set a cookie to enable the feature to function properly. These social media features are hosted by a third party. Your interactions with these features are governed by the privacy policy of the company providing them.</li>
                   </ul>
                 </section>
@@ -199,7 +199,7 @@ export default function CookiePolicyPage() {
                 <section id="managing-cookies">
                   <h2>Managing Your Cookie Preferences</h2>
                   <p>
-                    Most web browsers allow you to manage your cookie preferences. You can set your browser to refuse cookies, or to alert you when cookies are being sent. The methods for doing so vary from browser to browser, and from version to version, but you can typically manage your cookie settings through the browser&apos;s "Settings," "Preferences," or &quot;Options&quot; menu.
+                    Most web browsers allow you to manage your cookie preferences. You can set your browser to refuse cookies, or to alert you when cookies are being sent. The methods for doing so vary from browser to browser, and from version to version, but you can typically manage your cookie settings through the browser&apos;s "Settings," "Preferences," or "Options" menu.
                   </p>
                   <p>
                     Here are links to instructions for managing cookies in some popular browsers:
@@ -218,7 +218,7 @@ export default function CookiePolicyPage() {
                 <section id="cookie-preferences">
                   <h2>Cookie Preference Center</h2>
                   <p>
-                    In addition to browser settings, we provide a Cookie Preference Center on our website that allows you to customize your cookie preferences for our site. You can access this center by clicking on the "Manage Preferences" button in the cookie banner that appears when you first visit our site, or by clicking the &quot;Manage Preferences&quot; button located at the bottom of this page.
+                    In addition to browser settings, we provide a Cookie Preference Center on our website that allows you to customize your cookie preferences for our site. You can access this center by clicking on the "Manage Preferences" button in the cookie banner that appears when you first visit our site, or by clicking the "Manage Preferences" button located at the bottom of this page.
                   </p>
                   <p>
                     Through our Cookie Preference Center, you can:

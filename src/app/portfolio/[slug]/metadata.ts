@@ -1,38 +1,6 @@
 import type { Metadata } from 'next'
 import { portfolioItems } from "@/data/portfolio-items"
 
-// Define types for the portfolio item (similar to those in page.tsx)
-type Stats = {
-  performance: string
-  duration: string
-  satisfaction: string
-}
-
-type PortfolioItem = {
-  id?: string
-  title: string
-  category: string
-  image: string
-  description: string
-  link?: string
-  tags: string[]
-  stats: Stats
-  featured?: boolean
-  challenge?: string
-  solution?: string
-  results?: string[]
-  technologies?: string[]
-  client?: string
-  industry?: string
-  year?: string
-  testimonial?: {
-    content: string
-    author: string
-    role: string
-    company: string
-  }
-}
-
 interface ProjectPageProps {
   params: {
     slug: string

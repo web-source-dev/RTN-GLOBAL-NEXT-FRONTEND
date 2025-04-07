@@ -5,11 +5,9 @@ import { Layout } from "@/components/layout/layout";
 import { 
   ChevronRight, 
   HomeIcon, 
-  Info, 
   Settings, 
   Users, 
   BookOpen, 
-  Contact, 
   Briefcase, 
   HelpCircle, 
   Scale, 

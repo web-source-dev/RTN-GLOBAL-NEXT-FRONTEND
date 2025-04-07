@@ -34,7 +34,6 @@ export default function FAQPage() {
   const isGeneralInView = useInView(generalRef, { once: true, amount: 0.2 })
   const isProcessInView = useInView(processRef, { once: true, amount: 0.2 })
   const isTechnicalInView = useInView(technicalRef, { once: true, amount: 0.2 })
-  const isQuestionsSectionInView = useInView(questionsSectionRef, { once: true, amount: 0.3 })
 
   // Parallax scrolling effect
   const { scrollY } = useScroll()
@@ -186,7 +185,7 @@ export default function FAQPage() {
     );
     
     setSearchResults(results);
-  }, [searchQuery]);
+  }, [searchQuery, allFaqs]);
 
   // Filter FAQs based on active category
   const getFilteredFaqs = () => {
@@ -358,7 +357,7 @@ export default function FAQPage() {
       </section>
 
       {/* Popular Questions (Only shown when not searching) */}
-        {!isSearching && !activeCategory.includes("Pricing") && !activeCategory.includes("Support") && activeCategory === "All" && (
+      {!isSearching && !activeCategory.includes("Pricing") && !activeCategory.includes("Support") && activeCategory === "All" && (
         <div className="bg-muted/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
             <div className="text-center mb-8">
@@ -399,7 +398,7 @@ export default function FAQPage() {
                   animate={isCategoryInView ? "visible" : "hidden"}
                   className="flex flex-col gap-2"
                 >
-            {categories.map((category) => (
+                  {categories.map((category) => (
                     <motion.button
                       key={category.id}
                       variants={itemVariants}
@@ -545,7 +544,7 @@ export default function FAQPage() {
                           <h2 className="text-2xl font-bold">Our Process</h2>
                           <div className="w-16 h-1 bg-primary rounded-full mt-3"></div>
                         </div>
-                       
+                      
                       </motion.div>
                       
                       <motion.div
@@ -624,14 +623,14 @@ export default function FAQPage() {
                 <div className="md:col-span-7">
                   <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Still Have Questions?</h2>
                   <p className="text-white/90 mb-6">
-              We&apos;re here to help. Contact our team for personalized answers to your questions.
-            </p>
+                    We&apos;re here to help. Contact our team for personalized answers to your questions.
+                  </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact">
+                    <Link href="/contact">
                       <Button variant="secondary" className="w-full sm:w-auto">
                         Contact Us <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
+                      </Button>
+                    </Link>
                     <Button variant="outline" className="bg-transparent text-white border-white/50 hover:bg-white/10 hover:text-white w-full sm:w-auto">
                       View Support Options
                     </Button>

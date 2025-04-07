@@ -18,11 +18,9 @@ import {
   ChevronRight,
   Clock,
   Eye,
-  Star,
   Filter,
   Calendar,
   ArrowLeft,
-  Home
 } from "lucide-react";
 
 // Knowledge base categories

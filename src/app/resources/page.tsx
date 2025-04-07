@@ -1,19 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { 
   ChevronRight, 
   Download, 
-  Filter, 
   FileText, 
   FileSpreadsheet, 
   FileCheck,
   FileCode,
   Search,
   BookOpen,
-  CheckCircle
 } from "lucide-react";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
@@ -589,7 +586,7 @@ export default function ResourcesPage() {
                   </div>
                   <h3 className="text-xl font-medium mb-2">No resources found</h3>
                   <p className="text-muted-foreground max-w-md mx-auto mb-8">
-                    We couldn't find any resources matching your search criteria. Try adjusting your filters or search query.
+                    We couldn&apos;t find any resources matching your search criteria. Try adjusting your filters or search query.
                   </p>
                   <Button 
                     variant="outline"

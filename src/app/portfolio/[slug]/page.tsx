@@ -1,8 +1,7 @@
 import { Layout } from "@/components/layout/layout"
-import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, ArrowRight, ExternalLink, Globe, Code, Monitor, Zap, Award, Clock, Star, CheckCircle, Tag } from "lucide-react"
+import { ArrowLeft, ArrowRight, ExternalLink, Code, Award, Clock, Star, CheckCircle, Tag } from "lucide-react"
 import { notFound } from "next/navigation"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 

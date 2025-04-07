@@ -1,12 +1,8 @@
 import { Layout } from "@/components/layout/layout"
-import { HeroSection } from "@/components/sections/hero-section"
 import { FAQSection } from "@/components/sections/faq-section"
-import { CTASection } from "@/components/sections/cta-section"
 import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import { motion } from "framer-motion"
 import { 
   SearchIcon, 
   LineChart, 

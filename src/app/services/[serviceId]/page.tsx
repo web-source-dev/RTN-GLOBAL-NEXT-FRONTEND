@@ -8,79 +8,26 @@ import { Button } from '@/components/ui/button'
 import { 
   ArrowLeft, 
   ArrowRight, 
-  Check, 
-  Calendar, 
+  Check,
   Clock, 
   CreditCard, 
   Tag, 
   MessageSquare, 
   ChevronRight,
-  BarChart, 
-  Code, 
-  PenTool, 
-  Settings, 
-  SmartphoneIcon, 
-  Mail, 
-  FileText, 
-  ShoppingBag, 
-  Palette, 
-  Share2, 
-  TrendingUp,
-  Search
 } from 'lucide-react'
 import { OptimizedImage } from '@/components/ui/optimized-image'
-import { services, IconType } from '@/data/services'
+import { services } from '@/data/services'
 import { CTASection } from '@/components/sections/cta-section'
 import { motion } from 'framer-motion'
-
-// Icon mapping component
-const ServiceIcon = ({ iconType }: { iconType: IconType }) => {
-  switch (iconType) {
-    case 'code':
-      return <Code className="h-5 w-5" />;
-    case 'trending-up':
-      return <TrendingUp className="h-5 w-5" />;
-    case 'pen-tool':
-      return <PenTool className="h-5 w-5" />;
-    case 'settings':
-      return <Settings className="h-5 w-5" />;
-    case 'search':
-      return <Search className="h-5 w-5" />;
-    case 'file-text':
-      return <FileText className="h-5 w-5" />;
-    case 'share2':
-      return <Share2 className="h-5 w-5" />;
-    case 'mail':
-      return <Mail className="h-5 w-5" />;
-    case 'smartphone':
-      return <SmartphoneIcon className="h-5 w-5" />;
-    case 'shopping-bag':
-      return <ShoppingBag className="h-5 w-5" />;
-    case 'palette':
-      return <Palette className="h-5 w-5" />;
-    case 'bar-chart':
-      return <BarChart className="h-5 w-5" />;
-    default:
-      return <Code className="h-5 w-5" />;
-  }
-};
 
 export default function ServiceDetailPage({ 
   params 
 }: { 
   params: { serviceId: string } 
-}) {
-  // CURRENT APPROACH: Direct access to params (works with current Next.js)
+  }) {
   const { serviceId } = params;
-  
-  // FUTURE APPROACH (when Next.js makes params a Promise):
-  // Uncomment the following lines and remove the direct access above
-  // const unwrappedParams = React.use(params);
-  // const { serviceId } = unwrappedParams;
-  
   const service = services[serviceId as keyof typeof services]
   
-  // If service doesn't exist, show 404
   if (!service) {
     notFound()
   }

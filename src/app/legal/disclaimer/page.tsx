@@ -98,7 +98,7 @@ export default function DisclaimerPage() {
                 <section id="introduction">
                   <h2>Introduction</h2>
                   <p>
-                    This disclaimer ("Disclaimer") applies to the website rtnglobal.site, operated by RTN Global Ltd. ("we", "us", or &quot;our&quot;). By accessing and using our website and services, you acknowledge that you have read, understood, and agree to be bound by this Disclaimer.
+                    This disclaimer (&quot;Disclaimer&quot;) applies to the website rtnglobal.site, operated by RTN Global Ltd. (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). By accessing and using our website and services, you acknowledge that you have read, understood, and agree to be bound by this Disclaimer.
                   </p>
                   <p>
                     We reserve the right to change this Disclaimer at any time without notice. Your continued use of our website after any changes indicates your acceptance of the modified Disclaimer.

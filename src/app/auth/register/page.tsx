@@ -8,7 +8,6 @@ import { useAuth } from '@/lib/contexts/auth-provider'
 import { 
   Loader2, 
   Mail, 
-  User, 
   Lock, 
   Eye, 
   EyeOff, 

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Layout } from "@/components/layout/layout";
 import { Card } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { 
   ChevronRight, 
@@ -111,7 +110,7 @@ export default function TermsConditionsPage() {
                     Welcome to RTN Global. These Terms and Conditions (&quot;Terms&quot;) govern your use of our website, services, and products. By accessing or using RTN Global services, you agree to be bound by these Terms. If you disagree with any part of the Terms, you may not access the service.
                   </p>
                   <p>
-                    These Terms constitute a legally binding agreement between you and RTN Global Ltd. ("we," "us," or &quot;our&quot;).
+                    These Terms constitute a legally binding agreement between you and RTN Global Ltd. (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;).
                   </p>
                 </section>
                 

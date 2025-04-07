@@ -117,7 +117,6 @@ export default function FreeConsultationForm() {
   const [errors, setErrors] = useState<Partial<Record<keyof ConsultationFormData, string>>>({});
   const { toast } = useToast();
   const router = useRouter();
-  const formRef = useRef<HTMLFormElement>(null);
   const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
   // Check if user is logged in to prefill form data
@@ -137,7 +136,7 @@ export default function FreeConsultationForm() {
           phone: userData.phone || "",
           companyName: userData.company || "",
         }));
-      } catch (error) {
+      } catch (error: unknown) {
         // User is not logged in
         setIsLoggedIn(false);
       }
@@ -145,19 +144,15 @@ export default function FreeConsultationForm() {
     
     checkAuth();
   }, []);
-
-  // Only fetch first consultation status once at component mount if authenticated
   useEffect(() => {
     if (isLoggedIn && !dateChecked) {
       checkFirstConsultationStatus();
     }
   }, [isLoggedIn]);
 
-  // Start countdown timer when reaching review step
   useEffect(() => {
     let timer: NodeJS.Timeout;
     if (activeStep === steps.length - 1) {
-      // Reset the button state when entering the final step
       setSubmitEnabled(false);
       setSubmitCountdown(5);
       
@@ -184,7 +179,7 @@ export default function FreeConsultationForm() {
       const response = await API.get(`/api/forms/free-consultation/available-slots?date=${new Date().toISOString().split('T')[0]}`);
       setIsFirstConsultation(response.data.isFirstConsultation);
       setDateChecked(true);
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error checking first consultation status:", error);
     }
   };
@@ -193,7 +188,7 @@ export default function FreeConsultationForm() {
     try {
       const response = await API.get(`/api/forms/free-consultation/available-slots?date=${date}`);
       setAvailableTimeSlots(response.data.availableSlots);
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Error fetching available slots:", error);
       setSubmitStatus({
         type: 'error',

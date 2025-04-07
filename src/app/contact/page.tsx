@@ -7,15 +7,14 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useToast } from "@/components/ui/use-toast"
-import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { OptimizedImage } from "@/components/ui/optimized-image"
-import { Mail, Phone, MapPin, Clock, Loader2, AlertCircle, ArrowRight, CheckCircle2, MessageSquare, Building, ChevronRight, ShieldCheck } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Loader2, AlertCircle, ArrowRight, CheckCircle2, Building, ShieldCheck } from "lucide-react"
 import { FormsAPI } from "@/lib/api/api-provider"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Separator } from "@/components/ui/separator"
@@ -87,13 +86,17 @@ export default function ContactPage() {
       setTimeout(() => {
         setFormSubmitted(false)
       }, 5000)
-    } catch (error: Error | any) {
+    } catch (error: unknown) {
       console.error("Contact form submission error:", error)
       
-      setServerError(
-        error.response?.data?.message || 
-        "There was an error submitting your message. Please try again later."
-      )
+      if (error instanceof Error) {
+        setServerError(
+          error.message || 
+          "There was an error submitting your message. Please try again later."
+        )
+      } else {
+        setServerError("There was an error submitting your message. Please try again later.")
+      }
       
       toast({
         title: "Submission Failed",

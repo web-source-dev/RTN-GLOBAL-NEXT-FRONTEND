@@ -173,6 +173,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]
 
   // Authentication pages (we don't want these indexed by search engines, but included for completeness)
+  // We're commenting this out since it's not used in the returned sitemap
+  /* 
   const authPages = [
     {
       url: `${baseUrl}/auth/login`,
@@ -205,6 +207,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.2,
     },
   ]
+  */
 
   // Knowledge base pages
   const knowledgeBaseCategories = [
@@ -312,9 +315,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     // For blog posts from a backend API
     // This is a placeholder - you'll need to implement your own fetching logic
-    const blogPosts = await fetchBlogPosts() // Define this function based on your API
+    const blogPosts = await fetchBlogPosts()
     
-    blogPostRoutes = blogPosts.map((post: any) => ({
+    // Define a proper interface for blog posts
+    interface BlogPost {
+      slug: string;
+      publishedAt?: string | Date;
+    }
+    
+    blogPostRoutes = blogPosts.map((post: BlogPost) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(post.publishedAt || lastModified),
       changeFrequency: 'weekly' as const,

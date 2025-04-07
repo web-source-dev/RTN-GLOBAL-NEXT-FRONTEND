@@ -1,10 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, Check, ExternalLink } from "lucide-react";
-import { getIndustryBySlug, getAllIndustries, Industry } from "@/data/industries";
+import { Check, ExternalLink } from "lucide-react";
+import { getIndustryBySlug } from "@/data/industries";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { HeroSection } from "@/components/sections/hero-section";
 import { Layout } from "@/components/layout/layout";
 

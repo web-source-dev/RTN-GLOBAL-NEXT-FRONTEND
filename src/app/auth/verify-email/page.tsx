@@ -22,6 +22,16 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 import { useToast } from '@/components/ui/use-toast'
 import { WithSearchParams } from '@/components/ui/use-search-params'
 
+interface ApiError {
+  response?: {
+    data?: {
+      message?: string;
+      retryAfter?: number;
+    };
+  };
+  message?: string;
+}
+
 // Main component with Suspense boundary
 export default function VerifyEmailPage() {
   return (
@@ -96,15 +106,16 @@ function VerifyEmailContent({ searchParams }: { searchParams: URLSearchParams })
       setTimeout(() => {
         router.push('/auth/login')
       }, 3000)
-    } catch (error: Error | any) {
-      console.error('Verification error:', error)
-      setError(error.response?.data?.message || 'Verification failed. Please try again.')
+    } catch (error: unknown) {
+      const apiError = error as ApiError;
+      console.error('Verification error:', apiError);
+      setError(apiError.response?.data?.message || 'Verification failed. Please try again.');
       
       toast({
         title: "Verification failed",
-        description: error.response?.data?.message || 'Invalid or expired verification code',
+        description: apiError.response?.data?.message || 'Invalid or expired verification code',
         variant: "destructive",
-      })
+      });
     } finally {
       setIsVerifying(false)
     }
@@ -138,27 +149,28 @@ function VerifyEmailContent({ searchParams }: { searchParams: URLSearchParams })
         title: "Verification code sent!",
         description: "Please check your email for the new verification code.",
       })
-    } catch (error: Error | any) {
-      console.error('Resend code error:', error)
+    } catch (error: unknown) {
+      const apiError = error as ApiError;
+      console.error('Resend code error:', apiError);
       
       // Special case: if we have a retry after period
-      if (error.response?.data?.retryAfter) {
-        setCountdown(error.response.data.retryAfter)
-        setResendDisabled(true)
+      if (apiError.response?.data?.retryAfter) {
+        setCountdown(apiError.response.data.retryAfter);
+        setResendDisabled(true);
         
         toast({
           title: "Please wait",
-          description: `You can request a new code in ${error.response.data.retryAfter} seconds`,
+          description: `You can request a new code in ${apiError.response.data.retryAfter} seconds`,
           variant: "destructive",
-        })
+        });
       } else {
-        setError(error.response?.data?.message || 'Failed to resend verification code. Please try again.')
+        setError(apiError.response?.data?.message || 'Failed to resend verification code. Please try again.');
         
         toast({
           title: "Resend failed",
-          description: error.response?.data?.message || 'Failed to resend verification code',
+          description: apiError.response?.data?.message || 'Failed to resend verification code',
           variant: "destructive",
-        })
+        });
       }
     } finally {
       setIsResending(false)
@@ -261,7 +273,7 @@ function VerifyEmailContent({ searchParams }: { searchParams: URLSearchParams })
               
               <div className="flex items-center justify-between pt-2">
                 <div className="text-sm text-muted-foreground">
-                  Didn't receive a code?
+                  Didn&apos;t receive a code? 
                 </div>
                 <Button
                   type="button"

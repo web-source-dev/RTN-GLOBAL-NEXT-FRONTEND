@@ -26,6 +26,19 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 import { useToast } from '@/components/ui/use-toast'
 import { AuthAPI } from '@/lib/api/api-provider'
 
+// Add this interface near the top of the file, after the imports
+interface ApiError {
+  response?: {
+    data?: {
+      message?: string;
+      accountLocked?: boolean;
+      lockExpires?: string;
+      requireVerification?: boolean;
+    };
+  };
+  message?: string;
+}
+
 export default function LoginPage() {
   const { login } = useAuth()
   const router = useRouter()
@@ -108,18 +121,19 @@ export default function LoginPage() {
       setTimeout(() => {
         router.push('/dashboard')
       }, 1000)
-    } catch (error: Error | any) {
+    } catch (error: unknown) {
       console.error('Login failed:', error)
+      const apiError = error as ApiError
       
       // Check for account locked
-      if (error.response?.data?.accountLocked) {
+      if (apiError.response?.data?.accountLocked) {
         setIsAccountLocked(true)
-        if (error.response?.data?.lockExpires) {
-          setLockExpires(new Date(error.response.data.lockExpires))
+        if (apiError.response?.data?.lockExpires) {
+          setLockExpires(new Date(apiError.response.data.lockExpires))
         }
         
         setError('Your account has been temporarily locked due to multiple failed login attempts.')
-      } else if (error.response?.data?.requireVerification) {
+      } else if (apiError.response?.data?.requireVerification) {
         // Check for email verification required
         setError('Email verification required. Please check your email for verification instructions.')
         
@@ -128,7 +142,7 @@ export default function LoginPage() {
         }, 2000)
       } else {
         // Generic error message
-        setError(error.response?.data?.message || 'Invalid email or password')
+        setError(apiError.response?.data?.message || 'Invalid email or password')
       }
     } finally {
       setIsLoading(false)
@@ -161,16 +175,16 @@ export default function LoginPage() {
       setTimeout(() => {
         router.push('/dashboard')
       }, 1000)
-    } catch (error: Error | any) {
+    } catch (error: unknown) {
       console.error('Two-factor verification failed:', error)
+      const apiError = error as ApiError
       
-      // Proper error handling
       let errorMessage = 'Invalid verification code'
       
-      if (error.response && error.response.data && error.response.data.message) {
-        errorMessage = error.response.data.message
-      } else if (error.message) {
-        errorMessage = error.message
+      if (apiError.response?.data?.message) {
+        errorMessage = apiError.response.data.message
+      } else if (apiError.message) {
+        errorMessage = apiError.message
       }
       
       setTwoFactorError(errorMessage)
@@ -208,16 +222,16 @@ export default function LoginPage() {
       setTimeout(() => {
         router.push('/dashboard')
       }, 1000)
-    } catch (error: Error | any) {
+    } catch (error: unknown) {
       console.error('Backup code verification failed:', error)
+      const apiError = error as ApiError
       
-      // Proper error handling
       let errorMessage = 'Invalid backup code'
       
-      if (error.response && error.response.data && error.response.data.message) {
-        errorMessage = error.response.data.message
-      } else if (error.message) {
-        errorMessage = error.message
+      if (apiError.response?.data?.message) {
+        errorMessage = apiError.response.data.message
+      } else if (apiError.message) {
+        errorMessage = apiError.message
       }
       
       setTwoFactorError(errorMessage)

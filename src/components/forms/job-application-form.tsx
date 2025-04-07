@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, ControllerRenderProps } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Input } from '@/components/ui/input';
@@ -57,18 +57,9 @@ interface JobApplicationFormProps {
   department?: string;
 }
 
-// Add proper User type definition that includes phone
-type User = {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  phone?: string;
-  // Add other properties as needed
-};
-
 export default function JobApplicationForm({ jobId, jobTitle, department }: JobApplicationFormProps) {
   const { toast } = useToast();
-  const { user, isAuthenticated, login } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -167,7 +158,7 @@ export default function JobApplicationForm({ jobId, jobTitle, department }: JobA
       });
       
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch (err) {
+    } catch (err: unknown) {
       console.error('Error submitting application:', err);
       const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred';
       setError(errorMessage);
@@ -353,7 +344,7 @@ export default function JobApplicationForm({ jobId, jobTitle, department }: JobA
                   <FormField
                     control={form.control}
                     name="experienceLevel"
-                    render={({ field }: { field: any }) => (
+                    render={({ field }: { field: ControllerRenderProps<ApplicationFormValues, "experienceLevel"> }) => (
                       <FormItem>
                         <FormLabel className="text-base">Experience Level*</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -378,7 +369,7 @@ export default function JobApplicationForm({ jobId, jobTitle, department }: JobA
                   <FormField
                     control={form.control}
                     name="currentCompany"
-                    render={({ field }: { field: any }) => (
+                    render={({ field }: { field: ControllerRenderProps<ApplicationFormValues, "currentCompany"> }) => (
                       <FormItem>
                         <FormLabel className="text-base">Current Company (Optional)</FormLabel>
                         <FormControl>
@@ -394,7 +385,7 @@ export default function JobApplicationForm({ jobId, jobTitle, department }: JobA
                   <FormField
                     control={form.control}
                     name="linkedInProfile"
-                    render={({ field }: { field: any }) => (
+                    render={({ field }: { field: ControllerRenderProps<ApplicationFormValues, "linkedInProfile"> }) => (
                       <FormItem>
                         <FormLabel className="text-base">LinkedIn Profile (Optional)</FormLabel>
                         <FormControl>
@@ -408,7 +399,7 @@ export default function JobApplicationForm({ jobId, jobTitle, department }: JobA
                   <FormField
                     control={form.control}
                     name="portfolioUrl"
-                    render={({ field }: { field: any }) => (
+                    render={({ field }: { field: ControllerRenderProps<ApplicationFormValues, "portfolioUrl"> }) => (
                       <FormItem>
                         <FormLabel className="text-base">Portfolio URL (Optional)</FormLabel>
                         <FormControl>
@@ -427,7 +418,7 @@ export default function JobApplicationForm({ jobId, jobTitle, department }: JobA
                 <FormField
                   control={form.control}
                   name="coverLetter"
-                  render={({ field }: { field: any }) => (
+                  render={({ field }: { field: ControllerRenderProps<ApplicationFormValues, "coverLetter"> }) => (
                     <FormItem>
                       <FormLabel className="text-base">Cover Letter*</FormLabel>
                       <FormControl>
@@ -482,7 +473,7 @@ export default function JobApplicationForm({ jobId, jobTitle, department }: JobA
                                   className="p-0 h-auto mt-2" 
                                   onClick={() => {
                                     setResumeFile(null);
-                                    form.setValue('resume', undefined as any);
+                                    form.setValue('resume', undefined as unknown as File);
                                   }}
                                 >
                                   Change File
@@ -511,7 +502,7 @@ export default function JobApplicationForm({ jobId, jobTitle, department }: JobA
                 <FormField
                   control={form.control}
                   name="willingToRelocate"
-                  render={({ field }: { field: any }) => (
+                  render={({ field }: { field: ControllerRenderProps<ApplicationFormValues, "willingToRelocate"> }) => (
                     <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow-sm">
                       <FormControl>
                         <Checkbox

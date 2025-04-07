@@ -38,6 +38,22 @@ interface TagCount {
   count: number;
 }
 
+interface BlogQueryParams {
+  category?: string;
+  tag?: string;
+  page?: number;
+}
+
+interface APIError {
+  response?: {
+    status: number;
+    data?: {
+      message?: string;
+    };
+  };
+  message: string;
+}
+
 export default function BlogPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -63,7 +79,7 @@ export default function BlogPage() {
       
       try {
         // Build query parameters
-        const params: any = {};
+        const params: BlogQueryParams = {};
         if (category && category !== 'All') {
           params.category = category;
         }
@@ -117,16 +133,18 @@ export default function BlogPage() {
         try {
           const tagsResponse = await BlogAPI.getTags();
           setPopularTags(tagsResponse.data);
-        } catch (tagsError) {
-          console.error('Error fetching popular tags:', tagsError);
+        } catch (error: unknown) {
+          const apiError = error as APIError;
+          console.error('Error fetching popular tags:', apiError);
         }
         
         // Fetch featured posts
         try {
           const featuredResponse = await BlogAPI.getFeaturedBlogs(3);
           setRecentPosts(featuredResponse.data);
-        } catch (recentError) {
-          console.error('Error fetching featured posts:', recentError);
+        } catch (error: unknown) {
+          const apiError = error as APIError;
+          console.error('Error fetching featured posts:', apiError);
           // Fallback to regular posts if featured can't be loaded
           if (filteredBlogs.length > 0) {
             // Sort by creation date to get most recent
@@ -136,12 +154,13 @@ export default function BlogPage() {
             setRecentPosts(sortedBlogs);
           }
         }
-      } catch (error: Error | any) {
-        console.error('Error fetching blogs:', error);
+      } catch (error: unknown) {
+        const apiError = error as APIError;
+        console.error('Error fetching blogs:', apiError);
         // Set empty posts if main blog list can't be loaded
         setPosts([]);
         setError(
-          error.response?.status === 500
+          apiError.response?.status === 500
             ? "Sorry, we're experiencing server issues. Please try again later."
             : "Failed to load blog posts. Please check your connection and try again."
         );

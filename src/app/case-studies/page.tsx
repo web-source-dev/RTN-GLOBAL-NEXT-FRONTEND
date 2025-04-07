@@ -3,16 +3,13 @@ import { HeroSection } from "@/components/sections/hero-section"
 import { CTASection } from "@/components/sections/cta-section"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Filter, BarChart3, ArrowUpRight, Clock, Users, Target } from "lucide-react"
-import { caseStudies, getFeaturedCaseStudies, getUniqueIndustries, getUniqueServices } from "@/data/case-studies"
+import { ArrowRight, BarChart3, ArrowUpRight, Clock, Users, Target } from "lucide-react"
+import { caseStudies, getFeaturedCaseStudies } from "@/data/case-studies"
 import { OptimizedImage } from "@/components/ui/optimized-image"
-
 
 export default function CaseStudiesPage() {
   // Get data using utility functions from the data file
   const featuredCaseStudies = getFeaturedCaseStudies();
-  const industries = getUniqueIndustries();
-  const uniqueServices = getUniqueServices();
 
   return (
     <Layout>

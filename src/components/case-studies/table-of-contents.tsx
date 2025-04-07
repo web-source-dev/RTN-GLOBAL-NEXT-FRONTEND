@@ -13,7 +13,6 @@ export type TOCSection = {
 // Client component for table of contents
 export function TableOfContents({ sections }: { sections: TOCSection[] }) {
   const [activeSection, setActiveSection] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -93,13 +92,13 @@ export function MobileTOC({ sections }: { sections: TOCSection[] }) {
     };
   }, [sections]);
 
-  const activeTitle = sections.find(section => section.id === activeSection)?.title || &quot;Navigate&quot;;
+  const activeTitle = sections.find(section => section.id === activeSection)?.title || "Navigate";
 
   return (
     <div className="sticky top-[60px] z-20 bg-background/90 backdrop-blur-md border-b border-border py-3 mb-8 md:hidden">
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className=&quot;flex items-center justify-between w-full px-4 py-2 bg-muted rounded-md&quot;
+        className="flex items-center justify-between w-full px-4 py-2 bg-muted rounded-md"
       >
         <div className="flex items-center gap-2">
           <Menu className="h-4 w-4" />
@@ -118,7 +117,7 @@ export function MobileTOC({ sections }: { sections: TOCSection[] }) {
               className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors duration-200 ${
                 activeSection === section.id
                   ? "bg-primary/10 text-primary font-medium"
-                  : &quot;hover:bg-muted/60 text-muted-foreground&quot;
+                  : "hover:bg-muted/60 text-muted-foreground"
               }`}
             >
               {section.icon}

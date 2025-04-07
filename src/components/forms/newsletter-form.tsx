@@ -132,10 +132,12 @@ export default function NewsletterForm({
           variant: "destructive",
         });
       }
-    } catch (error: Error | any) {
+    } catch (error: unknown) {
       toast({
         title: "Error subscribing",
-        description: error.response?.data?.message || "An unexpected error occurred.",
+        description: error instanceof Error 
+          ? error.message 
+          : "An unexpected error occurred.",
         variant: "destructive",
       });
     } finally {

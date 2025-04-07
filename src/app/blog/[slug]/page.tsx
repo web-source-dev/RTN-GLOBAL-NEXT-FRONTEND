@@ -6,11 +6,10 @@ import { Button } from "@/components/ui/button"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import { Textarea } from "@/components/ui/textarea"
 import { Avatar } from "@/components/ui/avatar"
-import { Separator } from "@/components/ui/separator"
 import { toast } from "@/components/ui/use-toast"
 import Link from "next/link"
-import { formatDate, formatTimeAgo } from "@/lib/utils"
-import { ArrowLeft, Facebook, Twitter, Linkedin, Copy, Calendar, User, Tag, Loader2, Heart, MessageSquare, Share2, Send, Reply, MoreHorizontal } from "lucide-react"
+import { formatDate } from "@/lib/utils"
+import { ArrowLeft, Calendar, Tag, Loader2, Heart, MessageSquare, Share2, Send } from "lucide-react"
 import { BlogAPI } from "@/lib/api/api-provider"
 import { AuthAPI } from "@/lib/api/api-provider"
 import { useParams, useRouter, notFound } from "next/navigation"
@@ -65,6 +64,38 @@ interface BlogPost {
   shares: string[];
 }
 
+// Add this after your existing interfaces
+interface CurrentUser {
+  _id: string;
+  name?: string;
+  firstName?: string;
+  lastName?: string;
+  email: string;
+  role?: string;
+  avatar?: string;
+}
+
+interface APIError {
+  message?: string;
+  response?: {
+    status: number;
+  };
+}
+
+interface APIReply {
+  _id?: string;
+  user: {
+    _id: string;
+    name?: string;
+    firstName?: string;
+    lastName?: string;
+  };
+  content: string;
+  likes: string[];
+  createdAt: string;
+}
+
+// Update the state declaration
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
   const router = useRouter();
@@ -76,7 +107,8 @@ export default function BlogPostPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLiking, setIsLiking] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
-  const [currentUser, setCurrentUser] = useState<any>(null);
+  const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Check authentication status
@@ -86,7 +118,7 @@ export default function BlogPostPage() {
         const response = await AuthAPI.getMe();
         setCurrentUser(response.data);
         setIsLoggedIn(true);
-      } catch (error) {
+      } catch (error: unknown) {
         setIsLoggedIn(false);
       }
     };
@@ -130,13 +162,13 @@ export default function BlogPostPage() {
           // Just continue without related posts if they can't be loaded
         }
         
-      } catch (error: Error | any) {
-        console.error("Error fetching blog post:", error);
+      } catch (error: unknown) {
+        const apiError = error as APIError;
+        console.error("Error fetching blog post:", apiError);
         
-        // Set a user-friendly error message based on the error type
-        if (error.message?.includes('not found')) {
+        if (apiError.message?.includes('not found')) {
           setError("The blog post you're looking for doesn't exist or has been removed.");
-        } else if (error.response?.status === 403) {
+        } else if (apiError.response?.status === 403) {
           setError("You don't have permission to view this blog post.");
         } else {
           setError("Failed to load blog post. Please try again later.");
@@ -221,13 +253,11 @@ export default function BlogPostPage() {
                 ...comment,
                 // Make sure to preserve the user object in the replies
                 replies: Array.isArray(response.data.replies) 
-                  ? response.data.replies.map((reply: any) => {
-                      // If the reply is from the API and doesn't have full user data, try to reconstruct it
+                  ? response.data.replies.map((reply: APIReply) => {
                       if (reply.user && (!reply.user.name && !reply.user.firstName)) {
-                        // This is likely a new reply with just user ID
                         return {
                           ...reply,
-                          user: currentUser // Use current user for new reply
+                          user: currentUser
                         };
                       }
                       return reply;

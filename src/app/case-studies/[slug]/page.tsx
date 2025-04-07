@@ -10,7 +10,7 @@ import { getCaseStudyBySlug, caseStudies } from "@/data/case-studies";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/layout";
 import { CTASection } from "@/components/sections/cta-section";
-import { TableOfContents, MobileTOC, type TOCSection } from "@/components/case-studies/table-of-contents";
+import { TOCSection } from "@/components/case-studies/table-of-contents";
 
 type Props = {
   params: {

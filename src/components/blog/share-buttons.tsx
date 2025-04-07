@@ -22,7 +22,7 @@ export function ShareButtons({ title, compact = false }: ShareButtonsProps) {
               description: "Blog link copied to clipboard!",
             });
           })
-          .catch((err) => {
+          .catch((err: unknown) => {
             console.error('Failed to copy: ', err);
             fallbackCopy(url);
           });
@@ -30,7 +30,7 @@ export function ShareButtons({ title, compact = false }: ShareButtonsProps) {
         // Fallback for browsers that don't support clipboard API
         fallbackCopy(url);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error copying to clipboard:', error);
       toast({
         title: "Failed to copy link",
@@ -68,7 +68,7 @@ export function ShareButtons({ title, compact = false }: ShareButtonsProps) {
       } else {
         throw new Error('Copy command failed');
       }
-    } catch (err) {
+    } catch (err: unknown) {
       toast({
         title: "Failed to copy link",
         description: "Please copy the URL manually from your browser",

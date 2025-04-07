@@ -27,7 +27,7 @@ export default async function CareersPage({
 }: {
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
-  const { jobs, departments, jobTypes, total } = await getJobs();
+  const { jobs, departments, jobTypes } = await getJobs();
   
   // Filter parameters
   const department = typeof searchParams.department === 'string' ? searchParams.department : '';
