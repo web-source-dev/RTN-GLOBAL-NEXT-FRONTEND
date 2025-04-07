@@ -23,16 +23,7 @@ export function NewsletterSection() {
     
     setStatus("loading")
     
-    // Simulating API call for demonstration purposes
-    // In a real application, replace with actual API call to your email service
     try {
-      // await fetch('/api/subscribe', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': &apos;application/json&apos; },
-      //   body: JSON.stringify({ email }),
-      // })
-      
-      // Simulating response delay
       await new Promise(resolve => setTimeout(resolve, 1500))
       
       setStatus("success")
@@ -51,7 +42,7 @@ export function NewsletterSection() {
       // Reset status after 5 seconds
       setTimeout(() => {
         setStatus("idle")
-        setMessage(&quot;&quot;)
+        setMessage("")
       }, 5000)
     }
   }
@@ -127,14 +118,14 @@ export function NewsletterSection() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="your@email.com"
                       className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/30"
-                      disabled={status === &quot;loading&quot;}
+                      disabled={status === "loading"}
                       required
                     />
                   </div>
                   
                   {message && (
                     <div className={`flex items-center gap-2 text-sm ${status === "error" ? "text-red-300" : "text-green-300"}`}>
-                      {status === &quot;error&quot; ? (
+                      {status === "error" ? (
                         <AlertCircle className="h-4 w-4" />
                       ) : (
                         <Check className="h-4 w-4" />
@@ -149,7 +140,7 @@ export function NewsletterSection() {
                       disabled={status === "loading"}
                       className="w-full bg-white text-primary hover:bg-white/90 rounded-lg flex items-center justify-center gap-2 h-11 shadow-lg"
                     >
-                      {status === &quot;loading&quot; ? (
+                      {status === "loading" ? (
                         <>
                           <div className="h-4 w-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
                           <span>Subscribing...</span>

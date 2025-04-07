@@ -3,9 +3,18 @@
 import React, { createContext, useContext, Suspense, useState, useEffect } from 'react';
 import { createDeferredIconComponent } from '@/lib/utils';
 
+// Define a type for icon components
+type IconComponentProps = {
+  size?: number;
+  color?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  [key: string]: any; // For any other props that icon libraries might accept
+};
+
 // Context to hold dynamically loaded icons
 type IconContextType = {
-  getIcon: (iconLibrary: string, iconName: string) => React.ComponentType<any> | null;
+  getIcon: (iconLibrary: string, iconName: string) => React.ComponentType<IconComponentProps> | null;
   isLoaded: boolean;
 };
 
@@ -28,7 +37,7 @@ const IconPlaceholder = ({ size = 24 }: { size?: number }) => (
 );
 
 export const IconProvider = ({ children }: { children: React.ReactNode }) => {
-  const [iconCache, setIconCache] = useState<Record<string, React.ComponentType<any>>>({});
+  const [iconCache, setIconCache] = useState<Record<string, React.ComponentType<IconComponentProps>>>({});
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Load common icons immediately
@@ -83,7 +92,7 @@ export const IconProvider = ({ children }: { children: React.ReactNode }) => {
 
 // Hook to use icons
 export const useIcon = (iconLibrary: string, iconName: string, fallback: React.ReactNode = null) => {
-  const { getIcon, isLoaded } = useContext(IconContext);
+  const { getIcon } = useContext(IconContext);
   const Icon = getIcon(iconLibrary, iconName);
   
   if (!Icon) return null;

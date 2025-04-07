@@ -222,7 +222,7 @@ export default function TermsConditionsPage() {
                 <section id="disclaimer">
                   <h2>Disclaimer of Warranties</h2>
                   <p>
-                    THE SERVICES ARE PROVIDED "AS IS" AND &quot;AS AVAILABLE&quot; WITHOUT ANY WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, RTN GLOBAL EXPLICITLY DISCLAIMS ALL WARRANTIES, INCLUDING ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+                    THE SERVICES ARE PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; WITHOUT ANY WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, RTN GLOBAL EXPLICITLY DISCLAIMS ALL WARRANTIES, INCLUDING ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
                   </p>
                   <p>
                     RTN Global does not warrant that the services will be uninterrupted, timely, secure, or error-free, or that any defects will be corrected. RTN Global does not warrant or make any representations regarding the use or the results of the use of the services in terms of their correctness, accuracy, reliability, or otherwise.

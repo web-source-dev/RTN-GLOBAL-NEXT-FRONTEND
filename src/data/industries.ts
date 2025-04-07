@@ -1,13 +1,4 @@
-import { ReactNode } from "react";
-import { 
-  Building2, 
-  ShoppingBag, 
-  Briefcase, 
-  Stethoscope, 
-  GraduationCap, 
-  Home 
-} from "lucide-react";
-import { portfolioItems, PortfolioItem } from "./portfolio-items";
+import { portfolioItems } from "./portfolio-items";
 
 export type IconType = 
   | 'building2'

@@ -35,6 +35,18 @@ interface User {
   id?: string;
 }
 
+// Add this interface before the component or near the top with other interfaces
+interface ApiError {
+  response?: {
+    data?: {
+      message?: string;
+      error?: string;
+    };
+    status?: number;
+  };
+  message?: string;
+}
+
 export default function SupportForm() {
   const [activeStep, setActiveStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -62,7 +74,7 @@ export default function SupportForm() {
         const response = await AuthAPI.getMe();
         setCurrentUser(response.data);
         setIsLoggedIn(true);
-      } catch (_) {
+      } catch (error) {
         setIsLoggedIn(false);
         // Redirect to login page
         router.push("/login?redirect=/support");
@@ -212,16 +224,20 @@ export default function SupportForm() {
       router.push(`/support/tickets/${response.data.ticketNumber}`);
     } catch (error: unknown) {
       console.error("Error submitting support ticket:", error);
+      
+      // Cast to the defined interface for proper type checking
+      const apiError = error as ApiError;
+      
       console.error("Error details:", {
-        message: error instanceof Error ? error.message : "Unknown error",
-        response: (error as any)?.response?.data,
-        status: (error as any)?.response?.status
+        message: apiError.message || "Unknown error",
+        response: apiError.response?.data,
+        status: apiError.response?.status
       });
       
       // Better error message handling
       const errorMessage = 
-        (error as any)?.response?.data?.message || 
-        (error as any)?.response?.data?.error || 
+        apiError.response?.data?.message || 
+        apiError.response?.data?.error || 
         (error instanceof Error ? error.message : "Unknown error") || 
         "Please try again later";
       

@@ -69,6 +69,7 @@ export function ShareButtons({ title, compact = false }: ShareButtonsProps) {
         throw new Error('Copy command failed');
       }
     } catch (err: unknown) {
+      console.error(err)
       toast({
         title: "Failed to copy link",
         description: "Please copy the URL manually from your browser",

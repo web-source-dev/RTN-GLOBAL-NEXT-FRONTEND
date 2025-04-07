@@ -75,12 +75,12 @@ export function BlogHighlightsSection() {
   }, [])
   
   // Format author name from firstName and lastName
-  const getAuthorName = (author: Author | any) => {
+  const getAuthorName = (author: Author | null | undefined) => {
     if (!author) return "RTN Global Team";
     return `${author.firstName || ''} ${author.lastName || ''}`.trim() || author.email || "RTN Global Team";
   }
   
-  const getAuthorAvatar = (author: Author | any) => {
+  const getAuthorAvatar = (author: Author | null | undefined) => {
     return author?.avatar || "/images/team/default-avatar.jpg";
   }
   

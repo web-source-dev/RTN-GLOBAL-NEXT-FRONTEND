@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from "react"
-import { HelpCircle, Plus, Minus, ChevronDown, MessageSquare } from "lucide-react"
+import { HelpCircle, ChevronDown } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -21,10 +21,7 @@ interface FAQSectionProps {
 }
 
 export function FAQSection({
-  title = "Frequently Asked Questions",
-  description,
   faqs,
-  className = "",
   backgroundClassName = "",
   icon = true
 }: FAQSectionProps) {

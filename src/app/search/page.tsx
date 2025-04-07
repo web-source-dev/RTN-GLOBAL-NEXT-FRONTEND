@@ -137,6 +137,11 @@ function SearchPageContent() {
     }
   };
 
+  // Add this to fix the unused variable warning
+  const handleSortChange = (value: string) => {
+    setSortBy(value);
+  };
+
   // Perform quick search for suggestions
   const getSearchSuggestions = (query: string): SearchSuggestion[] | null => {
     if (!query.trim()) return null;
@@ -303,13 +308,10 @@ function SearchPageContent() {
     
     // Search in industries
     const allIndustries = getAllIndustries();
-    const industryResults = allIndustries.filter(industry => {
-      // Since we&apos;re not using the actual structure, do a safe check on common properties
-      const industryObj = industry as any;
+    const industryResults = allIndustries.filter((industry: any) => {
       return (
-        (industryObj.name?.toLowerCase().includes(lowerQuery) || false) ||
-        (industryObj.title?.toLowerCase().includes(lowerQuery) || false) ||
-        (industryObj.description?.toLowerCase().includes(lowerQuery) || false)
+        industry.title.toLowerCase().includes(lowerQuery) ||
+        industry.description.toLowerCase().includes(lowerQuery)
       );
     });
     
@@ -642,7 +644,7 @@ function SearchPageContent() {
                         title="Services" 
                         icon={<Settings className="h-5 w-5 text-primary" />}
                         results={sortedResults.services}
-                        renderItem={(service: any) => (
+                        renderItem={(service: Service) => (
                           <ResultCard
                             title={service.title}
                             description={service.description}
@@ -661,7 +663,7 @@ function SearchPageContent() {
                         title="Portfolio Projects" 
                         icon={<Briefcase className="h-5 w-5 text-primary" />}
                         results={sortedResults.portfolio.slice(0, 3)}
-                        renderItem={(project: any) => (
+                        renderItem={(project: PortfolioItem) => (
                           <ResultCard
                             title={project.title}
                             description={project.description}
@@ -680,7 +682,7 @@ function SearchPageContent() {
                         title="Industries" 
                         icon={<Layers className="h-5 w-5 text-primary" />}
                         results={sortedResults.industries.slice(0, 3)}
-                        renderItem={(industry: any) => (
+                        renderItem={(industry: Industry) => (
                           <ResultCard
                             title={industry.title}
                             description={industry.description}
@@ -699,10 +701,10 @@ function SearchPageContent() {
                         title="Case Studies" 
                         icon={<FileText className="h-5 w-5 text-primary" />}
                         results={sortedResults.caseStudies.slice(0, 3)}
-                        renderItem={(study: any) => (
+                        renderItem={(study: CaseStudy) => (
                           <ResultCard
                             title={study.title}
-                            description={study.summary || study.challenge.substring(0, 150) + "..."}
+                            description={study.summary || (study.challenge?.substring(0, 150) + "...") || ""}
                             href={`/case-studies/${study.slug}`}
                             category={study.industry}
                           />
@@ -718,7 +720,7 @@ function SearchPageContent() {
                         title="Knowledge Base" 
                         icon={<BookOpen className="h-5 w-5 text-primary" />}
                         results={sortedResults.knowledge.slice(0, 3)}
-                        renderItem={(article: any) => (
+                        renderItem={(article: KnowledgeArticle) => (
                           <ResultCard
                             title={article.title}
                             description={article.description}
@@ -738,7 +740,7 @@ function SearchPageContent() {
                         title="Blog Posts" 
                         icon={<MessageSquare className="h-5 w-5 text-primary" />}
                         results={sortedResults.blog.slice(0, 3)}
-                        renderItem={(post: any) => (
+                        renderItem={(post: BlogPost) => (
                           <ResultCard
                             title={post.title}
                             description={post.description}
@@ -759,7 +761,7 @@ function SearchPageContent() {
                       title="Services" 
                       icon={<Settings className="h-5 w-5 text-primary" />}
                       results={sortedResults.services}
-                      renderItem={(service: any) => (
+                      renderItem={(service: Service) => (
                         <ResultCard
                           title={service.title}
                           description={service.description}
@@ -775,7 +777,7 @@ function SearchPageContent() {
                       title="Portfolio Projects" 
                       icon={<Briefcase className="h-5 w-5 text-primary" />}
                       results={sortedResults.portfolio}
-                      renderItem={(project: any) => (
+                      renderItem={(project: PortfolioItem) => (
                         <ResultCard
                           title={project.title}
                           description={project.description}
@@ -791,7 +793,7 @@ function SearchPageContent() {
                       title="Industries" 
                       icon={<Layers className="h-5 w-5 text-primary" />}
                       results={sortedResults.industries}
-                      renderItem={(industry: any) => (
+                      renderItem={(industry: Industry) => (
                         <ResultCard
                           title={industry.title}
                           description={industry.description}
@@ -807,10 +809,10 @@ function SearchPageContent() {
                       title="Case Studies" 
                       icon={<FileText className="h-5 w-5 text-primary" />}
                       results={sortedResults.caseStudies}
-                      renderItem={(study: any) => (
+                      renderItem={(study: CaseStudy) => (
                         <ResultCard
                           title={study.title}
-                          description={study.summary || study.challenge.substring(0, 150) + "..."}
+                          description={study.summary || (study.challenge?.substring(0, 150) + "...") || ""}
                           href={`/case-studies/${study.slug}`}
                           category={study.industry}
                         />
@@ -823,7 +825,7 @@ function SearchPageContent() {
                       title="Knowledge Base" 
                       icon={<BookOpen className="h-5 w-5 text-primary" />}
                       results={sortedResults.knowledge}
-                      renderItem={(article: any) => (
+                      renderItem={(article: KnowledgeArticle) => (
                         <ResultCard
                           title={article.title}
                           description={article.description}
@@ -840,7 +842,7 @@ function SearchPageContent() {
                       title="Blog Posts" 
                       icon={<MessageSquare className="h-5 w-5 text-primary" />}
                       results={sortedResults.blog}
-                      renderItem={(post: any) => (
+                      renderItem={(post: BlogPost) => (
                         <ResultCard
                           title={post.title}
                           description={post.description}

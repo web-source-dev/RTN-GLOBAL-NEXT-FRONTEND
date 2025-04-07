@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent, useEffect } from "react";
+import { useState, FormEvent, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -78,7 +78,7 @@ export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }
         const response = await AuthAPI.getMe();
         setCurrentUser(response.data);
         setIsLoggedIn(true);
-      } catch (error: unknown) {
+      } catch (error) {
         setIsLoggedIn(false);
       }
     };
@@ -93,7 +93,7 @@ export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }
     }
   }, [ticketNumber]);
 
-  const fetchTicket = async (ticketNum: string) => {
+  const fetchTicket = useCallback(async (ticketNum: string) => {
     if (!ticketNum.trim()) {
       toast({
         title: "Ticket number required",
@@ -127,7 +127,7 @@ export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [toast]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -173,12 +173,12 @@ export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }
       // Refresh ticket data
       fetchTicket(ticket.ticketNumber);
       setComment("");
-    } catch (error: unknown) {
+    } catch (error) {
       console.error("Error adding comment:", error);
       
       const errorMessage = 
-        (error as any)?.response?.data?.message || 
-        (error as any)?.response?.data?.error || 
+        (error as { response?: { data?: { message?: string, error?: string } } })?.response?.data?.message || 
+        (error as { response?: { data?: { message?: string, error?: string } } })?.response?.data?.error || 
         (error instanceof Error ? error.message : "There was an error adding your comment");
         
       toast({
@@ -385,6 +385,11 @@ export default function TicketStatus({ ticketNumber }: { ticketNumber?: string }
 
                   {isLoggedIn && (
                     <div className="mt-4 space-y-2">
+                      {currentUser && (
+                        <div className="text-sm text-muted-foreground mb-2">
+                          Commenting as {currentUser.name || currentUser.email || "Authenticated User"}
+                        </div>
+                      )}
                       <Label htmlFor="comment" className="text-sm font-medium">
                         Add a comment
                       </Label>

@@ -19,6 +19,14 @@ interface User {
   }
 }
 
+// Define API error type to replace 'any'
+interface ApiError extends Error {
+  response?: {
+    data?: unknown;
+    status?: number;
+  };
+}
+
 // Auth context interface
 interface AuthContextType {
   user: User | null
@@ -107,8 +115,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       }
       
       return response.data
-    } catch (error: Error | any) {
-      if (error.response?.data) {
+    } catch (error: unknown) {
+      if ((error as ApiError).response?.data) {
         throw error
       }
       throw new Error('Login failed. Please check your network connection.')
@@ -127,8 +135,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     try {
       const userData = { firstName, lastName, email, password, company, phone }
       await AuthAPI.register(userData)
-    } catch (error: Error | any) {
-      if (error.response?.data) {
+    } catch (error: unknown) {
+      if ((error as ApiError).response?.data) {
         throw error
       }
       throw new Error('Registration failed. Please check your network connection.')
@@ -142,8 +150,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       
       setUser(null)
       setIsAuthenticated(false)
-    } catch (error: Error | any) {
-      if (error.response?.data) {
+    } catch (error: unknown) {
+      if ((error as ApiError).response?.data) {
         throw error
       }
       throw new Error('Logout failed. Please check your network connection.')
@@ -154,8 +162,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const forgotPassword = async (email: string) => {
     try {
       await AuthAPI.forgotPassword(email)
-    } catch (error: Error | any) {
-      if (error.response?.data) {
+    } catch (error: unknown) {
+      if ((error as ApiError).response?.data) {
         throw error
       }
       throw new Error('Failed to send reset email. Please check your network connection.')
@@ -166,8 +174,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const resetPassword = async (token: string, password: string) => {
     try {
       await AuthAPI.resetPassword(token, password)
-    } catch (error: Error | any) {
-      if (error.response?.data) {
+    } catch (error: unknown) {
+      if ((error as ApiError).response?.data) {
         throw error
       }
       throw new Error('Password reset failed. Please check your network connection.')
@@ -178,8 +186,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const validateResetToken = async (token: string) => {
     try {
       await AuthAPI.validateResetToken(token)
-    } catch (error: Error | any) {
-      if (error.response?.data) {
+    } catch (error: unknown) {
+      if ((error as ApiError).response?.data) {
         throw error
       }
       throw new Error('Invalid or expired reset token.')
@@ -195,8 +203,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setUser(response.data.user)
         setIsAuthenticated(true)
       }
-    } catch (error: Error | any) {
-      if (error.response?.data) {
+    } catch (error: unknown) {
+      if ((error as ApiError).response?.data) {
         throw error
       }
       throw new Error('Email verification failed. Please check your network connection.')
@@ -209,8 +217,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const response = await AuthAPI.resendVerificationCode(email)
       
       return response.data
-    } catch (error: Error | any) {
-      if (error.response?.data) {
+    } catch (error: unknown) {
+      if ((error as ApiError).response?.data) {
         throw error
       }
       throw new Error('Failed to resend verification code. Please check your network connection.')
@@ -223,8 +231,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const response = await AuthAPI.updateProfile(profileData)
       
       setUser(response.data)
-    } catch (error: Error | any) {
-      if (error.response?.data) {
+    } catch (error: unknown) {
+      if ((error as ApiError).response?.data) {
         throw error
       }
       throw new Error('Profile update failed. Please check your network connection.')
@@ -235,8 +243,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const changePassword = async (currentPassword: string, newPassword: string) => {
     try {
       await AuthAPI.changePassword(currentPassword, newPassword)
-    } catch (error: Error | any) {
-      if (error.response?.data) {
+    } catch (error: unknown) {
+      if ((error as ApiError).response?.data) {
         throw error
       }
       throw new Error('Password change failed. Please check your network connection.')
@@ -250,8 +258,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       
       setUser(null)
       setIsAuthenticated(false)
-    } catch (error: Error | any) {
-      if (error.response?.data) {
+    } catch (error: unknown) {
+      if ((error as ApiError).response?.data) {
         throw error
       }
       throw new Error('Account deletion failed. Please check your network connection.')

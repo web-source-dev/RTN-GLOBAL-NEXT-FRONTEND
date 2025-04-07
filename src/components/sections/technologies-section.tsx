@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { 
   FaReact, FaNodeJs, FaVuejs, FaAngular, FaLaravel, 
-  FaSwift, FaDatabase, FaFire
+  FaSwift, FaFire
 } from "react-icons/fa"
 import { 
   SiNextdotjs, SiTypescript, SiTailwindcss, SiExpress, 

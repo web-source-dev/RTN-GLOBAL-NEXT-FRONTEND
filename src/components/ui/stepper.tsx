@@ -95,12 +95,15 @@ export function Stepper({
 }
 
 export function Step({
-  completed,
+  completed: propCompleted,
   children,
   className,
   ...props
 }: StepProps) {
   const { isCompleted, isActive, orientation } = useStepContext()
+  
+  // Use the prop if provided, otherwise use the context value
+  const isStepCompleted = propCompleted !== undefined ? propCompleted : isCompleted
   
   return (
     <div
@@ -116,10 +119,10 @@ export function Step({
           className={cn(
             "flex items-center justify-center w-8 h-8 rounded-full border-2 border-border",
             isActive && "border-primary text-primary",
-            isCompleted && "bg-primary border-primary text-primary-foreground"
+            isStepCompleted && "bg-primary border-primary text-primary-foreground"
           )}
         >
-          {isCompleted ? (
+          {isStepCompleted ? (
             <Check className="w-4 h-4" />
           ) : (
             <span className="text-sm font-medium">{isActive ? "✓" : ""}</span>

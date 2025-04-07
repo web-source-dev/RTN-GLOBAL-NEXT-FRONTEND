@@ -65,7 +65,7 @@ const DialogHeader = ({
     {...props}
   />
 )
-DialogHeader.displayName = &quot;DialogHeader&quot;
+DialogHeader.displayName = "DialogHeader"
 
 const DialogFooter = ({
   className,
@@ -79,7 +79,7 @@ const DialogFooter = ({
     {...props}
   />
 )
-DialogFooter.displayName = &quot;DialogFooter&quot;
+DialogFooter.displayName = "DialogFooter"
 
 const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,

@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/layout";
 import { CTASection } from "@/components/sections/cta-section";
 import { TOCSection } from "@/components/case-studies/table-of-contents";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 
 type Props = {
   params: {
@@ -18,8 +19,8 @@ type Props = {
   };
 };
 
-// Map icon names to Lucide components
-const iconMap: Record<string, any> = {
+// Replace the Record<string, any> with a proper type for Lucide icons
+const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   "Search": Search,
   "Lightbulb": Lightbulb,
   "PenTool": PenTool,
@@ -637,7 +638,12 @@ export default function CaseStudyPage({ params }: Props) {
                             <div className="aspect-video bg-muted relative">
                               <div className="absolute inset-0 flex items-center justify-center bg-primary/10 text-base text-background/20">
                                 {item.before.src && (
-                                  <img src={item.before.src} alt={item.before.alt} className="w-full h-full object-cover" />
+                                  <OptimizedImage 
+                                  src={item.before.src}
+                                  alt={item.before.alt}
+                                  fill
+                                  className="h-full object-cover"
+                                  />
                                 )}
                               </div>
                             </div>
@@ -651,8 +657,13 @@ export default function CaseStudyPage({ params }: Props) {
                             <div className="aspect-video bg-muted relative">
                               <div className="absolute inset-0 flex items-center justify-center bg-primary/10 text-base text-background/20">
                                 {item.after.src && (
-                                  <img src={item.after.src} alt={item.after.alt} className="w-full h-full object-cover" />
-                                )}
+                                       <OptimizedImage 
+                                       src={item.after.src}
+                                       alt={item.after.alt}
+                                       fill
+                                       className="h-full object-cover"
+                                       />
+                                  )}
                               </div>
                             </div>
                           </div>

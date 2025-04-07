@@ -152,7 +152,7 @@ export function BenefitsSection() {
 }
 
 function BenefitCard({ benefit, index }: { benefit: Benefit; index: number }) {
-  const [ref, inView] = useInView({
+  const [ref] = useInView({
     triggerOnce: true,
     threshold: 0.1,
     rootMargin: "-50px 0px"

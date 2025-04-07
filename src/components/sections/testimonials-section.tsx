@@ -69,7 +69,7 @@ export function TestimonialsSection({
                   </div>
                 </div>
                 
-                <blockquote className="mb-6 text-lg italic text-foreground font-medium flex-grow">"{testimonial.content}"</blockquote>
+                <blockquote className="mb-6 text-lg italic text-foreground font-medium flex-grow">{testimonial.content}</blockquote>
                 
                 <div className="flex items-center mt-auto pt-6 border-t border-border/30">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center text-primary font-medium mr-4 shadow-sm border border-primary/10">

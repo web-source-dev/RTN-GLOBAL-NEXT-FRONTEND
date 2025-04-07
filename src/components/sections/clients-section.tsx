@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
-import { useEffect, useState, useRef } from "react"
+import {useState } from "react"
 
 type Client = {
   id: string

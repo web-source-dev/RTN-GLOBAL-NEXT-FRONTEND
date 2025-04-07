@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
 // Create an axios instance with base configuration
 const API = axios.create({
@@ -76,6 +75,16 @@ API.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// Define a Blog interface for type safety
+interface Blog {
+  title?: string;
+  description?: string;
+  content?: string;
+  category?: string;
+  tags?: string[];
+  [key: string]: any; // For other properties we're not explicitly checking
+}
 
 // API endpoint groups for better organization
 export const AuthAPI = {
@@ -181,7 +190,7 @@ export const BlogAPI = {
     // No direct search endpoint, so we get all blogs and filter client-side
     return API.get('/api/blogs').then(response => {
       const blogs = response.data;
-      const filteredBlogs = blogs.filter((blog: any) => {
+      const filteredBlogs = blogs.filter((blog: Blog) => {
         const searchLower = searchTerm.toLowerCase();
         return (
           blog.title?.toLowerCase().includes(searchLower) ||

@@ -119,6 +119,7 @@ export default function BlogPostPage() {
         setCurrentUser(response.data);
         setIsLoggedIn(true);
       } catch (error: unknown) {
+        console.error(error)
         setIsLoggedIn(false);
       }
     };

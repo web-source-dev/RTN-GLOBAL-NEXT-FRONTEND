@@ -1,13 +1,14 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { MoonIcon, SunIcon, MenuIcon, X } from "lucide-react"
+import { MoonIcon, SunIcon, MenuIcon, X, UserCircle, Settings, LogOut, User as UserIcon } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useAuth } from "@/lib/contexts/auth-provider"
+import { Avatar } from "@/components/ui/avatar"
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -22,9 +23,11 @@ const navItems = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
   const pathname = usePathname()
   const { user, isAuthenticated, logout } = useAuth()
+  const userMenuRef = useRef<HTMLDivElement>(null)
 
   // Handle scroll effect
   useEffect(() => {
@@ -39,6 +42,29 @@ export function Header() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Close user menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setIsUserMenuOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
+
+  // Get user initials for avatar fallback
+  const getUserInitials = () => {
+    if (!user || !user.firstName) return "U"
+    return user.firstName
+      .split(" ")
+      .map(name => name[0])
+      .join("")
+      .toUpperCase()
+      .substring(0, 2)
+  }
 
   return (
     <header
@@ -91,13 +117,65 @@ export function Header() {
             </Button>
 
             {isAuthenticated ? (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => logout()}
-              >
-                Logout
-              </Button>
+              <div className="relative" ref={userMenuRef}>
+                <button 
+                  className="flex items-center focus:outline-none"
+                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  aria-label="User menu"
+                >
+                  <Avatar
+                    src={user?.avatar || undefined}
+                    alt={`${user?.firstName || ''} ${user?.lastName || ''}`.trim()}
+                    className="h-9 w-9"
+                    fallback={getUserInitials()}
+                  />
+                </button>
+                
+                {isUserMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-56 bg-background border border-border rounded-md shadow-lg py-1 z-50">
+                    <div className="px-4 py-3 border-b border-border">
+                      <p className="text-sm font-medium text-foreground truncate">{user?.firstName} {user?.lastName}</p>
+                      <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
+                    </div>
+                    
+                    <Link href="/profile" onClick={() => setIsUserMenuOpen(false)}>
+                      <div className="px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer">
+                        <UserIcon className="h-4 w-4" />
+                        <span>Profile</span>
+                      </div>
+                    </Link>
+                    
+                    <Link href="/dashboard" onClick={() => setIsUserMenuOpen(false)}>
+                      <div className="px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer">
+                        <UserCircle className="h-4 w-4" />
+                        <span>Dashboard</span>
+                      </div>
+                    </Link>
+                    
+                    {user?.role === "admin" && (
+                      <Link href="/admin" onClick={() => setIsUserMenuOpen(false)}>
+                        <div className="px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer">
+                          <Settings className="h-4 w-4" />
+                          <span>Admin Panel</span>
+                        </div>
+                      </Link>
+                    )}
+                    
+                    <div className="border-t border-border my-1"></div>
+                    
+                    <button 
+                      onClick={() => {
+                        logout();
+                        setIsUserMenuOpen(false);
+                      }}
+                      className="w-full px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      <span>Logout</span>
+                    </button>
+                  </div>
+                )}
+              </div>
             ) : (
               <Link href="/auth/login">
                 <Button variant="outline" size="sm">
@@ -128,6 +206,69 @@ export function Header() {
                 <MoonIcon className="h-5 w-5" />
               )}
             </Button>
+            
+            {isAuthenticated && (
+              <div className="relative mr-2" ref={userMenuRef}>
+                <button 
+                  className="flex items-center focus:outline-none"
+                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  aria-label="User menu"
+                >
+                  <Avatar 
+                    className="h-8 w-8 cursor-pointer hover:ring-2 hover:ring-primary transition-all"
+                    src={user?.avatar|| undefined}
+                    alt={`${user?.firstName || ''} ${user?.lastName || ''}`.trim()}
+                    fallback={getUserInitials()}
+                  />
+                </button>
+                
+                {isUserMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-56 bg-background border border-border rounded-md shadow-lg py-1 z-50">
+                    <div className="px-4 py-3 border-b border-border">
+                      <p className="text-sm font-medium text-foreground truncate">{user?.firstName} {user?.lastName}</p>
+                      <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
+                    </div>
+                    
+                    <Link href="/profile" onClick={() => setIsUserMenuOpen(false)}>
+                      <div className="px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer">
+                        <UserIcon className="h-4 w-4" />
+                        <span>Profile</span>
+                      </div>
+                    </Link>
+                    
+                    <Link href="/dashboard" onClick={() => setIsUserMenuOpen(false)}>
+                      <div className="px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer">
+                        <UserCircle className="h-4 w-4" />
+                        <span>Dashboard</span>
+                      </div>
+                    </Link>
+                    
+                    {user?.role === "admin" && (
+                      <Link href="/admin" onClick={() => setIsUserMenuOpen(false)}>
+                        <div className="px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer">
+                          <Settings className="h-4 w-4" />
+                          <span>Admin Panel</span>
+                        </div>
+                      </Link>
+                    )}
+                    
+                    <div className="border-t border-border my-1"></div>
+                    
+                    <button 
+                      onClick={() => {
+                        logout();
+                        setIsUserMenuOpen(false);
+                      }}
+                      className="w-full px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      <span>Logout</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+            
             <Button
               variant="ghost"
               size="icon"
@@ -163,16 +304,51 @@ export function Header() {
             ))}
             <div className="pt-4 border-t border-border">
               {isAuthenticated ? (
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => {
-                    logout();
-                    setIsMobileMenuOpen(false);
-                  }}
-                >
-                  Logout
-                </Button>
+                <>
+                  <Link 
+                    href="/profile" 
+                    className="w-full block mb-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Button variant="outline" className="w-full justify-start">
+                      <UserIcon className="h-4 w-4 mr-2" />
+                      Profile
+                    </Button>
+                  </Link>
+                  <Link 
+                    href="/dashboard" 
+                    className="w-full block mb-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Button variant="outline" className="w-full justify-start">
+                      <UserCircle className="h-4 w-4 mr-2" />
+                      Dashboard
+                    </Button>
+                  </Link>
+                  {user?.role === "admin" && (
+                    <Link 
+                      href="/admin" 
+                      className="w-full block mb-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <Button variant="outline" className="w-full justify-start">
+                        <Settings className="h-4 w-4 mr-2" />
+                        Admin Panel
+                      </Button>
+                    </Link>
+                  )}
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start"
+                    onClick={() => {
+                      logout();
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Logout
+                  </Button>
+                </>
               ) : (
                 <Link 
                   href="/auth/login" 

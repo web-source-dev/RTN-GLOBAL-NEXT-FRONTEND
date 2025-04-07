@@ -2,11 +2,10 @@
 
 import { Layout } from "@/components/layout/layout"
 import { CTASection } from "@/components/sections/cta-section"
-import { FAQSection } from "@/components/sections/faq-section"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { motion, useScroll, useTransform, useInView } from "framer-motion"
-import { useState, useRef, useEffect } from "react"
+import { motion, useInView } from "framer-motion"
+import { useState, useRef, useEffect, useMemo } from "react"
 import { 
   ArrowRight, MessageCircle, Phone, Mail, Search, 
   BookOpen, DollarSign, Clock, HeadphonesIcon, Code, 
@@ -35,10 +34,7 @@ export default function FAQPage() {
   const isProcessInView = useInView(processRef, { once: true, amount: 0.2 })
   const isTechnicalInView = useInView(technicalRef, { once: true, amount: 0.2 })
 
-  // Parallax scrolling effect
-  const { scrollY } = useScroll()
-  const y1 = useTransform(scrollY, [0, 300], [0, 50])
-  const opacity = useTransform(scrollY, [0, 200], [1, 0.8])
+  // Removed unused parallax scrolling variables
   
   // State for active category and search
   const [activeCategory, setActiveCategory] = useState("All")
@@ -162,11 +158,12 @@ export default function FAQPage() {
     }
   ]
 
-  // All FAQs combined
-  const allFaqs = [...generalFaqs, ...processFaqs, ...technicalFaqs];
+  // All FAQs combined - wrapped in useMemo to prevent recreation on each render
+  const allFaqs = useMemo(() => [...generalFaqs, ...processFaqs, ...technicalFaqs], 
+    [generalFaqs, processFaqs, technicalFaqs]);
   
   // Popular FAQs
-  const popularFaqs = allFaqs.filter(faq => faq.popular);
+  const popularFaqs = useMemo(() => allFaqs.filter(faq => faq.popular), [allFaqs]);
 
   // Search functionality
   useEffect(() => {
@@ -468,7 +465,7 @@ export default function FAQPage() {
                   <div className="mb-6 flex items-center justify-between">
                     <h2 className="text-2xl font-bold">Search Results</h2>
                     <div className="text-sm text-muted-foreground">
-                      Found {searchResults.length} result{searchResults.length !== 1 ? 's' : ''} for "{searchQuery}"
+                      Found {searchResults.length} result{searchResults.length !== 1 ? 's' : ''} for &quot;{searchQuery}&quot;
                     </div>
                   </div>
 

@@ -98,7 +98,7 @@ export default function CookiePolicyPage() {
                 <section id="introduction">
                   <h2>Introduction</h2>
                   <p>
-                    This Cookie Policy explains how RTN Global Ltd. ("we", "us", or &quot;our&quot;) uses cookies and similar technologies when you visit our website (rtnglobal.site) or interact with our services. This policy provides you with information about how we use these technologies, why we use them, and the choices you have regarding their use.
+                    This Cookie Policy explains how RTN Global Ltd. (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) uses cookies and similar technologies when you visit our website (rtnglobal.site) or interact with our services. This policy provides you with information about how we use these technologies, why we use them, and the choices you have regarding their use.
                   </p>
                   <p>
                     By continuing to browse or use our website, you agree to our use of cookies and similar technologies as described in this policy. If you do not agree with our use of cookies, you should adjust your browser settings accordingly or not use our website.
@@ -199,7 +199,7 @@ export default function CookiePolicyPage() {
                 <section id="managing-cookies">
                   <h2>Managing Your Cookie Preferences</h2>
                   <p>
-                    Most web browsers allow you to manage your cookie preferences. You can set your browser to refuse cookies, or to alert you when cookies are being sent. The methods for doing so vary from browser to browser, and from version to version, but you can typically manage your cookie settings through the browser&apos;s "Settings," "Preferences," or "Options" menu.
+                    Most web browsers allow you to manage your cookie preferences. You can set your browser to refuse cookies, or to alert you when cookies are being sent. The methods for doing so vary from browser to browser, and from version to version, but you can typically manage your cookie settings through the browser&apos;s &quot;Settings,&quot; &quot;Preferences,&quot; or &quot;Options&quot; menu.
                   </p>
                   <p>
                     Here are links to instructions for managing cookies in some popular browsers:

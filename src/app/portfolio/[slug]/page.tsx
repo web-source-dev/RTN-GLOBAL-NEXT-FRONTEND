@@ -8,39 +8,6 @@ import { OptimizedImage } from "@/components/ui/optimized-image"
 // Import portfolio items from the data file
 import { portfolioItems } from "@/data/portfolio-items"
 
-// Define the stats type
-type Stats = {
-  performance: string
-  duration: string
-  satisfaction: string
-}
-
-// Define the portfolio item type
-type PortfolioItem = {
-  id?: string
-  title: string
-  category: string
-  image: string
-  description: string
-  link?: string
-  tags: string[]
-  stats: Stats
-  featured?: boolean
-  challenge?: string
-  solution?: string
-  results?: string[]
-  technologies?: string[]
-  client?: string
-  industry?: string
-  year?: string
-  testimonial?: {
-    content: string
-    author: string
-    role: string
-    company: string
-  }
-}
-
 interface ProjectPageProps {
   params: {
     slug: string

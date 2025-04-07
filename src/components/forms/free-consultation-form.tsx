@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -136,7 +136,8 @@ export default function FreeConsultationForm() {
           phone: userData.phone || "",
           companyName: userData.company || "",
         }));
-      } catch (error: unknown) {
+      } catch (error) {
+        console.error("Authentication check failed:", error);
         // User is not logged in
         setIsLoggedIn(false);
       }
@@ -148,7 +149,7 @@ export default function FreeConsultationForm() {
     if (isLoggedIn && !dateChecked) {
       checkFirstConsultationStatus();
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, dateChecked]);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -341,9 +342,17 @@ export default function FreeConsultationForm() {
       
       setFormData(initialFormData);
       setActiveStep(0);
-    } catch (error: Error | any) {
+    } catch (error: unknown) {
       console.error("Booking error:", error);
-      let errorMessage = error.response?.data?.message || 'An error occurred while booking the consultation.';
+      let errorMessage = "An error occurred while booking the consultation.";
+      
+      // Check if error has response data with message
+      if (error && typeof error === 'object' && 'response' in error) {
+        const errorResponse = error.response as { data?: { message?: string } };
+        if (errorResponse?.data?.message) {
+          errorMessage = errorResponse.data.message;
+        }
+      }
       
       // Provide a clearer message for time slot conflicts
       if (errorMessage.includes("time slot is already booked")) {

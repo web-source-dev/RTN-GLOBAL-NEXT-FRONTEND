@@ -4,10 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { OptimizedImage } from "@/components/ui/optimized-image";
 import { IndustryIcon } from "@/components/ui/industry-icon";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { getAllIndustries } from "@/data/industries";
 
 export function IndustriesSection() {
@@ -39,8 +37,6 @@ export function IndustriesSection() {
     };
   }>;
   
-  // Select up to 3 case studies to display
-  const featuredCaseStudies = industryCaseStudies.slice(0, 3);
 
   return (
     <section className="py-20 bg-muted/30">

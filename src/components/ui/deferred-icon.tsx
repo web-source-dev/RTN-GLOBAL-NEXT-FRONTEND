@@ -2,12 +2,18 @@
 
 import React, { Suspense } from 'react';
 
+interface IconProps {
+  size?: number;
+  className?: string;
+  [key: string]: unknown;
+}
+
 interface DeferredIconProps {
-  Icon: React.ComponentType<any>;
+  Icon: React.ComponentType<IconProps>;
   fallback?: React.ReactNode;
   size?: number;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 /**

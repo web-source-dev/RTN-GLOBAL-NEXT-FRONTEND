@@ -1,24 +1,3 @@
-import { ReactNode } from "react"
-import { 
-  BarChart, 
-  Code, 
-  Globe, 
-  Search, 
-  Settings, 
-  SmartphoneIcon, 
-  Mail,
-  Heart,
-  PenTool,
-  Palette,
-  Image,
-  FileText,
-  ShoppingBag,
-  Share2,
-  MessageSquare,
-  TrendingUp
-} from "lucide-react"
-
-// Use string identifiers for icons instead of JSX
 export type IconType = 
   | 'code'
   | 'trending-up'
