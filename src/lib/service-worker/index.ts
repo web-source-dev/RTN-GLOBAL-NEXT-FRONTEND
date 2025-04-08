@@ -70,9 +70,13 @@ export const registerServiceWorker = async (): Promise<void> => {
       // Add event listeners for various service worker states
       wb.addEventListener('installed', (event: WorkboxEvent) => {
         if (!event.isUpdate) {
-          console.log('Service Worker installed successfully');
+          if(process.env.NODE_ENV === 'development'){
+            console.log('Service Worker installed successfully');
+          }
         } else {
-          console.log('Service Worker updated');
+          if(process.env.NODE_ENV === 'development'){
+            console.log('Service Worker updated');
+          }
         }
       });
       
@@ -81,14 +85,17 @@ export const registerServiceWorker = async (): Promise<void> => {
         if (!event.isExternal) {
           // When the service worker is activated, claim clients
           // This ensures the service worker takes control immediately
-          console.log('Service worker activated');
+          if(process.env.NODE_ENV === 'development'){
+            console.log('Service worker activated');
+          }
         }
       });
       
       wb.addEventListener('waiting', (event: WorkboxEvent) => {
         // When a new service worker is waiting
-        console.log('New service worker is waiting to activate',event);
-        
+        if(process.env.NODE_ENV === 'development'){
+          console.log('New service worker is waiting to activate',event);
+        }
         // Create a more user-friendly update notification
         const updateNotification = document.createElement('div');
         updateNotification.className = 'update-notification';
@@ -112,40 +119,56 @@ export const registerServiceWorker = async (): Promise<void> => {
       
       wb.addEventListener('controlling', () => {
         // This event fires when the service worker takes control
-        console.log('Service worker is controlling the page');
+        if(process.env.NODE_ENV === 'development'){
+          console.log('Service worker is controlling the page');
+        }
       });
       
       wb.addEventListener('redundant', () => {
         // This fires when the service worker is discarded
-        console.log('Service worker has become redundant');
+        if(process.env.NODE_ENV === 'development'){
+          console.log('Service worker has become redundant');
+        }
       });
       
       // Handle offline mode
       if (!navigator.onLine) {
-        console.log('Application is offline, loading from cache');
+        if(process.env.NODE_ENV === 'development'){
+          console.log('Application is offline, loading from cache');
+        }
         // You could show an offline notification to the user here
       }
       
       // Listen for online/offline events
       window.addEventListener('online', () => {
-        console.log('Application is back online');
+        if(process.env.NODE_ENV === 'development'){
+          console.log('Application is back online');
+        }
         // You could update the UI to reflect online status
       });
       
       window.addEventListener('offline', () => {
-        console.log('Application is offline');
+        if(process.env.NODE_ENV === 'development'){
+          console.log('Application is offline');
+        }
         // You could update the UI to reflect offline status
       });
       
       // Register the service worker
       await wb.register();
-      console.log('Service Worker registered successfully');
+      if(process.env.NODE_ENV === 'development'){
+        console.log('Service Worker registered successfully');
+      }
       
     } catch (error) {
-      console.error('Service Worker registration failed:', error);
+      if(process.env.NODE_ENV === 'development'){
+        console.error('Service Worker registration failed:', error);
+      }
     }
   } else {
-    console.info('Service Worker not supported or Workbox not loaded');
+    if(process.env.NODE_ENV === 'development'){
+      console.info('Service Worker not supported or Workbox not loaded');
+    }
   }
 };
 
@@ -159,9 +182,13 @@ export const unregisterServiceWorker = async (): Promise<void> => {
       for (const registration of registrations) {
         await registration.unregister();
       }
-      console.log('Service worker unregistered');
+      if(process.env.NODE_ENV === 'development'){
+        console.log('Service worker unregistered');
+      }
     } catch (error) {
-      console.error('Service worker unregistration failed:', error);
+      if(process.env.NODE_ENV === 'development'){
+        console.error('Service worker unregistration failed:', error);
+      }
     }
   }
 };
@@ -176,8 +203,13 @@ export const checkForServiceWorkerUpdate = async (): Promise<void> => {
       const { Workbox } = window.workbox;
       const wb = new Workbox('/service-worker.js');
       await wb.update();
+      if(process.env.NODE_ENV === 'development'){
+        console.log('Service Worker update check completed');
+      }
     } catch (error) {
-      console.error('Service Worker update check failed:', error);
+      if(process.env.NODE_ENV === 'development'){
+        console.error('Service Worker update check failed:', error);
+      }
     }
   }
 }; 

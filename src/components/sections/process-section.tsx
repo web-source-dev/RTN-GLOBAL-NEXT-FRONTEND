@@ -3,7 +3,7 @@
 import { ArrowRight, Lightbulb, Search, Code, PenTool, BarChart4, Zap } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 
 type ProcessStep = {
   id: string
@@ -53,6 +53,8 @@ const processSteps: ProcessStep[] = [
 
 export function ProcessSection() {
   const [activeStep, setActiveStep] = useState(0);
+  const stepsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
   
   // Using object for faster lookups rather than class concatenation
   const iconStyles = {
@@ -65,8 +67,65 @@ export function ProcessSection() {
     inactive: "bg-muted text-muted-foreground"
   };
   
+  // Setup intersection observer to track visible steps while scrolling
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    
+    const options = {
+      root: null,
+      rootMargin: '-20% 0px -20% 0px', // Adjust the margin to control when steps become active
+      threshold: [0.25, 0.5, 0.75], // Multiple thresholds for better accuracy
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      // Sort entries by their vertical position to maintain order
+      const sortedEntries = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => {
+          const rectA = a.boundingClientRect;
+          const rectB = b.boundingClientRect;
+          return rectA.top - rectB.top;
+        });
+      
+      if (sortedEntries.length > 0) {
+        // Get the topmost visible entry
+        const topEntry = sortedEntries[sortedEntries.length - 1];
+        const index = stepsRef.current.findIndex(ref => ref === topEntry.target);
+        
+        if (index !== -1) {
+          // Only move forward one step at a time
+          if (index === activeStep + 1) {
+            setActiveStep(index);
+          } 
+          // Allow moving backward to any previous step
+          else if (index < activeStep) {
+            setActiveStep(index);
+          }
+          // For direct clicks or when loading the page, allow any step
+          else if (index > 0 && index - activeStep > 1 && topEntry.intersectionRatio > 0.6) {
+            setActiveStep(index);
+          }
+        }
+      }
+    }, options);
+    
+    // Store current refs in a variable to use in cleanup
+    const currentStepRefs = stepsRef.current;
+    
+    // Add all step elements to the observer
+    currentStepRefs.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+    
+    return () => {
+      currentStepRefs.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, [activeStep]); // Adding activeStep as a dependency to re-run when it changes
+  
   return (
-    <section className="py-14 md:py-20 bg-gradient-to-br from-background to-muted/30" id="process">
+    <section className="py-14 md:py-20 bg-gradient-to-br from-background to-muted/30" id="process" ref={sectionRef}>
       <div className="container mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
           {/* Left column - sticky content only on desktop */}
@@ -109,6 +168,7 @@ export function ProcessSection() {
                 className="relative pl-12 md:pl-16"
                 onClick={() => setActiveStep(index)}
                 onMouseEnter={() => setActiveStep(index)}
+                ref={el => { stepsRef.current[index] = el }}
               >
                 <div
                   className={`absolute left-0 -translate-x-1/2 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl transition-colors duration-300 ${activeStep === index ? iconStyles.active : iconStyles.inactive}`}
@@ -131,22 +191,22 @@ export function ProcessSection() {
           </div>
         </div>
         
-        <div className="mt-16 bg-card rounded-xl p-6 md:p-8 border border-border shadow-sm">
+        <div className="mt-16 bg-primary rounded-xl p-6 md:p-8 border border-border shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center md:text-left md:col-span-1">
-              <h3 className="text-xl md:text-2xl font-bold mb-2">Ready to Start?</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-xl md:text-2xl font-bold mb-2 text-white">Ready to Start?</h3>
+              <p className="text-muted-foreground text-white">
                 Let&apos;s discuss your project and start building your digital success story.
               </p>
             </div>
-            <div className="md:col-span-2 flex flex-col sm:flex-row justify-center md:justify-end gap-4 items-center">
+            <div className="md:col-span-2 flex flex-col sm:width-full sm:flex-row justify-center md:justify-end gap-4 items-center">
               <Link href="/contact">
-                <Button size="lg" className="gap-2 rounded-lg w-full sm:w-auto shadow-sm">
+                <Button size="lg" className="gap-2 rounded-lg w-full sm:w-full shadow-sm bg-white text-primary hover:bg-white/80">
                   Get in Touch <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
               <Link href="/services">
-                <Button variant="outline" size="lg" className="rounded-lg w-full sm:w-auto">
+                <Button variant="outline" size="lg" className="rounded-lg w-full sm:w-full text-white hover:bg-white/30">
                   Explore Services
                 </Button>
               </Link>

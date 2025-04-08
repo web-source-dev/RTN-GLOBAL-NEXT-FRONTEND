@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import Link from "next/link"
 import { formatDate } from "@/lib/utils"
-import { ArrowRight, Search, ChevronLeft, ChevronRight, Loader2 } from "lucide-react"
+import { ArrowRight, Search, ChevronLeft, ChevronRight, Loader2, Tag } from "lucide-react"
 import { BlogAPI } from "@/lib/api/api-provider"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Chip } from "@/components/ui/chip"
@@ -299,18 +299,23 @@ export default function BlogPage() {
               <div className="block lg:hidden mb-8 overflow-x-auto">
                 <div className="flex space-x-2 pb-2">
                   {categories.map((cat) => (
-                    <button
+                    <Chip
                       key={cat}
+                      variant={cat === category ? 'default' : 'secondary'}
                       onClick={() => handleCategoryChange(cat)}
-                      className={`px-4 py-2 text-sm rounded-full whitespace-nowrap ${
-                        cat === category
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-                      }`}
+                      label={cat}
                     >
                       {cat}
-                    </button>
+                    </Chip>
                   ))}
+                  
+                  {/* Add the Tags chip/link */}
+                  <Link href="/blog/tag">
+                    <Chip variant="outline" className="flex items-center gap-1" label="Tags">
+                      <Tag className="h-3 w-3" />
+                      Tags
+                    </Chip>
+                  </Link>
                 </div>
               </div>
               
@@ -510,6 +515,17 @@ export default function BlogPage() {
                     </li>
                   ))}
                 </ul>
+                
+                {/* Add this divider and link to the tags page */}
+                <div className="mt-4 pt-4 border-t border-border">
+                  <Link
+                    href="/blog/tag"
+                    className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80"
+                  >
+                    <Tag className="h-4 w-4 mr-2" />
+                    Browse by tags
+                  </Link>
+                </div>
               </div>
               
               {/* Recent Posts */}
@@ -582,6 +598,15 @@ export default function BlogPage() {
                     ))
                   )}
                 </div>
+                
+                {/* Add this new link to view all tags */}
+                <Link
+                  href="/blog/tag"
+                  className="mt-4 inline-flex items-center text-sm text-primary hover:underline"
+                >
+                  <Tag className="h-4 w-4 mr-1" />
+                  View all tags
+                </Link>
               </div>
             </div>
           </div>

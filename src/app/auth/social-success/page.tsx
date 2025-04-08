@@ -41,24 +41,30 @@ export default function SocialAuthSuccessPage() {
   // Loading state
   if (isAuthLoading) {
     return (
-      <div className="flex justify-center items-center min-h-[50vh]">
-        <div className="text-center">
-          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-primary" />
-          <p className="text-muted-foreground">Verifying authentication...</p>
+      <div className="flex justify-center items-center min-h-[60vh] animate-in fade-in-50 duration-500">
+        <div className="text-center max-w-md mx-auto p-8">
+          <div className="relative w-24 h-24 mx-auto mb-6">
+            <div className="absolute inset-0 rounded-full border-t-2 border-primary animate-spin"></div>
+            <div className="absolute inset-2 rounded-full bg-background flex items-center justify-center">
+              <Loader2 className="h-8 w-8 text-primary animate-pulse" />
+            </div>
+          </div>
+          <h3 className="text-xl font-semibold mb-2">Verifying authentication</h3>
+          <p className="text-muted-foreground">Please wait while we complete your authentication...</p>
         </div>
       </div>
     )
   }
   
   return (
-    <div className="flex justify-center items-center min-h-[60vh]">
-      <Card className="w-full max-w-md mx-auto shadow-lg border-muted/30">
-        <CardHeader className="text-center">
+    <div className="flex justify-center items-center min-h-[70vh] animate-in fade-in duration-700">
+      <Card className="w-full max-w-md mx-auto shadow-xl border-muted/30 overflow-hidden backdrop-blur-sm bg-card/95 transition-all duration-300 hover:shadow-primary/5">
+        <CardHeader className="text-center pb-1">
           {error ? (
-            <div className="flex justify-center mb-4">
-              <div className="p-3 rounded-full bg-destructive/10">
+            <div className="flex justify-center mb-6">
+              <div className="p-4 rounded-full bg-destructive/10 animate-in zoom-in-75 duration-300">
                 <svg 
-                  className="h-8 w-8 text-destructive" 
+                  className="h-10 w-10 text-destructive" 
                   xmlns="http://www.w3.org/2000/svg" 
                   viewBox="0 0 24 24" 
                   fill="none" 
@@ -74,53 +80,76 @@ export default function SocialAuthSuccessPage() {
               </div>
             </div>
           ) : (
-            <div className="flex justify-center mb-4">
-              <div className="p-3 rounded-full bg-green-50 dark:bg-green-900/20">
-                <CheckCircle2 className="h-8 w-8 text-green-600 dark:text-green-400" />
+            <div className="flex justify-center mb-6">
+              <div className="p-4 rounded-full bg-green-50 dark:bg-green-900/20 shadow-sm animate-in zoom-in-75 duration-300">
+                <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-400" />
               </div>
             </div>
           )}
           
-          <CardTitle className="text-xl">
+          <CardTitle className="text-2xl font-bold">
             {error ? 'Authentication Failed' : 'Authentication Successful'}
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-base mt-2">
             {error ? 'We could not authenticate your account' : 'You have successfully signed in with your social account'}
           </CardDescription>
         </CardHeader>
         
-        <CardContent className="text-center">
+        <CardContent className="text-center pt-4">
           {error ? (
             <>
-              <Alert variant="destructive" className="mb-4">
+              <Alert variant="destructive" className="mb-6 animate-in slide-in-from-top-1 duration-300">
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
               
-              <div className="flex flex-col gap-2 mt-4">
-                <Button onClick={() => router.push('/auth/login')}>
+              <div className="flex flex-col gap-3 mt-6">
+                <Button 
+                  onClick={() => router.push('/auth/login')}
+                  className="w-full h-11 font-medium transition-all duration-200 shadow-sm hover:shadow-md"
+                >
                   Return to Login
                 </Button>
               </div>
             </>
           ) : (
             <>
-              <div className="relative w-32 h-32 mx-auto my-4">
+              <div className="relative w-40 h-40 mx-auto my-6">
                 <Image 
                   src="/images/auth/success.svg" 
                   alt="Success" 
                   fill
-                  className="object-contain"
+                  className="object-contain drop-shadow-lg"
                   priority
                 />
               </div>
               
-              <p className="text-muted-foreground mb-6">
+              <div className="p-4 bg-muted/40 rounded-lg border border-muted/60 text-left mb-6">
+                <h3 className="font-medium mb-2">What happens next?</h3>
+                <ul className="text-sm space-y-2 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-medium mt-0.5">1</span>
+                    You are now being redirected to the dashboard
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-medium mt-0.5">2</span>
+                    You can start using all the features of the platform
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-medium mt-0.5">3</span>
+                    You can update your profile and preferences anytime
+                  </li>
+                </ul>
+              </div>
+              
+              <p className="text-muted-foreground mb-6 animate-pulse">
                 {isRedirecting 
                   ? 'Redirecting to dashboard...' 
                   : 'You will be redirected to the dashboard shortly.'}
               </p>
               
-              <Loader2 className={`h-6 w-6 animate-spin mx-auto ${isRedirecting ? 'opacity-100' : 'opacity-0'} transition-opacity`} />
+              <div className="relative h-1 w-full bg-muted/50 rounded-full overflow-hidden">
+                <div className={`absolute inset-y-0 left-0 bg-primary transition-all duration-1000 rounded-full ${isRedirecting ? 'w-full' : 'w-0'}`}></div>
+              </div>
             </>
           )}
         </CardContent>

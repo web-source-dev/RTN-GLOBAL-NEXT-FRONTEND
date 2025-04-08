@@ -76,13 +76,13 @@ export default function HomePage() {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                  <Link href="/contact" aria-label="Start your project with RTN Global">
+                  <Link href={`${process.env.NEXT_PUBLIC_ORDERS_URL}`} aria-label="Start your project with RTN Global">
                     <Button size="lg" className="w-full sm:w-auto gap-2 rounded-lg shadow-lg shadow-primary/20 hover:scale-105 transition-all duration-300">
                       Start Your Project <ArrowRight className="h-4 w-4" />
                     </Button>
                   </Link>
                   <Link href="/portfolio" aria-label="View RTN Global's portfolio of work">
-                    <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-lg hover:bg-card/60 transition-all duration-300">
+                    <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-lg hover:bg-white/50 hover:scale-105 hover:text-black transition-all duration-300">
                       View Our Work
                     </Button>
                   </Link>

@@ -192,27 +192,24 @@ export function ClientsSection() {
             </motion.div>
           </div>
           
-          {/* Gradient overlays for smooth fade-in/out effect */}
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent z-10"></div>
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent z-10"></div>
         </div>
         
-        <div className="mt-16 bg-card rounded-xl p-6 md:p-8 border border-border shadow-sm">
+        <div className="mt-16 bg-primary rounded-xl p-6 md:p-8 border border-border shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl font-bold mb-3">Ready to Join Our Success Stories?</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-2xl font-bold mb-3 text-white">Ready to Join Our Success Stories?</h3>
+              <p className="text-muted-foreground text-white">
                 Discover how RTN Global can help your business achieve its digital goals. Let&apos;s create your success story together.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
               <Link href="/case-studies">
-                <Button variant="outline" className="w-full sm:w-auto rounded-lg">
+                <Button variant="outline" className="w-full sm:w-auto rounded-lg text-white hover:bg-white/30">
                   View Case Studies
                 </Button>
               </Link>
-              <Link href="/contact">
-                <Button className="w-full sm:w-auto gap-2 rounded-lg">
+              <Link href={`${process.env.NEXT_PUBLIC_ORDERS_URL}`}>
+                <Button className="w-full sm:w-auto gap-2 rounded-lg bg-white text-primary hover:bg-white/80">
                   Get Started <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>

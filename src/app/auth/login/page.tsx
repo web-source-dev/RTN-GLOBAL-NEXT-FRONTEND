@@ -119,7 +119,7 @@ export default function LoginPage() {
       
       // Redirect to dashboard after a brief delay
       setTimeout(() => {
-        router.push('/dashboard')
+        window.location.href = `${process.env.NEXT_PUBLIC_USER_DASHBOARD_URL}/dashboard/user`
       }, 1000)
     } catch (error: unknown) {
       console.error('Login failed:', error)
@@ -173,7 +173,7 @@ export default function LoginPage() {
       
       // Redirect to dashboard after a brief delay
       setTimeout(() => {
-        router.push('/dashboard')
+        window.location.href = `${process.env.NEXT_PUBLIC_USER_DASHBOARD_URL}/dashboard/user`
       }, 1000)
     } catch (error: unknown) {
       console.error('Two-factor verification failed:', error)
@@ -220,7 +220,7 @@ export default function LoginPage() {
       
       // Redirect to dashboard after a brief delay
       setTimeout(() => {
-        router.push('/dashboard')
+        window.location.href = `${process.env.NEXT_PUBLIC_USER_DASHBOARD_URL}/dashboard/user`
       }, 1000)
     } catch (error: unknown) {
       console.error('Backup code verification failed:', error)
@@ -267,48 +267,44 @@ export default function LoginPage() {
   }
   
   return (
-    <div className="flex flex-col lg:flex-row gap-8 w-full max-w-5xl">
+    <div className="flex flex-col lg:flex-row gap-10 w-full max-w-6xl animate-in fade-in duration-500">
       {/* Left column with image - visible on larger screens */}
-      <div className="hidden lg:flex lg:flex-col lg:items-center lg:justify-center lg:w-1/2">
+      <div className="hidden lg:flex lg:flex-col lg:items-center lg:justify-center lg:w-1/2 transition-all">
         <div className="relative w-full max-w-md aspect-square">
           <Image 
             src="/images/auth/login.svg" 
             alt="Login illustration" 
             fill
             priority
-            className="object-contain"
+            className="object-contain drop-shadow-md transition-transform hover:scale-[1.02] duration-700"
           />
-        </div>
-        <div className="mt-8 text-center">
-          <h1 className="text-3xl font-bold tracking-tight">Welcome Back</h1>
-          <p className="text-muted-foreground mt-2">Sign in to your RTN Global account</p>
         </div>
       </div>
       
       {/* Right column with login form */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center">
-        <Card className="w-full max-w-md mx-auto shadow-lg border-muted/30">
+        <Card className="w-full max-w-md mx-auto shadow-xl border-muted/30 overflow-hidden backdrop-blur-sm bg-card/95 transition-all duration-300 hover:shadow-primary/5">
           {/* Mobile header - only visible on small screens */}
-          <div className="lg:hidden text-center pt-6 px-6">
-            <h1 className="text-2xl font-bold tracking-tight">Welcome Back</h1>
-            <p className="text-muted-foreground mt-1 text-sm">Sign in to your RTN Global account</p>
+          <div className="lg:hidden text-center pt-8 px-6">
+            <h1 className="text-3xl font-bold tracking-tight text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">Welcome Back</h1>
+            <p className="text-muted-foreground mt-2 text-base">Sign in to your RTN Global account</p>
           </div>
           
-          <CardHeader>
-            <CardTitle className="text-xl">Sign In</CardTitle>
-            <CardDescription>Enter your credentials to access your account</CardDescription>
+          <CardHeader className="space-y-1.5 pb-6">
+            <CardTitle className="text-2xl font-bold">Sign In</CardTitle>
+            <CardDescription className="text-base">Enter your credentials to access your account</CardDescription>
           </CardHeader>
           
           <CardContent>
             {error && (
-              <Alert variant="destructive" className="mb-6">
+              <Alert variant="destructive" className="mb-6 animate-in slide-in-from-top-1 duration-300">
                 <AlertCircle className="h-4 w-4" />
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
             
             {isAccountLocked && (
-              <Alert variant="destructive" className="mb-6 border-destructive/30 bg-destructive/10">
+              <Alert variant="destructive" className="mb-6 border-destructive/30 bg-destructive/10 animate-in slide-in-from-top-1 duration-300">
                 <LockKeyhole className="h-4 w-4" />
                 <AlertDescription>
                   Your account has been temporarily locked due to multiple failed login attempts.
@@ -323,14 +319,14 @@ export default function LoginPage() {
               // Primary login form
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Label htmlFor="email" className="text-sm font-medium">Email</Label>
+                  <div className="relative group">
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors duration-200" />
                     <Input
                       id="email"
                       type="email"
                       placeholder="name@example.com"
-                      className="pl-10"
+                      className="pl-10 h-11 transition-all border-muted/50 focus:border-primary"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       disabled={isLoading || isAccountLocked}
@@ -341,18 +337,18 @@ export default function LoginPage() {
                 
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="password">Password</Label>
-                    <Link href="/auth/forgot-password" className="text-xs text-primary hover:underline">
+                    <Label htmlFor="password" className="text-sm font-medium">Password</Label>
+                    <Link href="/auth/forgot-password" className="text-xs text-primary hover:text-primary/80 hover:underline transition-colors">
                       Forgot password?
                     </Link>
                   </div>
-                  <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <div className="relative group">
+                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors duration-200" />
                     <Input
                       id="password"
                       type={showPassword ? "text" : "password"}
                       placeholder="••••••••"
-                      className="pl-10"
+                      className="pl-10 h-11 transition-all border-muted/50 focus:border-primary"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       disabled={isLoading || isAccountLocked}
@@ -361,7 +357,7 @@ export default function LoginPage() {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                       tabIndex={-1}
                     >
                       {showPassword ? (
@@ -373,7 +369,11 @@ export default function LoginPage() {
                   </div>
                 </div>
                 
-                <Button type="submit" className="w-full" disabled={isLoading || isAccountLocked}>
+                <Button 
+                  type="submit" 
+                  className="w-full h-11 mt-2 font-medium transition-all duration-200 shadow-sm hover:shadow-md"
+                  disabled={isLoading || isAccountLocked}
+                >
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -384,12 +384,12 @@ export default function LoginPage() {
                   )}
                 </Button>
                 
-                <div className="relative my-4">
+                <div className="relative my-6">
                   <div className="absolute inset-0 flex items-center">
                     <Separator className="w-full" />
                   </div>
                   <div className="relative flex justify-center">
-                    <span className="bg-card px-2 text-xs text-muted-foreground">
+                    <span className="bg-card px-3 text-xs text-muted-foreground">
                       OR CONTINUE WITH
                     </span>
                   </div>
@@ -401,6 +401,7 @@ export default function LoginPage() {
                     variant="outline"
                     onClick={handleGoogleLogin}
                     disabled={isLoading || isAccountLocked}
+                    className="transition-all duration-200 hover:bg-muted/30"
                   >
                     <svg
                       className="mr-2 h-4 w-4"
@@ -421,6 +422,7 @@ export default function LoginPage() {
                     variant="outline"
                     onClick={handleFacebookLogin}
                     disabled={isLoading || isAccountLocked}
+                    className="transition-all duration-200 hover:bg-muted/30"
                   >
                     <svg
                       className="mr-2 h-4 w-4"
@@ -569,10 +571,10 @@ export default function LoginPage() {
             )}
           </CardContent>
           
-          <CardFooter className="flex flex-col space-y-4">
+          <CardFooter className="flex flex-col space-y-4 pt-6 pb-8">
             <div className="text-sm text-center w-full">
-              Dont have an account?{" "}
-              <Link href="/auth/register" className="text-primary hover:underline font-medium">
+              Don&apos;t have an account?{" "}
+              <Link href="/auth/register" className="text-primary hover:text-primary/80 hover:underline font-medium transition-colors">
                 Sign Up
               </Link>
             </div>
@@ -581,11 +583,11 @@ export default function LoginPage() {
             
             <p className="text-xs text-center text-muted-foreground">
               By signing in, you agree to our{" "}
-              <Link href="/terms" className="text-primary hover:underline">
+              <Link href="/terms" className="text-primary hover:text-primary/80 hover:underline transition-colors">
                 Terms of Service
               </Link>{" "}
               and{" "}
-              <Link href="/privacy" className="text-primary hover:underline">
+              <Link href="/privacy" className="text-primary hover:text-primary/80 hover:underline transition-colors">
                 Privacy Policy
               </Link>
             </p>

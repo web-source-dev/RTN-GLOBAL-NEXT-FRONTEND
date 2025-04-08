@@ -207,76 +207,72 @@ function ResetPasswordContent({ searchParams }: { searchParams: URLSearchParams 
   }
   
   return (
-    <div className="flex flex-col lg:flex-row gap-8 w-full max-w-5xl">
+    <div className="flex flex-col lg:flex-row gap-10 w-full max-w-6xl animate-in fade-in duration-500">
       {/* Left column with image - visible on larger screens */}
-      <div className="hidden lg:flex lg:flex-col lg:items-center lg:justify-center lg:w-1/2">
+      <div className="hidden lg:flex lg:flex-col lg:items-center lg:justify-center lg:w-1/2 transition-all">
         <div className="relative w-full max-w-md aspect-square">
           <Image 
-            src="/images/auth/reset-password.svg" 
+            src="/images/auth/forget.svg" 
             alt="Reset password illustration" 
             fill
             priority
-            className="object-contain"
+            className="object-contain drop-shadow-md transition-transform hover:scale-[1.02] duration-700"
           />
-        </div>
-        <div className="mt-8 text-center">
-          <h1 className="text-3xl font-bold tracking-tight">Create New Password</h1>
-          <p className="text-muted-foreground mt-2">Enter a new password for your account</p>
         </div>
       </div>
       
       {/* Right column with reset password form */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center">
-        <Card className="w-full max-w-md mx-auto shadow-lg border-muted/30">
+        <Card className="w-full max-w-md mx-auto shadow-xl border-muted/30 overflow-hidden backdrop-blur-sm bg-card/95 transition-all duration-300 hover:shadow-primary/5">
           {/* Mobile header - only visible on small screens */}
-          <div className="lg:hidden text-center pt-6 px-6">
-            <h1 className="text-2xl font-bold tracking-tight">Create New Password</h1>
-            <p className="text-muted-foreground mt-1 text-sm">Enter a new password for your account</p>
+          <div className="lg:hidden text-center pt-8 px-6">
+            <h1 className="text-3xl font-bold tracking-tight text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">Create New Password</h1>
+            <p className="text-muted-foreground mt-2 text-base">Enter a new password for your account</p>
           </div>
           
-          <CardHeader>
-            <CardTitle className="text-xl">Reset Your Password</CardTitle>
-            <CardDescription>
+          <CardHeader className="space-y-1.5 pb-6">
+            <CardTitle className="text-2xl font-bold">Reset Your Password</CardTitle>
+            <CardDescription className="text-base">
               Create a new secure password for your account
             </CardDescription>
           </CardHeader>
           
           <CardContent>
             {error && (
-              <Alert variant="destructive" className="mb-4">
+              <Alert variant="destructive" className="mb-6 animate-in slide-in-from-top-1 duration-300">
                 <AlertCircle className="h-4 w-4" />
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
             
             {success && (
-              <Alert className="mb-4 bg-green-50 text-green-800 dark:bg-green-900/20 dark:text-green-400">
+              <Alert className="mb-6 bg-green-50 text-green-800 dark:bg-green-900/20 dark:text-green-400 animate-in slide-in-from-top-1 duration-300">
                 <CheckCircle2 className="h-4 w-4" />
                 <AlertDescription>Password reset successful! Redirecting to login...</AlertDescription>
               </Alert>
             )}
             
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-2">
                 <label htmlFor="password" className="text-sm font-medium">
                   New Password
                 </label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <div className="relative group">
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors duration-200" />
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="pl-10"
+                    className="pl-10 h-11 transition-all border-muted/50 focus:border-primary"
                     disabled={isResetting || success}
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                     tabIndex={-1}
                   >
                     {showPassword ? (
@@ -295,22 +291,22 @@ function ResetPasswordContent({ searchParams }: { searchParams: URLSearchParams 
                 <label htmlFor="confirmPassword" className="text-sm font-medium">
                   Confirm Password
                 </label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <div className="relative group">
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors duration-200" />
                   <Input
                     id="confirmPassword"
                     type={showConfirmPassword ? "text" : "password"}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="pl-10"
+                    className="pl-10 h-11 transition-all border-muted/50 focus:border-primary"
                     disabled={isResetting || success}
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                     tabIndex={-1}
                   >
                     {showConfirmPassword ? (
@@ -324,7 +320,7 @@ function ResetPasswordContent({ searchParams }: { searchParams: URLSearchParams 
               
               <Button
                 type="submit"
-                className="w-full"
+                className="w-full h-11 mt-2 font-medium transition-all duration-200 shadow-sm hover:shadow-md"
                 disabled={isResetting || success}
               >
                 {isResetting ? (
@@ -344,17 +340,17 @@ function ResetPasswordContent({ searchParams }: { searchParams: URLSearchParams 
             </form>
           </CardContent>
           
-          <CardFooter className="flex flex-col space-y-4">
+          <CardFooter className="flex flex-col space-y-4 pt-6 pb-8">
             <div className="text-sm text-center w-full">
               Remember your password?{" "}
-              <Link href="/auth/login" className="text-primary hover:underline font-medium">
+              <Link href="/auth/login" className="text-primary hover:text-primary/80 hover:underline font-medium transition-colors">
                 Sign in
               </Link>
             </div>
             
             <div className="text-sm text-center w-full">
               Need a new reset link?{" "}
-              <Link href="/auth/forgot-password" className="text-primary hover:underline font-medium">
+              <Link href="/auth/forgot-password" className="text-primary hover:text-primary/80 hover:underline font-medium transition-colors">
                 Request again
               </Link>
             </div>

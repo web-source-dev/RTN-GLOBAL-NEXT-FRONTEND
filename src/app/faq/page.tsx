@@ -74,7 +74,7 @@ export default function FAQPage() {
   ]
 
   // General FAQs
-  const generalFaqs: FAQItem[] = [
+  const generalFaqs = useMemo<FAQItem[]>(() => [
     {
       question: "What services does RTN Global offer?",
       answer: "RTN Global offers a comprehensive range of web development and digital marketing services including website design and development, e-commerce solutions, SEO optimization, content marketing, social media management, PPC advertising, and email marketing campaigns.",
@@ -101,10 +101,10 @@ export default function FAQPage() {
       answer: "Yes, we offer ongoing maintenance and support packages to ensure your website or application continues to function optimally. These can be purchased separately after the included maintenance period that comes with your project.",
       category: "Support"
     }
-  ]
+  ], []);
 
   // Process FAQs
-  const processFaqs: FAQItem[] = [
+  const processFaqs = useMemo<FAQItem[]>(() => [
     {
       question: "What is your development process?",
       answer: "Our development process includes discovery (understanding your requirements), planning (creating project roadmap), design (creating mockups and wireframes), development (building the website/application), testing (ensuring quality), deployment (launching the project), and post-launch support.",
@@ -126,10 +126,10 @@ export default function FAQPage() {
       answer: "To get started, we need information about your business, target audience, project goals, design preferences, technical requirements, content (if available), and timeline expectations. We provide a detailed questionnaire to help gather this information.",
       category: "Process"
     }
-  ]
+  ], []);
 
   // Technical FAQs
-  const technicalFaqs: FAQItem[] = [
+  const technicalFaqs = useMemo<FAQItem[]>(() => [
     {
       question: "Which technologies do you use for development?",
       answer: "We use modern technologies including React, Next.js, Node.js, TypeScript, and other industry-standard frameworks and libraries. Our technology choices are based on project requirements and best practices for performance, security, and scalability.",
@@ -156,7 +156,7 @@ export default function FAQPage() {
       answer: "Yes, we implement on-page SEO best practices in all our website projects, including proper HTML structure, meta tags, schema markup, image optimization, and performance optimization. For more comprehensive SEO services, we offer specialized packages.",
       category: "Technical"
     }
-  ]
+  ], []);
 
   // All FAQs combined - wrapped in useMemo to prevent recreation on each render
   const allFaqs = useMemo(() => [...generalFaqs, ...processFaqs, ...technicalFaqs], 

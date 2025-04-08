@@ -51,15 +51,6 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   
   return (
     <Layout>
-      {/* Back to portfolio */}
-      <div className="py-6 border-b border-border">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/portfolio" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Portfolio
-          </Link>
-        </div>
-      </div>
       
       {/* Hero section */}
       <section className="py-16 md:py-10 bg-gradient-to-br from-background to-muted/30">
@@ -237,10 +228,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       {/* Next/Previous projects */}
       <section className="py-16 border-t border-border">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-center mb-12">Explore More Case Studies</h2>
+          <h2 className="text-2xl font-bold text-center mb-12">Explore More Projects</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Previous project */}
             <Link 
               href={`/portfolio/${prevProject.title.toLowerCase().replace(/\s+/g, '-')}`}
               className="group block bg-card rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
@@ -263,7 +253,6 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             </div>
             </Link>
             
-            {/* Next project */}
             <Link 
               href={`/portfolio/${nextProject.title.toLowerCase().replace(/\s+/g, '-')}`}
               className="group block bg-card rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
@@ -303,9 +292,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                   Get in Touch <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-              <Link href="/portfolio">
+              <Link href={`${process.env.NEXT_PUBLIC_ORDERS_URL}`}>
                 <Button size="lg" variant="outline" className="rounded-lg w-full sm:w-auto">
-                  Explore More Work
+                  Place an Order
               </Button>
             </Link>
             </div>

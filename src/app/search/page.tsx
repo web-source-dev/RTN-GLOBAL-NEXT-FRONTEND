@@ -11,7 +11,8 @@ import {
   Briefcase,
   Layers,
   Settings,
-  MessageSquare
+  MessageSquare,
+  X
 } from "lucide-react";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
@@ -137,8 +138,6 @@ function SearchPageContent() {
       setSortBy('relevance')
     }
   };
-
-
 
   // Perform quick search for suggestions
   const getSearchSuggestions = (query: string): SearchSuggestion[] | null => {
@@ -505,6 +504,22 @@ function SearchPageContent() {
                   }}
                   className="pl-12 py-6 text-base rounded-full border-border focus:border-primary pr-28"
                 />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchQuery('');
+                      setShowSuggestions(false);
+                      if (searchParams?.get("q")) {
+                        router.push('/search');
+                      }
+                    }}
+                    className="absolute right-[104px] top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground p-1 rounded-full hover:bg-muted/50 transition-colors"
+                    aria-label="Clear search"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                )}
                 <Button 
                   type="submit" 
                   className="absolute right-1.5 top-1/2 transform -translate-y-1/2 rounded-full px-5"
@@ -659,7 +674,7 @@ function SearchPageContent() {
                           />
                         )}
                         viewAllLink={sortedResults.services.length > 3 ? 
-                          { href: "#", onClick: () => setActiveCategory("services") } : undefined}
+                          { href: "/services", onClick: () => setActiveCategory("services") } : undefined}
                       />
                     )}
                     
@@ -678,7 +693,7 @@ function SearchPageContent() {
                           />
                         )}
                         viewAllLink={sortedResults.portfolio.length > 3 ? 
-                          { href: "#", onClick: () => setActiveCategory("portfolio") } : undefined}
+                          { href: "/portfolio", onClick: () => setActiveCategory("portfolio") } : undefined}
                       />
                     )}
                     
@@ -697,7 +712,7 @@ function SearchPageContent() {
                           />
                         )}
                         viewAllLink={sortedResults.industries.length > 3 ? 
-                          { href: "#", onClick: () => setActiveCategory("industries") } : undefined}
+                          { href: "/industries", onClick: () => setActiveCategory("industries") } : undefined}
                       />
                     )}
                     
@@ -716,7 +731,7 @@ function SearchPageContent() {
                           />
                         )}
                         viewAllLink={sortedResults.caseStudies.length > 3 ? 
-                          { href: "#", onClick: () => setActiveCategory("case-studies") } : undefined}
+                          { href: "/case-studies", onClick: () => setActiveCategory("case-studies") } : undefined}
                       />
                     )}
                     
@@ -736,7 +751,7 @@ function SearchPageContent() {
                           />
                         )}
                         viewAllLink={sortedResults.knowledge.length > 3 ? 
-                          { href: "#", onClick: () => setActiveCategory("knowledge") } : undefined}
+                          { href: "/knowledge-base", onClick: () => setActiveCategory("knowledge") } : undefined}
                       />
                     )}
                     
@@ -756,7 +771,7 @@ function SearchPageContent() {
                           />
                         )}
                         viewAllLink={sortedResults.blog.length > 3 ? 
-                          { href: "#", onClick: () => setActiveCategory("blog") } : undefined}
+                          { href: "/blog", onClick: () => setActiveCategory("blog") } : undefined}
                       />
                     )}
                   </TabsContent>
@@ -1031,14 +1046,19 @@ function ResultSection<T>({ title, icon, results, renderItem, viewAllLink }: Res
             variant="link" 
             size="sm" 
             className="text-primary"
-            onClick={viewAllLink.onClick}
-            asChild={!viewAllLink.onClick}
+            asChild
           >
-            {viewAllLink.onClick ? (
-              <span>View all ({results.length})</span>
-            ) : (
-              <Link href={viewAllLink.href}>View all ({results.length})</Link>
-            )}
+            <Link 
+              href={viewAllLink.href}
+              onClick={(e) => {
+                if (viewAllLink.onClick) {
+                  e.preventDefault();
+                  viewAllLink.onClick();
+                }
+              }}
+            >
+              View all ({results.length})
+            </Link>
           </Button>
         )}
       </div>

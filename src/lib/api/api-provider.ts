@@ -138,10 +138,10 @@ export const AuthAPI = {
     API.post('/api/auth/forgot-password', { email }),
   
   resetPassword: (token: string, password: string) => 
-    API.post('/api/auth/reset-password', { token, password }),
+    API.post(`/api/auth/reset-password/${token}`, { password }),
   
   validateResetToken: (token: string) => 
-    API.post('/api/auth/validate-reset-token', { token }),
+    API.get(`/api/auth/validate-reset-token/${token}`),
   
   // Account management
   updateProfile: (profileData: unknown) => 

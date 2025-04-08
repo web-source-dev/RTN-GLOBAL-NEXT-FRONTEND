@@ -109,7 +109,7 @@ const ServiceCard = ({ service, index }: { service: Service; index: number }) =>
 
 const ServicesSection = () => {
   // Get featured or all services
-  const featuredServices = getFeaturedServices().slice(0, 6);
+  const featuredServices = getFeaturedServices().slice(0, 3);
   
   // Animation variants for staggered animations
   const containerVariants = {

@@ -53,6 +53,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/blog/tag`,
+      lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/team`,
       lastModified,
       changeFrequency: 'monthly' as const,
@@ -309,12 +315,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   ]
 
+  // Blog tag routes (new section)
+  let blogTagRoutes: MetadataRoute.Sitemap = []
+  
+  try {
+    // Fetch blog tags
+    const tags = await fetchBlogTags()
+    
+    blogTagRoutes = tags.map((tag: { name: string; count: number }) => ({
+      url: `${baseUrl}/blog/tag/${encodeURIComponent(tag.name)}`,
+      lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    }))
+  } catch (error) {
+    console.error('Error fetching blog tags for sitemap:', error)
+    // Continue without blog tags if fetch fails
+  }
+
   // Blog posts dynamic routes (if fetching from an API)
   let blogPostRoutes: MetadataRoute.Sitemap = []
   
   try {
     // For blog posts from a backend API
-    // This is a placeholder - you'll need to implement your own fetching logic
     const blogPosts = await fetchBlogPosts()
     
     // Define a proper interface for blog posts
@@ -345,13 +368,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...industryRoutes,
     ...serviceRoutes,
     ...careerRoutes,
+    ...blogTagRoutes,
     ...blogPostRoutes,
     // We don't include authPages as they generally shouldn't be indexed by search engines
   ]
 }
 
-// Placeholder function for fetching blog posts from your backend
-// Replace this with your actual implementation
+// Add function to fetch blog tags
+async function fetchBlogTags() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs/tags`, {
+      next: { revalidate: 3600 } // Revalidate every hour
+    })
+    
+    if (!response.ok) {
+      throw new Error('Failed to fetch blog tags')
+    }
+    
+    return await response.json()
+  } catch (error) {
+    console.error('Error fetching blog tags:', error)
+    // Return a set of common tags as fallback
+    return [
+      { name: 'Web Development', count: 5 },
+      { name: 'Digital Marketing', count: 4 },
+      { name: 'SEO', count: 3 },
+      { name: 'Content Strategy', count: 2 },
+      { name: 'Design', count: 4 },
+      { name: 'Technology', count: 5 }
+    ]
+  }
+}
+
+// Existing function for fetching blog posts
 async function fetchBlogPosts() {
   // Example implementation - replace with your actual API call
   try {
