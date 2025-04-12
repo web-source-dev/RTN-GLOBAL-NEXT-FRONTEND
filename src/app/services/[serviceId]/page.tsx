@@ -707,7 +707,7 @@ export default function ServiceDetailPage({
                   </div>
                   <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Case Studies</h3>
                   <p className="text-muted-foreground mb-4">
-                    Explore real-world examples of how we've delivered successful {service.title.toLowerCase()} projects.
+                    Explore real-world examples of how we&apos;ve delivered successful {service.title.toLowerCase()} projects.
                   </p>
                   <div className="inline-flex items-center text-primary group-hover:underline">
                     View Case Studies <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

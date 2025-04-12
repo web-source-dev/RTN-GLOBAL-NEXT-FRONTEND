@@ -233,7 +233,7 @@ export default function TagPage() {
               <span className="text-sm font-medium">Tag Collection</span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
-              Posts Tagged "{tagName}"
+              Posts Tagged {tagName}
             </h1>
             <p className="text-lg text-muted-foreground max-w-xl mx-auto">
               Explore our curated collection of articles and insights related to <span className="font-medium text-foreground">{tagName}</span>
@@ -403,7 +403,7 @@ export default function TagPage() {
                 <div className="mt-12 p-8 bg-gradient-to-br from-muted/50 to-muted/30 rounded-lg border border-border relative overflow-hidden">
                   <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
                   <h2 className="text-2xl font-semibold mb-6 relative">
-                    <span className="inline-block border-b-2 border-primary pb-1">Related Content for "{tagName}"</span>
+                    <span className="inline-block border-b-2 border-primary pb-1">Related Content for {tagName}</span>
                   </h2>
                   
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">

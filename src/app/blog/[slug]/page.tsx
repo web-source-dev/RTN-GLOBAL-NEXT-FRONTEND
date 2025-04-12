@@ -30,7 +30,6 @@ import { BlogAPI } from "@/lib/api/api-provider"
 import { AuthAPI } from "@/lib/api/api-provider"
 import { useParams, useRouter, notFound } from "next/navigation"
 import { Comment } from "@/components/blog/comment"
-import { ShareButtons } from "@/components/blog/share-buttons"
 
 interface Author {
   _id: string;

@@ -10,7 +10,6 @@ import {
   TrendingUp,
   ArrowRight,
   BookOpen,
-  ChevronRight
 } from "lucide-react";
 import { categories, featuredArticles } from "@/data/knowledge-base";
 

@@ -298,7 +298,7 @@ export default function IndustryPage({ params }: { params: { industrySlug: strin
                   </div>
                   <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Case Studies</h3>
                   <p className="text-muted-foreground mb-4">
-                    Explore real-world examples of how we've helped {industry.name.toLowerCase()} businesses succeed.
+                    Explore real-world examples of how we&apos;ve helped {industry.name.toLowerCase()} businesses succeed.
                   </p>
                   <div className="inline-flex items-center text-primary group-hover:underline">
                     View Case Studies <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

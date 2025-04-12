@@ -704,7 +704,7 @@ export default function BlogPage() {
             <div className="bg-card rounded-xl p-6 border border-border hover:shadow-md transition-all duration-300 flex flex-col">
               <h3 className="text-xl font-bold mb-3">Client Success Stories</h3>
               <p className="text-muted-foreground mb-6">
-                See how we've helped businesses like yours achieve their goals with our tailored digital solutions.
+                See how we&apos;ve helped businesses like yours achieve their goals with our tailored digital solutions.
               </p>
               <div className="space-y-2.5 mb-6">
                 <Link href="/case-studies?category=e-commerce" className="flex items-center text-sm hover:text-primary transition-colors">

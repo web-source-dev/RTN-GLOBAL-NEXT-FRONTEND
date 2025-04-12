@@ -295,7 +295,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 </div>
                 {feedbackGiven === 'unhelpful' && (
                   <div className="mt-4">
-                    <p className="text-muted-foreground mb-3">We're sorry this article wasn't helpful. You might want to:</p>
+                    <p className="text-muted-foreground mb-3">We&apos;re sorry this article wasn&apos;t helpful. You might want to:</p>
                     <div className="space-y-2">
                       <Link href="/contact" className="text-primary hover:underline flex items-center gap-1.5">
                         <MessageSquare className="h-4 w-4" /> Contact our support team
@@ -362,7 +362,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                   >
                     <h4 className="font-medium mb-2">Case Studies</h4>
                     <p className="text-sm text-muted-foreground">
-                      See real-world examples of how we've helped businesses achieve their goals.
+                      See real-world examples of how we&apos;ve helped businesses achieve their goals.
                     </p>
                   </Link>
                   

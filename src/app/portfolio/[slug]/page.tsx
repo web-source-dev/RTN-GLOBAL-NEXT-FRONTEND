@@ -284,7 +284,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Start Your {project.category} Project?</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Let's discuss how we can help you achieve your business goals with a custom solution tailored to your needs.
+              Let&apos;s discuss how we can help you achieve your business goals with a custom solution tailored to your needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
