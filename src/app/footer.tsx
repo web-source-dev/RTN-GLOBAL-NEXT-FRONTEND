@@ -177,6 +177,35 @@ export function Footer() {
               </li>
             </ul>
 
+            {/* Resources Section - New */}
+            <h3 className="text-lg font-medium mb-4 mt-8">Resources</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/knowledge-base" className="text-sm flex items-center hover:text-primary transition-colors">
+                  <ChevronRight className="h-3 w-3 mr-1" />
+                  Knowledge Base
+                </Link>
+              </li>
+              <li>
+                <Link href="/case-studies" className="text-sm flex items-center hover:text-primary transition-colors">
+                  <ChevronRight className="h-3 w-3 mr-1" />
+                  Case Studies
+                </Link>
+              </li>
+              <li>
+                <Link href="/resources" className="text-sm flex items-center hover:text-primary transition-colors">
+                  <ChevronRight className="h-3 w-3 mr-1" />
+                  Resource Center
+                </Link>
+              </li>
+              <li>
+                <Link href="/portfolio" className="text-sm flex items-center hover:text-primary transition-colors">
+                  <ChevronRight className="h-3 w-3 mr-1" />
+                  Portfolio
+                </Link>
+              </li>
+            </ul>
+
             {/* Legal Links */}
             <h3 className="text-lg font-medium mb-4 mt-8">Legal</h3>
             <ul className="space-y-2">
@@ -221,6 +250,37 @@ export function Footer() {
               description="Get the latest news and updates delivered to your inbox."
               className="mb-8"
             />
+            
+            {/* Popular Content Section - New */}
+            <div className="mb-8">
+              <h3 className="text-lg font-medium mb-4">Popular Content</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/industries/e-commerce" className="text-sm flex items-center hover:text-primary transition-colors">
+                    <ChevronRight className="h-3 w-3 mr-1" />
+                    E-Commerce Solutions
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/wix-development" className="text-sm flex items-center hover:text-primary transition-colors">
+                    <ChevronRight className="h-3 w-3 mr-1" />
+                    Wix Development
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/mern-stack" className="text-sm flex items-center hover:text-primary transition-colors">
+                    <ChevronRight className="h-3 w-3 mr-1" />
+                    MERN Stack Development
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/react-native" className="text-sm flex items-center hover:text-primary transition-colors">
+                    <ChevronRight className="h-3 w-3 mr-1" />
+                    React Native Apps
+                  </Link>
+                </li>
+              </ul>
+            </div>
             
             <div className="mt-6">
               <h3 className="text-lg font-medium mb-4">Follow Us</h3>

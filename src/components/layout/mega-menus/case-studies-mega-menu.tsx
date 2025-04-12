@@ -29,15 +29,13 @@ export function CaseStudiesMegaMenu() {
                       src={study.image}
                       alt={study.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
                       <div className="absolute bottom-0 left-0 p-4">
-                        <span className="text-xs font-medium text-primary bg-white/90 px-2 py-1 rounded-full">
+                        <span className="text-xs font-medium text-primary-foreground bg-primary/90 px-2 py-1 rounded-full">
                           {study.industry}
                         </span>
                       </div>
-                    </div>
                   </div>
                   <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">
                     {study.title}

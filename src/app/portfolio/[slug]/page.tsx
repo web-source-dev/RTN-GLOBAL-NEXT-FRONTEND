@@ -225,6 +225,83 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         </div>
       </section>
       
+      {/* Add Related Content Section */}
+      <section className="py-16 bg-muted/30 border-t border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-center mb-12">You May Also Be Interested In</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Related Industry */}
+            {project.industry && (
+              <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 group">
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-3">Explore {project.industry} Solutions</h3>
+                  <p className="text-muted-foreground mb-4">Discover our specialized services and case studies for the {project.industry} industry.</p>
+                  <Link 
+                    href={`/industries/${project.industry.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="inline-flex items-center text-primary group-hover:underline"
+                  >
+                    Learn More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            )}
+            
+            {/* Related Service Category */}
+            <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 group">
+              <div className="p-6">
+                <h3 className="text-lg font-semibold mb-3">Explore {project.category} Services</h3>
+                <p className="text-muted-foreground mb-4">Learn about our comprehensive {project.category.toLowerCase()} services and how they can benefit your business.</p>
+                <Link 
+                  href={`/services`}
+                  className="inline-flex items-center text-primary group-hover:underline"
+                >
+                  View Services <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </div>
+            
+            {/* Related Portfolio Items or Case Studies */}
+            <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 group">
+              <div className="p-6">
+                <h3 className="text-lg font-semibold mb-3">Similar Projects</h3>
+                <p className="text-muted-foreground mb-4">Browse more projects and case studies in the {project.category} category.</p>
+                <Link 
+                  href={`/case-studies`}
+                  className="inline-flex items-center text-primary group-hover:underline"
+                >
+                  View Case Studies <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Targeted CTA based on project category */}
+      <section className="py-16 bg-primary/5 border-t border-primary/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Start Your {project.category} Project?</h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Let's discuss how we can help you achieve your business goals with a custom solution tailored to your needs.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg">
+                <Link href="/contact/free-consultation">
+                  Request a Free Consultation
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href={`/services`}>
+                  Explore Our Services
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* Next/Previous projects */}
       <section className="py-16 border-t border-border">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

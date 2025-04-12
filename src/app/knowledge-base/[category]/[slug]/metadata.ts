@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { categories, articleData, generateArticleData } from './data';
+import { categories, articleData, generateArticleData } from '@/data/knowledge-base';
 
 // Generate metadata based on article category and slug
 export async function generateMetadata({ 

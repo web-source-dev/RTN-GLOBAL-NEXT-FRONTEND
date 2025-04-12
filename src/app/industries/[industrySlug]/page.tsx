@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Check, ExternalLink } from "lucide-react";
+import { Check, ExternalLink, ArrowRight, BookOpen, FileText, Briefcase } from "lucide-react";
 import { getIndustryBySlug } from "@/data/industries";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { Button } from "@/components/ui/button";
@@ -189,6 +189,123 @@ export default function IndustryPage({ params }: { params: { industrySlug: strin
                 </div>
               )}
             </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Related Services Section - New */}
+      <section className="py-16 bg-muted/10 border-t border-border">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Our Services for {industry.name}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Discover our specialized services tailored for the {industry.name} industry
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {industry.services.slice(0, 3).map((service, index) => (
+              <Link 
+                key={index} 
+                href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
+                className="group"
+              >
+                <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
+                    <p className="text-muted-foreground mb-4">{service.description}</p>
+                    <div className="inline-flex items-center text-primary group-hover:underline">
+                      Learn More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          
+          <div className="text-center mt-10">
+            <Button asChild variant="outline" size="lg">
+              <Link href="/services">
+                View All Services <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+      
+      {/* Related Resources Section - New */}
+      <section className="py-16 bg-gradient-to-b from-background to-muted/10">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Resources for {industry.name} Professionals</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Access valuable insights, guides, and case studies specific to your industry
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Knowledge Base */}
+            <Link 
+              href={`/knowledge-base?search=${encodeURIComponent(industry.name)}`}
+              className="group"
+            >
+              <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                <div className="p-6">
+                  <div className="mb-4 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <BookOpen className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Knowledge Base</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Access guides and articles with best practices for {industry.name.toLowerCase()} websites and digital marketing.
+                  </p>
+                  <div className="inline-flex items-center text-primary group-hover:underline">
+                    Browse Articles <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+            
+            {/* Blog Posts */}
+            <Link 
+              href={`/blog?industry=${encodeURIComponent(industry.name)}`}
+              className="group"
+            >
+              <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                <div className="p-6">
+                  <div className="mb-4 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <FileText className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Blog Posts</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Read our latest insights and trends for the {industry.name.toLowerCase()} industry.
+                  </p>
+                  <div className="inline-flex items-center text-primary group-hover:underline">
+                    Read Blog <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+            
+            {/* Case Studies */}
+            <Link 
+              href={`/case-studies?industry=${encodeURIComponent(industry.name)}`}
+              className="group"
+            >
+              <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                <div className="p-6">
+                  <div className="mb-4 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Briefcase className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Case Studies</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Explore real-world examples of how we've helped {industry.name.toLowerCase()} businesses succeed.
+                  </p>
+                  <div className="inline-flex items-center text-primary group-hover:underline">
+                    View Case Studies <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>

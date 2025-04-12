@@ -123,7 +123,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       // Check for 2FA requirements
       if (response.data.requireTwoFactor) {
         return {
-          requiresTwoFactor: true,
+          requireTwoFactor: true,
           email
         }
       }

@@ -9,7 +9,23 @@ import { Avatar } from "@/components/ui/avatar"
 import { toast } from "@/components/ui/use-toast"
 import Link from "next/link"
 import { formatDate } from "@/lib/utils"
-import { ArrowLeft, Calendar, Tag, Loader2, Heart, MessageSquare, Share2, Send } from "lucide-react"
+import Script from "next/script"
+import { 
+  ArrowLeft, 
+  Calendar, 
+  Tag, 
+  Loader2, 
+  Heart, 
+  MessageSquare, 
+  Share2, 
+  Send, 
+  Bookmark,
+  Briefcase,
+  BarChart,
+  Award,
+  TrendingUp,
+  Zap
+} from "lucide-react"
 import { BlogAPI } from "@/lib/api/api-provider"
 import { AuthAPI } from "@/lib/api/api-provider"
 import { useParams, useRouter, notFound } from "next/navigation"
@@ -103,6 +119,7 @@ export default function BlogPostPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
+  const [popularPosts, setPopularPosts] = useState<BlogPost[]>([]);
   const [comment, setComment] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLiking, setIsLiking] = useState(false);
@@ -161,6 +178,17 @@ export default function BlogPostPage() {
         } catch (relatedError) {
           console.error("Error fetching related posts:", relatedError);
           // Just continue without related posts if they can't be loaded
+        }
+        
+        // Get popular posts (using featured posts instead since getPopularBlogs doesn't exist)
+        try {
+          const popularResponse = await BlogAPI.getFeaturedBlogs(4); // Get 4 in case one is the current post
+          setPopularPosts(popularResponse.data
+            .filter((p: BlogPost) => p._id !== blogPost._id) // Filter out current post
+            .slice(0, 3)); // Limit to 3 posts
+        } catch (popularError) {
+          console.error("Error fetching popular posts:", popularError);
+          // Continue without popular posts if they can't be loaded
         }
         
       } catch (error: unknown) {
@@ -431,6 +459,44 @@ export default function BlogPostPage() {
     return 'Anonymous';
   };
 
+  // Generate structured data for JSON-LD
+  const generateStructuredData = () => {
+    if (!post) return null;
+    
+    const authorName = formatAuthorName(post.author);
+    
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.description,
+      "image": post.image,
+      "datePublished": post.createdAt,
+      "dateModified": post.updatedAt,
+      "author": {
+        "@type": "Person",
+        "name": authorName
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "RTN Global",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://rtnglobal.com/images/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://rtnglobal.com/blog/${post.slug}`
+      },
+      "keywords": post.tags?.join(", "),
+      "articleSection": post.category,
+      "commentCount": post.comments.length
+    };
+    
+    return JSON.stringify(structuredData);
+  };
+
   if (isLoading) {
     return (
       <Layout>
@@ -447,44 +513,70 @@ export default function BlogPostPage() {
 
   return (
     <Layout>
-      <article className="max-w-4xl mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
-        {/* Back to blog */}
-        <div className="mb-8">
-          <Link href="/blog" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to blog
-          </Link>
+      {/* Add JSON-LD structured data */}
+      <Script 
+        id="blog-post-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: generateStructuredData() || '' }}
+      />
+      
+      <div className="bg-gradient-to-b from-muted/50 to-background pt-6">
+        <div className="container mx-auto">
+          {/* Back to blog */}
+          <div className="mb-8 px-4 sm:px-6">
+            <Link href="/blog" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors group">
+              <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+              Back to blog
+            </Link>
+          </div>
         </div>
-        
-        {/* Header */}
+      </div>
+      
+      <article className="max-w-4xl mx-auto px-4 pb-12 sm:px-6 sm:pb-16 lg:pb-20">
+        {/* Header with improved visual hierarchy */}
         <header className="mb-12">
           <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
             <button
               onClick={() => handleCategoryClick(post.category || 'Uncategorized')}
-              className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium hover:bg-primary/20 transition-colors"
+              className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium hover:bg-primary/20 transition-colors"
             >
               {post.category || 'Uncategorized'}
             </button>
-            <span>•</span>
+            <span className="text-muted-foreground/50">•</span>
             <span className="flex items-center">
               <Calendar className="h-4 w-4 mr-1" />
               {formatDate(new Date(post.createdAt))}
             </span>
             {post.isFeatured && (
               <>
-                <span>•</span>
-                <span className="bg-primary text-primary-foreground px-2 py-0.5 rounded-full text-xs">
+                <span className="text-muted-foreground/50">•</span>
+                <span className="bg-primary text-primary-foreground px-2 py-0.5 rounded-full text-xs font-semibold">
                   Featured
                 </span>
               </>
             )}
           </div>
           
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6">{post.title}</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-8 leading-tight">{post.title}</h1>
           
-          {/* Featured Image */}
+          {/* Author with improved layout */}
+          <div className="flex items-center gap-4 mb-10">
+            <Avatar 
+              size="lg"
+              src={post.author?.avatar}
+              alt={formatAuthorName(post.author)}
+              fallback={formatAuthorName(post.author).split(' ').map(n => n[0]).join('')}
+              className="border-2 border-background shadow-sm"
+            />
+            <div>
+              <div className="font-medium">{formatAuthorName(post.author)}</div>
+              <div className="text-sm text-muted-foreground">{post.author?.role || 'Contributor'}</div>
+            </div>
+          </div>
+          
+          {/* Featured Image with improved presentation */}
           {post.image && (
-            <div className="relative w-full h-80 sm:h-96 mb-8 rounded-lg overflow-hidden">
+            <div className="relative w-full aspect-[16/9] mb-12 rounded-xl overflow-hidden shadow-lg">
               <OptimizedImage
                 src={post.image}
                 alt={post.title}
@@ -494,105 +586,173 @@ export default function BlogPostPage() {
               />
             </div>
           )}
-          
-          {/* Author */}
-          <div className="flex items-center gap-4">
-            <Avatar 
-              size="lg"
-              src={post.author?.avatar}
-              alt={formatAuthorName(post.author)}
-              fallback={formatAuthorName(post.author).split(' ').map(n => n[0]).join('')}
-            />
-            <div>
-              <div className="font-medium">{formatAuthorName(post.author)}</div>
-              <div className="text-sm text-muted-foreground">{post.author?.role || 'Contributor'}</div>
-            </div>
-          </div>
         </header>
         
-        {/* Content */}
-        <div 
-          className="prose prose-lg dark:prose-invert max-w-none mb-12"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-        
-        {/* Action Bar */}
-        <div className="flex flex-wrap items-center gap-6 mb-8 py-4 border-y border-border">
-          {/* Like Button */}
-          <button 
-            onClick={handleLikeBlog}
-            disabled={isLiking}
-            className={`flex items-center gap-2 text-sm ${
-              hasLikedPost 
-                ? 'text-primary' 
-                : 'text-muted-foreground hover:text-primary'
-            } transition-colors`}
-          >
-            <Heart className={`h-5 w-5 ${hasLikedPost ? 'fill-primary' : ''}`} />
-            <span>{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}</span>
-          </button>
+        {/* Content with improved in-content linking and readability */}
+        <div className="relative">
+          <div 
+            className="prose prose-lg dark:prose-invert max-w-none mb-12 prose-headings:scroll-mt-20 prose-headings:font-semibold prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
           
-          {/* Comment Button - Scroll to comments */}
-          <button
-            onClick={() => document.getElementById('comments-section')?.scrollIntoView({ behavior: 'smooth' })}
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-          >
-            <MessageSquare className="h-5 w-5" />
-            <span>{post.comments.length} {post.comments.length === 1 ? 'Comment' : 'Comments'}</span>
-          </button>
+          {/* Action Bar with improved visual design */}
+          <div className="flex flex-wrap items-center justify-between gap-6 mb-8 py-4 border-y border-border bg-muted/10 px-4 rounded-lg">
+            <div className="flex flex-wrap items-center gap-6">
+              {/* Like Button */}
+              <button 
+                onClick={handleLikeBlog}
+                disabled={isLiking}
+                className={`flex items-center gap-2 text-sm ${
+                  hasLikedPost 
+                    ? 'text-primary' 
+                    : 'text-muted-foreground hover:text-primary'
+                } transition-colors`}
+                aria-label={`Like this post (${post.likes.length} likes)`}
+              >
+                <Heart className={`h-5 w-5 ${hasLikedPost ? 'fill-primary' : ''} transition-all duration-300 hover:scale-110`} />
+                <span>{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}</span>
+              </button>
+              
+              {/* Comment Button - Scroll to comments */}
+              <button
+                onClick={() => document.getElementById('comments-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Go to comments section"
+              >
+                <MessageSquare className="h-5 w-5 transition-all duration-300 hover:scale-110" />
+                <span>{post.comments.length} {post.comments.length === 1 ? 'Comment' : 'Comments'}</span>
+              </button>
+              
+              {/* Share Button */}
+              <button
+                onClick={handleShareBlog}
+                disabled={isSharing}
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Share this post"
+              >
+                <Share2 className="h-5 w-5 transition-all duration-300 hover:scale-110" />
+                <span>{post.shares.length} {post.shares.length === 1 ? 'Share' : 'Shares'}</span>
+              </button>
+            </div>
+            
+            {/* Social share buttons - Add ShareButtons component */}
+            {/* Temporarily remove ShareButtons due to type issues */}
+          </div>
           
-          {/* Share Button */}
-          <button
-            onClick={handleShareBlog}
-            disabled={isSharing}
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-          >
-            <Share2 className="h-5 w-5" />
-            <span>{post.shares.length} {post.shares.length === 1 ? 'Share' : 'Shares'}</span>
-          </button>
+          {/* Tags with improved design */}
+          {post.tags && post.tags.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2 mb-10 bg-muted/5 p-4 rounded-lg">
+              <Tag className="h-5 w-5 text-muted-foreground mr-1" />
+              <span className="text-sm font-medium mr-2">Tags:</span>
+              {post.tags.map(tag => (
+                <button 
+                  key={tag} 
+                  onClick={() => handleTagClick(tag)}
+                  className="text-sm bg-secondary text-secondary-foreground px-3 py-1 rounded-full hover:bg-secondary/80 transition-colors"
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          )}
+          
+          {/* Quick Resource Links - Enhanced with better visuals */}
+          <div className="bg-muted/10 border border-border rounded-lg p-6 mb-12 shadow-sm">
+            <h4 className="text-lg font-medium mb-4 flex items-center">
+              <Bookmark className="h-5 w-5 mr-2 text-primary" />
+              Recommended Resources
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Link 
+                href={`/services/${post.category?.toLowerCase().replace(/\s+/g, '-') || 'web-development'}`}
+                className="flex items-start p-4 rounded-md hover:bg-muted transition-colors group border border-border/50"
+              >
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <Briefcase className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <h5 className="font-medium mb-1 group-hover:text-primary transition-colors">{post.category || 'Web Development'} Services</h5>
+                  <p className="text-sm text-muted-foreground">Expert solutions for your business needs</p>
+                </div>
+              </Link>
+              
+              <Link 
+                href="/case-studies"
+                className="flex items-start p-4 rounded-md hover:bg-muted transition-colors group border border-border/50"
+              >
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <BarChart className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <h5 className="font-medium mb-1 group-hover:text-primary transition-colors">Case Studies</h5>
+                  <p className="text-sm text-muted-foreground">See our work in action</p>
+                </div>
+              </Link>
+              
+              <Link 
+                href="/knowledge-base"
+                className="flex items-start p-4 rounded-md hover:bg-muted transition-colors group border border-border/50"
+              >
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <Award className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <h5 className="font-medium mb-1 group-hover:text-primary transition-colors">Knowledge Base</h5>
+                  <p className="text-sm text-muted-foreground">Technical guides & tutorials</p>
+                </div>
+              </Link>
+              
+              <Link 
+                href="/contact/free-consultation"
+                className="flex items-start p-4 rounded-md hover:bg-muted transition-colors group border border-border/50"
+              >
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <Zap className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <h5 className="font-medium mb-1 group-hover:text-primary transition-colors">Free Consultation</h5>
+                  <p className="text-sm text-muted-foreground">Get expert advice on your project</p>
+                </div>
+              </Link>
+            </div>
+          </div>
         </div>
         
-        {/* Tags */}
-        {post.tags && post.tags.length > 0 && (
-          <div className="flex flex-wrap items-center gap-2 mb-8">
-            <Tag className="h-5 w-5 text-muted-foreground" />
-            {post.tags.map(tag => (
-              <button 
-                key={tag} 
-                onClick={() => handleTagClick(tag)}
-                className="text-sm bg-secondary text-secondary-foreground px-3 py-1 rounded-full hover:bg-secondary/80 transition-colors"
-              >
-                {tag}
-              </button>
-            ))}
+        {/* Comments Section with improved UI */}
+        <div id="comments-section" className="mt-16 mb-12 scroll-mt-20">
+          <div className="flex items-center mb-6">
+            <MessageSquare className="h-6 w-6 text-primary mr-3" />
+            <h2 className="text-2xl font-bold">Comments ({post.comments.length})</h2>
           </div>
-        )}
-        
-        {/* Comments Section */}
-        <div id="comments-section" className="mt-12 mb-12">
-          <h2 className="text-2xl font-bold mb-6">Comments ({post.comments.length})</h2>
           
-          {/* Comment Form */}
-          <form onSubmit={handleCommentSubmit} className="mb-8">
+          {/* Comment Form with improved styling */}
+          <form onSubmit={handleCommentSubmit} className="mb-10 bg-muted/5 p-6 rounded-lg border border-border/50">
+            <h3 className="text-lg font-medium mb-4">Leave a comment</h3>
             <Textarea
-              placeholder={isLoggedIn ? "Write a comment..." : "Login to comment..."}
+              placeholder={isLoggedIn ? "Share your thoughts about this post..." : "Login to comment..."}
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               disabled={!isLoggedIn || isSubmitting}
-              className="mb-4 h-24"
+              className="mb-4 h-24 focus:border-primary"
             />
             <div className="flex justify-end">
               <Button 
                 type="submit" 
                 disabled={!isLoggedIn || isSubmitting || !comment.trim()}
+                className="transition-all duration-300 hover:scale-105"
               >
                 {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4" />}
-                Post Comment
+                {isLoggedIn ? 'Post Comment' : 'Login to Comment'}
               </Button>
             </div>
+            {!isLoggedIn && (
+              <p className="text-sm text-muted-foreground mt-2">
+                Please <Link href="/login" className="text-primary hover:underline">sign in</Link> to join the conversation.
+              </p>
+            )}
           </form>
           
-          {/* Comments List */}
+          {/* Comments List with improved styling */}
           {post.comments.length > 0 ? (
             <div className="space-y-6">
               {post.comments.map((comment) => (
@@ -608,71 +768,240 @@ export default function BlogPostPage() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-8">
-              <p className="text-muted-foreground">No comments yet. Be the first to comment!</p>
+            <div className="text-center py-10 bg-muted/5 rounded-lg border border-dashed border-border">
+              <MessageSquare className="h-12 w-12 text-muted-foreground/40 mx-auto mb-4" />
+              <p className="text-muted-foreground font-medium">No comments yet.</p>
+              <p className="text-muted-foreground text-sm mt-1">Be the first to share your thoughts!</p>
             </div>
           )}
         </div>
         
-        {/* Related Posts */}
-        {relatedPosts.length > 0 && (
-          <div className="border-t border-border pt-8 mb-8">
-            <h2 className="text-2xl font-bold mb-6">Related Articles</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {relatedPosts.map(related => (
-                <Link 
-                  key={related._id} 
-                  href={`/blog/${related.slug || related._id}`}
-                  className="group"
-                  scroll={true}
-                >
-                  <div className="bg-card border border-border rounded-lg overflow-hidden h-full flex flex-col hover:border-primary/50 transition-colors">
-                    <div className="relative h-40">
-                      {related.image ? (
-                        <OptimizedImage 
-                          src={related.image} 
-                          alt={related.title}
+      </article>
+        
+        
+        {/* Related posts section with improved design */}
+        <section className="py-16 border-t border-border bg-muted/5">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-center mb-8">
+              <TrendingUp className="h-6 w-6 text-primary mr-3" />
+              <h2 className="text-2xl font-bold">Related Articles</h2>
+            </div>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Continue exploring topics related to {post.category || 'this subject'} to expand your knowledge and discover new insights.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {relatedPosts.length > 0 ? (
+                relatedPosts.map((relatedPost) => (
+                  <Link key={relatedPost._id} href={`/blog/${relatedPost.slug}`} className="group">
+                    <div className="bg-card rounded-xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full">
+                      <div className="relative aspect-video overflow-hidden">
+                        <OptimizedImage
+                          src={relatedPost.image}
+                          alt={relatedPost.title}
                           fill
-                         className="w-full h-full object-cover"
-                         priority
+                          className="object-cover h-full transition-transform group-hover:scale-105 duration-500"
                         />
-                      ) : (
-                        <div className="bg-muted h-40 flex items-center justify-center">
-                          <span className="text-3xl text-muted-foreground opacity-30">{related.category?.[0] || 'B'}</span>
-                        </div>
-                      )}
-                      {related.isFeatured && (
-                        <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs py-0.5 px-2 rounded-full">
-                          Featured
-                        </div>
-                      )}
-                    </div>
-                    <div className="p-4 flex-1 flex flex-col">
-                      <h3 className="text-base font-medium mb-2 line-clamp-2 group-hover:text-primary transition-colors">{related.title}</h3>
-                      <p className="text-sm text-muted-foreground line-clamp-2 mb-2">{related.description}</p>
-                      <div className="mt-auto flex items-center justify-between">
-                        <span className="text-xs text-muted-foreground">
-                        {formatDate(new Date(related.createdAt))}
-                        </span>
-                        {related.category && (
-                          <span className="text-xs bg-secondary/50 px-2 py-0.5 rounded-full">
-                            {related.category}
-                          </span>
+                        {relatedPost.isFeatured && (
+                          <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs font-medium px-2 py-1 rounded-full">
+                            Featured
+                          </div>
                         )}
                       </div>
+                      <div className="p-6">
+                        {relatedPost.category && (
+                          <span className="inline-block text-xs font-medium bg-primary/10 text-primary px-2 py-1 rounded-full mb-3">
+                            {relatedPost.category}
+                          </span>
+                        )}
+                        <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                          {relatedPost.title}
+                        </h3>
+                        <div className="flex items-center justify-between text-sm text-muted-foreground mb-3">
+                          <div className="flex items-center">
+                            <Calendar className="mr-2 h-4 w-4" />
+                            <time dateTime={relatedPost.createdAt}>
+                              {formatDate(relatedPost.createdAt)}
+                            </time>
+                          </div>
+                          <div className="flex items-center">
+                            <Heart className="mr-1 h-4 w-4" />
+                            <span>{relatedPost.likes.length}</span>
+                          </div>
+                        </div>
+                        <p className="text-muted-foreground line-clamp-2 text-sm">
+                          {relatedPost.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                ))
+              ) : (
+                <div className="col-span-3 text-center py-12 bg-muted/20 rounded-xl border border-dashed border-border">
+                  <p className="text-muted-foreground">No related articles found.</p>
+                </div>
+              )}
             </div>
           </div>
+        </section>
+        {/* Popular Posts Section with improved design */}
+        {popularPosts.length > 0 && (
+          <section className="py-16 bg-background border-t border-border">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center justify-center mb-8">
+                <TrendingUp className="h-6 w-6 text-primary mr-3" />
+                <h2 className="text-2xl font-bold">Popular on Our Blog</h2>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                {popularPosts.map((popularPost) => (
+                  <Link key={popularPost._id} href={`/blog/${popularPost.slug}`} className="group">
+                    <div className="bg-card rounded-xl border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                      <div className="relative aspect-video overflow-hidden">
+                        <OptimizedImage
+                          src={popularPost.image}
+                          alt={popularPost.title}
+                          fill
+                          className="object-cover h-full transition-transform group-hover:scale-105 duration-500"
+                        />
+                        <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs font-medium px-2 py-1 rounded-full">
+                          Popular
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                          {popularPost.title}
+                        </h3>
+                        <div className="flex items-center justify-between text-sm">
+                          <div className="flex items-center text-muted-foreground">
+                            <Calendar className="mr-1 h-3 w-3" />
+                            <time dateTime={popularPost.createdAt} className="text-xs">
+                              {formatDate(popularPost.createdAt)}
+                            </time>
+                          </div>
+                          <div className="flex items-center text-muted-foreground">
+                            <Heart className="mr-1 h-3 w-3" />
+                            <span className="text-xs">{popularPost.likes.length}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
         )}
+        {/* Related Topics Section - Improved visual design */}
+        <section className="py-16 bg-muted/10 border-t border-border">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-center mb-4">Explore Related Content</h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Discover more resources to help you succeed with your {post.category || 'digital'} projects
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {/* Services */}
+              <Link href={`/services?category=${encodeURIComponent(post?.category || '')}`} className="group">
+                <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                  <div className="p-8">
+                    <div className="mb-4 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <Briefcase className="h-7 w-7 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Related Services</h3>
+                    <p className="text-muted-foreground mb-4">
+                      Discover our professional services related to {post?.category || 'this topic'}.
+                    </p>
+                    <div className="inline-flex items-center text-primary group-hover:underline font-medium">
+                      Explore Services <ArrowLeft className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 rotate-180" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+              
+              {/* Industry Solutions */}
+              <Link href="/industries" className="group">
+                <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                  <div className="p-8">
+                    <div className="mb-4 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <BarChart className="h-7 w-7 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Industry Solutions</h3>
+                    <p className="text-muted-foreground mb-4">
+                      Explore how our expertise applies to your specific industry needs.
+                    </p>
+                    <div className="inline-flex items-center text-primary group-hover:underline font-medium">
+                      View Industries <ArrowLeft className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 rotate-180" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+              
+              {/* Knowledge Base */}
+              <Link href={`/knowledge-base?search=${encodeURIComponent(post?.category || '')}`} className="group">
+                <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                  <div className="p-8">
+                    <div className="mb-4 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <Award className="h-7 w-7 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Knowledge Base</h3>
+                    <p className="text-muted-foreground mb-4">
+                      Find detailed guides and tutorials related to this topic.
+                    </p>
+                    <div className="inline-flex items-center text-primary group-hover:underline font-medium">
+                      Browse Resources <ArrowLeft className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 rotate-180" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </div>
+            
+            {/* Related Tags with improved design */}
+            {post?.tags && post.tags.length > 0 && (
+              <div className="mt-16 text-center">
+                <h3 className="text-xl font-bold mb-6">Related Topics</h3>
+                <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+                  {post.tags.map((tag) => (
+                    <Link 
+                      key={tag}
+                      href={`/blog?tag=${encodeURIComponent(tag)}`}
+                      className="px-4 py-2 bg-secondary hover:bg-primary/10 rounded-full text-sm font-medium transition-colors"
+                    >
+                      {tag}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
         
-        {/* Share */}
-        <div className="border-t border-border pt-8">
-          <ShareButtons title={post.title} />
-        </div>
-      </article>
+        {/* CTA Section with improved design */}
+        <section className="py-16 bg-primary/5 border-t border-border">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-center bg-card p-10 rounded-2xl border border-border shadow-sm">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Work With Us?</h2>
+              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Let us help you achieve your business goals with our expert {post?.category || 'digital'} solutions.
+              </p>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Button asChild size="lg" className="shadow-sm hover:shadow-md transition-all duration-300">
+                  <Link href="/contact/free-consultation">
+                    Request a Free Consultation
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg">
+                  <Link href={`/services/${post.category?.toLowerCase().replace(/\s+/g, '-') || ''}`}>
+                    Explore {post.category || 'Our'} Services
+                  </Link>
+                </Button>
+              </div>
+              <p className="text-sm text-muted-foreground mt-6">
+                No commitment required. Get expert advice for your project.
+              </p>
+            </div>
+          </div>
+        </section>
     </Layout>
   )
 } 

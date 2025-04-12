@@ -397,7 +397,7 @@ export default function FreeConsultationForm() {
   const renderPersonalInfo = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div className="space-y-2">
-        <Label htmlFor="firstName">
+        <Label htmlFor="firstName" className="text-muted-foreground">
           First Name <span className="text-destructive">*</span>
         </Label>
         <Input
@@ -406,7 +406,7 @@ export default function FreeConsultationForm() {
           value={formData.firstName}
           onChange={handleInputChange}
           placeholder="Enter your first name"
-          className={errors.firstName ? "border-destructive" : ""}
+          className={`${errors.firstName ? "border-destructive" : ""} text-muted-foreground`}
           disabled={isLoggedIn && !!formData.firstName}
         />
         {errors.firstName && (
@@ -415,7 +415,7 @@ export default function FreeConsultationForm() {
       </div>
       
       <div className="space-y-2">
-        <Label htmlFor="lastName">
+        <Label htmlFor="lastName" className="text-muted-foreground">
           Last Name <span className="text-destructive">*</span>
         </Label>
         <Input
@@ -424,7 +424,7 @@ export default function FreeConsultationForm() {
           value={formData.lastName}
           onChange={handleInputChange}
           placeholder="Enter your last name"
-          className={errors.lastName ? "border-destructive" : ""}
+          className={`${errors.lastName ? "border-destructive" : ""} text-muted-foreground`}
           disabled={isLoggedIn && !!formData.lastName}
         />
         {errors.lastName && (
@@ -433,7 +433,7 @@ export default function FreeConsultationForm() {
       </div>
       
       <div className="space-y-2">
-        <Label htmlFor="email">
+        <Label htmlFor="email" className="text-muted-foreground">
           Email <span className="text-destructive">*</span>
         </Label>
         <Input
@@ -443,7 +443,7 @@ export default function FreeConsultationForm() {
           value={formData.email}
           onChange={handleInputChange}
           placeholder="your.email@example.com"
-          className={errors.email ? "border-destructive" : ""}
+          className={`${errors.email ? "border-destructive" : ""} text-muted-foreground`}
           disabled={isLoggedIn && !!formData.email}
         />
         {errors.email && (
@@ -452,7 +452,7 @@ export default function FreeConsultationForm() {
       </div>
       
       <div className="space-y-2">
-        <Label htmlFor="phone">
+        <Label htmlFor="phone" className="text-muted-foreground">
           Phone Number <span className="text-destructive">*</span>
         </Label>
         <Input
@@ -461,7 +461,7 @@ export default function FreeConsultationForm() {
           value={formData.phone}
           onChange={handleInputChange}
           placeholder="Enter your phone number"
-          className={errors.phone ? "border-destructive" : ""}
+          className={`${errors.phone ? "border-destructive" : ""} text-muted-foreground`}
         />
         {errors.phone && (
           <p className="text-sm text-destructive">{errors.phone}</p>
@@ -473,7 +473,7 @@ export default function FreeConsultationForm() {
   const renderCompanyDetails = () => (
     <div className="space-y-6">
       <div className="space-y-2">
-        <Label htmlFor="companyName">
+        <Label htmlFor="companyName" className="text-muted-foreground">
           Company Name
         </Label>
         <Input
@@ -482,11 +482,12 @@ export default function FreeConsultationForm() {
           value={formData.companyName}
           onChange={handleInputChange}
           placeholder="Your company name (optional)"
+          className={`${errors.companyName ? "border-destructive" : ""} text-muted-foreground`}
         />
       </div>
       
       <div className="space-y-2">
-        <Label htmlFor="message">
+        <Label htmlFor="message" className="text-muted-foreground">
           Additional Information
         </Label>
         <Textarea
@@ -495,7 +496,7 @@ export default function FreeConsultationForm() {
           value={formData.message}
           onChange={handleInputChange}
           placeholder="Please share any specific details or questions you would like to discuss during the consultation."
-          className="min-h-[150px]"
+          className="min-h-[150px] text-muted-foreground"
         />
       </div>
     </div>
@@ -504,7 +505,7 @@ export default function FreeConsultationForm() {
   const renderConsultationOptions = () => (
     <div className="space-y-6">
       <div className="space-y-2">
-        <Label htmlFor="consultationType">
+        <Label htmlFor="consultationType" className="text-muted-foreground">
           Consultation Type <span className="text-destructive">*</span>
         </Label>
         <Select
@@ -513,13 +514,15 @@ export default function FreeConsultationForm() {
         >
           <SelectTrigger
             id="consultationType"
-            className={errors.consultationType ? "border-destructive" : ""}
+            className={`${errors.consultationType ? "border-destructive" : ""} text-muted-foreground`}
           >
-            <SelectValue placeholder="Select consultation type" />
+            <SelectValue placeholder="Select consultation type" className="text-muted-foreground" />
           </SelectTrigger>
           <SelectContent>
             {consultationTypes.map((type) => (
-              <SelectItem key={type} value={type}>{type}</SelectItem>
+              <SelectItem key={type} value={type} className="text-muted-foreground bg-muted">
+                {type}
+              </SelectItem>
             ))}
           </SelectContent>
         </Select>
@@ -529,7 +532,7 @@ export default function FreeConsultationForm() {
       </div>
       
       <div className="space-y-2">
-        <Label htmlFor="duration">
+        <Label htmlFor="duration" className="text-muted-foreground">
           Session Duration <span className="text-destructive">*</span>
         </Label>
         <Select
@@ -539,9 +542,9 @@ export default function FreeConsultationForm() {
         >
           <SelectTrigger
             id="duration"
-            className={errors.duration ? "border-destructive" : ""}
+            className={`${errors.duration ? "border-destructive" : ""} text-muted-foreground`}
           >
-            <SelectValue placeholder="Select session duration" />
+            <SelectValue placeholder="Select session duration" className="text-muted-foreground" />
           </SelectTrigger>
           <SelectContent>
             {durationOptions.map((option) => (
@@ -549,6 +552,7 @@ export default function FreeConsultationForm() {
                 key={option.value} 
                 value={option.value.toString()}
                 disabled={isFirstConsultation && option.value !== 30}
+                className="text-muted-foreground bg-muted"
               >
                 {option.label} {!isFirstConsultation && `- $${option.price}`}
                 {isFirstConsultation && option.value === 30 && " (Free first consultation)"}
@@ -562,7 +566,7 @@ export default function FreeConsultationForm() {
       </div>
       
       <div className="space-y-2">
-        <Label htmlFor="preferredDate">
+        <Label htmlFor="preferredDate" className="text-muted-foreground">
           Preferred Date <span className="text-destructive">*</span>
         </Label>
         <Input
@@ -571,7 +575,7 @@ export default function FreeConsultationForm() {
           type="date"
           value={formData.preferredDate}
           onChange={handleDateChange}
-          className={errors.preferredDate ? "border-destructive" : ""}
+          className={`${errors.preferredDate ? "border-destructive" : ""} text-muted-foreground bg-muted`}
           min={new Date().toISOString().split('T')[0]}
         />
         {errors.preferredDate && (
@@ -580,7 +584,7 @@ export default function FreeConsultationForm() {
       </div>
       
       <div className="space-y-2">
-        <Label>
+        <Label htmlFor="preferredTime" className="text-muted-foreground"  >
           Preferred Time Slot <span className="text-destructive">*</span>
         </Label>
         {formData.preferredDate ? (
@@ -590,7 +594,7 @@ export default function FreeConsultationForm() {
                 <Badge
                   key={time}
                   variant={formData.preferredTime === time ? "default" : "outline"}
-                  className="py-2 px-3 cursor-pointer"
+                  className="py-2 px-3 cursor-pointer text-muted-foreground bg-muted"
                   onClick={() => handleTimeSelect(time)}
                 >
                   <Clock className="h-3 w-3 mr-1" />
@@ -629,19 +633,19 @@ export default function FreeConsultationForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <h4 className="text-sm font-medium text-muted-foreground">Name:</h4>
-              <p className="text-sm">{formData.firstName} {formData.lastName}</p>
+              <p className="text-sm text-muted-foreground">{formData.firstName} {formData.lastName}</p>
             </div>
             <div>
               <h4 className="text-sm font-medium text-muted-foreground">Email:</h4>
-              <p className="text-sm">{formData.email}</p>
+              <p className="text-sm text-muted-foreground">{formData.email}</p>
             </div>
             <div>
               <h4 className="text-sm font-medium text-muted-foreground">Phone:</h4>
-              <p className="text-sm">{formData.phone}</p>
+              <p className="text-sm text-muted-foreground">{formData.phone}</p>
             </div>
             <div>
               <h4 className="text-sm font-medium text-muted-foreground">Company:</h4>
-              <p className="text-sm">{formData.companyName || 'N/A'}</p>
+              <p className="text-sm text-muted-foreground">{formData.companyName || 'N/A'}</p>
             </div>
           </div>
           
@@ -650,23 +654,23 @@ export default function FreeConsultationForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <h4 className="text-sm font-medium text-muted-foreground">Consultation Type:</h4>
-              <p className="text-sm">{formData.consultationType}</p>
+              <p className="text-sm text-muted-foreground">{formData.consultationType}</p>
             </div>
             <div>
               <h4 className="text-sm font-medium text-muted-foreground">Duration:</h4>
-              <p className="text-sm">
+              <p className="text-sm text-muted-foreground">
                 {durationOptions.find(option => option.value === formData.duration)?.label || formData.duration + ' Minutes'}
               </p>
             </div>
             <div>
               <h4 className="text-sm font-medium text-muted-foreground">Date:</h4>
-              <p className="text-sm">
+              <p className="text-sm text-muted-foreground">
                 {formData.preferredDate ? format(new Date(formData.preferredDate), 'PPP') : 'Not selected'}
               </p>
             </div>
             <div>
               <h4 className="text-sm font-medium text-muted-foreground">Time:</h4>
-              <p className="text-sm">{formData.preferredTime || 'Not selected'}</p>
+              <p className="text-sm text-muted-foreground">{formData.preferredTime || 'Not selected'}</p>
             </div>
           </div>
           
@@ -675,7 +679,7 @@ export default function FreeConsultationForm() {
               <div className="border-t my-4"></div>
               <div>
                 <h4 className="text-sm font-medium text-muted-foreground">Additional Information:</h4>
-                <p className="text-sm">{formData.message}</p>
+                <p className="text-sm text-muted-foreground">{formData.message}</p>
               </div>
             </>
           )}
@@ -687,7 +691,7 @@ export default function FreeConsultationForm() {
           <h4 className="font-medium">
             {isFirstConsultation ? 'Free Consultation' : 'Paid Consultation'}
           </h4>
-          <p className="text-sm mt-1">
+          <p className="text-sm mt-1 text-muted-foreground">
             {isFirstConsultation 
               ? 'This will be your first free consultation with us.' 
               : `This consultation will be charged at $${durationOptions.find(opt => opt.value === formData.duration)?.price || 0}.`}
@@ -778,7 +782,7 @@ export default function FreeConsultationForm() {
                 <Button
                   type="submit"
                   disabled={isSubmitting || !isLoggedIn || !submitEnabled}
-                  className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600"
+                  className="bg-gradient-to-r from-primary to-accent hover:from-primary hover:to-accent"
                 >
                   {isSubmitting ? (
                     <>
@@ -793,7 +797,7 @@ export default function FreeConsultationForm() {
                 <Button
                   type="button"
                   onClick={handleNext}
-                  className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600"
+                  className="bg-gradient-to-r from-primary to-accent hover:from-primary hover:to-accent"
                 >
                   Next
                   <ChevronRight className="ml-2 h-4 w-4" />
@@ -856,15 +860,15 @@ export default function FreeConsultationForm() {
       )}
       
       <div className="py-8">
-        <h3 className="text-xl font-bold text-center mb-6">Our Consultation Process</h3>
+        <h3 className="text-xl font-bold text-primary text-center mb-6">Our Consultation Process</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {consultationProcess.map((step, index) => (
             <Card key={index} className="transition-all hover:shadow-lg hover:translate-y-[-5px]">
               <CardContent className="pt-6 text-center">
-                <div className="mx-auto mb-4 w-12 h-12 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center">
+                <div className="mx-auto mb-4 w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center">
                   {step.icon}
                 </div>
-                <h4 className="font-bold mb-2">{step.title}</h4>
+                <h4 className="font-bold mb-2 text-muted-foreground">{step.title}</h4>
                 <p className="text-sm text-muted-foreground">{step.description}</p>
               </CardContent>
             </Card>
@@ -877,8 +881,8 @@ export default function FreeConsultationForm() {
           <CardTitle>Why Choose Our Consultation?</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="mb-4">
-            <strong>RTN Global</strong> offers expert guidance tailored to your needs. Whether you&apos;re looking for 
+          <p className="mb-4 text-muted-foreground">
+            <strong className="text-primary">RTN Global</strong> offers expert guidance tailored to your needs. Whether you&apos;re looking for 
             strategic advice, professional insights, or a roadmap for success, we provide consultations that deliver 
             real results.
           </p>
@@ -889,7 +893,7 @@ export default function FreeConsultationForm() {
                 <Star className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <h4 className="font-medium">Personalized Approach</h4>
+                <h4 className="font-bold text-muted-foreground">Personalized Approach</h4>
                 <p className="text-sm text-muted-foreground">Get advice tailored to your goals and challenges.</p>
               </div>
             </div>
@@ -899,7 +903,7 @@ export default function FreeConsultationForm() {
                 <School className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <h4 className="font-medium">Experienced Professionals</h4>
+                <h4 className="font-bold text-muted-foreground">Experienced Professionals</h4>
                 <p className="text-sm text-muted-foreground">Work with industry experts who understand your needs.</p>
               </div>
             </div>
@@ -909,7 +913,7 @@ export default function FreeConsultationForm() {
                 <DollarSign className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <h4 className="font-medium">Flexible & Affordable</h4>
+                <h4 className="font-bold text-muted-foreground">Flexible & Affordable</h4>
                 <p className="text-sm text-muted-foreground">Choose a consultation length that suits your budget.</p>
               </div>
             </div>

@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import Link from "next/link"
 import { formatDate } from "@/lib/utils"
-import { ArrowRight, Search, ChevronLeft, ChevronRight, Loader2, Tag } from "lucide-react"
+import { ArrowRight, Search, ChevronLeft, ChevronRight, Loader2, Tag, Users2, Wrench } from "lucide-react"
 import { BlogAPI } from "@/lib/api/api-provider"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Chip } from "@/components/ui/chip"
@@ -249,28 +249,28 @@ export default function BlogPage() {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative py-20 bg-muted/50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section - Improved vertical spacing and container width */}
+      <section className="relative py-16 sm:py-24 bg-muted/50">
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Our Blog</h1>
-            <p className="mt-6 text-xl text-muted-foreground">
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">Our Blog</h1>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
               Insights, tips, and the latest trends in web development and digital marketing.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Blog Content */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-12">
-            {/* Main Content */}
-            <div className="lg:w-3/4">
-              {/* Active Filters */}
+      {/* Blog Content - Improved spacing, grid layout, and responsiveness */}
+      <section className="py-12 md:py-16 lg:py-20">
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            {/* Main Content - Adjusted column span */}
+            <div className="lg:col-span-8">
+              {/* Active Filters - Improved spacing and alignment */}
               {(category !== 'All' || tag || searchQuery) && (
-                <div className="mb-6 flex flex-wrap items-center gap-2">
-                  <span className="text-sm text-muted-foreground">Active filters:</span>
+                <div className="mb-8 flex flex-wrap items-center gap-2">
+                  <span className="text-sm text-muted-foreground font-medium">Active filters:</span>
                   {category !== 'All' && (
                     <Chip 
                       label={`Category: ${category}`} 
@@ -295,9 +295,9 @@ export default function BlogPage() {
                 </div>
               )}
               
-              {/* Categories Nav (Mobile) */}
-              <div className="block lg:hidden mb-8 overflow-x-auto">
-                <div className="flex space-x-2 pb-2">
+              {/* Categories Nav (Mobile) - Improved scrolling behavior */}
+              <div className="lg:hidden mb-8 -mx-4 px-4 overflow-x-auto scrollbar-hide">
+                <div className="flex space-x-2 pb-2 min-w-max">
                   {categories.map((cat) => (
                     <Chip
                       key={cat}
@@ -311,7 +311,7 @@ export default function BlogPage() {
                   
                   {/* Add the Tags chip/link */}
                   <Link href="/blog/tag">
-                    <Chip variant="outline" className="flex items-center gap-1" label="Tags">
+                    <Chip variant="outline" className="flex items-center gap-1 whitespace-nowrap" label="Tags">
                       <Tag className="h-3 w-3" />
                       Tags
                     </Chip>
@@ -319,26 +319,27 @@ export default function BlogPage() {
                 </div>
               </div>
               
-              {/* Loading, Error, or No Results */}
+              {/* Loading, Error, or No Results - Consistent height and better alignment */}
               {isLoading ? (
-                <div className="flex justify-center items-center py-20">
-                  <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                <div className="flex justify-center items-center py-32 bg-card/50 rounded-lg border border-border/50">
+                  <Loader2 className="h-10 w-10 animate-spin text-primary/70" />
                 </div>
               ) : error ? (
-                <div className="text-center py-12 bg-destructive/10 rounded-lg border border-destructive/20 p-6">
-                  <h3 className="text-xl font-medium mb-2">Error Loading Blog Posts</h3>
-                  <p className="text-muted-foreground mb-4">{error}</p>
+                <div className="text-center py-16 bg-destructive/10 rounded-lg border border-destructive/20 p-8">
+                  <h3 className="text-xl font-medium mb-3">Error Loading Blog Posts</h3>
+                  <p className="text-muted-foreground mb-6 max-w-md mx-auto">{error}</p>
                   <Button 
                     onClick={() => router.refresh()}
                     variant="outline"
+                    size="lg"
                   >
                     Try Again
                   </Button>
                 </div>
               ) : posts.length === 0 ? (
-                <div className="text-center py-12">
-                  <h3 className="text-xl font-medium mb-2">No posts found</h3>
-                  <p className="text-muted-foreground">
+                <div className="text-center py-16 bg-card rounded-lg border border-border p-8">
+                  <h3 className="text-xl font-medium mb-3">No posts found</h3>
+                  <p className="text-muted-foreground max-w-md mx-auto">
                     {searchQuery 
                       ? `No results found for "${searchQuery}". Try a different search term.` 
                       : tag 
@@ -349,54 +350,54 @@ export default function BlogPage() {
                   </p>
                 </div>
               ) : (
-                /* Blog Posts Grid */
-                <div className="grid md:grid-cols-2 gap-8">
+                /* Blog Posts Grid - Improved grid layout and card design */
+                <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
                   {posts.map((post) => (
-                    <article key={post._id} className="bg-card border border-border rounded-lg overflow-hidden">
-                      <div className="relative h-48">
+                    <article key={post._id} className="bg-card border border-border rounded-xl overflow-hidden flex flex-col h-full hover:shadow-md transition-shadow duration-200">
+                      <div className="relative h-52 overflow-hidden">
                         {post.image ? (
                           <OptimizedImage
                             src={post.image}
                             alt={post.title}
                             fill
-                            className="h-full object-cover"
+                            className="h-full object-cover transition-transform hover:scale-105 duration-300"
                           />
                         ) : (
-                          <div className="bg-muted h-48 flex items-center justify-center">
+                          <div className="bg-muted h-full flex items-center justify-center">
                             <span className="text-3xl text-muted-foreground opacity-30">{post.category?.[0] || 'B'}</span>
                           </div>
                         )}
                         {post.isFeatured && (
-                          <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs py-1 px-2 rounded-full">
+                          <div className="absolute top-3 right-3 bg-primary text-primary-foreground text-xs py-1 px-3 rounded-full font-medium">
                             Featured
                           </div>
                         )}
                       </div>
-                      <div className="p-6">
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                      <div className="p-5 sm:p-6 flex flex-col flex-grow">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
                           <span>{formatDate(new Date(post.createdAt))}</span>
                           <span>•</span>
                           <span 
-                            className="hover:text-primary cursor-pointer"
+                            className="hover:text-primary cursor-pointer font-medium"
                             onClick={() => handleCategoryChange(post.category || 'Uncategorized')}
                           >
                             {post.category || 'Uncategorized'}
                           </span>
                         </div>
-                        <h2 className="text-xl font-bold mb-2 line-clamp-2">
+                        <h2 className="text-xl font-bold mb-3 line-clamp-2 hover:text-primary transition-colors">
                           <Link href={`/blog/${post.slug || post._id}`} className="hover:text-primary transition-colors" scroll={true}>
                             {post.title}
                           </Link>
                         </h2>
-                        <p className="text-muted-foreground mb-4 line-clamp-3">{post.description}</p>
+                        <p className="text-muted-foreground mb-4 line-clamp-3 text-sm flex-grow">{post.description}</p>
                         
-                        {/* Tags */}
+                        {/* Tags - Improved spacing and styling */}
                         {post.tags && post.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-1 mb-3">
+                          <div className="flex flex-wrap gap-1.5 mb-4">
                             {post.tags.slice(0, 3).map(tag => (
                               <span
                                 key={tag}
-                                className="px-2 py-0.5 text-xs bg-secondary text-secondary-foreground rounded-full cursor-pointer hover:bg-secondary/80"
+                                className="px-2 py-0.5 text-xs bg-secondary text-secondary-foreground rounded-full cursor-pointer hover:bg-secondary/80 transition-colors"
                                 onClick={() => handleTagSelect(tag)}
                               >
                                 {tag}
@@ -408,21 +409,25 @@ export default function BlogPage() {
                           </div>
                         )}
                         
-                        <div className="flex justify-between items-center">
-                          <div className="flex items-center gap-4">
-                          {post.author?.avatar && (
-                            <OptimizedImage
-                              src={post.author.avatar}
-                              alt={post.author.name}
-                              className="w-6 h-6 rounded-full"
-                              fill
-                            />
-                          )}
-                          <span className="text-sm text-muted-foreground">
-                            {post.author?.name || 'RTN Global'}
-                          </span>
+                        <div className="flex justify-between items-center mt-auto pt-4 border-t border-border/50">
+                          <div className="flex items-center gap-2.5">
+                            {post.author?.avatar ? (
+                              <OptimizedImage
+                                src={post.author.avatar}
+                                alt={post.author.name}
+                                className="w-7 h-7 rounded-full object-cover"
+                                fill
+                              />
+                            ) : (
+                              <div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center">
+                                <span className="text-xs text-primary">{post.author?.name?.[0] || 'R'}</span>
+                              </div>
+                            )}
+                            <span className="text-sm text-muted-foreground font-medium">
+                              {post.author?.name || 'RTN Global'}
+                            </span>
                           </div>
-                          <Link href={`/blog/${post.slug || post._id}`} className="text-primary hover:underline text-sm inline-flex items-center" scroll={true}>
+                          <Link href={`/blog/${post.slug || post._id}`} className="text-primary hover:underline text-sm font-medium inline-flex items-center" scroll={true}>
                             Read more <ArrowRight className="ml-1 h-4 w-4" />
                           </Link>
                         </div>
@@ -432,28 +437,29 @@ export default function BlogPage() {
                 </div>
               )}
               
-              {/* Pagination */}
+              {/* Pagination - Improved spacing and responsive design */}
               {!isLoading && posts.length > 0 && (
                 <div className="mt-12 flex justify-center">
-                  <div className="flex space-x-1">
+                  <div className="flex flex-wrap justify-center gap-1.5">
                     <Button 
                       variant="outline" 
                       size="icon" 
                       disabled={page === 1}
                       onClick={() => router.push(buildQueryString(page - 1))}
+                      className="h-9 w-9"
                     >
                       <ChevronLeft className="h-4 w-4" />
                     </Button>
                     
                     {getPaginationItems().map((item, index) => (
                       item === '...' ? (
-                        <span key={`ellipsis-${index}`} className="flex items-center px-3 py-2">...</span>
+                        <span key={`ellipsis-${index}`} className="flex items-center px-3 py-2 text-muted-foreground">...</span>
                       ) : (
                         <Button 
                           key={`page-${item}`}
-                          variant="outline" 
+                          variant={item === page ? 'default' : 'outline'} 
                           size="sm" 
-                          className={item === page ? 'bg-primary text-primary-foreground' : ''}
+                          className={`h-9 w-9 ${item === page ? 'bg-primary text-primary-foreground' : ''}`}
                           onClick={() => router.push(buildQueryString(item as number))}
                         >
                           {item}
@@ -466,6 +472,7 @@ export default function BlogPage() {
                       size="icon" 
                       disabled={page === totalPages}
                       onClick={() => router.push(buildQueryString(page + 1))}
+                      className="h-9 w-9"
                     >
                       <ChevronRight className="h-4 w-4" />
                     </Button>
@@ -474,160 +481,424 @@ export default function BlogPage() {
               )}
             </div>
             
-            {/* Sidebar */}
-            <div className="lg:w-1/4">
-              {/* Search */}
-              <div className="mb-8">
-                <h3 className="text-lg font-semibold mb-4">Search</h3>
-                <form onSubmit={handleSearch} className="relative">
+            {/* Sidebar - Improved layout and consistency */}
+            <div className="lg:col-span-4 space-y-6">
+              {/* Search box */}
+              <div className="bg-card rounded-xl border border-border p-6">
+                <h3 className="text-lg font-bold mb-4">Search Posts</h3>
+                <form onSubmit={handleSearch} className="flex gap-2">
                   <Input
                     type="search"
-                    placeholder="Search blog..."
-                    className="pr-10"
+                    placeholder="Search..."
+                    className="flex-1"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
-                  <Button 
-                    type="submit" 
-                    variant="ghost" 
-                    size="icon" 
-                    className="absolute right-0 top-0"
-                  >
-                    <Search className="h-4 w-4 text-muted-foreground" />
+                  <Button type="submit" size="icon" variant="secondary">
+                    <Search className="h-4 w-4" />
+                    <span className="sr-only">Search</span>
                   </Button>
                 </form>
               </div>
               
-              {/* Categories (Desktop) */}
-              <div className="hidden lg:block mb-8">
-                <h3 className="text-lg font-semibold mb-4">Categories</h3>
-                <ul className="space-y-2">
-                  {categories.map((cat) => (
-                    <li key={cat}>
-                      <button
-                        onClick={() => handleCategoryChange(cat)}
-                        className={`text-sm hover:text-primary transition-colors ${
-                          cat === category ? 'text-primary font-medium' : 'text-muted-foreground'
-                        }`}
-                      >
-                        {cat}
-                      </button>
-                    </li>
+              {/* Categories - Desktop view */}
+              <div className="hidden lg:block bg-card rounded-xl border border-border p-6">
+                <h3 className="text-lg font-bold mb-4">Categories</h3>
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((categoryName, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleCategoryChange(categoryName)}
+                      className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
+                        category === categoryName
+                          ? 'bg-primary/90 text-primary-foreground'
+                          : 'bg-muted hover:bg-primary/10 hover:text-primary'
+                      }`}
+                    >
+                      {categoryName}
+                    </button>
                   ))}
-                </ul>
-                
-                {/* Add this divider and link to the tags page */}
-                <div className="mt-4 pt-4 border-t border-border">
-                  <Link
-                    href="/blog/tag"
-                    className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80"
-                  >
-                    <Tag className="h-4 w-4 mr-2" />
-                    Browse by tags
-                  </Link>
                 </div>
               </div>
               
-              {/* Recent Posts */}
-              <div className="mb-8">
-                <h3 className="text-lg font-semibold mb-4">Featured Posts</h3>
-                {recentPosts.length === 0 ? (
-                  <p className="text-sm text-muted-foreground">No featured posts available.</p>
-                ) : (
-                  <ul className="space-y-4">
-                    {recentPosts.map((post) => (
-                      <li key={post._id}>
-                        <Link href={`/blog/${post.slug || post._id}`} className="hover:text-primary transition-colors">
-                          <h4 className="text-sm font-medium line-clamp-2">{post.title}</h4>
-                          <div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
-                            <span>{formatDate(new Date(post.createdAt))}</span>
-                            <span>•</span>
-                            <span>{post.category || 'Uncategorized'}</span>
-                          </div>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-              
-              {/* Newsletter */}
-              <div className="mb-8 bg-card border border-border rounded-lg p-6">
-                <h3 className="text-lg font-semibold mb-2">Subscribe to Our Newsletter</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Get the latest articles and news delivered to your inbox.
-                </p>
-                <div className="space-y-3">
-                  <Input
-                    type="email"
-                    placeholder="Your email address"
-                  />
-                  <Button className="w-full">Subscribe</Button>
+              {/* Content Topics - Internal linking */}
+              <div className="bg-card rounded-xl border border-border p-6">
+                <h3 className="text-lg font-bold mb-4">Explore Topics</h3>
+                <div className="space-y-5">
+                  <div>
+                    <h4 className="font-medium text-xs uppercase text-muted-foreground mb-2.5 tracking-wider">Services</h4>
+                    <div className="flex flex-wrap gap-2">
+                      <Link href="/services/web-development" className="text-sm bg-muted hover:bg-primary/10 hover:text-primary px-3 py-1.5 rounded-full transition-colors">
+                        Web Development
+                      </Link>
+                      <Link href="/services/digital-marketing" className="text-sm bg-muted hover:bg-primary/10 hover:text-primary px-3 py-1.5 rounded-full transition-colors">
+                        Digital Marketing
+                      </Link>
+                      <Link href="/services/ui-ux-design" className="text-sm bg-muted hover:bg-primary/10 hover:text-primary px-3 py-1.5 rounded-full transition-colors">
+                        UI/UX Design
+                      </Link>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium text-xs uppercase text-muted-foreground mb-2.5 tracking-wider">Industries</h4>
+                    <div className="flex flex-wrap gap-2">
+                      <Link href="/industries/e-commerce" className="text-sm bg-muted hover:bg-primary/10 hover:text-primary px-3 py-1.5 rounded-full transition-colors">
+                        E-Commerce
+                      </Link>
+                      <Link href="/industries/healthcare" className="text-sm bg-muted hover:bg-primary/10 hover:text-primary px-3 py-1.5 rounded-full transition-colors">
+                        Healthcare
+                      </Link>
+                      <Link href="/industries/finance" className="text-sm bg-muted hover:bg-primary/10 hover:text-primary px-3 py-1.5 rounded-full transition-colors">
+                        Finance
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
               
               {/* Popular Tags */}
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Popular Tags</h3>
+              <div className="bg-card rounded-xl border border-border p-6">
+                <h3 className="text-lg font-bold mb-4">Popular Tags</h3>
                 <div className="flex flex-wrap gap-2">
                   {popularTags.length > 0 ? (
-                    popularTags.map((tagItem) => (
+                    popularTags.map((tagItem, index) => (
                       <button
-                        key={tagItem.name}
+                        key={index}
                         onClick={() => handleTagSelect(tagItem.name)}
-                        className={`px-3 py-1 text-xs rounded-full hover:bg-secondary/80 transition-colors ${
-                          tagItem.name === tag ? 'bg-primary text-primary-foreground' : 'bg-secondary text-secondary-foreground'
+                        className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-sm transition-colors ${
+                          tag === tagItem.name
+                            ? 'bg-primary/90 text-primary-foreground'
+                            : 'bg-muted hover:bg-primary/10 hover:text-primary'
                         }`}
                       >
+                        <Tag className="h-3 w-3" />
                         {tagItem.name}
-                        {tagItem.count > 0 && <span className="ml-1 opacity-60">({tagItem.count})</span>}
+                        <span className="text-xs opacity-70">({tagItem.count})</span>
                       </button>
                     ))
                   ) : (
-                    // Fallback tags if API doesn't return any
-                    ['SEO', 'React', 'Marketing', 'Design', 'Mobile', 'Social Media', 'Email', 'Content', 'Strategy'].map((tagName) => (
-                      <button
-                        key={tagName}
-                        onClick={() => handleTagSelect(tagName)}
-                        className={`px-3 py-1 text-xs bg-secondary text-secondary-foreground rounded-full hover:bg-secondary/80 transition-colors ${
-                          tagName === tag ? 'bg-primary text-primary-foreground' : ''
-                        }`}
-                      >
-                        {tagName}
-                      </button>
-                    ))
+                    <p className="text-muted-foreground text-sm">No tags available</p>
                   )}
                 </div>
-                
-                {/* Add this new link to view all tags */}
-                <Link
-                  href="/blog/tag"
-                  className="mt-4 inline-flex items-center text-sm text-primary hover:underline"
+              </div>
+              
+              {/* Recent Posts - Improved card design */}
+              <div className="bg-card rounded-xl border border-border p-6">
+                <h3 className="text-lg font-bold mb-4">Recent Posts</h3>
+                <div className="space-y-4">
+                  {recentPosts.length > 0 ? (
+                    recentPosts.map((post) => (
+                      <Link
+                        key={post._id}
+                        href={`/blog/${post.slug || post._id}`}
+                        className="flex gap-3 group p-2 -m-2 rounded-lg hover:bg-muted/50 transition-colors"
+                      >
+                        <div className="relative h-16 w-16 rounded-md overflow-hidden flex-shrink-0">
+                          {post.image ? (
+                            <OptimizedImage
+                              src={post.image}
+                              fill
+                              alt={post.title}
+                              className="object-cover h-full transition-transform group-hover:scale-105 duration-200"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-primary/10 flex items-center justify-center">
+                              <span className="text-lg text-primary/50">{post.title.charAt(0)}</span>
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="text-sm font-medium line-clamp-2 group-hover:text-primary transition-colors">
+                            {post.title}
+                          </h4>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            {formatDate(new Date(post.createdAt))}
+                          </p>
+                        </div>
+                      </Link>
+                    ))
+                  ) : (
+                    <p className="text-muted-foreground text-sm">No recent posts available</p>
+                  )}
+                </div>
+              </div>
+              
+              {/* Popular Services - Enhanced Internal Linking */}
+              <div className="bg-card rounded-xl border border-border p-6">
+                <h3 className="text-lg font-bold mb-4">Explore Our Services</h3>
+                <div className="space-y-2">
+                  <Link 
+                    href="/services/web-development" 
+                    className="block p-3 hover:bg-primary/5 rounded-md transition-colors"
+                  >
+                    <h4 className="font-medium">Web Development</h4>
+                    <p className="text-sm text-muted-foreground mt-1">Custom websites & web applications</p>
+                  </Link>
+                  <Link 
+                    href="/services/mobile-development" 
+                    className="block p-3 hover:bg-primary/5 rounded-md transition-colors"
+                  >
+                    <h4 className="font-medium">Mobile Apps</h4>
+                    <p className="text-sm text-muted-foreground mt-1">iOS & Android app solutions</p>
+                  </Link>
+                  <Link 
+                    href="/services/digital-marketing" 
+                    className="block p-3 hover:bg-primary/5 rounded-md transition-colors"
+                  >
+                    <h4 className="font-medium">Digital Marketing</h4>
+                    <p className="text-sm text-muted-foreground mt-1">SEO, SEM & content strategy</p>
+                  </Link>
+                </div>
+                <div className="mt-4 pt-4 border-t border-border/60">
+                  <Link href="/services" className="text-primary text-sm flex items-center hover:underline">
+                    View All Services <ArrowRight className="ml-1 h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Strategic Cross-Content Section - Improved layout and consistency */}
+      <section className="py-16 sm:py-20 bg-muted/20 border-t border-border">
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Discover More Resources</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Explore our comprehensive resources for services, case studies, and industry insights
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {/* Service Solutions */}
+            <div className="bg-card rounded-xl p-6 border border-border hover:shadow-md transition-all duration-300 flex flex-col">
+              <h3 className="text-xl font-bold mb-3">Our Services</h3>
+              <p className="text-muted-foreground mb-6">
+                Discover our comprehensive range of web development and digital marketing services designed to help your business grow.
+              </p>
+              <div className="space-y-2.5 mb-6">
+                <Link href="/services/web-development" className="flex items-center text-sm hover:text-primary transition-colors">
+                  <ArrowRight className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
+                  <span>Web Development Solutions</span>
+                </Link>
+                <Link href="/services/digital-marketing" className="flex items-center text-sm hover:text-primary transition-colors">
+                  <ArrowRight className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
+                  <span>Digital Marketing Strategies</span>
+                </Link>
+                <Link href="/services/ui-ux-design" className="flex items-center text-sm hover:text-primary transition-colors">
+                  <ArrowRight className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
+                  <span>UI/UX Design Services</span>
+                </Link>
+              </div>
+              <Link 
+                href="/services" 
+                className="mt-auto inline-flex items-center justify-center px-4 py-2 rounded-md bg-primary/10 hover:bg-primary/20 text-primary text-sm font-medium transition-colors"
+              >
+                View All Services
+              </Link>
+            </div>
+            
+            {/* Case Studies */}
+            <div className="bg-card rounded-xl p-6 border border-border hover:shadow-md transition-all duration-300 flex flex-col">
+              <h3 className="text-xl font-bold mb-3">Client Success Stories</h3>
+              <p className="text-muted-foreground mb-6">
+                See how we've helped businesses like yours achieve their goals with our tailored digital solutions.
+              </p>
+              <div className="space-y-2.5 mb-6">
+                <Link href="/case-studies?category=e-commerce" className="flex items-center text-sm hover:text-primary transition-colors">
+                  <ArrowRight className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
+                  <span>E-Commerce Success Stories</span>
+                </Link>
+                <Link href="/case-studies?category=healthcare" className="flex items-center text-sm hover:text-primary transition-colors">
+                  <ArrowRight className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
+                  <span>Healthcare Transformations</span>
+                </Link>
+                <Link href="/case-studies?category=saas" className="flex items-center text-sm hover:text-primary transition-colors">
+                  <ArrowRight className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
+                  <span>SaaS Platform Case Studies</span>
+                </Link>
+              </div>
+              <Link 
+                href="/case-studies" 
+                className="mt-auto inline-flex items-center justify-center px-4 py-2 rounded-md bg-primary/10 hover:bg-primary/20 text-primary text-sm font-medium transition-colors"
+              >
+                Browse Case Studies
+              </Link>
+            </div>
+            
+            {/* Resources */}
+            <div className="bg-card rounded-xl p-6 border border-border hover:shadow-md transition-all duration-300 flex flex-col">
+              <h3 className="text-xl font-bold mb-3">Free Resources</h3>
+              <p className="text-muted-foreground mb-6">
+                Access valuable guides, templates, and tools to help you implement effective digital strategies.
+              </p>
+              <div className="space-y-2.5 mb-6">
+                <Link href="/resources?type=guides" className="flex items-center text-sm hover:text-primary transition-colors">
+                  <ArrowRight className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
+                  <span>Digital Strategy Guides</span>
+                </Link>
+                <Link href="/knowledge-base/tutorials" className="flex items-center text-sm hover:text-primary transition-colors">
+                  <ArrowRight className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
+                  <span>Technical Tutorials</span>
+                </Link>
+                <Link href="/resources?type=templates" className="flex items-center text-sm hover:text-primary transition-colors">
+                  <ArrowRight className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
+                  <span>Free Templates & Tools</span>
+                </Link>
+              </div>
+              <Link 
+                href="/resources" 
+                className="mt-auto inline-flex items-center justify-center px-4 py-2 rounded-md bg-primary/10 hover:bg-primary/20 text-primary text-sm font-medium transition-colors"
+              >
+                Access Resources
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Explore More Resources - Improved layout with better card design */}
+      <section className="py-16 border-t border-border">
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+          <h2 className="text-3xl font-bold text-center mb-12">Explore More Resources</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {/* Column 1: Industries We Serve */}
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="text-xl font-bold mb-5 flex items-center">
+                <Users2 className="mr-2 h-5 w-5 text-primary flex-shrink-0" />
+                Industries We Serve
+              </h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/industries/e-commerce" className="text-primary hover:underline flex items-center group">
+                    <ArrowRight className="mr-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" /> 
+                    E-Commerce Solutions
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/industries/healthcare" className="text-primary hover:underline flex items-center group">
+                    <ArrowRight className="mr-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" /> 
+                    Healthcare Technology
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/industries/finance" className="text-primary hover:underline flex items-center group">
+                    <ArrowRight className="mr-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" /> 
+                    Financial Services
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/industries/education" className="text-primary hover:underline flex items-center group">
+                    <ArrowRight className="mr-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" /> 
+                    Educational Platforms
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/industries/real-estate" className="text-primary hover:underline flex items-center group">
+                    <ArrowRight className="mr-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" /> 
+                    Real Estate Technology
+                  </Link>
+                </li>
+              </ul>
+              <Link href="/industries" className="block text-sm text-muted-foreground hover:underline mt-4 pt-4 border-t border-border/60">
+                View all industries →
+              </Link>
+            </div>
+            
+            {/* Column 2: Popular Services */}
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="text-xl font-bold mb-5 flex items-center">
+                <Wrench className="mr-2 h-5 w-5 text-primary flex-shrink-0" />
+                Our Core Services
+              </h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/services/wix-development" className="text-primary hover:underline flex items-center group">
+                    <ArrowRight className="mr-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" /> 
+                    Premium Wix Development
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/mern-stack" className="text-primary hover:underline flex items-center group">
+                    <ArrowRight className="mr-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" /> 
+                    MERN Stack Development
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/react-native" className="text-primary hover:underline flex items-center group">
+                    <ArrowRight className="mr-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" /> 
+                    React Native App Development
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/ui-ux-design" className="text-primary hover:underline flex items-center group">
+                    <ArrowRight className="mr-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" /> 
+                    UI/UX Design Services
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/seo-optimization" className="text-primary hover:underline flex items-center group">
+                    <ArrowRight className="mr-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" /> 
+                    SEO & Content Strategy
+                  </Link>
+                </li>
+              </ul>
+              <Link href="/services" className="block text-sm text-muted-foreground hover:underline mt-4 pt-4 border-t border-border/60">
+                Explore all services →
+              </Link>
+            </div>
+            
+            {/* Column 3: Get Started */}
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="text-xl font-bold mb-4">Ready to Get Started?</h3>
+              <p className="text-muted-foreground mb-6">
+                Connect with our experts to discuss your project needs and discover how our solutions can help you achieve your business goals.
+              </p>
+              <div className="space-y-3">
+                <Link 
+                  href="/contact" 
+                  className="block w-full bg-primary text-primary-foreground py-2.5 px-4 rounded-md text-center hover:bg-primary/90 transition-colors font-medium"
                 >
-                  <Tag className="h-4 w-4 mr-1" />
-                  View all tags
+                  Request Free Consultation
+                </Link>
+                <Link 
+                  href="/portfolio" 
+                  className="block w-full bg-secondary text-secondary-foreground py-2.5 px-4 rounded-md text-center hover:bg-secondary/90 transition-colors font-medium"
+                >
+                  Browse Our Portfolio
+                </Link>
+              </div>
+              <div className="mt-6 text-center">
+                <Link 
+                  href="/knowledge-base/getting-started/how-to-work-with-us"
+                  className="text-primary hover:underline text-sm inline-flex items-center"
+                >
+                  Learn how we work with clients <ArrowRight className="ml-1 h-3.5 w-3.5" />
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      
+      {/* CTA Section - Improved layout and visual appeal */}
+      <section className="py-16 sm:py-20 bg-primary">
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
           <div className="max-w-3xl mx-auto text-center text-primary-foreground">
-            <h2 className="text-3xl font-bold">Want to Learn More?</h2>
-            <p className="mt-4 text-lg">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Want to Learn More?</h2>
+            <p className="text-lg opacity-90 mb-8 max-w-xl mx-auto">
               Subscribe to our newsletter to get the latest articles, news, and insights delivered directly to your inbox.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
               <Input
                 type="email"
                 placeholder="Your email address"
-                className="w-full sm:w-64 rounded-md border border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-foreground"
+                className="w-full rounded-md border border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-foreground"
               />
-              <Button variant="secondary" size="lg">
+              <Button variant="secondary" size="lg" className="w-full sm:w-auto whitespace-nowrap">
                 Subscribe
               </Button>
             </div>

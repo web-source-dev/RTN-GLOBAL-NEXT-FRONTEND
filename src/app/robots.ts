@@ -8,11 +8,14 @@ export default function robots(): MetadataRoute.Robots {
       disallow: [
         '/api/',
         '/admin/',
-        '/auth/signin',
-        '/auth/signout',
+        '/auth/login',
+        '/auth/register',
+        '/auth/forgot-password',
+        '/auth/reset-password',
+        '/auth/verify-email',
+        '/auth/logout',
       ],
     },
     sitemap: 'https://rtnglobal.site/sitemap.xml',
-    host: 'https://rtnglobal.site',
   }
 } 

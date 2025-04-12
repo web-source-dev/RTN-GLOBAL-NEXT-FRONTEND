@@ -21,7 +21,8 @@ import {
   FileText,
   Briefcase,
   Zap,
-  Code
+  Code,
+  BookOpen
 } from 'lucide-react'
 import { OptimizedImage } from '@/components/ui/optimized-image'
 import { services, getServicesByCategory, Service } from '@/data/services'
@@ -554,6 +555,169 @@ export default function ServiceDetailPage({
           </div>
         </section>
       )}
+      
+      {/* Similar services */}
+      <div className="mt-8 mb-16">
+        <h3 className="text-2xl font-bold mb-8">Similar Services You Might Need</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {relatedServices.map((relatedService) => (
+            <Link 
+              key={relatedService.id} 
+              href={`/services/${relatedService.id}`}
+              className="group block"
+            >
+              <div className="bg-card border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full">
+                <div className="aspect-video relative overflow-hidden">
+                  <OptimizedImage
+                    src={relatedService.image}
+                    alt={relatedService.title}
+                    fill
+                    className="object-cover transition-transform group-hover:scale-105 duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <h4 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                    {relatedService.title}
+                  </h4>
+                  <p className="text-muted-foreground line-clamp-2">
+                    {relatedService.description}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* New section: Related Industries & Use Cases */}
+      <section className="py-16 bg-muted/20 border-t border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Industries We Serve With This Service</h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Discover how {service.title} can be tailored to meet the unique needs of different industries
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* We'll list common industries - these should ideally be dynamically generated based on relevance */}
+            <Link href="/industries/healthcare" className="group">
+              <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Healthcare</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Optimize patient experiences and streamline healthcare operations with tailored digital solutions.
+                  </p>
+                  <div className="inline-flex items-center text-primary group-hover:underline">
+                    Learn More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+            
+            <Link href="/industries/e-commerce" className="group">
+              <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">E-Commerce</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Drive online sales and enhance customer shopping experiences with specialized digital strategies.
+                  </p>
+                  <div className="inline-flex items-center text-primary group-hover:underline">
+                    Learn More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+            
+            <Link href="/industries/education" className="group">
+              <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Education</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Create engaging learning experiences and improve educational outcomes with innovative digital solutions.
+                  </p>
+                  <div className="inline-flex items-center text-primary group-hover:underline">
+                    Learn More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+          
+          <div className="text-center mt-12">
+            <Button asChild variant="outline" size="lg">
+              <Link href="/industries">
+                View All Industries <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+      
+      {/* New section: Related Knowledge & Resources */}
+      <section className="py-16 bg-gradient-to-b from-background to-muted/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Related Knowledge & Resources</h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Explore our guides, tutorials, case studies, and blog posts about {service.title}
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Link href={`/knowledge-base?search=${encodeURIComponent(service.title)}`} className="group">
+              <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                <div className="p-6">
+                  <div className="mb-4 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <BookOpen className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Knowledge Base</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Access tutorials, guides, and documentation about {service.title.toLowerCase()} best practices.
+                  </p>
+                  <div className="inline-flex items-center text-primary group-hover:underline">
+                    Browse Articles <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+            
+            <Link href={`/blog?tag=${encodeURIComponent(service.category)}`} className="group">
+              <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                <div className="p-6">
+                  <div className="mb-4 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <FileText className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Blog Posts</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Read our latest articles, trends, and insights about {service.category} and {service.title.toLowerCase()}.
+                  </p>
+                  <div className="inline-flex items-center text-primary group-hover:underline">
+                    Read Blog <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+            
+            <Link href="/case-studies" className="group">
+              <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden hover:shadow-md transition-all duration-300 h-full">
+                <div className="p-6">
+                  <div className="mb-4 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Briefcase className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Case Studies</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Explore real-world examples of how we've delivered successful {service.title.toLowerCase()} projects.
+                  </p>
+                  <div className="inline-flex items-center text-primary group-hover:underline">
+                    View Case Studies <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
       
       {/* Enhanced CTA Section */}
       <section className="py-20 bg-gradient-to-br from-primary/5 via-primary/10 to-background border-t border-primary/10">

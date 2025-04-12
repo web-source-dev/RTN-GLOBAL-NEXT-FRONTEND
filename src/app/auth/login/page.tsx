@@ -162,14 +162,17 @@ export default function LoginPage() {
       // Use the AuthAPI for two-factor verification
       const response = await AuthAPI.verifyTwoFactor(email, twoFactorCode)
       if (response.data) {
+        // Set authenticated state if the response includes user data
+        if (response.data.user) {
+          login(email, password); // Re-authenticate to set user state in auth context
+        }
 
         // Show success message
         toast({
           title: "Login successful",
           description: "Welcome back!",
         })
-        
-            }
+      }
       
       // Redirect to dashboard after a brief delay
       setTimeout(() => {
@@ -210,7 +213,12 @@ export default function LoginPage() {
     
     try {
       // Use the AuthAPI for backup code verification
-      await AuthAPI.verifyBackupCode(email, backupCode)
+      const response = await AuthAPI.verifyBackupCode(email, backupCode)
+      
+      // Set authenticated state if the response includes user data
+      if (response && response.data && response.data.user) {
+        login(email, password); // Re-authenticate to set user state in auth context
+      }
         
       // Show success message
       toast({

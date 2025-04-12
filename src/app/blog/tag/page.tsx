@@ -9,6 +9,8 @@ import { formatDate } from "@/lib/utils"
 import { ArrowRight, ChevronLeft, Loader2, Tag as TagIcon, Hash } from "lucide-react"
 import { BlogAPI } from "@/lib/api/api-provider"
 import { useRouter } from "next/navigation"
+import { CTASection } from "@/components/sections/cta-section"
+import Script from "next/script"
 
 // Define interfaces
 interface BlogPost {
@@ -95,8 +97,50 @@ export default function TagsIndexPage() {
     fetchTags();
   }, []);
 
+  // Generate JSON-LD structured data for SEO
+  const generateJsonLd = () => {
+    if (tagsWithPosts.length === 0) return null;
+    
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Blog Tags",
+      "description": "Browse our articles by topic to find the insights you're looking for",
+      "url": typeof window !== 'undefined' ? window.location.href : '',
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": tagsWithPosts.flatMap((tag, tagIndex) => 
+          tag.posts.map((post, postIndex) => ({
+            "@type": "ListItem",
+            "position": tagIndex * 3 + postIndex + 1,
+            "item": {
+              "@type": "BlogPosting",
+              "headline": post.title,
+              "description": post.description,
+              "datePublished": post.createdAt,
+              "url": typeof window !== 'undefined' ? `${window.location.origin}/blog/${post.slug || post._id}` : '',
+              "author": post.author ? {
+                "@type": "Person",
+                "name": `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim()
+              } : undefined,
+              "keywords": post.tags?.join(", ") || "",
+              "image": post.image || undefined
+            }
+          }))
+        )
+      }
+    };
+    
+    return JSON.stringify(jsonLd);
+  };
+
   return (
     <Layout>
+      {/* JSON-LD structured data for SEO */}
+      {!isLoading && !error && tagsWithPosts.length > 0 && (
+        <Script id="json-ld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: generateJsonLd() || '' }} />
+      )}
+      
       {/* Hero Section */}
       <section className="relative py-16 bg-muted/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -205,7 +249,7 @@ export default function TagsIndexPage() {
                           </h3>
                           <p className="text-xs text-muted-foreground line-clamp-2 mb-3">{post.description}</p>
                           <Link href={`/blog/${post.slug || post._id}`} className="text-xs text-primary hover:underline inline-flex items-center">
-                            Read more <ArrowRight className="ml-1 h-3 w-3" />
+                            Explore article: {post.title.length > 30 ? `${post.title.substring(0, 30)}...` : post.title} <ArrowRight className="ml-1 h-3 w-3" />
                           </Link>
                         </div>
                       </article>
@@ -217,6 +261,22 @@ export default function TagsIndexPage() {
           )}
         </div>
       </section>
+      <CTASection title="Ready to get started?" 
+      description="Contact us today to learn more about our services and how we can help you achieve your goals."
+      primaryButton={{
+        text: "Get in touch",
+        href: "/contact",
+        variant: "secondary"
+      }}
+      secondaryButton={{
+        text: "Learn more",
+        href: "/about",
+        variant: "outline"
+      }}
+      className="mt-16"
+      backgroundClassName="bg-primary"
+      textColorClassName="text-primary-foreground"
+      />
     </Layout>
   )
 } 

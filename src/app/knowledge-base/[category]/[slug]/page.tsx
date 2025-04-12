@@ -21,50 +21,13 @@ import {
   ArrowLeft,
   ExternalLink,
   Check,
-  Mail
+  Mail,
+  MessageSquare,
+  FileText,
+  Briefcase
 } from "lucide-react";
-import { categories, generateArticleData } from "./data";
+import { categories, generateArticleData, generateTableOfContents, formatContent } from "@/data/knowledge-base";
 import { useState } from "react";
-
-// Generate table of contents from the article content
-const generateTableOfContents = (content: string) => {
-  const headings: { id: string; title: string; level: number }[] = [];
-  const h2Regex = /<h2>(.*?)<\/h2>/g;
-  const h3Regex = /<h3>(.*?)<\/h3>/g;
-  
-  let match;
-  while ((match = h2Regex.exec(content)) !== null) {
-    const title = match[1];
-    const id = title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-');
-    headings.push({ id, title, level: 2 });
-  }
-  
-  while ((match = h3Regex.exec(content)) !== null) {
-    const title = match[1];
-    const id = title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-');
-    headings.push({ id, title, level: 3 });
-  }
-  
-  return headings;
-};
-
-// Format content with proper HTML, adding IDs to headings for TOC links
-const formatContent = (content: string) => {
-  let formattedContent = content;
-  
-  // Add IDs to h2 and h3 tags
-  formattedContent = formattedContent.replace(/<h2>(.*?)<\/h2>/g, (match, title) => {
-    const id = title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-');
-    return `<h2 id="${id}">${title}</h2>`;
-  });
-  
-  formattedContent = formattedContent.replace(/<h3>(.*?)<\/h3>/g, (match, title) => {
-    const id = title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-');
-    return `<h3 id="${id}">${title}</h3>`;
-  });
-  
-  return formattedContent;
-};
 
 type ArticlePageProps = {
   params: {
@@ -308,52 +271,110 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               </div>
               
               {/* Article Feedback */}
-              <div className="mt-8 pt-6 border-t border-border">
-                <h3 className="font-semibold mb-3">Was this article helpful?</h3>
-                <div className="flex gap-3">
+              <div className="mt-12 pt-6 border-t border-border">
+                <h3 className="text-lg font-medium mb-4">Was this article helpful?</h3>
+                <div className="flex items-center gap-4">
                   <Button 
                     variant={feedbackGiven === 'helpful' ? 'default' : 'outline'} 
-                    size="sm" 
-                    className="gap-2"
                     onClick={() => handleFeedback('helpful')}
                     disabled={feedbackGiven !== null}
+                    className="gap-2"
                   >
-                    <ThumbsUp className="w-4 h-4" />
-                    Yes ({feedbackGiven === 'helpful' ? article.helpful + 1 : article.helpful})
+                    <ThumbsUp className="h-4 w-4" />
+                    Yes, it helped
                   </Button>
                   <Button 
                     variant={feedbackGiven === 'unhelpful' ? 'default' : 'outline'} 
-                    size="sm" 
-                    className="gap-2"
                     onClick={() => handleFeedback('unhelpful')}
                     disabled={feedbackGiven !== null}
+                    className="gap-2"
                   >
-                    <ThumbsDown className="w-4 h-4" />
-                    No ({feedbackGiven === 'unhelpful' ? article.unhelpful + 1 : article.unhelpful})
+                    <ThumbsDown className="h-4 w-4" />
+                    No, I need more help
                   </Button>
                 </div>
-                {feedbackGiven && (
-                  <p className="mt-4 text-sm text-muted-foreground">
-                    Thank you for your feedback! It helps us improve our documentation.
-                  </p>
+                {feedbackGiven === 'unhelpful' && (
+                  <div className="mt-4">
+                    <p className="text-muted-foreground mb-3">We're sorry this article wasn't helpful. You might want to:</p>
+                    <div className="space-y-2">
+                      <Link href="/contact" className="text-primary hover:underline flex items-center gap-1.5">
+                        <MessageSquare className="h-4 w-4" /> Contact our support team
+                      </Link>
+                      <Link href="/knowledge-base" className="text-primary hover:underline flex items-center gap-1.5">
+                        <BookOpen className="h-4 w-4" /> Browse more articles
+                      </Link>
+                    </div>
+                  </div>
                 )}
               </div>
-              
-              {/* Related Articles - Mobile */}
-              <div className="lg:hidden mt-8 pt-6 border-t border-border">
-                <h3 className="font-semibold mb-4">Related Articles</h3>
+
+              {/* Enhanced: Related Services and Industries Section */}
+              <div className="mt-12 pt-6 border-t border-border">
+                <h3 className="text-lg font-medium mb-6">Related Services & Industries</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {article.relatedArticles.map((relatedArticle, index) => (
-                    <Link key={index} href={relatedArticle.path}>
-                      <Card className="h-full border border-border hover:border-primary/50 hover:shadow-sm transition-all duration-300">
-                        <div className="p-4">
-                          <h4 className="font-medium hover:text-primary transition-colors line-clamp-2">
-                            {relatedArticle.title}
-                          </h4>
-                        </div>
-                      </Card>
-                    </Link>
-                  ))}
+                  {/* Related Services */}
+                  <Link 
+                    href="/services"
+                    className="p-4 bg-muted/30 rounded-lg hover:bg-primary/5 hover:border-primary/10 border border-transparent transition-colors"
+                  >
+                    <h4 className="font-medium mb-2 flex items-center gap-2">
+                      <FileText className="h-4 w-4 text-primary" />
+                      Our Services
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      Explore our comprehensive range of web development and digital marketing solutions.
+                    </p>
+                  </Link>
+                  
+                  {/* Related Industries */}
+                  <Link 
+                    href="/industries"
+                    className="p-4 bg-muted/30 rounded-lg hover:bg-primary/5 hover:border-primary/10 border border-transparent transition-colors"
+                  >
+                    <h4 className="font-medium mb-2 flex items-center gap-2">
+                      <Briefcase className="h-4 w-4 text-primary" />
+                      Industry Solutions
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      Discover how our expertise benefits businesses across different industries.
+                    </p>
+                  </Link>
+                </div>
+              </div>
+              
+              {/* Enhanced: Recommended Reading Section */}
+              <div className="mt-12 pt-6 border-t border-border">
+                <h3 className="text-lg font-medium mb-6">Recommended Reading</h3>
+                <div className="space-y-4">
+                  <Link 
+                    href="/blog"
+                    className="block p-4 bg-muted/30 rounded-lg hover:bg-primary/5 hover:border-primary/10 border border-transparent transition-colors"
+                  >
+                    <h4 className="font-medium mb-2">Latest Blog Posts</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Read our latest thoughts, insights, and tips on web development and digital marketing.
+                    </p>
+                  </Link>
+                  
+                  <Link 
+                    href="/case-studies"
+                    className="block p-4 bg-muted/30 rounded-lg hover:bg-primary/5 hover:border-primary/10 border border-transparent transition-colors"
+                  >
+                    <h4 className="font-medium mb-2">Case Studies</h4>
+                    <p className="text-sm text-muted-foreground">
+                      See real-world examples of how we've helped businesses achieve their goals.
+                    </p>
+                  </Link>
+                  
+                  <Link 
+                    href="/knowledge-base"
+                    className="block p-4 bg-muted/30 rounded-lg hover:bg-primary/5 hover:border-primary/10 border border-transparent transition-colors"
+                  >
+                    <h4 className="font-medium mb-2">Knowledge Base Home</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Browse all categories and find more helpful guides and resources.
+                    </p>
+                  </Link>
                 </div>
               </div>
             </Card>

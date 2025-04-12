@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, CheckCircle2 } from "lucide-react"
+import { ArrowRight, CheckCircle2, ChevronRight } from "lucide-react"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import { BenefitsSection } from "@/components/sections/benefits-section"
 import { ProcessSection } from "@/components/sections/process-section"
@@ -168,6 +168,157 @@ export default function HomePage() {
         <ProcessSection />
         <PortfolioSection />
         <IndustriesSection />
+        
+        {/* Strategic Content Hub - NEW for improved internal linking */}
+        <section className="py-16 bg-muted/20 border-y border-border">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Resources & Expertise</h2>
+              <p className="text-muted-foreground max-w-3xl mx-auto">
+                Explore our comprehensive guides, case studies, and industry insights to help your business succeed in the digital landscape.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Service Categories */}
+              <div className="bg-card rounded-xl p-6 border border-border hover:shadow-md transition-all duration-300 group">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Service Categories</h3>
+                <ul className="space-y-2 mb-4">
+                  <li>
+                    <Link href="/services?category=development" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Web Development
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/services?category=design" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      UI/UX Design
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/services?category=marketing" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Digital Marketing
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/services?category=strategy" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Business Strategy
+                    </Link>
+                  </li>
+                </ul>
+                <Link href="/services" className="text-primary text-sm flex items-center hover:underline">
+                  View All Services <ArrowRight className="ml-1 h-3.5 w-3.5" />
+                </Link>
+              </div>
+              
+              {/* Top Industries */}
+              <div className="bg-card rounded-xl p-6 border border-border hover:shadow-md transition-all duration-300 group">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Key Industries</h3>
+                <ul className="space-y-2 mb-4">
+                  <li>
+                    <Link href="/industries/e-commerce" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      E-Commerce
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/industries/healthcare" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Healthcare
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/industries/finance" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Finance & Banking
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/industries/education" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Education
+                    </Link>
+                  </li>
+                </ul>
+                <Link href="/industries" className="text-primary text-sm flex items-center hover:underline">
+                  View All Industries <ArrowRight className="ml-1 h-3.5 w-3.5" />
+                </Link>
+              </div>
+              
+              {/* Knowledge Resources */}
+              <div className="bg-card rounded-xl p-6 border border-border hover:shadow-md transition-all duration-300 group">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Knowledge Center</h3>
+                <ul className="space-y-2 mb-4">
+                  <li>
+                    <Link href="/knowledge-base/getting-started" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Getting Started Guides
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/knowledge-base/technical" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Technical Resources
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/knowledge-base/tutorials" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Step-by-Step Tutorials
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/knowledge-base/troubleshooting" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Troubleshooting
+                    </Link>
+                  </li>
+                </ul>
+                <Link href="/knowledge-base" className="text-primary text-sm flex items-center hover:underline">
+                  Browse Knowledge Base <ArrowRight className="ml-1 h-3.5 w-3.5" />
+                </Link>
+              </div>
+              
+              {/* Case Studies & Insights */}
+              <div className="bg-card rounded-xl p-6 border border-border hover:shadow-md transition-all duration-300 group">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Success Stories</h3>
+                <ul className="space-y-2 mb-4">
+                  <li>
+                    <Link href="/case-studies" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Client Case Studies
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/portfolio" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Portfolio Showcase
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/blog?category=success-stories" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Transformation Stories
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/resources" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+                      <ChevronRight className="h-4 w-4 mr-1.5 text-primary" />
+                      Resource Library
+                    </Link>
+                  </li>
+                </ul>
+                <Link href="/resources" className="text-primary text-sm flex items-center hover:underline">
+                  Explore Resources <ArrowRight className="ml-1 h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+        
         <TechnologiesSection />
         <ClientsSection />
         <AwardsSection />

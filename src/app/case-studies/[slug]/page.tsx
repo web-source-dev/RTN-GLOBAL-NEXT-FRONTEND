@@ -894,9 +894,95 @@ export default function CaseStudyPage({ params }: Props) {
               )}
             </section>
             
+            {/* Enhanced Related Content with contextual links */}
+            <section className="pt-16 bg-muted/5 border-t border-border">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-screen-lg mx-auto">
+                  <h2 className="text-2xl font-bold mb-12 text-center">Related Resources</h2>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                    {/* Related Industry */}
+                    <div className="bg-card rounded-xl border border-border overflow-hidden shadow-sm group hover:shadow-md transition-all duration-300">
+                      <div className="p-6">
+                        <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors">Industry Expertise</h3>
+                        <p className="text-muted-foreground mb-4">Explore more solutions for the {caseStudy.industry} industry.</p>
+                        <Link 
+                          href={`/industries/${caseStudy.industry.toLowerCase().replace(/\s+/g, '-')}`}
+                          className="inline-flex items-center text-primary"
+                        >
+                          View Industry Solutions <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                      </div>
+                    </div>
+                    
+                    {/* Related Services */}
+                    <div className="bg-card rounded-xl border border-border overflow-hidden shadow-sm group hover:shadow-md transition-all duration-300">
+                      <div className="p-6">
+                        <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors">Related Services</h3>
+                        <p className="text-muted-foreground mb-4">Discover our {caseStudy.services[0]} services and other offerings.</p>
+                        <Link 
+                          href={`/services`}
+                          className="inline-flex items-center text-primary"
+                        >
+                          Explore Our Services <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                      </div>
+                    </div>
+                    
+                    {/* Related Tech/Portfolio */}
+                    <div className="bg-card rounded-xl border border-border overflow-hidden shadow-sm group hover:shadow-md transition-all duration-300">
+                      <div className="p-6">
+                        <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors">Portfolio</h3>
+                        <p className="text-muted-foreground mb-4">See more examples of our work in {caseStudy.industry}.</p>
+                        <Link 
+                          href={`/portfolio`}
+                          className="inline-flex items-center text-primary"
+                        >
+                          View Portfolio <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Technologies Used Section with links */}
+                  {caseStudy.technologies && caseStudy.technologies.length > 0 && (
+                    <div className="mt-16">
+                      <h3 className="text-xl font-bold mb-6 text-center">Technologies Used in This Project</h3>
+                      <div className="flex flex-wrap justify-center gap-3">
+                        {caseStudy.technologies.map((tech) => (
+                          <Link 
+                            key={tech}
+                            href={`/search?q=${encodeURIComponent(tech)}`}
+                            className="px-4 py-2 bg-muted hover:bg-primary/10 rounded-full text-sm font-medium transition-colors"
+                          >
+                            {tech}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Knowledge Base Links */}
+                  <div className="mt-16 text-center">
+                    <h3 className="text-xl font-bold mb-6">Learn More</h3>
+                    <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                      Explore our knowledge base for valuable insights and guides related to {caseStudy.industry} and {caseStudy.services[0]}.
+                    </p>
+                    <Link
+                      href={`/knowledge-base?search=${encodeURIComponent(`${caseStudy.industry} ${caseStudy.services[0]}`)}`}
+                      className="inline-flex items-center justify-center gap-2 bg-primary/10 hover:bg-primary/20 text-primary px-6 py-3 rounded-lg font-medium transition-colors"
+                    >
+                      <BookOpen className="h-5 w-5" />
+                      Browse Knowledge Base
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </section>
+            
             {/* Related Case Studies */}
             {relatedCaseStudies.length > 0 && (
-              <section className="py-20 bg-muted/30 border-t border-border">
+              <section className="py-10 bg-muted/30 border-t border-border">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="flex flex-col items-center mb-12 text-center">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">Related Case Studies</h2>
@@ -906,7 +992,7 @@ export default function CaseStudyPage({ params }: Props) {
                     </p>
                   </div>
                   
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
                     {relatedCaseStudies.map((study, index) => (
                       <Link 
                         key={index} 

@@ -6,114 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { 
-  Search, 
-  Book, 
-  FileText, 
-  CheckCircle, 
-  HelpCircle, 
-  AlertCircle, 
-  Code, 
-  FileQuestion,
+  Search,
+  TrendingUp,
   ArrowRight,
   BookOpen,
-  TrendingUp
+  ChevronRight
 } from "lucide-react";
-
-// Knowledge base categories
-const categories = [
-  {
-    id: "getting-started",
-    title: "Getting Started Guides",
-    description: "Essential guides to help you start using our platform efficiently. Learn the basics and get up to speed quickly.",
-    icon: Book,
-    color: "bg-blue-100 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
-  },
-  {
-    id: "technical",
-    title: "Technical Documentation",
-    description: "Detailed technical specifications and implementation guides for developers and technical users.",
-    icon: FileText,
-    color: "bg-purple-100 text-purple-600 dark:bg-purple-950/30 dark:text-purple-400"
-  },
-  {
-    id: "api",
-    title: "API References",
-    description: "Complete API documentation, endpoints, and code examples for integrating with our platform.",
-    icon: Code,
-    color: "bg-emerald-100 text-emerald-600 dark:bg-emerald-950/30 dark:text-emerald-400"
-  },
-  {
-    id: "best-practices",
-    title: "Best Practices",
-    description: "Recommendations and best practices for optimal results and efficient use of our platform.",
-    icon: CheckCircle,
-    color: "bg-amber-100 text-amber-600 dark:bg-amber-950/30 dark:text-amber-400"
-  },
-  {
-    id: "troubleshooting",
-    title: "Troubleshooting",
-    description: "Solutions for common problems and error resolutions to help you overcome challenges quickly.",
-    icon: HelpCircle,
-    color: "bg-red-100 text-red-600 dark:bg-red-950/30 dark:text-red-400"
-  },
-  {
-    id: "releases",
-    title: "Release Notes",
-    description: "Latest updates, features, and changes to our platform to keep you informed of improvements.",
-    icon: FileText,
-    color: "bg-indigo-100 text-indigo-600 dark:bg-indigo-950/30 dark:text-indigo-400"
-  },
-  {
-    id: "account-access",
-    title: "Account Access",
-    description: "Information about account security, login issues, and verification procedures to keep your account secure.",
-    icon: AlertCircle,
-    color: "bg-cyan-100 text-cyan-600 dark:bg-cyan-950/30 dark:text-cyan-400"
-  },
-  {
-    id: "billing",
-    title: "Billing & Payments",
-    description: "Information about invoices, payment methods, and subscription management for your account.",
-    icon: FileQuestion,
-    color: "bg-teal-100 text-teal-600 dark:bg-teal-950/30 dark:text-teal-400"
-  }
-];
-
-// Featured articles
-const featuredArticles = [
-  {
-    title: "Getting Started with RTN Global Platform",
-    description: "A comprehensive guide to help you start using our platform efficiently.",
-    path: "/knowledge-base/getting-started/platform-overview",
-    category: "getting-started",
-    icon: Book,
-    color: "bg-blue-100 text-blue-600 dark:bg-blue-950/30 dark:text-blue-400"
-  },
-  {
-    title: "API Authentication Guide",
-    description: "Learn how to authenticate with our API using API keys, OAuth, and other methods.",
-    path: "/knowledge-base/api/authentication",
-    category: "api",
-    icon: Code,
-    color: "bg-emerald-100 text-emerald-600 dark:bg-emerald-950/30 dark:text-emerald-400"
-  },
-  {
-    title: "How to Reset Your Password",
-    description: "Step-by-step instructions for resetting your password if you've forgotten it.",
-    path: "/knowledge-base/account-access/reset-password",
-    category: "account-access",
-    icon: AlertCircle,
-    color: "bg-cyan-100 text-cyan-600 dark:bg-cyan-950/30 dark:text-cyan-400"
-  },
-  {
-    title: "Troubleshooting Common Issues",
-    description: "Solutions for the most frequently encountered problems and how to resolve them.",
-    path: "/knowledge-base/troubleshooting/common-issues",
-    category: "troubleshooting",
-    icon: HelpCircle,
-    color: "bg-red-100 text-red-600 dark:bg-red-950/30 dark:text-red-400"
-  }
-];
+import { categories, featuredArticles } from "@/data/knowledge-base";
 
 export default function KnowledgeBasePage() {
   return (
@@ -199,7 +98,7 @@ export default function KnowledgeBasePage() {
           <h2 className="text-3xl font-bold tracking-tight mb-10 text-center">Browse by Category</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {categories.map((category) => {
+            {Object.values(categories).map((category) => {
               const Icon = category.icon;
               return (
                 <Link key={category.id} href={`/knowledge-base/${category.id}`}>
@@ -215,7 +114,7 @@ export default function KnowledgeBasePage() {
                         </div>
                       </div>
                       <div className="mt-4 pt-4 border-t border-border flex justify-between items-center">
-                        <span className="text-sm text-muted-foreground">10+ articles</span>
+                        <span className="text-sm text-muted-foreground">{category.count}+ articles</span>
                         <Button variant="ghost" size="sm" className="text-primary p-0 h-auto">
                           <span className="flex items-center gap-1">
                             Explore
