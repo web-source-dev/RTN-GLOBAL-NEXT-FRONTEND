@@ -79,6 +79,198 @@ export interface CaseStudy {
 // Case Studies data
 export const caseStudies: CaseStudy[] = [
   {
+    title: "Building a Scalable Coop Management Platform for New Mexico Grocers Association",
+    slug: "new-mexico-grocers-coop-platform",
+    client: "New Mexico Grocers Association",
+    industry: "Grocery & Food Distribution",
+    services: ["Web Application Development", "UX/UI Design", "System Integration", "Database Architecture", "API Development"],
+    duration: "8 weeks",
+    summary: "A centralized ecosystem that streamlines product commitments, inventory tracking, invoicing, and communication between independent grocery store owners and their distributors.",
+    clientBackground: "The New Mexico Grocers Association is a cooperative of independent grocery store owners who work together to negotiate better deals with distributors. With over 50 store owners and relationships with 15+ distributors, they needed a centralized system to replace their manual spreadsheet-based processes and improve coordination efficiency.",
+    goals: [
+      "Create a centralized platform for managing product commitments across multiple distributors",
+      "Streamline inventory tracking and historical data management",
+      "Improve communication between grocery store owners, distributors, and administrators",
+      "Automate repetitive tasks like order confirmation and data syncing",
+      "Integrate with modern tools like Google Sheets and Twilio"
+    ],
+    challenge: "Coop members (grocery store owners) often faced challenges with tracking orders and commitments across multiple distributors, managing inventory and historical data manually through spreadsheets, and receiving delayed or inconsistent updates about deals and deadlines. Distributors struggled with organizing bulk orders from multiple members, generating accurate invoices and tracking payments, and communicating deal announcements efficiently. Admins lacked a centralized system to oversee users, reports, inventory, and communication, integration with modern tools like Google Sheets or Twilio, and automation to reduce repetitive tasks like order confirmation and data syncing.",
+    processSteps: [
+      {
+        title: "Discovery & Requirements Gathering",
+        description: "We conducted interviews with store owners, distributors, and administrators to understand their workflows, pain points, and requirements for the platform.",
+        icon: "Search"
+      },
+      {
+        title: "UX/UI Design",
+        description: "We created user flows, wireframes, and interactive prototypes for each of the three dashboard types, focusing on intuitive navigation and efficient workflows.",
+        icon: "PenTool"
+      },
+      {
+        title: "Architecture Planning",
+        description: "We designed a scalable database structure and API architecture to support the complex relationships between users, products, and orders.",
+        icon: "FileCode"
+      },
+      {
+        title: "Agile Development",
+        description: "We built the platform using two-week sprints, with regular demonstrations and feedback incorporation from stakeholders.",
+        icon: "Code"
+      },
+      {
+        title: "Integration & Testing",
+        description: "We implemented integrations with Google Sheets, Twilio, and payment processors, followed by comprehensive testing across all user roles.",
+        icon: "Rocket"
+      }
+    ],
+    solution: "We designed and developed a three-tiered web application using modern technologies including React.js, Node.js, MongoDB, and integrations like Google Sheets, Twilio, and Stripe.\n\nThe platform features three distinct dashboards: 1) A Coop Member Dashboard for grocery store owners to manage product commitments and track order history, with features like dashboard overview, commitment forms, reports, notifications, team access, and Google Sheets integration; 2) A Distributor Dashboard for food and grocery distributors to manage inventory and process commitments, with features like inventory management, real-time commitment tracking, invoicing tools, bulk messaging, and sales analytics; and 3) An Admin Dashboard for platform administrators to control users, settings, data monitoring, and automations, with features like role-based access, inventory & pricing controls, system-wide reporting, integration management, and automated workflows.\n\nEach dashboard was tailored to the specific needs of its user type, with intuitive interfaces and streamlined workflows to maximize efficiency and reduce manual work.",
+    teamComposition: [
+      {
+        role: "Project Manager",
+        responsibility: "Led the project planning, stakeholder communication, and feature prioritization"
+      },
+      {
+        role: "UX/UI Designer",
+        responsibility: "Created user-centered designs for all three dashboard types with focus on intuitive workflows"
+      },
+      {
+        role: "Frontend Developer",
+        responsibility: "Built the React.js application with responsive design and interactive components"
+      },
+      {
+        role: "Backend Developer",
+        responsibility: "Developed the Node.js API services, database architecture, and third-party integrations"
+      },
+      {
+        role: "QA Specialist",
+        responsibility: "Ensured quality across all user roles and use cases through comprehensive testing"
+      }
+    ],
+    technologies: [
+      "React.js",
+      "Node.js",
+      "MongoDB",
+      "Google Sheets API",
+      "Twilio",
+      "Stripe",
+      "REST API Architecture",
+      "JWT Authentication",
+      "AWS (S3, EC2)"
+    ],
+    results: "The platform has shown significant potential with measurable improvements in efficiency and accuracy. The system reduced manual order coordination time by over 60%, enabling grocery store owners to focus more on customer service and sales. Distributors were able to process 3x more commitments per week thanks to the streamlined workflows and automated processes.\n\nThe Google Sheets integration dramatically reduced data entry errors and time spent on reporting, while the Twilio integration improved communication efficiency with automated notifications for critical events. The platform's analytics capabilities provided valuable insights into purchasing patterns and inventory management, helping both grocery store owners and distributors optimize their operations.\n\nUser adoption exceeded expectations, with 95% of coop members actively using the platform within the first month of launch. Feedback has been overwhelmingly positive, with users highlighting the intuitive interface and time-saving features as major benefits.",
+    keyInsights: [
+      "Multi-user platforms require careful consideration of different user needs and permissions",
+      "Integration with familiar tools (like Google Sheets) significantly improves user adoption",
+      "Real-time data synchronization is critical for inventory and commitment management",
+      "Mobile accessibility is essential for users who need to check information on-the-go",
+      "Automated notifications reduce communication gaps and improve coordination"
+    ],
+    businessImpact: [
+      {
+        metric: "Order Processing Time",
+        value: "Reduced by 60%",
+        description: "Automation and streamlined workflows dramatically cut the time required to process orders"
+      },
+      {
+        metric: "Data Entry Errors",
+        value: "Decreased by 85%",
+        description: "Digital forms with validation and automated data transfer virtually eliminated manual errors"
+      },
+      {
+        metric: "Distributor Response Time",
+        value: "Improved by 72%",
+        description: "Real-time notifications and centralized communication accelerated response times"
+      }
+    ],
+    testimonial: {
+      quote: "This platform has completely transformed how our cooperative operates. What used to take hours of spreadsheet work and phone calls now happens automatically in the background. Our members can focus on running their grocery stores instead of administrative tasks, and our relationships with distributors have never been better. The ROI on this project was evident within weeks.",
+      author: "Henry Varela",
+      position: "Executive Director, New Mexico Grocers Association"
+    },
+    userQuotes: [
+      {
+        quote: "As a grocery store owner, I used to spend hours each week tracking orders and communicating with distributors. Now I can manage everything in minutes from my phone or computer.",
+        user: "Rebecca T.",
+        context: "Coop member, grocery store owner for 12 years"
+      },
+      {
+        quote: "The platform has made it so much easier to manage bulk orders from multiple grocery stores. The automated invoicing alone has saved us countless hours of work.",
+        user: "Michael D.",
+        context: "Regional food distributor partner"
+      }
+    ],
+    featuredMetric: {
+      value: "60%",
+      label: "reduction in order processing time"
+    },
+    secondaryMetrics: [
+      {
+        value: "3x",
+        label: "increase in weekly commitment processing"
+      },
+      {
+        value: "95%",
+        label: "user adoption within first month"
+      }
+    ],
+    timeline: [
+      {
+        date: "Week 1",
+        milestone: "Discovery & Planning",
+        description: "Stakeholder interviews, requirements gathering, and system architecture planning"
+      },
+      {
+        date: "Week 2-3",
+        milestone: "Design & Prototyping",
+        description: "UX/UI design, user flow creation, and interactive prototype development"
+      },
+      {
+        date: "Week 3-6",
+        milestone: "Development & Integration",
+        description: "Frontend and backend development, third-party integrations, and initial testing"
+      },
+      {
+        date: "Week 7-8",
+        milestone: "Testing & Deployment",
+        description: "Comprehensive testing, user training, and phased platform rollout"
+      }
+    ],
+    implementationChallenges: "During implementation, we faced challenges with data migration from legacy spreadsheets, requiring custom scripts to clean and normalize historical data. Integrating with multiple third-party services required careful API management and error handling. We also needed to develop a flexible permission system that could accommodate the complex relationships between different user types while maintaining data security and privacy.",
+    futureWork: "Building on the platform's success, we're now exploring additional features including advanced analytics dashboards, expanded mobile capabilities, and integration with point-of-sale systems for real-time inventory synchronization. We're also developing an AI-powered recommendation engine to help store owners optimize their product mix based on historical sales data and market trends.",
+    image: "/images/case-studies/001655.png",
+    galleryImages: [
+      "/images/case-studies/001734.png",
+      "/images/case-studies/002044.png",
+      "/images/case-studies/002225.png",
+      "/images/case-studies/002244.png"
+    ],
+    beforeAfterImages: [
+      {
+        before: {
+          src: "/images/case-studies/Screenshot 2025-04-12 112204.png",
+          alt: "Before: Manual spreadsheet system"
+        },
+        after: {
+          src: "/images/case-studies/Screenshot 2025-04-12 112254.png",
+          alt: "After: Digital coop management platform"
+        },
+        description: "Transition from manual spreadsheet-based order management to a streamlined digital platform"
+      },
+      {
+        before: {
+          src: "/images/case-studies/Screenshot 2025-04-12 112313.png",
+          alt: "Before: Paper-based inventory tracking"
+        },
+        after: {
+          src: "/images/case-studies/Screenshot 2025-04-12 112335.png",
+          alt: "After: Real-time digital inventory management"
+        },
+        description: "Modernized inventory tracking with real-time updates and analytics"
+      }
+    ],
+    tags: ["Web Application", "Grocery", "Food Distribution", "Inventory Management", "Collaboration Tools"],
+    featured: true
+  },
+  {
     title: "Brand Transformation for Financial Services Firm",
     slug: "financial-brand-transformation",
     client: "Horizon Financial",
@@ -1071,4 +1263,4 @@ export function getUniqueServices(): string[] {
 // Get featured case studies
 export function getFeaturedCaseStudies(): CaseStudy[] {
   return caseStudies.filter(study => study.featured);
-} 
+}
