@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Mail, X, Check, ArrowRight, Info } from "lucide-react";
 import { usePopups } from "./popup-provider";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "../ui/dialog";
@@ -127,7 +126,7 @@ const NewsletterPopup = () => {
                   <Check className="h-6 w-6 text-green-600" />
                 </div>
                 <p className="text-sm text-gray-500 mb-4">
-                  We'll be in touch with valuable content tailored to your interests.
+                  We&apos;ll be in touch with valuable content tailored to your interests.
                 </p>
                 <Button
                   onClick={handleClose}

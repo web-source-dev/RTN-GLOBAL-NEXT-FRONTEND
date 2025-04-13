@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { X, Cookie, Shield, Lock } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Cookie, Shield, Lock } from "lucide-react";
 import { usePopups } from "./popup-provider";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogDescription } from "../ui/dialog";
 import { Button } from "../ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
-import { PopupsAPI, handleApiError } from "@/lib/api/api-provider";
+import { PopupsAPI } from "@/lib/api/api-provider";
 
 // Type for cookie category
 interface CookieCategory {

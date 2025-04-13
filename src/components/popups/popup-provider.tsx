@@ -47,6 +47,7 @@ export function PopupProvider({ children }: PopupProviderProps) {
       const { timestamp, duration } = JSON.parse(storedValue);
       return Date.now() > timestamp + duration;
     } catch (e) {
+      console.error('Error parsing localStorage item:', e);
       return true;
     }
   };

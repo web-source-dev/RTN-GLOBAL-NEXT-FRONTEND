@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { Gift, X, ArrowRight, Check } from "lucide-react";
-import { usePopups } from "./popup-provider";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "../ui/dialog";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -30,6 +29,7 @@ const SpecialOfferPopup = () => {
             return;
           }
         } catch (e) {
+          console.error('Error parsing localStorage item:', e);
           // Continue to set up exit intent if there's an error
         }
       }
@@ -158,7 +158,7 @@ const SpecialOfferPopup = () => {
                   <Check className="h-6 w-6 text-green-600" />
                 </div>
                 <p className="text-gray-500 mb-4">
-                  We'll send your discount code to <strong>{email}</strong> within the next few minutes.
+                  We&apos;ll send your discount code to <strong>{email}</strong> within the next few minutes.
                 </p>
                 <Button
                   onClick={handleClose}

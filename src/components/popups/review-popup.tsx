@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Star, X, Send, Check, ThumbsUp } from "lucide-react";
+import { Star, X, Send,ThumbsUp } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "../ui/dialog";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { Label } from "../ui/label";
-import { PopupsAPI, handleApiError } from "@/lib/api/api-provider";
+import { PopupsAPI } from "@/lib/api/api-provider";
 
 const ReviewPopup = () => {
   const [show, setShow] = useState(false);
@@ -28,6 +28,7 @@ const ReviewPopup = () => {
             return; // Don't show if not expired
           }
         } catch (e) {
+          console.error('Error parsing localStorage item:', e);
           // Continue if there's an error
         }
       }
@@ -57,6 +58,7 @@ const ReviewPopup = () => {
             return () => clearTimeout(timer);
           }
         } catch (e) {
+          console.error('Error parsing localStorage item:', e);
           // Handle error
         }
       } else {
