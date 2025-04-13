@@ -7,6 +7,7 @@ import { usePopups } from "./popup-provider";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogDescription } from "../ui/dialog";
 import { Button } from "../ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
+import { PopupsAPI, handleApiError } from "@/lib/api/api-provider";
 
 // Type for cookie category
 interface CookieCategory {
@@ -64,38 +65,58 @@ const CookieConsentPopup = () => {
   };
 
   // Accept all cookies
-  const handleAcceptAll = () => {
-    setCookieCategories(
-      cookieCategories.map((category) => ({ ...category, checked: true }))
-    );
-    // Save cookie preferences in localStorage
-    const preferences = cookieCategories.reduce(
-      (acc, { id, checked, required }) => ({
-        ...acc,
-        [id]: required || checked,
-      }),
-      {}
-    );
-    localStorage.setItem("cookie-preferences", JSON.stringify(preferences));
+  const handleAcceptAll = async () => {
+    const allAccepted = {
+      necessary: true,
+      preferences: true,
+      analytics: true, 
+      marketing: true
+    };
     
-    // Close the popup
-    acceptCookies();
+    setCookieCategories(cookieCategories.map(cat => ({
+      ...cat,
+      checked: true
+    })));
+    
+    try {
+      // Save cookie preferences to API
+      await PopupsAPI.saveCookieConsent(allAccepted);
+      
+      // Set cookie consent in localStorage
+      localStorage.setItem('cookie-preferences', JSON.stringify(allAccepted));
+      
+      // Close the popup
+      acceptCookies();
+    } catch (error) {
+      console.error("Failed to save cookie preferences:", error);
+      // Still close the popup even if API call fails
+      acceptCookies();
+    }
   };
 
-  // Accept only selected cookies
-  const handleAcceptSelected = () => {
-    // Save cookie preferences in localStorage
-    const preferences = cookieCategories.reduce(
-      (acc, { id, checked, required }) => ({
-        ...acc,
-        [id]: required || checked,
-      }),
-      {}
-    );
-    localStorage.setItem("cookie-preferences", JSON.stringify(preferences));
+  // Accept selected cookies only
+  const handleAcceptSelected = async () => {
+    const preferences = {
+      necessary: true, // Always necessary
+      preferences: cookieCategories.find(c => c.id === 'preferences')?.checked || false,
+      analytics: cookieCategories.find(c => c.id === 'analytics')?.checked || false,
+      marketing: cookieCategories.find(c => c.id === 'marketing')?.checked || false
+    };
     
-    // Close the popup
-    acceptCookies();
+    try {
+      // Save cookie preferences to API
+      await PopupsAPI.saveCookieConsent(preferences);
+      
+      // Set cookie consent in localStorage
+      localStorage.setItem('cookie-preferences', JSON.stringify(preferences));
+      
+      // Close the popup
+      acceptCookies();
+    } catch (error) {
+      console.error("Failed to save cookie preferences:", error);
+      // Still close the popup even if API call fails
+      acceptCookies();
+    }
   };
 
   // Reject all optional cookies
@@ -123,7 +144,7 @@ const CookieConsentPopup = () => {
 
   return (
     <Dialog open={showCookieConsent} onOpenChange={() => {}}>
-      <DialogContent className="sm:max-w-[500px] rounded-xl">
+      <DialogContent className="sm:max-w-[500px] rounded-xl bg-white">
         <DialogHeader className="space-y-3">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
             <Cookie className="h-6 w-6 text-primary" />

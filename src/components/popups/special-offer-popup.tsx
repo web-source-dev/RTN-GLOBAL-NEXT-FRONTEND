@@ -6,6 +6,7 @@ import { usePopups } from "./popup-provider";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "../ui/dialog";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { PopupsAPI, handleApiError } from "@/lib/api/api-provider";
 
 const SpecialOfferPopup = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ const SpecialOfferPopup = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [show, setShow] = useState(false);
+  const [formError, setFormError] = useState("");
   
   // Check if user has seen this popup in the last 24 hours
   // and set up exit intent detection
@@ -75,10 +77,14 @@ const SpecialOfferPopup = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setFormError("");
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Call the API to save the special offer signup
+      await PopupsAPI.saveSpecialOffer({
+        name,
+        email
+      });
       
       // Store in localStorage that user has claimed the offer
       localStorage.setItem("special-offer-claimed", JSON.stringify({
@@ -95,6 +101,7 @@ const SpecialOfferPopup = () => {
         handleClose();
       }, 3000);
     } catch (error) {
+      setFormError(handleApiError(error, "Failed to claim your offer. Please try again."));
       console.error("Error submitting form:", error);
     } finally {
       setIsSubmitting(false);
@@ -103,16 +110,16 @@ const SpecialOfferPopup = () => {
   
   return (
     <Dialog open={show} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[500px] p-0 rounded-xl overflow-hidden">
+      <DialogContent className="sm:max-w-[500px] p-0 rounded-xl overflow-hidden bg-white">
         <div className="relative">
-          {/* Background Pattern */}
-          <div 
+          {/* Remove transparent background patterns */}
+          {/* <div 
             className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 z-0"
             style={{
               backgroundImage: "radial-gradient(circle at 10px 10px, rgba(0,0,0,0.05) 2px, transparent 0)",
               backgroundSize: "20px 20px"
             }}
-          />
+          /> */}
           
           {/* Close Button */}
           <button
@@ -122,8 +129,8 @@ const SpecialOfferPopup = () => {
             <X className="w-5 h-5" />
           </button>
           
-          {/* Content */}
-          <div className="relative z-1 p-6">
+          {/* Content - Make sure content has solid background */}
+          <div className="relative z-1 p-6 bg-white">
             <div className="mx-auto mb-4 h-16 w-16 flex items-center justify-center rounded-full bg-primary/10">
               <Gift className="h-8 w-8 text-primary" />
             </div>
@@ -138,6 +145,12 @@ const SpecialOfferPopup = () => {
                   : "Get 15% off your first project when you sign up today."}
               </DialogDescription>
             </DialogHeader>
+            
+            {formError && (
+              <div className="bg-red-50 p-3 rounded-md text-red-500 text-sm mb-4">
+                {formError}
+              </div>
+            )}
             
             {submitted ? (
               <div className="py-6 text-center">

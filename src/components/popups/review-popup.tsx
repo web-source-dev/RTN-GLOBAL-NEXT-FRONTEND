@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { Label } from "../ui/label";
+import { PopupsAPI, handleApiError } from "@/lib/api/api-provider";
 
 const ReviewPopup = () => {
   const [show, setShow] = useState(false);
@@ -97,10 +98,14 @@ const ReviewPopup = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Call the API to save the review
+      await PopupsAPI.saveReview({
+        rating,
+        review,
+        visitorType
+      });
       
-      // Store review data
+      // Store review data in localStorage
       localStorage.setItem("user-review", JSON.stringify({
         rating,
         review,
@@ -116,6 +121,7 @@ const ReviewPopup = () => {
       }, 3000);
     } catch (error) {
       console.error("Error submitting review:", error);
+      // You could also show an error message to the user here
     } finally {
       setIsSubmitting(false);
     }
@@ -140,12 +146,12 @@ const ReviewPopup = () => {
 
   return (
     <Dialog open={show} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[500px] p-0 rounded-xl overflow-hidden">
+      <DialogContent className="sm:max-w-[500px] p-0 rounded-xl overflow-hidden bg-white">
         <div className="relative">
-          {/* Background Pattern */}
-          <div 
+          {/* Replace gradient background with solid white */}
+          {/* <div 
             className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 z-0"
-          />
+          /> */}
           
           {/* Close Button */}
           <button
@@ -156,7 +162,7 @@ const ReviewPopup = () => {
           </button>
           
           {/* Content */}
-          <div className="relative z-1 p-6">
+          <div className="relative z-1 p-6 bg-white">
             {submitted ? (
               <div className="py-6 text-center">
                 <div className="mx-auto mb-4 h-16 w-16 flex items-center justify-center rounded-full bg-green-100">

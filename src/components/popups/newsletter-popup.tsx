@@ -9,6 +9,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";
+import { PopupsAPI, handleApiError } from "@/lib/api/api-provider";
 
 const NewsletterPopup = () => {
   const { showNewsletter, dismissNewsletter } = usePopups();
@@ -43,8 +44,13 @@ const NewsletterPopup = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Call the API to save newsletter subscription
+      await PopupsAPI.saveNewsletter({
+        email,
+        name,
+        company,
+        marketingConsent
+      });
       
       // Store in localStorage that user has subscribed
       localStorage.setItem("newsletter-subscribed", JSON.stringify({
@@ -63,7 +69,7 @@ const NewsletterPopup = () => {
         dismissNewsletter();
       }, 3000);
     } catch (error) {
-      setFormError("Something went wrong. Please try again.");
+      setFormError(handleApiError(error, "Failed to subscribe. Please try again."));
     } finally {
       setIsSubmitting(false);
     }
@@ -76,7 +82,7 @@ const NewsletterPopup = () => {
 
   return (
     <Dialog open={showNewsletter} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[550px] p-0 rounded-xl overflow-hidden">
+      <DialogContent className="sm:max-w-[550px] p-0 rounded-xl overflow-hidden bg-white">
         <div className="grid sm:grid-cols-5 grid-cols-1">
           {/* Image/Graphic Area - Left Side (Hidden on mobile) */}
           <div className="sm:col-span-2 hidden sm:block bg-gradient-to-br from-primary/80 to-primary h-full relative">
@@ -93,8 +99,8 @@ const NewsletterPopup = () => {
             </div>
           </div>
           
-          {/* Form Area - Right Side */}
-          <div className="sm:col-span-3 p-6">
+          {/* Form Area - Right Side - Explicitly set white background */}
+          <div className="sm:col-span-3 p-6 bg-white">
             <div className="absolute top-3 right-3">
               <button
                 onClick={handleClose}

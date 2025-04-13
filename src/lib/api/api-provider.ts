@@ -287,6 +287,38 @@ export const ChatAPI = {
     API.get('/api/chat/active-sessions'),
 };
 
+// Popup API endpoints
+export const PopupsAPI = {
+  // Save cookie consent preferences
+  saveCookieConsent: (preferences: {
+    necessary: boolean,
+    preferences: boolean,
+    analytics: boolean,
+    marketing: boolean
+  }) => API.post('/api/popups/cookie-consent', preferences),
+  
+  // Save newsletter subscription
+  saveNewsletter: (data: {
+    email: string,
+    name?: string,
+    company?: string,
+    marketingConsent: boolean
+  }) => API.post('/api/popups/newsletter', data),
+  
+  // Save user review
+  saveReview: (data: {
+    rating: number,
+    review?: string,
+    visitorType?: 'new' | 'returning' | 'unknown'
+  }) => API.post('/api/popups/review', data),
+  
+  // Save special offer signup
+  saveSpecialOffer: (data: {
+    name: string,
+    email: string
+  }) => API.post('/api/popups/special-offer', data),
+};
+
 export default API;
 
 // Replace any with a more specific type or unknown
