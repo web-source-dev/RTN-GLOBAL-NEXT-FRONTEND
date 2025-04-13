@@ -41,7 +41,16 @@ export const metadata: Metadata = {
     address: true,
   },
   verification: {
-    google: 'google-site-verification-code', // Replace with actual verification code when available
+    google: 'google-site-verification-code',
+    yandex: 'yandex-site-verification-code',
+    yahoo: 'yahoo-site-verification-code',
+    other: {
+      'yandex-verification': 'yandex-site-verification-code',
+      'google-site-verification': 'google-site-verification-code',
+      'bing-site-verification': 'bing-site-verification-code',
+      'alexa-site-verification': 'alexa-site-verification-code',
+      'baidu-site-verification': 'baidu-site-verification-code',
+    }
   },
   other: {
     'contact:email': 'info@rtnglobal.site',

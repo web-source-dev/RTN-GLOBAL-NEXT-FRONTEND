@@ -68,6 +68,14 @@ export function Footer() {
                 </address>
               </div>
             </div>
+             {/* MyWOT Verification Badge */}
+             <a id='wot-badge0' className='wot-badge mt-5' href='https://www.mywot.com/scorecard/rtnglobal.site?wot_badge=0_white' target='_blank' rel="noopener noreferrer">
+                <div className='wot-logo'></div>
+                <div className='wot-shield'></div>
+                <p className='wot-secured'>Verified</p>
+                <div className='wot-vertical'></div>
+                <p className='wot-report'>See Report</p>
+              </a>
           </div>
 
           {/* Quick Links */}
@@ -205,41 +213,6 @@ export function Footer() {
                 </Link>
               </li>
             </ul>
-
-            {/* Legal Links */}
-            <h3 className="text-lg font-medium mb-4 mt-8">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/legal/terms-conditions" className="text-sm flex items-center hover:text-primary transition-colors">
-                  <ChevronRight className="h-3 w-3 mr-1" />
-                  Terms & Conditions
-                </Link>
-              </li>
-              <li>
-                <Link href="/legal/privacy-policy" className="text-sm flex items-center hover:text-primary transition-colors">
-                  <ChevronRight className="h-3 w-3 mr-1" />
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/legal/refund-policy" className="text-sm flex items-center hover:text-primary transition-colors">
-                  <ChevronRight className="h-3 w-3 mr-1" />
-                  Refund Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/legal/cookie-policy" className="text-sm flex items-center hover:text-primary transition-colors">
-                  <ChevronRight className="h-3 w-3 mr-1" />
-                  Cookie Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/legal/disclaimer" className="text-sm flex items-center hover:text-primary transition-colors">
-                  <ChevronRight className="h-3 w-3 mr-1" />
-                  Disclaimer
-                </Link>
-              </li>
-            </ul>
           </div>
 
           {/* Newsletter */}
@@ -313,9 +286,12 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-around items-center">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} RTN Global. All rights reserved.
-            </p>
+            <div className="flex items-center gap-4">
+              <p className="text-sm text-muted-foreground">
+                © {new Date().getFullYear()} RTN Global. All rights reserved.
+              </p>
+             
+            </div>
             <div className="flex flex-wrap mt-4 md:mt-0 gap-4">
               <Link href="/legal/terms-conditions" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Terms & Conditions

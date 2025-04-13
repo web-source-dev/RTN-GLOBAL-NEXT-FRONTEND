@@ -79,6 +79,7 @@ export default function RootLayout({
           type="image/png"
         />
         <link rel="dns-prefetch" href="https://rtnglobal.site" />
+        <script async src='https://static.mywot.com/website_owners_badges/websiteOwnersBadge.js'></script>
       </head>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <Providers>
