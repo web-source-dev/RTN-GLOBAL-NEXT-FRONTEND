@@ -11,43 +11,7 @@ import { ClientsSection } from "@/components/sections/clients-section"
 import { AwardsSection } from "@/components/sections/awards-section"
 import { BlogHighlightsSection } from "@/components/sections/blog-highlights-section"
 import ServicesSection from "@/components/sections/services-section"
-type Client = {
-  id: string
-  name: string
-  logo: string
-  grayscale: string
-  industry: string
-}
-const featuredClients: Client[] = [
-  {
-    id: "1",
-    name: "TechCorp",
-    logo: "/images/clients/client1.png",
-    grayscale: "/images/clients/client1.png",
-    industry: "Technology"
-  },
-  {
-    id: "2",
-    name: "GreenEnergy",
-    logo: "/images/clients/client2.png",
-    grayscale: "/images/clients/client2.png",
-    industry: "Renewable Energy"
-  },
-  {
-    id: "3",
-    name: "MediHealth",
-    logo: "/images/clients/client3.png",
-    grayscale: "/images/clients/client3.png",
-    industry: "Healthcare"
-  },
-  {
-    id: "4",
-    name: "FinanceHub",
-    logo: "/images/clients/client6.jpg",
-    grayscale: "/images/clients/client6.jpg",
-    industry: "Finance"
-  }
-]
+import BrandsWeWork from "@/components/sections/BrandsWeWork"
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -125,42 +89,10 @@ export default function HomePage() {
                 {/* Removed decorative elements */}
               </div>
             </div>
-            
-            <div className="mt-10 md:mt-16 pt-8 border-t border-border/40">
-              <div className="text-center mb-14">
-                <p className="text-sm uppercase tracking-wider text-muted-foreground font-semibold">Trusted by industry leaders</p>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-center justify-around">
-                {featuredClients.map((client) => (
-                  <div 
-                    key={client.id} 
-                    className="group w-32 h-32 md:w-40 md:h-40 relative rounded-full overflow-hidden border border-border/40 shadow-sm bg-card flex-shrink-0 hover:border-primary/50 transition-all duration-300 mx-auto"
-                  >
-                    <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity p-2">
-                      <OptimizedImage
-                        src={client.grayscale}
-                        alt={`${client.name} - Client of RTN Global`}
-                        fill
-                        className="h-full object-contain"
-                        sizes="(max-width: 768px) 80px, 160px"
-                      />  
-                    </div>
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity p-2">
-                      <OptimizedImage
-                        src={client.logo}
-                        alt={`${client.name} - Client of RTN Global`}
-                        fill
-                        className="h-full object-contain"
-                        sizes="(max-width: 768px) 80px, 160px"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
+
+        <BrandsWeWork />
 
         {/* All dynamic sections below - they remain client components */}
         <BenefitsSection />
