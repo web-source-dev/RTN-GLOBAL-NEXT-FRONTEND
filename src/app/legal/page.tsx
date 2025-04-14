@@ -14,7 +14,6 @@ import {
   FileText,
   HelpCircle,
   ExternalLink,
-  ArrowRight
 } from "lucide-react";
 import Script from 'next/script';
 

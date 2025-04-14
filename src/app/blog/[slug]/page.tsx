@@ -262,7 +262,7 @@ export default function BlogPostPage() {
     };
 
     fetchBlogPost();
-  }, [slug]);
+  }, [slug, API_URL]);
 
   const handleCommentSubmit = async (e: FormEvent) => {
     e.preventDefault();
