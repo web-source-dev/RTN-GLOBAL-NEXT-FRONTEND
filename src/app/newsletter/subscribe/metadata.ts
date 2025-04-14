@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.com/newsletter/subscribe',
+    canonical: 'https://rtnglobal.co/newsletter/subscribe',
     languages: {
-      'en-US': 'https://rtnglobal.com/newsletter/subscribe',
-      'en-GB': 'https://rtnglobal.com/newsletter/subscribe',
-      'fr': 'https://rtnglobal.com/fr/newsletter/subscribe',
-      'de': 'https://rtnglobal.com/de/newsletter/subscribe',
-      'es': 'https://rtnglobal.com/es/newsletter/subscribe',
+      'en-US': 'https://rtnglobal.co/newsletter/subscribe',
+      'en-GB': 'https://rtnglobal.co/newsletter/subscribe',
+      'fr': 'https://rtnglobal.co/fr/newsletter/subscribe',
+      'de': 'https://rtnglobal.co/de/newsletter/subscribe',
+      'es': 'https://rtnglobal.co/es/newsletter/subscribe',
     }
   },
   openGraph: {
     title: 'Join RTN Global\'s Newsletter | Expert Digital Insights & Updates',
     description: 'Subscribe to receive weekly insights, industry trends, expert advice, and exclusive content to help your business thrive in the digital landscape.',
     type: 'website',
-    url: 'https://rtnglobal.com/newsletter/subscribe',
+    url: 'https://rtnglobal.co/newsletter/subscribe',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -42,17 +42,19 @@ export const metadata: Metadata = {
     title: 'Subscribe to RTN Global\'s Weekly Insights & Updates',
     description: 'Get valuable digital insights, industry news, and exclusive content delivered directly to your inbox. Stay informed with our expert newsletter.',
     images: ['/images/og/newsletter-subscribe.jpg'],
-    creator: '@RTNGlobal',
-    site: '@RTNGlobal'
+    creator: '@rtnglobalofficial',
+    site: '@rtnglobalofficial'
   },
   authors: [{ name: 'RTN Global Team' }],
-  publisher: 'RTN Global Ltd',
+  publisher: 'RTN Global',
+  creator: 'Muhammad Tayyab',
   category: 'Newsletter',
   verification: {
-    google: 'verification_token',
-    yandex: 'verification_token',
+    google: 'google03e42604abdd544c',
     other: {
-      me: ['https://rtnglobal.com', 'https://www.linkedin.com/company/rtnglobal']
+      'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+      'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
@@ -64,6 +66,9 @@ export const metadata: Metadata = {
     'twitter:data2': 'Industry Insights, Tips & Exclusive Offers',
     'newsletter:frequency': 'Weekly',
     'newsletter:topics': 'Digital Trends, Web Development, Marketing, Technology',
-    'newsletter:unsubscribe': 'Easy one-click unsubscribe anytime'
+    'newsletter:unsubscribe': 'Easy one-click unsubscribe anytime',
+    'contact:email': 'info@rtnglobal.site',
+    'contact:phone': '+1 505 528 6780',
+    'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   }
 } 

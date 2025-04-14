@@ -5,19 +5,19 @@ export const metadata: Metadata = {
   description: 'Logging out of your RTN Global account. Secure sign-out from your international RTN Global session.',
   keywords: 'logout, sign out, exit account, end session, RTN Global logout, secure logout',
   alternates: {
-    canonical: 'https://rtnglobal.com/auth/logout',
+    canonical: 'https://rtnglobal.co/auth/logout',
     languages: {
-      'en-US': 'https://rtnglobal.com/auth/logout',
-      'en-GB': 'https://rtnglobal.com/auth/logout',
-      'fr': 'https://rtnglobal.com/fr/auth/logout',
-      'de': 'https://rtnglobal.com/de/auth/logout',
-      'es': 'https://rtnglobal.com/es/auth/logout',
+      'en-US': 'https://rtnglobal.co/auth/logout',
+      'en-GB': 'https://rtnglobal.co/auth/logout',
+      'fr': 'https://rtnglobal.co/fr/auth/logout',
+      'de': 'https://rtnglobal.co/de/auth/logout',
+      'es': 'https://rtnglobal.co/es/auth/logout',
     }
   },
   openGraph: {
     title: 'Logging Out | RTN Global',
     description: 'Logging out of your RTN Global account. Secure sign-out from your international RTN Global session.',
-    url: 'https://rtnglobal.com/auth/logout',
+    url: 'https://rtnglobal.co/auth/logout',
     siteName: 'RTN Global',
     locale: 'en_US',
     type: 'website',
@@ -26,11 +26,20 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'Logging Out | RTN Global',
     description: 'Logging out of your RTN Global account. Secure sign-out from your session.',
+    creator: '@rtnglobalofficial',
+    site: '@rtnglobalofficial'
   },
   robots: {
     index: false,
     follow: false,
   },
-  authors: [{ name: 'RTN Global Team' }],
-  publisher: 'RTN Global Ltd',
+  authors: [{ name: 'Muhammad Tayyab' }],
+  publisher: 'RTN Global',
+  verification: {
+    google: 'google03e42604abdd544c',
+    other: {
+      'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+      'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+    }
+  }
 } 

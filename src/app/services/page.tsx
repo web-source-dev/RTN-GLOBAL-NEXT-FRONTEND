@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import Script from 'next/script'
 import { Layout } from '@/components/layout/layout'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -71,8 +72,66 @@ export default function ServicesPage() {
       )
     : allServices;
   
+  // Generate JSON-LD structured data for services page
+  const servicesJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Our Services - RTN Global",
+    "description": "We offer a comprehensive range of digital solutions to help your business thrive in the digital landscape.",
+    "url": "https://rtnglobal.co/services",
+    "provider": {
+      "@type": "Organization",
+      "name": "RTN Global",
+      "url": "https://rtnglobal.co/",
+      "logo": "https://rtnglobal.co/logo.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Muhammad Tayyab"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+        "addressLocality": "ALBUQUERQUE",
+        "addressRegion": "NM",
+        "postalCode": "87110",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+1 505 528 6780",
+        "email": "info@rtnglobal.site"
+      }
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": allServices.map((service, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "Service",
+          "name": service.title,
+          "description": service.description,
+          "url": `https://rtnglobal.co/services/${service.slug}`,
+          "provider": {
+            "@type": "Organization",
+            "name": "RTN Global"
+          },
+          "category": service.category
+        }
+      }))
+    }
+  };
+  
   return (
     <Layout>
+      {/* JSON-LD structured data */}
+      <Script
+        id="services-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
+      
       <HeroSection
         title="Our Services"
         description="We offer a comprehensive range of digital solutions to help your business thrive in the digital landscape."

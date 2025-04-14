@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title,
         description,
         type: 'website',
-        url: `https://rtnglobal.com/blog/tag/${tag}`,
+        url: `https://rtnglobal.co/blog/tag/${tag}`,
         siteName: 'RTN Global Blog',
         images: [
           {
@@ -75,11 +75,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title,
         description,
         images: ['/images/og/blog-og.jpg'],
-        creator: '@RTNGlobal',
-        site: '@RTNGlobal'
+        creator: '@rtnglobalofficial',
+        site: '@rtnglobalofficial'
       },
       alternates: {
-        canonical: `https://rtnglobal.com/blog/tag/${tag}`,
+        canonical: `https://rtnglobal.co/blog/tag/${tag}`,
       },
       robots: {
         index: true,
@@ -91,15 +91,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           'max-snippet': -1,
         },
       },
-      authors: [{ name: 'RTN Global Team' }],
+      authors: [{ name: 'Muhammad Tayyab' }],
       publisher: 'RTN Global',
       viewport: {
         width: 'device-width',
         initialScale: 1,
       },
       verification: {
-        google: 'your-google-site-verification-code', // Replace with actual verification code
+        google: 'google03e42604abdd544c',
+        other: {
+          'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+          'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+        }
       },
+      other: {
+        'contact:email': 'info@rtnglobal.site',
+        'contact:phone': '+1 505 528 6780',
+        'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
+      }
     };
   } catch (error) {
     console.error('Error generating metadata:', error);

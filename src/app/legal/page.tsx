@@ -13,10 +13,69 @@ import {
   AlertTriangle,
   FileText,
   HelpCircle,
-  ExternalLink
+  ExternalLink,
+  ArrowRight
 } from "lucide-react";
+import Script from 'next/script';
 
 export default function LegalHomePage() {
+  // Structured data for Legal page
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Legal Information & Policies | RTN Global",
+    "description": "Access RTN Global's legal documents including Terms & Conditions, Privacy Policy, and Refund Policy. We are committed to transparency and protecting your rights.",
+    "url": "https://rtnglobal.com/legal",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rtnglobal.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Legal",
+          "item": "https://rtnglobal.com/legal"
+        }
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "RTN Global",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rtnglobal.com/images/logo.png"
+      }
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://rtnglobal.com/legal/terms",
+          "name": "Terms & Conditions"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://rtnglobal.com/legal/privacy",
+          "name": "Privacy Policy"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://rtnglobal.com/legal/refund",
+          "name": "Refund Policy"
+        }
+      ]
+    }
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -173,6 +232,13 @@ export default function LegalHomePage() {
           </div>
         </div>
       </div>
+      
+      {/* JSON-LD structured data */}
+      <Script
+        id="legal-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
     </Layout>
   );
 }

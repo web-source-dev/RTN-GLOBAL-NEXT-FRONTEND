@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.com/services',
+    canonical: 'https://rtnglobal.co/services',
     languages: {
-      'en-US': 'https://rtnglobal.com/services',
-      'en-GB': 'https://rtnglobal.com/services',
-      'fr': 'https://rtnglobal.com/fr/services',
-      'de': 'https://rtnglobal.com/de/services',
-      'es': 'https://rtnglobal.com/es/services',
+      'en-US': 'https://rtnglobal.co/services',
+      'en-GB': 'https://rtnglobal.co/services',
+      'fr': 'https://rtnglobal.co/fr/services',
+      'de': 'https://rtnglobal.co/de/services',
+      'es': 'https://rtnglobal.co/es/services',
     }
   },
   openGraph: {
     title: 'Digital Services | Web Development & Marketing Solutions | RTN Global',
     description: 'Discover our comprehensive range of digital services to transform your online presence. From web development to digital marketing, we provide end-to-end solutions for businesses worldwide.',
     type: 'website',
-    url: 'https://rtnglobal.com/services',
+    url: 'https://rtnglobal.co/services',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -42,17 +42,19 @@ export const metadata: Metadata = {
     title: 'Digital Services | Web & Marketing Solutions | RTN Global',
     description: 'Explore our comprehensive range of digital services. From web development to marketing solutions, we provide all the tools you need to succeed online.',
     images: ['/images/og/services-og.jpg'],
-    creator: '@RTNGlobal',
-    site: '@RTNGlobal'
+    creator: '@rtnglobalofficial',
+    site: '@rtnglobalofficial'
   },
   authors: [{ name: 'RTN Global Team' }],
-  publisher: 'RTN Global Ltd',
+  publisher: 'RTN Global',
+  creator: 'Muhammad Tayyab',
   category: 'Digital Services',
   verification: {
-    google: 'verification_token',
-    yandex: 'verification_token',
+    google: 'google03e42604abdd544c',
     other: {
-      me: ['https://rtnglobal.com', 'https://www.linkedin.com/company/rtnglobal']
+      'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+      'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
@@ -65,6 +67,9 @@ export const metadata: Metadata = {
     'services:count': '15+',
     'services:categories': 'Web Development, Digital Marketing, Design, Strategy',
     'services:customization': 'Tailored to business needs',
-    'services:international': 'Available worldwide'
+    'services:international': 'Available worldwide',
+    'contact:email': 'info@rtnglobal.site',
+    'contact:phone': '+1 505 528 6780',
+    'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   }
 } 

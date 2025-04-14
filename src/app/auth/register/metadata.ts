@@ -5,19 +5,19 @@ export const metadata: Metadata = {
   description: 'Create your RTN Global account to access our international services and solutions. Join our global network of businesses and professionals.',
   keywords: 'register, sign up, create account, RTN Global account, join RTN Global, new account',
   alternates: {
-    canonical: 'https://rtnglobal.com/auth/register',
+    canonical: 'https://rtnglobal.co/auth/register',
     languages: {
-      'en-US': 'https://rtnglobal.com/auth/register',
-      'en-GB': 'https://rtnglobal.com/auth/register',
-      'fr': 'https://rtnglobal.com/fr/auth/register',
-      'de': 'https://rtnglobal.com/de/auth/register',
-      'es': 'https://rtnglobal.com/es/auth/register',
+      'en-US': 'https://rtnglobal.co/auth/register',
+      'en-GB': 'https://rtnglobal.co/auth/register',
+      'fr': 'https://rtnglobal.co/fr/auth/register',
+      'de': 'https://rtnglobal.co/de/auth/register',
+      'es': 'https://rtnglobal.co/es/auth/register',
     }
   },
   openGraph: {
     title: 'Register | RTN Global',
     description: 'Create your RTN Global account to access our international services and solutions. Join our global network of businesses and professionals.',
-    url: 'https://rtnglobal.com/auth/register',
+    url: 'https://rtnglobal.co/auth/register',
     siteName: 'RTN Global',
     locale: 'en_US',
     type: 'website',
@@ -26,11 +26,20 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'Register | RTN Global',
     description: 'Create your RTN Global account to access our international services and solutions. Join our global network today.',
+    creator: '@rtnglobalofficial',
+    site: '@rtnglobalofficial'
   },
   robots: {
     index: false,
     follow: false,
   },
-  authors: [{ name: 'RTN Global Team' }],
-  publisher: 'RTN Global Ltd',
+  authors: [{ name: 'Muhammad Tayyab' }],
+  publisher: 'RTN Global',
+  verification: {
+    google: 'google03e42604abdd544c',
+    other: {
+      'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+      'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+    }
+  }
 } 

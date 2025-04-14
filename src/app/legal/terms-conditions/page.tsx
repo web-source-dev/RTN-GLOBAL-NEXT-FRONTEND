@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Script from "next/script";
 import { Layout } from "@/components/layout/layout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,57 @@ export default function TermsConditionsPage() {
   
   return (
     <Layout>
+      {/* JSON-LD structured data */}
+      <Script
+        id="terms-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Terms & Conditions - RTN Global",
+            "description": "The legal agreement between you and RTN Global",
+            "dateModified": lastUpdated,
+            "publisher": {
+              "@type": "Organization",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.co/",
+              "logo": "https://rtnglobal.co/logo.png",
+              "founder": {
+                "@type": "Person",
+                "name": "Muhammad Tayyab"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+                "addressLocality": "ALBUQUERQUE",
+                "addressRegion": "NM",
+                "postalCode": "87110",
+                "addressCountry": "US"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "telephone": "+1 505 528 6780",
+                "email": "info@rtnglobal.site"
+              }
+            },
+            "mainEntity": {
+              "@type": "LegalDocument",
+              "name": "Terms and Conditions",
+              "creator": {
+                "@type": "Organization",
+                "name": "RTN Global"
+              },
+              "datePublished": "2023-01-01",
+              "dateModified": lastUpdated,
+              "validFrom": effectiveDate,
+              "about": "The legal agreement between you and RTN Global"
+            }
+          })
+        }}
+      />
+      
       {/* Hero Section */}
       <div className="bg-gradient-to-b from-background to-muted/20 py-12 border-b border-border">
         <div className="container mx-auto px-4">

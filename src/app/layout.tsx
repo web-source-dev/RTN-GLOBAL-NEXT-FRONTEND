@@ -45,10 +45,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#ffffff' }
-  ]
+  themeColor: "#ffffff"
 };
 
 export default function RootLayout({
@@ -80,6 +77,57 @@ export default function RootLayout({
         />
         <link rel="dns-prefetch" href="https://rtnglobal.site" />
         <script async src='https://static.mywot.com/website_owners_badges/websiteOwnersBadge.js'></script>
+        
+        {/* JSON-LD Organization Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.co/",
+              "logo": "https://rtnglobal.co/logo.png",
+              "founder": {
+                "@type": "Person",
+                "name": "Muhammad Tayyab"
+              },
+              "description": "RTN Global is a leading web development and digital marketing agency creating stunning websites and effective marketing strategies for businesses.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+                "addressLocality": "ALBUQUERQUE",
+                "addressRegion": "NM",
+                "postalCode": "87110",
+                "addressCountry": "US"
+              },
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "contactType": "customer service",
+                  "telephone": "+1 505 528 6780",
+                  "email": "info@rtnglobal.site",
+                  "availableLanguage": ["English"]
+                },
+                {
+                  "@type": "ContactPoint",
+                  "contactType": "technical support",
+                  "telephone": "+1 505 528 6780",
+                  "email": "support@rtnglobal.site",
+                  "availableLanguage": ["English"]
+                }
+              ],
+              "sameAs": [
+                "https://www.instagram.com/rtnglobalofficial/",
+                "https://www.threads.net/@rtnglobalofficial",
+                "https://www.tiktok.com/@rtnglobalofficial",
+                "https://web.facebook.com/people/RTN-Global/61573828870610/",
+                "https://www.youtube.com/@RTNGlobal",
+                "https://www.linkedin.com/in/rtnglobalofficial/"
+              ]
+            })
+          }}
+        />
       </head>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <Providers>

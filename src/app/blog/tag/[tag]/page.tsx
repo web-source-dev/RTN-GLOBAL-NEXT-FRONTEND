@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import Link from "next/link"
 import { formatDate } from "@/lib/utils"
+import Script from "next/script"
 import { ArrowRight, Search, ChevronLeft, ChevronRight, Loader2, Tag as TagIcon } from "lucide-react"
 import { BlogAPI } from "@/lib/api/api-provider"
 import { useParams, useRouter, useSearchParams, notFound } from "next/navigation"
@@ -276,6 +277,51 @@ export default function TagPage() {
 
   return (
     <Layout>
+      {/* JSON-LD Structured Data */}
+      <Script id="tag-structured-data" type="application/ld+json" strategy="afterInteractive">
+        {`
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Tag: ${decodeURIComponent(tag as string)} - RTN Global Blog",
+            "description": "Browse blog posts tagged with ${decodeURIComponent(tag as string)}",
+            "url": "https://rtnglobal.co/blog/tag/${encodeURIComponent(decodeURIComponent(tag as string))}",
+            "publisher": {
+              "@type": "Organization",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.co/",
+              "logo": "https://rtnglobal.co/logo.png",
+              "founder": {
+                "@type": "Person",
+                "name": "Muhammad Tayyab"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+                "addressLocality": "ALBUQUERQUE",
+                "addressRegion": "NM",
+                "postalCode": "87110",
+                "addressCountry": "US"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "telephone": "+1 505 528 6780",
+                "email": "info@rtnglobal.site"
+              },
+              "sameAs": [
+                "https://www.instagram.com/rtnglobalofficial/",
+                "https://www.threads.net/@rtnglobalofficial",
+                "https://www.tiktok.com/@rtnglobalofficial",
+                "https://web.facebook.com/people/RTN-Global/61573828870610/",
+                "https://www.youtube.com/@RTNGlobal",
+                "https://www.linkedin.com/in/rtnglobalofficial/"
+              ]
+            }
+          }
+        `}
+      </Script>
+
       {/* Add animation styles */}
       <style jsx global>{animationStyles}</style>
       {/* Hero Section */}

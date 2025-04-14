@@ -8,6 +8,47 @@ import { HomeIcon, SearchIcon, ArrowLeft, Mail, Phone, MapPin } from "lucide-rea
 export default function NotFound() {
   return (
     <Layout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Page Not Found (404) | RTN Global",
+            "description": "The page you were looking for doesn't exist or has been moved to a new location.",
+            "url": "https://rtnglobal.co/404",
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://rtnglobal.co/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Page Not Found",
+                  "item": "https://rtnglobal.co/404"
+                }
+              ]
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.co/",
+              "logo": "https://rtnglobal.co/logo.png"
+            },
+            "mainEntity": {
+              "@type": "WebSite",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.co/"
+            }
+          })
+        }}
+      />
+      
       <section className="py-20 md:py-32 bg-gradient-to-b from-background to-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl mx-auto text-center">

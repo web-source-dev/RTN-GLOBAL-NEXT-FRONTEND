@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/lib/contexts/auth-provider'
+import Script from 'next/script'
 import { Loader2, CheckCircle, AlertCircle, Home } from 'lucide-react'
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
@@ -83,6 +84,51 @@ export default function LogoutPage() {
   
   return (
     <div className="flex justify-center items-center min-h-[80vh] bg-gradient-to-b from-background to-muted/30 px-4">
+      {/* JSON-LD Structured Data */}
+      <Script id="logout-structured-data" type="application/ld+json" strategy="afterInteractive">
+        {`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Logout - RTN Global",
+            "description": "Securely sign out from your RTN Global account",
+            "url": "https://rtnglobal.co/auth/logout",
+            "publisher": {
+              "@type": "Organization",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.co/",
+              "logo": "https://rtnglobal.co/logo.png",
+              "founder": {
+                "@type": "Person",
+                "name": "Muhammad Tayyab"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+                "addressLocality": "ALBUQUERQUE",
+                "addressRegion": "NM",
+                "postalCode": "87110",
+                "addressCountry": "US"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "telephone": "+1 505 528 6780",
+                "email": "info@rtnglobal.site"
+              },
+              "sameAs": [
+                "https://www.instagram.com/rtnglobalofficial/",
+                "https://www.threads.net/@rtnglobalofficial",
+                "https://www.tiktok.com/@rtnglobalofficial",
+                "https://web.facebook.com/people/RTN-Global/61573828870610/",
+                "https://www.youtube.com/@RTNGlobal",
+                "https://www.linkedin.com/in/rtnglobalofficial/"
+              ]
+            }
+          }
+        `}
+      </Script>
+
       <style jsx global>{`
       
         @keyframes fadeIn {

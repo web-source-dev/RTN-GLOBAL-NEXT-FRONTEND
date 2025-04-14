@@ -378,7 +378,7 @@ export function generateMetadata({ params }: Props): Metadata {
       title: serviceInfo.title,
       description: serviceInfo.description,
       type: 'website',
-      url: `https://rtnglobal.com/services/${serviceId}`,
+      url: `https://rtnglobal.co/services/${serviceId}`,
       siteName: 'RTN Global',
       locale: 'en_US',
       images: [
@@ -395,27 +395,29 @@ export function generateMetadata({ params }: Props): Metadata {
       title: serviceInfo.title,
       description: serviceInfo.description,
       images: [`/images/og/services/${serviceId}.jpg`],
-      creator: '@RTNGlobal',
-      site: '@RTNGlobal'
+      creator: '@rtnglobalofficial',
+      site: '@rtnglobalofficial'
     },
     alternates: {
-      canonical: `https://rtnglobal.com/services/${serviceId}`,
+      canonical: `https://rtnglobal.co/services/${serviceId}`,
       languages: {
-        'en-US': `https://rtnglobal.com/services/${serviceId}`,
-        'en-GB': `https://rtnglobal.com/services/${serviceId}`,
-        'fr': `https://rtnglobal.com/fr/services/${serviceId}`,
-        'de': `https://rtnglobal.com/de/services/${serviceId}`,
-        'es': `https://rtnglobal.com/es/services/${serviceId}`,
+        'en-US': `https://rtnglobal.co/services/${serviceId}`,
+        'en-GB': `https://rtnglobal.co/services/${serviceId}`,
+        'fr': `https://rtnglobal.co/fr/services/${serviceId}`,
+        'de': `https://rtnglobal.co/de/services/${serviceId}`,
+        'es': `https://rtnglobal.co/es/services/${serviceId}`,
       }
     },
     authors: [{ name: 'RTN Global Team' }],
-    publisher: 'RTN Global Ltd',
+    publisher: 'RTN Global',
+    creator: 'Muhammad Tayyab',
     category: serviceInfo.category,
     verification: {
-      google: 'verification_token',
-      yandex: 'verification_token',
+      google: 'google03e42604abdd544c',
       other: {
-        me: ['https://rtnglobal.com', 'https://www.linkedin.com/company/rtnglobal']
+        'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+        'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+        me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
       }
     },
     other: {
@@ -428,7 +430,10 @@ export function generateMetadata({ params }: Props): Metadata {
       'service:category': serviceInfo.category,
       'service:name': serviceName,
       'service:features': serviceInfo.features ? serviceInfo.features.join(', ') : 'Custom Solutions',
-      'service:id': serviceId
+      'service:id': serviceId,
+      'contact:email': 'info@rtnglobal.site',
+      'contact:phone': '+1 505 528 6780',
+      'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
     }
   }
 } 

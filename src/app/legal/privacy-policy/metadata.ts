@@ -1,27 +1,27 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | How We Protect Your Data | RTN Global",
-  description: "Learn how RTN Global collects, uses, and protects your personal information. Our privacy policy explains your rights and our data protection practices.",
+  title: "Privacy Policy | Data Protection | RTN Global",
+  description: "RTN Global's privacy policy outlines how we collect, use, and protect your personal information when you use our services and website.",
   keywords: [
     "RTN Global privacy policy",
     "data protection",
     "personal information",
-    "privacy rights",
-    "GDPR compliance",
-    "data security",
     "information collection",
-    "cookie policy",
-    "data sharing practices",
-    "data retention"
+    "data security",
+    "cookie usage",
+    "GDPR compliance",
+    "privacy rights",
+    "data sharing",
+    "privacy practices"
   ],
   alternates: {
-    canonical: "https://rtnglobal.site/legal/privacy-policy",
+    canonical: "https://rtnglobal.co/legal/privacy-policy",
   },
   openGraph: {
-    title: "Privacy Policy | How We Protect Your Data | RTN Global",
-    description: "Learn how RTN Global collects, uses, and protects your personal information. Our privacy policy explains your rights and our data protection practices.",
-    url: "https://rtnglobal.site/legal/privacy-policy",
+    title: "Privacy Policy | Data Protection | RTN Global",
+    description: "RTN Global's privacy policy outlines how we collect, use, and protect your personal information when you use our services and website.",
+    url: "https://rtnglobal.co/legal/privacy-policy",
     siteName: "RTN Global",
     locale: "en_US",
     type: "website",
@@ -29,6 +29,20 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Privacy Policy | RTN Global",
-    description: "Learn how RTN Global collects, uses, and protects your personal information. Our privacy policy explains your rights and our data protection practices.",
+    description: "RTN Global's privacy policy outlines how we collect, use, and protect your personal information when you use our services and website.",
+    creator: "@rtnglobalofficial",
+    site: "@rtnglobalofficial"
   },
+  verification: {
+    google: "google03e42604abdd544c",
+    other: {
+      'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+      'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+    }
+  },
+  other: {
+    'contact:email': 'info@rtnglobal.site',
+    'contact:phone': '+1 505 528 6780',
+    'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
+  }
 }; 

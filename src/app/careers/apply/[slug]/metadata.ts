@@ -76,19 +76,19 @@ export async function generateMetadata({
     description: `Apply for the ${job.title} position in our ${job.department} department at ${job.location}. Submit your application to join our international team at RTN Global.`,
     keywords: keywords.join(', '),
     alternates: {
-      canonical: `https://rtnglobal.com/careers/apply/${job.slug}`,
+      canonical: `https://rtnglobal.co/careers/apply/${job.slug}`,
       languages: {
-        'en-US': `https://rtnglobal.com/careers/apply/${job.slug}`,
-        'en-GB': `https://rtnglobal.com/careers/apply/${job.slug}`,
-        'fr': `https://rtnglobal.com/fr/careers/apply/${job.slug}`,
-        'de': `https://rtnglobal.com/de/careers/apply/${job.slug}`,
-        'es': `https://rtnglobal.com/es/careers/apply/${job.slug}`,
+        'en-US': `https://rtnglobal.co/careers/apply/${job.slug}`,
+        'en-GB': `https://rtnglobal.co/careers/apply/${job.slug}`,
+        'fr': `https://rtnglobal.co/fr/careers/apply/${job.slug}`,
+        'de': `https://rtnglobal.co/de/careers/apply/${job.slug}`,
+        'es': `https://rtnglobal.co/es/careers/apply/${job.slug}`,
       }
     },
     openGraph: {
       title: `Apply for ${job.title} at RTN Global`,
       description: `Submit your application for the ${job.title} position in our ${job.department} department at ${job.location}. Join our international team today.`,
-      url: `https://rtnglobal.com/careers/apply/${job.slug}`,
+      url: `https://rtnglobal.co/careers/apply/${job.slug}`,
       siteName: 'RTN Global',
       locale: 'en_US',
       type: 'website',
@@ -106,20 +106,32 @@ export async function generateMetadata({
       title: `Apply for ${job.title} at RTN Global`,
       description: `Submit your application for the ${job.title} position in our ${job.department} department. Join our international team today.`,
       images: ['/images/og/job-application.jpg'],
+      creator: '@rtnglobalofficial',
+      site: '@rtnglobalofficial'
     },
     robots: {
       index: false, // Application pages should typically not be indexed
       follow: true,
     },
-    authors: [{ name: 'RTN Global Team' }],
-    publisher: 'RTN Global Ltd',
+    authors: [{ name: 'Muhammad Tayyab' }],
+    publisher: 'RTN Global',
     category: 'Careers',
+    verification: {
+      google: 'google03e42604abdd544c',
+      other: {
+        'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+        'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+      }
+    },
     other: {
       'job:title': job.title,
       'job:department': job.department,
       'job:location': job.location,
       'job:type': job.type,
       'application:type': 'job',
+      'contact:email': 'info@rtnglobal.site',
+      'contact:phone': '+1 505 528 6780',
+      'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
     }
   };
 } 

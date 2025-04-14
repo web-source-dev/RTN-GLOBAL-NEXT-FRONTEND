@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import Script from 'next/script'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
@@ -26,6 +27,51 @@ export default function SessionExpiredPage() {
   
   return (
     <div className="flex flex-col lg:flex-row gap-8 w-full max-w-5xl">
+      {/* JSON-LD Structured Data */}
+      <Script id="session-expired-structured-data" type="application/ld+json" strategy="afterInteractive">
+        {`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Session Expired - RTN Global",
+            "description": "Your session has expired. Please log in again to continue.",
+            "url": "https://rtnglobal.co/auth/session-expired",
+            "publisher": {
+              "@type": "Organization",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.co/",
+              "logo": "https://rtnglobal.co/logo.png",
+              "founder": {
+                "@type": "Person",
+                "name": "Muhammad Tayyab"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+                "addressLocality": "ALBUQUERQUE",
+                "addressRegion": "NM",
+                "postalCode": "87110",
+                "addressCountry": "US"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "telephone": "+1 505 528 6780",
+                "email": "info@rtnglobal.site"
+              },
+              "sameAs": [
+                "https://www.instagram.com/rtnglobalofficial/",
+                "https://www.threads.net/@rtnglobalofficial",
+                "https://www.tiktok.com/@rtnglobalofficial",
+                "https://web.facebook.com/people/RTN-Global/61573828870610/",
+                "https://www.youtube.com/@RTNGlobal",
+                "https://www.linkedin.com/in/rtnglobalofficial/"
+              ]
+            }
+          }
+        `}
+      </Script>
+
       {/* Left column with image - visible on larger screens */}
       <div className="hidden lg:flex lg:flex-col lg:items-center lg:justify-center lg:w-1/2">
         <div className="relative w-full max-w-md aspect-square">

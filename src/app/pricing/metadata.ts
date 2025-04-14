@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.com/pricing',
+    canonical: 'https://rtnglobal.co/pricing',
     languages: {
-      'en-US': 'https://rtnglobal.com/pricing',
-      'en-GB': 'https://rtnglobal.com/pricing',
-      'fr': 'https://rtnglobal.com/fr/pricing',
-      'de': 'https://rtnglobal.com/de/pricing',
-      'es': 'https://rtnglobal.com/es/pricing',
+      'en-US': 'https://rtnglobal.co/pricing',
+      'en-GB': 'https://rtnglobal.co/pricing',
+      'fr': 'https://rtnglobal.co/fr/pricing',
+      'de': 'https://rtnglobal.co/de/pricing',
+      'es': 'https://rtnglobal.co/es/pricing',
     }
   },
   openGraph: {
     title: 'Transparent Pricing | Web Development & Digital Marketing Plans | RTN Global',
     description: 'Find the perfect pricing plan for your business needs. Clear, transparent packages with no hidden fees. Compare features and choose the right solution for your budget.',
     type: 'website',
-    url: 'https://rtnglobal.com/pricing',
+    url: 'https://rtnglobal.co/pricing',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -42,17 +42,19 @@ export const metadata: Metadata = {
     title: 'Web Development & Digital Marketing Pricing Plans | RTN Global',
     description: 'Transparent pricing for all your digital needs. Compare plans and find the perfect solution for your business requirements and budget.',
     images: ['/images/og/pricing-og.jpg'],
-    creator: '@RTNGlobal',
-    site: '@RTNGlobal'
+    creator: '@rtnglobalofficial',
+    site: '@rtnglobalofficial'
   },
   authors: [{ name: 'RTN Global Team' }],
-  publisher: 'RTN Global Ltd',
+  publisher: 'RTN Global',
+  creator: 'Muhammad Tayyab',
   category: 'Business Services',
   verification: {
-    google: 'verification_token',
-    yandex: 'verification_token',
+    google: 'google03e42604abdd544c',
     other: {
-      me: ['https://rtnglobal.com', 'https://www.linkedin.com/company/rtnglobal']
+      'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+      'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
@@ -65,6 +67,9 @@ export const metadata: Metadata = {
     'pricing:currency': 'USD',
     'pricing:model': 'One-time & Subscription',
     'pricing:customizations': 'Available for all plans',
-    'pricing:guarantee': '30-day satisfaction guarantee'
+    'pricing:guarantee': '30-day satisfaction guarantee',
+    'contact:email': 'info@rtnglobal.site',
+    'contact:phone': '+1 505 528 6780',
+    'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   }
 } 

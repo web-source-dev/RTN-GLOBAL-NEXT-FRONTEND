@@ -30,7 +30,7 @@ export async function generateMetadata({
     };
   }
 
-  const canonicalUrl = `https://rtnglobal.com/knowledge-base/${category}/${slug}`;
+  const canonicalUrl = `https://rtnglobal.co/knowledge-base/${category}/${slug}`;
   
   // Create metadata with article information
   return {
@@ -63,17 +63,17 @@ export async function generateMetadata({
       title: `${article.title} | RTN Global Knowledge Base`,
       description: article.description,
       images: ['/images/og-knowledge-base.jpg'],
-      creator: '@RTNGlobal',
-      site: '@RTNGlobal',
+      creator: '@rtnglobalofficial',
+      site: '@rtnglobalofficial',
     },
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'en-US': `https://us.rtnglobal.com/knowledge-base/${category}/${slug}`,
-        'en-GB': `https://uk.rtnglobal.com/knowledge-base/${category}/${slug}`,
-        'de-DE': `https://de.rtnglobal.com/wissensdatenbank/${category}/${slug}`,
-        'fr-FR': `https://fr.rtnglobal.com/base-de-connaissances/${category}/${slug}`,
-        'es-ES': `https://es.rtnglobal.com/base-de-conocimiento/${category}/${slug}`,
+        'en-US': `https://us.rtnglobal.co/knowledge-base/${category}/${slug}`,
+        'en-GB': `https://uk.rtnglobal.co/knowledge-base/${category}/${slug}`,
+        'de-DE': `https://de.rtnglobal.co/wissensdatenbank/${category}/${slug}`,
+        'fr-FR': `https://fr.rtnglobal.co/base-de-connaissances/${category}/${slug}`,
+        'es-ES': `https://es.rtnglobal.co/base-de-conocimiento/${category}/${slug}`,
       },
     },
     robots: {
@@ -87,18 +87,22 @@ export async function generateMetadata({
         'max-snippet': -1,
       },
     },
-    metadataBase: new URL('https://rtnglobal.com'),
+    metadataBase: new URL('https://rtnglobal.co'),
     viewport: {
       width: 'device-width',
       initialScale: 1,
       maximumScale: 5,
     },
     verification: {
-      google: 'google-site-verification-code',
+      google: 'google03e42604abdd544c',
       other: {
-        me: ['support@rtnglobal.com'],
+        'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+        'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+        me: ['info@rtnglobal.site'],
       },
     },
+    publisher: 'RTN Global',
+    creator: 'Muhammad Tayyab',
     // Add structured data for article
     other: {
       'application-name': 'RTN Global Knowledge Base',
@@ -110,23 +114,26 @@ export async function generateMetadata({
       'msapplication-TileColor': '#2b5797',
       'msapplication-tap-highlight': 'no',
       'theme-color': '#0f172a',
+      'contact:email': 'info@rtnglobal.site',
+      'contact:phone': '+1 505 528 6780',
+      'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
       'structured-data': JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'TechArticle',
         headline: article.title,
         description: article.description,
-        image: 'https://rtnglobal.com/images/og-knowledge-base.jpg',
+        image: 'https://rtnglobal.co/images/og-knowledge-base.jpg',
         author: {
           '@type': 'Organization',
           name: 'RTN Global',
-          url: 'https://rtnglobal.com',
+          url: 'https://rtnglobal.co',
         },
         publisher: {
           '@type': 'Organization',
           name: 'RTN Global',
           logo: {
             '@type': 'ImageObject',
-            url: 'https://rtnglobal.com/images/logo.png',
+            url: 'https://rtnglobal.co/images/logo.png',
           },
         },
         datePublished: article.lastUpdated ? new Date(article.lastUpdated).toISOString() : new Date().toISOString(),

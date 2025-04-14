@@ -40,25 +40,25 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       'max-video-preview': -1,
     },
     alternates: {
-      canonical: `https://rtnglobal.com/portfolio/${slug}`,
+      canonical: `https://rtnglobal.co/portfolio/${slug}`,
       languages: {
-        'en-US': `https://rtnglobal.com/portfolio/${slug}`,
-        'en-GB': `https://rtnglobal.com/portfolio/${slug}`,
-        'fr': `https://rtnglobal.com/fr/portfolio/${slug}`,
-        'de': `https://rtnglobal.com/de/portfolio/${slug}`,
-        'es': `https://rtnglobal.com/es/portfolio/${slug}`,
+        'en-US': `https://rtnglobal.co/portfolio/${slug}`,
+        'en-GB': `https://rtnglobal.co/portfolio/${slug}`,
+        'fr': `https://rtnglobal.co/fr/portfolio/${slug}`,
+        'de': `https://rtnglobal.co/de/portfolio/${slug}`,
+        'es': `https://rtnglobal.co/es/portfolio/${slug}`,
       }
     },
     openGraph: {
       title: project.title,
       description: project.description,
       type: 'article',
-      url: `https://rtnglobal.com/portfolio/${slug}`,
+      url: `https://rtnglobal.co/portfolio/${slug}`,
       siteName: 'RTN Global',
       locale: 'en_US',
       images: [
         {
-          url: project.image.startsWith('/') ? `https://rtnglobal.com${project.image}` : project.image,
+          url: project.image.startsWith('/') ? `https://rtnglobal.co${project.image}` : project.image,
           width: 1200,
           height: 630,
           alt: project.title
@@ -74,17 +74,19 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       title: `${project.title} | RTN Global Case Study`,
       description: project.description,
       images: [project.image],
-      creator: '@RTNGlobal',
-      site: '@RTNGlobal'
+      creator: '@rtnglobalofficial',
+      site: '@rtnglobalofficial'
     },
     authors: [{ name: 'RTN Global Team' }],
-    publisher: 'RTN Global Ltd',
+    publisher: 'RTN Global',
+    creator: 'Muhammad Tayyab',
     category: project.category,
     verification: {
-      google: 'verification_token',
-      yandex: 'verification_token',
+      google: 'google03e42604abdd544c',
       other: {
-        me: ['https://rtnglobal.com', 'https://www.linkedin.com/company/rtnglobal']
+        'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+        'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+        me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
       }
     },
     other: {
@@ -97,7 +99,10 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       'project:client': project.client || 'Confidential',
       'project:year': project.year || new Date().getFullYear().toString(),
       'project:technologies': project.technologies ? project.technologies.join(', ') : 'Various Modern Technologies',
-      'project:featured': project.featured ? 'Yes' : 'No'
+      'project:featured': project.featured ? 'Yes' : 'No',
+      'contact:email': 'info@rtnglobal.site',
+      'contact:phone': '+1 505 528 6780',
+      'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
     }
   }
 } 

@@ -1,9 +1,64 @@
 import NewsletterForm from '@/components/forms/newsletter-form';
 import { Mail, Bell, Award } from 'lucide-react';
+import Script from 'next/script';
 
 export default function NewsletterSubscribePage() {
+  // Structured data for Newsletter page
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Subscribe to RTN Global Newsletter",
+    "description": "Stay up-to-date with the latest industry trends, insights, and exclusive content delivered straight to your inbox.",
+    "url": "https://rtnglobal.com/newsletter/subscribe",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rtnglobal.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Newsletter",
+          "item": "https://rtnglobal.com/newsletter"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Subscribe",
+          "item": "https://rtnglobal.com/newsletter/subscribe"
+        }
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "RTN Global",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rtnglobal.com/images/logo.png"
+      }
+    },
+    "mainEntity": {
+      "@type": "SpecialAnnouncement",
+      "name": "Newsletter Subscription",
+      "category": "https://schema.org/BusinessUpdate",
+      "text": "Join our newsletter community to receive weekly insights, exclusive updates, and special offers.",
+      "datePosted": new Date().toISOString().split('T')[0]
+    }
+  };
+
   return (
     <main className="min-h-screen bg-background">
+      {/* JSON-LD structured data */}
+      <Script
+        id="newsletter-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      
       <div className="py-12">
         <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto">

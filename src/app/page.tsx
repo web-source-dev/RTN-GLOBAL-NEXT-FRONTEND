@@ -369,17 +369,19 @@ export default function HomePage() {
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "RTN Global",
-            "url": "https://rtnglobal.site",
-            "logo": "https://rtnglobal.site/logo.png",
+            "url": "https://rtnglobal.co",
+            "logo": "https://rtnglobal.co/logo.png",
             "sameAs": [
-              "https://twitter.com/rtnglobal",
-              "https://linkedin.com/company/rtn-global",
-              "https://facebook.com/rtnglobal",
-              "https://instagram.com/rtnglobal"
+              "https://www.instagram.com/rtnglobalofficial/",
+              "https://www.threads.net/@rtnglobalofficial/",
+              "https://www.tiktok.com/@rtnglobalofficial",
+              "https://web.facebook.com/people/RTN-Global/61573828870610/",
+              "https://www.youtube.com/@RTNGlobal",
+              "https://www.linkedin.com/in/rtnglobalofficial/"
             ],
             "contactPoint": {
               "@type": "ContactPoint",
-              "telephone": "+15551234567",
+              "telephone": "+1 505 528 6780",
               "contactType": "customer service",
               "email": "info@rtnglobal.site",
               "areaServed": "Worldwide"
@@ -395,15 +397,15 @@ export default function HomePage() {
             "description": "RTN Global delivers exceptional web development and strategic digital marketing solutions including Wix, MERN stack, and React Native applications.",
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://rtnglobal.site/search?q={search_term_string}",
+              "target": "https://rtnglobal.co/search?q={search_term_string}",
               "query-input": "required name=search_term_string"
             },
             "founder": {
               "@type": "Person",
-              "name": "RTN Global Founder"
+              "name": "Muhammad Tayyab"
             },
             "foundingDate": "2020",
-            "areaServed": ["United States", "Canada", "Europe", "Asia", "Australia"],
+            "areaServed": ["United States", "Mexico", "Canada", "Europe", "Asia", "Australia"],
             "knowsAbout": ["Web Development", "Digital Marketing", "E-commerce", "UI/UX Design", "SEO"]
           })
         }}

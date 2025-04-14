@@ -85,19 +85,19 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     description: shortDescription,
     keywords: keywords.join(', '),
     alternates: {
-      canonical: `https://rtnglobal.com/careers/jobs/${job.slug}`,
+      canonical: `https://rtnglobal.co/careers/jobs/${job.slug}`,
       languages: {
-        'en-US': `https://rtnglobal.com/careers/jobs/${job.slug}`,
-        'en-GB': `https://rtnglobal.com/careers/jobs/${job.slug}`,
-        'fr': `https://rtnglobal.com/fr/careers/jobs/${job.slug}`,
-        'de': `https://rtnglobal.com/de/careers/jobs/${job.slug}`,
-        'es': `https://rtnglobal.com/es/careers/jobs/${job.slug}`,
+        'en-US': `https://rtnglobal.co/careers/jobs/${job.slug}`,
+        'en-GB': `https://rtnglobal.co/careers/jobs/${job.slug}`,
+        'fr': `https://rtnglobal.co/fr/careers/jobs/${job.slug}`,
+        'de': `https://rtnglobal.co/de/careers/jobs/${job.slug}`,
+        'es': `https://rtnglobal.co/es/careers/jobs/${job.slug}`,
       }
     },
     openGraph: {
       title: `${job.title} - RTN Global`,
       description: shortDescription,
-      url: `https://rtnglobal.com/careers/jobs/${job.slug}`,
+      url: `https://rtnglobal.co/careers/jobs/${job.slug}`,
       siteName: 'RTN Global',
       locale: 'en_US',
       type: 'website',
@@ -115,19 +115,31 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       title: `${job.title} | RTN Global Careers`,
       description: shortDescription,
       images: ['/images/og/careers.jpg'],
+      creator: '@rtnglobalofficial',
+      site: '@rtnglobalofficial'
     },
     robots: {
       index: true,
       follow: true,
     },
-    authors: [{ name: 'RTN Global Team' }],
-    publisher: 'RTN Global Ltd',
+    authors: [{ name: 'Muhammad Tayyab' }],
+    publisher: 'RTN Global',
     category: 'Careers',
+    verification: {
+      google: 'google03e42604abdd544c',
+      other: {
+        'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+        'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+      }
+    },
     other: {
       'job:title': job.title,
       'job:department': job.department,
       'job:location': job.location,
       'job:type': job.type,
+      'contact:email': 'info@rtnglobal.site',
+      'contact:phone': '+1 505 528 6780',
+      'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
     }
   };
 } 

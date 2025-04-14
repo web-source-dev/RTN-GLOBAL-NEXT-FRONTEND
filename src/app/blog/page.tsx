@@ -11,6 +11,7 @@ import { ArrowRight, Search, ChevronLeft, ChevronRight, Loader2, Tag, Users2, Wr
 import { BlogAPI } from "@/lib/api/api-provider"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Chip } from "@/components/ui/chip"
+import Script from "next/script"
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 // Define interfaces for types
 interface BlogPost {
@@ -297,6 +298,51 @@ export default function BlogPage() {
 
   return (
     <Layout>
+      {/* Generate and add JSON-LD structured data */}
+      <Script id="blog-structured-data" type="application/ld+json" strategy="afterInteractive">
+        {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "name": "RTN Global Blog",
+            "description": "Latest articles, insights and updates from RTN Global",
+            "url": "https://rtnglobal.co/blog",
+            "publisher": {
+              "@type": "Organization",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.co/",
+              "logo": "https://rtnglobal.co/logo.png",
+              "founder": {
+                "@type": "Person",
+                "name": "Muhammad Tayyab"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+                "addressLocality": "ALBUQUERQUE",
+                "addressRegion": "NM",
+                "postalCode": "87110",
+                "addressCountry": "US"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "telephone": "+1 505 528 6780",
+                "email": "info@rtnglobal.site"
+              },
+              "sameAs": [
+                "https://www.instagram.com/rtnglobalofficial/",
+                "https://www.threads.net/@rtnglobalofficial",
+                "https://www.tiktok.com/@rtnglobalofficial",
+                "https://web.facebook.com/people/RTN-Global/61573828870610/",
+                "https://www.youtube.com/@RTNGlobal",
+                "https://www.linkedin.com/in/rtnglobalofficial/"
+              ]
+            }
+          }
+        `}
+      </Script>
+
       {/* Hero Section - Improved vertical spacing and container width */}
       <section className="relative py-16 sm:py-24 bg-muted/50">
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">

@@ -18,7 +18,7 @@ export async function generateMetadata({
     };
   }
 
-  const canonicalUrl = `https://rtnglobal.com/knowledge-base/${category}`;
+  const canonicalUrl = `https://rtnglobal.co/knowledge-base/${category}`;
   
   // Create metadata with category information
   return {
@@ -46,17 +46,17 @@ export async function generateMetadata({
       title: `${categoryInfo.title} | RTN Global Knowledge Base`,
       description: categoryInfo.description,
       images: ['/images/og-knowledge-base.jpg'],
-      creator: '@RTNGlobal',
-      site: '@RTNGlobal',
+      creator: '@rtnglobalofficial',
+      site: '@rtnglobalofficial',
     },
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'en-US': `https://us.rtnglobal.com/knowledge-base/${category}`,
-        'en-GB': `https://uk.rtnglobal.com/knowledge-base/${category}`,
-        'de-DE': `https://de.rtnglobal.com/wissensdatenbank/${category}`,
-        'fr-FR': `https://fr.rtnglobal.com/base-de-connaissances/${category}`,
-        'es-ES': `https://es.rtnglobal.com/base-de-conocimiento/${category}`,
+        'en-US': `https://rtnglobal.co/knowledge-base/${category}`,
+        'en-GB': `https://rtnglobal.co/knowledge-base/${category}`,
+        'de-DE': `https://rtnglobal.co/de/wissensdatenbank/${category}`,
+        'fr-FR': `https://rtnglobal.co/fr/base-de-connaissances/${category}`,
+        'es-ES': `https://rtnglobal.co/es/base-de-conocimiento/${category}`,
       },
     },
     robots: {
@@ -70,18 +70,22 @@ export async function generateMetadata({
         'max-snippet': -1,
       },
     },
-    metadataBase: new URL('https://rtnglobal.com'),
+    metadataBase: new URL('https://rtnglobal.co'),
     viewport: {
       width: 'device-width',
       initialScale: 1,
       maximumScale: 5,
     },
     verification: {
-      google: 'google-site-verification-code',
+      google: 'google03e42604abdd544c',
       other: {
-        me: ['support@rtnglobal.com'],
+        'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+        'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+        'me': ['info@rtnglobal.site'],
       },
     },
+    authors: [{ name: 'Muhammad Tayyab' }],
+    publisher: 'RTN Global',
     // Add structured data for category
     other: {
       'application-name': 'RTN Global Knowledge Base',
@@ -93,6 +97,9 @@ export async function generateMetadata({
       'msapplication-TileColor': '#2b5797',
       'msapplication-tap-highlight': 'no',
       'theme-color': '#0f172a',
+      'contact:email': 'info@rtnglobal.site',
+      'contact:phone': '+1 505 528 6780',
+      'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
       'structured-data': JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
@@ -102,12 +109,12 @@ export async function generateMetadata({
         provider: {
           '@type': 'Organization',
           name: 'RTN Global',
-          url: 'https://rtnglobal.com',
+          url: 'https://rtnglobal.co',
         },
         isPartOf: {
           '@type': 'WebSite',
           name: 'RTN Global Knowledge Base',
-          url: 'https://rtnglobal.com/knowledge-base',
+          url: 'https://rtnglobal.co/knowledge-base',
         },
         about: {
           '@type': 'Thing',

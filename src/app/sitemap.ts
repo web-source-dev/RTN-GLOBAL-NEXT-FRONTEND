@@ -5,7 +5,7 @@ import { getAllIndustries } from '@/data/industries'
 import { getAllServices } from '@/data/services'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://rtnglobal.site'
+  const baseUrl = 'https://rtnglobal.co'
   const lastModified = new Date()
 
   // Core static pages

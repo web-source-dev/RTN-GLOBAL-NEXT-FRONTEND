@@ -88,38 +88,35 @@ export default function AboutPage() {
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "RTN Global",
-            "url": "https://rtnglobal.com",
-            "logo": "https://rtnglobal.com/images/logo.png",
-            "description": "A team of passionate digital experts committed to transforming businesses through innovative technology solutions.",
-            "foundingDate": "2017",
-            "founders": [
-              {
+            "url": "https://rtnglobal.co/",
+            "logo": "https://rtnglobal.co/logo.png",
+            "description": "RTN Global provides innovative digital solutions for business growth and transformation.",
+            "founder": {
                 "@type": "Person",
-                "name": "RTN Global Founder"
-              }
-            ],
+              "name": "Muhammad Tayyab"
+            },
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "123 Digital Avenue",
-              "addressLocality": "Tech City",
-              "addressRegion": "TC",
-              "postalCode": "12345",
+              "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+              "addressLocality": "ALBUQUERQUE",
+              "addressRegion": "NM",
+              "postalCode": "87110",
               "addressCountry": "US"
             },
             "contactPoint": {
               "@type": "ContactPoint",
               "contactType": "customer service",
-              "telephone": "+1-123-456-7890",
-              "email": "info@rtnglobal.com"
+              "telephone": "+1 505 528 6780",
+              "email": "info@rtnglobal.site"
             },
             "sameAs": [
-              "https://www.facebook.com/rtnglobal",
-              "https://www.twitter.com/rtnglobal",
-              "https://www.linkedin.com/company/rtnglobal",
-              "https://www.instagram.com/rtnglobal"
-            ],
-            "numberOfEmployees": "50+",
-            "knowsAbout": ["Web Development", "Digital Marketing", "SEO", "UI/UX Design", "E-commerce Solutions"]
+              "https://www.instagram.com/rtnglobalofficial/",
+              "https://www.threads.net/@rtnglobalofficial",
+              "https://www.tiktok.com/@rtnglobalofficial",
+              "https://web.facebook.com/people/RTN-Global/61573828870610/",
+              "https://www.youtube.com/@RTNGlobal",
+              "https://www.linkedin.com/in/rtnglobalofficial/"
+            ]
           }
         `}
       </Script>
@@ -129,102 +126,66 @@ export default function AboutPage() {
           {
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
-            "name": "RTN Global Web Development & Digital Marketing Agency",
-            "image": "https://rtnglobal.com/images/og/about-og.jpg",
-            "url": "https://rtnglobal.com",
-            "telephone": "+1-123-456-7890",
-            "description": "Award-winning web development and digital marketing agency delivering innovative solutions since 2017.",
+            "name": "RTN Global",
+            "image": "https://rtnglobal.co/logo.png",
+            "url": "https://rtnglobal.co/",
+            "telephone": "+1 505 528 6780",
+            "email": "info@rtnglobal.site",
+            "description": "RTN Global provides innovative digital solutions for business growth and transformation.",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "123 Digital Avenue",
-              "addressLocality": "Tech City",
-              "addressRegion": "TC",
-              "postalCode": "12345",
+              "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+              "addressLocality": "ALBUQUERQUE",
+              "addressRegion": "NM",
+              "postalCode": "87110",
               "addressCountry": "US"
             },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "40.7128",
-              "longitude": "-74.0060"
-            },
-            "openingHoursSpecification": {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday"
-              ],
-              "opens": "09:00",
-              "closes": "18:00"
+            "founder": {
+              "@type": "Person",
+              "name": "Muhammad Tayyab"
             },
             "priceRange": "$$",
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "Digital Services",
-              "itemListElement": [
-                {
-                  "@type": "OfferCatalog",
-                  "name": "Web Development Services",
-                  "itemListElement": [
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Custom Website Development"
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "E-commerce Development"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "@type": "OfferCatalog",
-                  "name": "Digital Marketing Services",
-                  "itemListElement": [
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "SEO Services"
-                      }
-                    },
-                    {
-                      "@type": "Offer",
-                      "itemOffered": {
-                        "@type": "Service",
-                        "name": "Social Media Marketing"
-                      }
-                    }
-                  ]
-                }
-              ]
+            "sameAs": [
+              "https://www.instagram.com/rtnglobalofficial/",
+              "https://www.threads.net/@rtnglobalofficial",
+              "https://www.tiktok.com/@rtnglobalofficial",
+              "https://web.facebook.com/people/RTN-Global/61573828870610/",
+              "https://www.youtube.com/@RTNGlobal",
+              "https://www.linkedin.com/in/rtnglobalofficial/"
+            ]
+          }
+        `}
+      </Script>
+      
+      <Script id="verification-data" type="application/ld+json" strategy="afterInteractive">
+        {`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "RTN Global",
+            "url": "https://rtnglobal.co/",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://rtnglobal.co/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
             },
-            "review": {
-              "@type": "Review",
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": "4.9",
-                "bestRating": "5"
+            "additionalProperty": [
+              {
+                "@type": "PropertyValue",
+                "name": "google-site-verification",
+                "value": "google03e42604abdd544c"
               },
-              "author": {
-                "@type": "Person",
-                "name": "Client Review"
+              {
+                "@type": "PropertyValue",
+                "name": "wot-verification",
+                "value": "d225e0e4ff8e770182408ec60e8d8c24"
               },
-              "reviewBody": "RTN Global transformed our digital presence with their innovative approach and excellent service."
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "ratingCount": "200",
-              "bestRating": "5"
-            }
+              {
+                "@type": "PropertyValue",
+                "name": "bing-site-verification",
+                "value": "9f21e93909e646e0a2f3218d1afeb53c"
+              }
+            ]
           }
         `}
       </Script>

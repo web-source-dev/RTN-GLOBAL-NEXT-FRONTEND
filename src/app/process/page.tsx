@@ -128,6 +128,83 @@ export default function ProcessPage() {
 
   return (
     <Layout>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Our Process | RTN Global",
+            "description": "Learn about RTN Global's strategic six-step methodology for brand success, combining strategic thinking, creative excellence, and technical expertise.",
+            "url": "https://rtnglobal.co/process",
+            "publisher": {
+              "@type": "Organization",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.co/",
+              "logo": "https://rtnglobal.co/logo.png",
+              "founder": {
+                "@type": "Person",
+                "name": "Muhammad Tayyab"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+                "addressLocality": "ALBUQUERQUE",
+                "addressRegion": "NM",
+                "postalCode": "87110",
+                "addressCountry": "US"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "telephone": "+1 505 528 6780",
+                "email": "info@rtnglobal.site"
+              },
+              "sameAs": [
+                "https://www.instagram.com/rtnglobalofficial/",
+                "https://www.threads.net/@rtnglobalofficial",
+                "https://www.tiktok.com/@rtnglobalofficial",
+                "https://web.facebook.com/people/RTN-Global/61573828870610/",
+                "https://www.youtube.com/@RTNGlobal",
+                "https://www.linkedin.com/in/rtnglobalofficial/"
+              ]
+            },
+            "mainEntity": {
+              "@type": "Service",
+              "name": "Brand Strategy Process",
+              "description": "A proven six-step methodology combining strategic thinking, creative excellence, and technical expertise to deliver brands that connect with audiences and achieve business objectives.",
+              "provider": {
+                "@type": "Organization",
+                "name": "RTN Global"
+              },
+              "serviceOutput": "A comprehensive brand strategy and implementation",
+              "serviceType": "Brand Development",
+              "offers": {
+                "@type": "Offer",
+                "availability": "https://schema.org/InStock"
+              }
+            },
+            "mainContentOfPage": {
+              "@type": "WebPageElement",
+              "steps": processSteps.map((step, index) => ({
+                "@type": "HowToStep",
+                "position": index + 1,
+                "name": step.title,
+                "text": step.details,
+                "itemListElement": step.deliverables.map(deliverable => ({
+                  "@type": "ListItem",
+                  "item": deliverable
+                }))
+              }))
+            },
+            "speakable": {
+              "@type": "SpeakableSpecification",
+              "cssSelector": ["h1", "h2", ".speakable"]
+            }
+          })
+        }}
+      />
       {/* Hero Section - Modern gradient background with visual elements */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-primary/10 pt-5 pb-5 md:pb-10 md:pt-5">
         <div className="absolute inset-0 z-0 opacity-30">

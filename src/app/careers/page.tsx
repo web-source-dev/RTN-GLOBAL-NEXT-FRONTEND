@@ -34,8 +34,55 @@ export default async function CareersPage({
   const type = typeof searchParams.type === 'string' ? searchParams.type : '';
   const search = typeof searchParams.search === 'string' ? searchParams.search : '';
 
+  // Generate JSON-LD structured data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Careers at RTN Global",
+    "description": "Discover career opportunities at RTN Global. Join our team and grow your skills in a collaborative environment.",
+    "url": "https://rtnglobal.co/careers",
+    "publisher": {
+      "@type": "Organization",
+      "name": "RTN Global",
+      "url": "https://rtnglobal.co/",
+      "logo": "https://rtnglobal.co/logo.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Muhammad Tayyab"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+        "addressLocality": "ALBUQUERQUE",
+        "addressRegion": "NM",
+        "postalCode": "87110",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+1 505 528 6780",
+        "email": "info@rtnglobal.site"
+      },
+      "sameAs": [
+        "https://www.instagram.com/rtnglobalofficial/",
+        "https://www.threads.net/@rtnglobalofficial",
+        "https://www.tiktok.com/@rtnglobalofficial",
+        "https://web.facebook.com/people/RTN-Global/61573828870610/",
+        "https://www.youtube.com/@RTNGlobal",
+        "https://www.linkedin.com/in/rtnglobalofficial/"
+      ]
+    }
+  };
+
   return (
     <main className="min-h-screen bg-background">
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero Section with search */}
       <section className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-background py-20 md:py-28">
         <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>

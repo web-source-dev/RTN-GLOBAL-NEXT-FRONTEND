@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const authorName = post.author?.name || 
       (post.author?.firstName || post.author?.lastName ? 
         `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim() : 
-        'RTN Global Team');
+        'Muhammad Tayyab');
     
     // Extract plain text from HTML content for description (as fallback)
     const plainText = post.content.replace(/<[^>]*>/g, '');
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const modifyDate = new Date(post.updatedAt).toISOString();
     
     // Use canonical URL if provided
-    const canonical = post.canonicalUrl || `https://rtnglobal.com/blog/${slug}`;
+    const canonical = post.canonicalUrl || `https://rtnglobal.co/blog/${slug}`;
     
     // Use OpenGraph fields if available or fallback to defaults
     const ogTitle = post.ogTitle || post.title;
@@ -86,8 +86,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: twitterTitle,
         description: twitterDescription,
         images: [twitterImage],
-        creator: '@RTNGlobal',
-        site: '@RTNGlobal',
+        creator: '@rtnglobalofficial',
+        site: '@rtnglobalofficial',
       },
       alternates: {
         canonical: canonical,
@@ -107,8 +107,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         initialScale: 1,
       },
       verification: {
-        google: 'your-google-site-verification-code', // Replace with actual verification code
+        google: 'google03e42604abdd544c',
+        other: {
+          'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+          'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+        }
       },
+      other: {
+        'contact:email': 'info@rtnglobal.site',
+        'contact:phone': '+1 505 528 6780',
+        'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
+      }
     };
   } catch (error) {
     // Fallback metadata if post can't be fetched

@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.com/support/submit',
+    canonical: 'https://rtnglobal.co/support/submit',
     languages: {
-      'en-US': 'https://rtnglobal.com/support/submit',
-      'en-GB': 'https://rtnglobal.com/support/submit',
-      'fr': 'https://rtnglobal.com/fr/support/submit',
-      'de': 'https://rtnglobal.com/de/support/submit',
-      'es': 'https://rtnglobal.com/es/support/submit',
+      'en-US': 'https://rtnglobal.co/support/submit',
+      'en-GB': 'https://rtnglobal.co/support/submit',
+      'fr': 'https://rtnglobal.co/fr/support/submit',
+      'de': 'https://rtnglobal.co/de/support/submit',
+      'es': 'https://rtnglobal.co/es/support/submit',
     }
   },
   openGraph: {
     title: 'Submit a Support Ticket | Get Expert Help | RTN Global',
     description: 'Need technical assistance? Submit a support ticket and our expert team will address your issue promptly. Our customer support prioritizes quick and effective solutions.',
     type: 'website',
-    url: 'https://rtnglobal.com/support/submit',
+    url: 'https://rtnglobal.co/support/submit',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -42,17 +42,19 @@ export const metadata: Metadata = {
     title: 'Submit a Support Request | RTN Global',
     description: 'Get expert technical assistance by submitting a support ticket. Our team is ready to help solve your issues quickly and effectively.',
     images: ['/images/og/support-submit.jpg'],
-    creator: '@RTNGlobal',
-    site: '@RTNGlobal'
+    creator: '@rtnglobalofficial',
+    site: '@rtnglobalofficial'
   },
   authors: [{ name: 'RTN Global Team' }],
-  publisher: 'RTN Global Ltd',
+  publisher: 'RTN Global',
+  creator: 'Muhammad Tayyab',
   category: 'Customer Support',
   verification: {
-    google: 'verification_token',
-    yandex: 'verification_token',
+    google: 'google03e42604abdd544c',
     other: {
-      me: ['https://rtnglobal.com', 'https://www.linkedin.com/company/rtnglobal']
+      'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+      'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
@@ -65,6 +67,9 @@ export const metadata: Metadata = {
     'support:priority': 'Based on issue severity',
     'support:channels': 'Ticket system, email follow-up',
     'support:attachments': 'Screenshots and files accepted',
-    'support:tracking': 'Automatic ticket ID generation'
+    'support:tracking': 'Automatic ticket ID generation',
+    'contact:email': 'info@rtnglobal.site',
+    'contact:phone': '+1 505 528 6780',
+    'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   }
 }; 

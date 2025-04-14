@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: 'About RTN Global | Web Development & Digital Marketing Experts',
     description: 'Meet the passionate team behind RTN Global. With 50+ experts, we\'ve delivered 200+ successful projects since 2017, helping businesses transform digitally with innovative web development and marketing solutions.',
     type: 'website',
-    url: 'https://rtnglobal.com/about',
+    url: 'https://rtnglobal.co/about',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -47,24 +47,30 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About RTN Global | Web Development & Digital Marketing Experts',
     description: 'Meet the passionate team behind RTN Global. With 50+ experts, we\'ve delivered 200+ successful projects since 2017, helping businesses transform digitally.',
-    creator: '@rtnglobal',
-    site: '@rtnglobal',
+    creator: '@rtnglobalofficial',
+    site: '@rtnglobalofficial',
     images: ['/images/og/about-og.jpg']
   },
   alternates: {
-    canonical: 'https://rtnglobal.com/about',
+    canonical: 'https://rtnglobal.co/about',
     languages: {
-      'en-US': 'https://rtnglobal.com/about',
+      'en-US': 'https://rtnglobal.co/about',
     }
   },
   authors: [
-    { name: 'RTN Global Team' }
+    { name: 'Muhammad Tayyab' }
   ],
   category: 'Technology',
   verification: {
-    google: 'google03e42604abdd544c', // Replace with actual verification code
+    google: 'google03e42604abdd544c',
+    other: {
+      'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+      'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+    }
   },
   other: {
-    'facebook-domain-verification': 'facebook-domain-verification-code', // Replace with actual verification code
+    'contact:email': 'info@rtnglobal.site',
+    'contact:phone': '+1 505 528 6780', 
+    'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
   }
 } 

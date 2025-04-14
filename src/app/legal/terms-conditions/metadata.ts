@@ -1,27 +1,27 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Legal Agreement | RTN Global",
-  description: "Review RTN Global's Terms & Conditions for using our website and services. Understand your rights, responsibilities, and our legal agreement with you.",
+  title: "Terms & Conditions | User Agreement | RTN Global",
+  description: "RTN Global's terms and conditions establish the rules for using our services and website. Understand your rights and responsibilities as a user.",
   keywords: [
-    "RTN Global terms and conditions",
-    "terms of service",
-    "legal agreement",
+    "RTN Global terms",
+    "terms and conditions",
     "user agreement",
-    "website terms",
-    "service agreement",
-    "intellectual property rights",
-    "liability limitations",
+    "legal terms",
+    "service conditions",
+    "website rules",
     "user responsibilities",
-    "legal terms"
+    "intellectual property",
+    "liability limitations",
+    "terms of service"
   ],
   alternates: {
-    canonical: "https://rtnglobal.site/legal/terms-conditions",
+    canonical: "https://rtnglobal.co/legal/terms-conditions",
   },
   openGraph: {
-    title: "Terms & Conditions | Legal Agreement | RTN Global",
-    description: "Review RTN Global's Terms & Conditions for using our website and services. Understand your rights, responsibilities, and our legal agreement with you.",
-    url: "https://rtnglobal.site/legal/terms-conditions",
+    title: "Terms & Conditions | User Agreement | RTN Global",
+    description: "RTN Global's terms and conditions establish the rules for using our services and website. Understand your rights and responsibilities as a user.",
+    url: "https://rtnglobal.co/legal/terms-conditions",
     siteName: "RTN Global",
     locale: "en_US",
     type: "website",
@@ -29,6 +29,20 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Terms & Conditions | RTN Global",
-    description: "Review RTN Global's Terms & Conditions for using our website and services. Understand your rights, responsibilities, and our legal agreement with you.",
+    description: "RTN Global's terms and conditions establish the rules for using our services and website. Understand your rights and responsibilities as a user.",
+    creator: "@rtnglobalofficial",
+    site: "@rtnglobalofficial"
   },
+  verification: {
+    google: "google03e42604abdd544c",
+    other: {
+      'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+      'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+    }
+  },
+  other: {
+    'contact:email': 'info@rtnglobal.site',
+    'contact:phone': '+1 505 528 6780',
+    'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
+  }
 }; 

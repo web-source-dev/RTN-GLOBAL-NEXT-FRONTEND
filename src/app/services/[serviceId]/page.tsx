@@ -61,6 +61,70 @@ export default function ServiceDetailPage({
   
   return (
     <Layout>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": `${params.serviceId.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} | RTN Global`,
+            "serviceType": params.serviceId.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+            "url": `https://rtnglobal.co/services/${params.serviceId}`,
+            "provider": {
+              "@type": "Organization",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.co/",
+              "logo": "https://rtnglobal.co/logo.png",
+              "founder": {
+                "@type": "Person",
+                "name": "Muhammad Tayyab"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+                "addressLocality": "ALBUQUERQUE",
+                "addressRegion": "NM",
+                "postalCode": "87110",
+                "addressCountry": "US"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "telephone": "+1 505 528 6780",
+                "email": "info@rtnglobal.site"
+              }
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "United States"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "Custom",
+              "priceCurrency": "USD"
+            },
+            "potentialAction": {
+              "@type": "ReserveAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://rtnglobal.co/contact/free-consultation",
+                "inLanguage": "en-US",
+                "actionPlatform": [
+                  "http://schema.org/DesktopWebPlatform",
+                  "http://schema.org/IOSPlatform",
+                  "http://schema.org/AndroidPlatform"
+                ]
+              },
+              "result": {
+                "@type": "Reservation",
+                "name": "Free Consultation Booking"
+              }
+            }
+          })
+        }}
+      />
+      
       {/* Hero Section - Enhanced with better visual hierarchy and trust elements */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-muted/50 to-background relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

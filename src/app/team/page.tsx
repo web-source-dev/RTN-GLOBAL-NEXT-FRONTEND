@@ -149,6 +149,61 @@ export default function TeamPage() {
 
   return (
     <Layout>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Our Team | RTN Global",
+            "description": "Meet the talented team behind RTN Global, dedicated to delivering exceptional digital solutions.",
+            "url": "https://rtnglobal.co/team",
+            "publisher": {
+              "@type": "Organization",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.co/",
+              "logo": "https://rtnglobal.co/logo.png",
+              "founder": {
+                "@type": "Person",
+                "name": "Muhammad Tayyab"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+                "addressLocality": "ALBUQUERQUE",
+                "addressRegion": "NM",
+                "postalCode": "87110",
+                "addressCountry": "US"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "telephone": "+1 505 528 6780",
+                "email": "info@rtnglobal.site"
+              },
+              "employee": teamMembers.map(member => ({
+                "@type": "Person",
+                "name": member.name,
+                "jobTitle": member.role,
+                "description": member.bio,
+                "image": member.image,
+                "knowsAbout": member.expertise,
+                "sameAs": [
+                  member.social.linkedin,
+                  member.social.twitter
+                ].filter(Boolean)
+              }))
+            },
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "RTN Global Team",
+              "description": "Our diverse team of experts is passionate about creating digital solutions that drive success for our clients."
+            }
+          })
+        }}
+      />
+      
       {/* Hero Section */}
       <HeroSection
         title="Meet Our Team"

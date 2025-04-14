@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.com/support',
+    canonical: 'https://rtnglobal.co/support',
     languages: {
-      'en-US': 'https://rtnglobal.com/support',
-      'en-GB': 'https://rtnglobal.com/support',
-      'fr': 'https://rtnglobal.com/fr/support',
-      'de': 'https://rtnglobal.com/de/support',
-      'es': 'https://rtnglobal.com/es/support',
+      'en-US': 'https://rtnglobal.co/support',
+      'en-GB': 'https://rtnglobal.co/support',
+      'fr': 'https://rtnglobal.co/fr/support',
+      'de': 'https://rtnglobal.co/de/support',
+      'es': 'https://rtnglobal.co/es/support',
     }
   },
   openGraph: {
     title: 'Technical Support & Help Center | RTN Global',
     description: 'Get expert assistance for your technical issues. Our dedicated support team is ready to help you resolve problems and answer questions.',
     type: 'website',
-    url: 'https://rtnglobal.com/support',
+    url: 'https://rtnglobal.co/support',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -42,17 +42,19 @@ export const metadata: Metadata = {
     title: 'Technical Support & Customer Assistance | RTN Global',
     description: 'Access our support center for expert technical assistance. Submit tickets, check request status, and get the help you need.',
     images: ['/images/og/support-og.jpg'],
-    creator: '@RTNGlobal',
-    site: '@RTNGlobal'
+    creator: '@rtnglobalofficial',
+    site: '@rtnglobalofficial'
   },
   authors: [{ name: 'RTN Global Team' }],
-  publisher: 'RTN Global Ltd',
+  publisher: 'RTN Global',
+  creator: 'Muhammad Tayyab',
   category: 'Customer Support',
   verification: {
-    google: 'verification_token',
-    yandex: 'verification_token',
+    google: 'google03e42604abdd544c',
     other: {
-      me: ['https://rtnglobal.com', 'https://www.linkedin.com/company/rtnglobal']
+      'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+      'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
@@ -62,9 +64,10 @@ export const metadata: Metadata = {
     'twitter:data1': 'Within 24 Hours',
     'twitter:label2': 'Support Hours',
     'twitter:data2': 'Monday-Friday, 9AM-6PM',
-    'support:email': 'support@rtnglobal.site',
-    'support:phone': '+1 (555) 123-4567',
+    'support:email': 'info@rtnglobal.site',
+    'support:phone': '+1 505 528 6780',
     'support:channels': 'Ticket System, Email, Phone',
-    'support:availability': '24/7 for critical issues'
+    'support:availability': '24/7 for critical issues',
+    'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   }
 } 

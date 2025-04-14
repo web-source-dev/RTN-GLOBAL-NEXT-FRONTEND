@@ -53,19 +53,19 @@ export async function generateMetadata({ params }: { params: { industrySlug: str
       'max-video-preview': -1,
     },
     alternates: {
-      canonical: `https://rtnglobal.com/industries/${params.industrySlug}`,
+      canonical: `https://rtnglobal.co/industries/${params.industrySlug}`,
       languages: {
-        'en-US': `https://rtnglobal.com/industries/${params.industrySlug}`,
-        'en-GB': `https://rtnglobal.com/industries/${params.industrySlug}`,
-        'fr': `https://rtnglobal.com/fr/industries/${params.industrySlug}`,
-        'de': `https://rtnglobal.com/de/industries/${params.industrySlug}`,
-        'es': `https://rtnglobal.com/es/industries/${params.industrySlug}`,
+        'en-US': `https://rtnglobal.co/industries/${params.industrySlug}`,
+        'en-GB': `https://rtnglobal.co/industries/${params.industrySlug}`,
+        'fr': `https://rtnglobal.co/fr/industries/${params.industrySlug}`,
+        'de': `https://rtnglobal.co/de/industries/${params.industrySlug}`,
+        'es': `https://rtnglobal.co/es/industries/${params.industrySlug}`,
       }
     },
     openGraph: {
       title: `${industry.name} Digital Solutions | RTN Global`,
       description: ogDescription,
-      url: `https://rtnglobal.com/industries/${params.industrySlug}`,
+      url: `https://rtnglobal.co/industries/${params.industrySlug}`,
       siteName: 'RTN Global',
       locale: 'en_US',
       type: 'website',
@@ -83,17 +83,17 @@ export async function generateMetadata({ params }: { params: { industrySlug: str
       title: `${industry.name} Solutions | RTN Global`,
       description: cleanDescription,
       images: [industry.heroImage || '/images/og/industries-og.jpg'],
-      creator: '@RTNGlobal',
-      site: '@RTNGlobal'
+      creator: '@rtnglobalofficial',
+      site: '@rtnglobalofficial'
     },
-    authors: [{ name: 'RTN Global Team' }],
-    publisher: 'RTN Global Ltd',
+    authors: [{ name: 'Muhammad Tayyab' }],
+    publisher: 'RTN Global',
     category: 'Business Services',
     verification: {
-      google: 'verification_token',
-      yandex: 'verification_token',
+      google: 'google03e42604abdd544c',
       other: {
-        me: ['https://rtnglobal.com', 'https://www.linkedin.com/company/rtnglobal']
+        'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+        'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
       }
     },
     other: {
@@ -105,7 +105,10 @@ export async function generateMetadata({ params }: { params: { industrySlug: str
       'twitter:data2': industry.services.length.toString(),
       'industry:type': industry.name,
       'industry:services': industry.services.map(service => service.title).join(','),
-      'industry:tools': industry.tools.join(',')
+      'industry:tools': industry.tools.join(','),
+      'contact:email': 'info@rtnglobal.site',
+      'contact:phone': '+1 505 528 6780',
+      'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
     }
   };
 }

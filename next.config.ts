@@ -30,7 +30,7 @@ const nextConfig: NextConfig = {
   
   // Image optimization configuration
   images: {
-    domains: ['rtnglobal.site', 'localhost', 'backend.mydomain.local'],
+    domains: ['rtnglobal.co', 'localhost', 'backend.mydomain.local'],
     // Configure image formats used for optimization
     formats: ['image/avif', 'image/webp'],
     // Configure device sizes for responsive images

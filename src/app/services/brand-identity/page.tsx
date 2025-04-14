@@ -133,6 +133,95 @@ export default function BrandIdentityPage() {
 
   return (
     <Layout>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Brand Identity Design Services | RTN Global",
+            "serviceType": "Brand Identity Design",
+            "description": "Professional brand identity design services including logo design, brand guidelines, visual identity systems, and brand strategy development.",
+            "url": "https://rtnglobal.co/services/brand-identity",
+            "provider": {
+              "@type": "Organization",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.co/",
+              "logo": "https://rtnglobal.co/logo.png",
+              "founder": {
+                "@type": "Person",
+                "name": "Muhammad Tayyab"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+                "addressLocality": "ALBUQUERQUE",
+                "addressRegion": "NM",
+                "postalCode": "87110",
+                "addressCountry": "US"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "telephone": "+1 505 528 6780",
+                "email": "info@rtnglobal.site"
+              }
+            },
+            "offers": {
+              "@type": "AggregateOffer",
+              "priceCurrency": "USD",
+              "lowPrice": "999",
+              "highPrice": "6999",
+              "offerCount": "4"
+            },
+            "serviceOutput": {
+              "@type": "Thing",
+              "name": "Brand Identity Package",
+              "description": "A complete brand identity system including logo, color palette, typography, brand guidelines, and application examples."
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "United States"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Brand Identity Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Logo Design"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Brand Guidelines Development"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Visual Identity System"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Brand Strategy"
+                  }
+                }
+              ]
+            }
+          })
+        }}
+      />
+      
       {/* Hero Section */}
       <HeroSection
         title="Brand Identity Services"

@@ -101,8 +101,68 @@ export default function CaseStudyPage({ params }: Props) {
     tocSections.push({ id: "testimonial", title: "Client Testimonial", icon: <Quote className="h-4 w-4" /> });
   }
   
+  // Generate JSON-LD structured data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": caseStudy.title,
+    "description": caseStudy.summary,
+    "image": caseStudy.image,
+    "datePublished": new Date().toISOString(),
+    "author": {
+      "@type": "Organization",
+      "name": "RTN Global"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "RTN Global",
+      "url": "https://rtnglobal.co/",
+      "logo": "https://rtnglobal.co/logo.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Muhammad Tayyab"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+        "addressLocality": "ALBUQUERQUE",
+        "addressRegion": "NM",
+        "postalCode": "87110",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+1 505 528 6780",
+        "email": "info@rtnglobal.site"
+      },
+      "sameAs": [
+        "https://www.instagram.com/rtnglobalofficial/",
+        "https://www.threads.net/@rtnglobalofficial",
+        "https://www.tiktok.com/@rtnglobalofficial",
+        "https://web.facebook.com/people/RTN-Global/61573828870610/",
+        "https://www.youtube.com/@RTNGlobal",
+        "https://www.linkedin.com/in/rtnglobalofficial/"
+      ]
+    },
+    "about": {
+      "@type": "Thing",
+      "name": caseStudy.client,
+      "description": `Case study for ${caseStudy.client} in the ${caseStudy.industry} industry.`
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://rtnglobal.co/case-studies/${params.slug}`
+    }
+  };
+  
   return (
     <Layout>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       
       {/* Hero Section */}
       <section id="overview" className="relative py-10 md:py-10 overflow-hidden bg-gradient-to-b from-background to-muted/30">

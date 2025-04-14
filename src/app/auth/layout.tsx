@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import { cn } from "@/lib/utils"
 
 const inter = Inter({ subsets: ['latin'] })
@@ -21,6 +22,45 @@ export default function AuthLayout({
       "py-10 md:py-0",
       inter.className
     )}>
+      {/* JSON-LD Structured Data */}
+      <Script id="auth-layout-structured-data" type="application/ld+json" strategy="afterInteractive">
+        {`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "RTN Global",
+            "url": "https://rtnglobal.co/",
+            "logo": "https://rtnglobal.co/logo.png",
+            "founder": {
+              "@type": "Person",
+              "name": "Muhammad Tayyab"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+              "addressLocality": "ALBUQUERQUE",
+              "addressRegion": "NM",
+              "postalCode": "87110",
+              "addressCountry": "US"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer service",
+              "telephone": "+1 505 528 6780",
+              "email": "info@rtnglobal.site"
+            },
+            "sameAs": [
+              "https://www.instagram.com/rtnglobalofficial/",
+              "https://www.threads.net/@rtnglobalofficial",
+              "https://www.tiktok.com/@rtnglobalofficial",
+              "https://web.facebook.com/people/RTN-Global/61573828870610/",
+              "https://www.youtube.com/@RTNGlobal",
+              "https://www.linkedin.com/in/rtnglobalofficial/"
+            ]
+          }
+        `}
+      </Script>
+
       {/* Background pattern */}
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:var(--pattern-size)_var(--pattern-size)] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,#000)]" />
       

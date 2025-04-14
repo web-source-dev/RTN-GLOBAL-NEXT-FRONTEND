@@ -14,8 +14,74 @@ import {
 import { categories, featuredArticles } from "@/data/knowledge-base";
 
 export default function KnowledgeBasePage() {
+  // JSON-LD structured data for Knowledge Base page
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": ["WebPage", "FAQPage"],
+    "name": "RTN Global Knowledge Base & Documentation",
+    "description": "Find comprehensive guides, tutorials, and documentation for RTN Global products and services. Access technical articles, troubleshooting tips, and best practices.",
+    "url": "https://rtnglobal.co/knowledge-base",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rtnglobal.co"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Knowledge Base",
+          "item": "https://rtnglobal.co/knowledge-base"
+        }
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "RTN Global",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rtnglobal.co/images/logo.png"
+      }
+    },
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I set up two-factor authentication?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To set up two-factor authentication, navigate to your account settings, select the security tab, and enable 2FA. Follow the instructions to link your authentication app or phone number."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the API rate limits?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our API rate limits depend on your subscription tier. Basic plans have 1,000 requests per day, while enterprise plans have higher or customizable limits. Check our API documentation for detailed information."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I reset my password?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To reset your password, click on the 'Forgot Password' link on the login page. Enter your email address, and we'll send you a password reset link that will expire after 24 hours."
+        }
+      }
+    ]
+  };
+  
   return (
     <Layout>
+      {/* Structured Data */}
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      
       {/* Hero Section with Search */}
       <section className="bg-gradient-to-b from-background to-muted/30 py-16 md:py-24 border-b border-border">
         <div className="container px-4 mx-auto text-center">

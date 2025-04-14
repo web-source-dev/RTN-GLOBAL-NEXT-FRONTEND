@@ -122,8 +122,72 @@ export default function PricingPage() {
     }
   ]
 
+  // Generate JSON-LD structured data for pricing page
+  const pricingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Pricing - RTN Global",
+    "description": "Simple, transparent pricing for web development and digital services.",
+    "url": "https://rtnglobal.co/pricing",
+    "publisher": {
+      "@type": "Organization",
+      "name": "RTN Global",
+      "url": "https://rtnglobal.co/",
+      "logo": "https://rtnglobal.co/logo.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Muhammad Tayyab"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+        "addressLocality": "ALBUQUERQUE",
+        "addressRegion": "NM",
+        "postalCode": "87110",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+1 505 528 6780",
+        "email": "info@rtnglobal.site"
+      }
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": pricingPlans.map((plan, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "Offer",
+          "name": plan.name + " Plan",
+          "description": plan.description,
+          "price": plan.price.replace('$', ''),
+          "priceCurrency": "USD",
+          "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
+          "url": `https://rtnglobal.co${plan.buttonLink}?plan=${plan.name.toLowerCase()}`,
+          "offeredBy": {
+            "@type": "Organization",
+            "name": "RTN Global"
+          },
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Web Development Services",
+            "description": plan.features.filter(f => f.included).map(f => f.text).join(", ")
+          }
+        }
+      }))
+    }
+  };
+
   return (
     <Layout>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }}
+      />
+      
       {/* Hero Section */}
       <HeroSection
         title="Simple, Transparent Pricing"

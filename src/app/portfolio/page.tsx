@@ -4,6 +4,7 @@ import { Layout } from "@/components/layout/layout"
 import { HeroSection } from "@/components/sections/hero-section"
 import { CTASection } from "@/components/sections/cta-section"
 import Link from "next/link"
+import Script from "next/script"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Filter } from "lucide-react"
 import { useState } from "react"
@@ -33,6 +34,62 @@ export default function PortfolioPage() {
 
   return (
     <Layout>
+      {/* JSON-LD structured data */}
+      <Script
+        id="portfolio-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Portfolio - RTN Global",
+            "description": "Explore our diverse portfolio of successful client projects across various industries and technologies.",
+            "url": "https://rtnglobal.co/portfolio",
+            "publisher": {
+              "@type": "Organization",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.co/",
+              "logo": "https://rtnglobal.co/logo.png",
+              "founder": {
+                "@type": "Person",
+                "name": "Muhammad Tayyab"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+                "addressLocality": "ALBUQUERQUE",
+                "addressRegion": "NM",
+                "postalCode": "87110",
+                "addressCountry": "US"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "telephone": "+1 505 528 6780",
+                "email": "info@rtnglobal.site"
+              }
+            },
+            "mainEntity": {
+              "@type": "ItemList",
+              "itemListElement": portfolioItems.map((item, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": item.title,
+                  "description": item.description,
+                  "image": item.image,
+                  "url": `https://rtnglobal.co/portfolio/${item.slug}`,
+                  "dateCreated": `${item.year}`,
+                  "genre": item.category,
+                  "about": item.industry
+                }
+              }))
+            }
+          })
+        }}
+      />
+      
       {/* Hero Section */}
       <HeroSection
         title="Our Portfolio"

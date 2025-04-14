@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -71,8 +72,98 @@ export default function ArticlePage({ params }: ArticlePageProps) {
     // Here you would typically send this feedback to your backend
   };
 
+  // Generate JSON-LD structured data for article
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": article.title,
+    "description": article.description,
+    "image": "https://rtnglobal.co/images/knowledge-base/default-article.jpg",
+    "datePublished": article.date || new Date().toISOString(),
+    "dateModified": article.lastUpdated || new Date().toISOString(),
+    "author": {
+      "@type": "Person",
+      "name": article.author || "RTN Global Team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "RTN Global",
+      "url": "https://rtnglobal.co/",
+      "logo": "https://rtnglobal.co/logo.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Muhammad Tayyab"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1209 MOUNTAIN ROAD PLNE, STE R",
+        "addressLocality": "ALBUQUERQUE",
+        "addressRegion": "NM",
+        "postalCode": "87110",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+1 505 528 6780",
+        "email": "info@rtnglobal.site"
+      },
+      "sameAs": [
+        "https://www.instagram.com/rtnglobalofficial/",
+        "https://www.threads.net/@rtnglobalofficial",
+        "https://www.tiktok.com/@rtnglobalofficial",
+        "https://web.facebook.com/people/RTN-Global/61573828870610/",
+        "https://www.youtube.com/@RTNGlobal",
+        "https://www.linkedin.com/in/rtnglobalofficial/"
+      ]
+    },
+    "articleSection": categoryInfo.title,
+    "keywords": article.tags.join(", "),
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://rtnglobal.co/knowledge-base/${category}/${slug}`
+    },
+    "url": `https://rtnglobal.co/knowledge-base/${category}/${slug}`,
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rtnglobal.co"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Knowledge Base",
+          "item": "https://rtnglobal.co/knowledge-base"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": categoryInfo.title,
+          "item": `https://rtnglobal.co/knowledge-base/${category}`
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": article.title,
+          "item": `https://rtnglobal.co/knowledge-base/${category}/${slug}`
+        }
+      ]
+    }
+  };
+
   return (
     <Layout>
+      {/* JSON-LD structured data */}
+      <Script
+        id="article-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      
       <div className="bg-gradient-to-b from-background to-muted/10 py-8 border-b border-border">
         <div className="container mx-auto px-4">
           {/* Navigation Path */}

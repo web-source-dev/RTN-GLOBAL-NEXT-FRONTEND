@@ -334,6 +334,61 @@ export default function ResourcesPage() {
   
   return (
     <Layout>
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Digital Resources Hub | RTN Global",
+            "description": "Free digital resources, guides, templates, and tools to help you succeed with your digital projects.",
+            "url": "https://rtnglobal.com/resources",
+            "publisher": {
+              "@type": "Organization",
+              "name": "RTN Global",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://rtnglobal.com/images/logo.png"
+              }
+            },
+            "mainEntity": {
+              "@type": "ItemList",
+              "itemListElement": resourcesData.slice(0, 10).map((resource, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                  "@type": "DigitalDocument",
+                  "name": resource.title,
+                  "description": resource.description,
+                  "url": `https://rtnglobal.com/resources/${resource.id}`,
+                  "datePublished": resource.publishedDate,
+                  "dateModified": resource.updatedDate || resource.publishedDate,
+                  "fileFormat": resource.fileFormat,
+                  "contentSize": resource.fileSize,
+                  "about": categoryInfo[resource.category].label,
+                  "author": {
+                    "@type": "Organization",
+                    "name": "RTN Global"
+                  }
+                }
+              }))
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://rtnglobal.com/resources?search={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          })
+        }}
+      />
+      
       {/* Hero Section */}
       <HeroSection
         title="Resources"

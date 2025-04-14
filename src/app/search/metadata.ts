@@ -12,12 +12,12 @@ export const metadata: Metadata = {
     "search solutions"
   ],
   alternates: {
-    canonical: "https://rtnglobal.site/search",
+    canonical: "https://rtnglobal.co/search",
   },
   openGraph: {
     title: "Search RTN Global",
     description: "Find services, portfolio projects, knowledge base articles, and more with our comprehensive site search.",
-    url: "https://rtnglobal.site/search",
+    url: "https://rtnglobal.co/search",
     siteName: "RTN Global",
     locale: "en_US",
     type: "website",
@@ -26,9 +26,23 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Search RTN Global",
     description: "Find services, portfolio projects, knowledge base articles, and more with our comprehensive site search.",
+    creator: "@rtnglobalofficial",
+    site: "@rtnglobalofficial"
   },
   robots: {
     index: true,
     follow: true,
+  },
+  verification: {
+    google: "google03e42604abdd544c",
+    other: {
+      'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
+      'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
+    }
+  },
+  other: {
+    'contact:email': 'info@rtnglobal.site',
+    'contact:phone': '+1 505 528 6780',
+    'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
   }
 }; 

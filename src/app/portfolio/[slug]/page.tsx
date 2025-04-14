@@ -49,8 +49,47 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     "Modern, responsive design"
   ];
   
+  // Generate JSON-LD structured data for project page
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": project.title,
+    "description": project.description,
+    "image": project.image,
+    "datePublished": `${project.year || new Date().getFullYear()}`,
+    "author": {
+      "@type": "Organization",
+      "name": "RTN Global",
+      "url": "https://rtnglobal.co/",
+      "logo": "https://rtnglobal.co/logo.png"
+    },
+    "genre": project.category,
+    "keywords": project.tags.join(", "),
+    "about": project.industry,
+    "provider": {
+      "@type": "Organization",
+      "name": "RTN Global"
+    },
+    "audience": {
+      "@type": "Audience",
+      "audienceType": project.industry
+    },
+    "inLanguage": "en",
+    "url": `https://rtnglobal.co/portfolio/${slug}`,
+    "workExample": {
+      "@type": "WebSite",
+      "name": project.title,
+      "url": project.link || `https://rtnglobal.co/portfolio/${slug}`
+    }
+  };
+  
   return (
     <Layout>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+      />
       
       {/* Hero section */}
       <section className="py-16 md:py-10 bg-gradient-to-br from-background to-muted/30">
