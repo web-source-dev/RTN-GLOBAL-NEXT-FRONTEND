@@ -7,11 +7,11 @@ import { Input } from "@/components/ui/input"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import Link from "next/link"
 import { formatDate } from "@/lib/utils"
-import { ArrowRight, Search, ChevronLeft, ChevronRight, Loader2, Tag, Users2, Wrench } from "lucide-react"
+import { ArrowRight, Search, ChevronLeft, ChevronRight, Loader2, Tag, Users2, Wrench, BarChart, Heart } from "lucide-react"
 import { BlogAPI } from "@/lib/api/api-provider"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Chip } from "@/components/ui/chip"
-
+const API_URL = process.env.NEXT_PUBLIC_API_URL
 // Define interfaces for types
 interface BlogPost {
   _id: string;
@@ -19,18 +19,66 @@ interface BlogPost {
   description: string;
   content: string;
   image?: string;
+  imageAlt?: string;
   createdAt: string;
   updatedAt: string;
   author: {
     _id: string;
-    name: string;
+    firstName?: string;
+    lastName?: string;
     role?: string;
     avatar?: string;
   } | null;
+  
+  // Status & Visibility
+  isActive?: boolean;
+  isFeatured?: boolean;
+  scheduledFor?: string;
+  status?: 'draft' | 'published' | 'archived';
+  
+  // Categorization
   category?: string;
   tags?: string[];
+  
+  // Slug
   slug?: string;
-  isFeatured?: boolean;
+  
+  // Engagement
+  views?: number;
+  viewedBy?: string[];
+  likes?: string[];
+  shares?: string[];
+  comments?: Array<{
+    _id: string;
+    content: string;
+    createdAt: string;
+    author: {
+      _id: string;
+      firstName?: string;
+      lastName?: string;
+      avatar?: string;
+    } | null;
+  }>;
+  
+  // SEO Metadata
+  seoTitle?: string;
+  seoDescription?: string;
+  seoKeywords?: string[];
+  canonicalUrl?: string;
+  noIndex?: boolean;
+  
+  // Social Media Meta
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+  
+  // Additional Features
+  estimatedReadTime?: number;
+  wordCount?: number;
+  language?: string;
 }
 
 interface TagCount {
@@ -358,13 +406,18 @@ export default function BlogPage() {
                         {post.image ? (
                           <OptimizedImage
                             src={post.image}
-                            alt={post.title}
+                            alt={post.imageAlt || post.title}
                             fill
                             className="h-full object-cover transition-transform hover:scale-105 duration-300"
                           />
                         ) : (
                           <div className="bg-muted h-full flex items-center justify-center">
                             <span className="text-3xl text-muted-foreground opacity-30">{post.category?.[0] || 'B'}</span>
+                          </div>
+                        )}
+                        {post.status && post.status !== 'published' && (
+                          <div className="absolute top-3 left-3 bg-yellow-500/90 text-white text-xs py-1 px-3 rounded-full font-medium">
+                            {post.status.charAt(0).toUpperCase() + post.status.slice(1)}
                           </div>
                         )}
                         {post.isFeatured && (
@@ -383,6 +436,13 @@ export default function BlogPage() {
                           >
                             {post.category || 'Uncategorized'}
                           </span>
+                          
+                          {post.estimatedReadTime && (
+                            <>
+                              <span>•</span>
+                              <span>{post.estimatedReadTime} min read</span>
+                            </>
+                          )}
                         </div>
                         <h2 className="text-xl font-bold mb-3 line-clamp-2 hover:text-primary transition-colors">
                           <Link href={`/blog/${post.slug || post._id}`} className="hover:text-primary transition-colors" scroll={true}>
@@ -412,24 +472,37 @@ export default function BlogPage() {
                         <div className="flex justify-between items-center mt-auto pt-4 border-t border-border/50">
                           <div className="flex items-center gap-2.5">
                             {post.author?.avatar ? (
-                              <OptimizedImage
-                                src={post.author.avatar}
-                                alt={post.author.name}
-                                className="w-7 h-7 rounded-full object-cover"
-                                fill
-                              />
+                              <div className="relative w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
+                                <OptimizedImage
+                                  src={`${API_URL}${post.author.avatar}`}
+                                  alt={`${post.author.firstName || ''} ${post.author.lastName || ''}`.trim() || 'Author'}
+                                  className="object-cover h-full w-full"
+                                  fill
+                                />
+                              </div>
                             ) : (
                               <div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center">
-                                <span className="text-xs text-primary">{post.author?.name?.[0] || 'R'}</span>
+                                <span className="text-xs text-primary">{post.author?.firstName?.[0] || post.author?.lastName?.[0] || 'R'}</span>
                               </div>
                             )}
                             <span className="text-sm text-muted-foreground font-medium">
-                              {post.author?.name || 'RTN Global'}
+                              {`${post.author?.firstName || ''} ${post.author?.lastName || ''}`.trim() || 'RTN Global'}
                             </span>
                           </div>
-                          <Link href={`/blog/${post.slug || post._id}`} className="text-primary hover:underline text-sm font-medium inline-flex items-center" scroll={true}>
-                            Read more <ArrowRight className="ml-1 h-4 w-4" />
-                          </Link>
+                          
+                          <div className="flex items-center gap-2">
+                            <div className="text-sm text-muted-foreground flex items-center">
+                              <BarChart className="w-3.5 h-3.5 mr-1" />
+                              {post.views || 0}
+                            </div>
+                            <div className="text-sm text-muted-foreground flex items-center">
+                              <Heart className="w-3.5 h-3.5 mr-1" />
+                              {post.likes?.length || 0}
+                            </div>
+                            <Link href={`/blog/${post.slug || post._id}`} className="text-primary hover:underline text-sm font-medium inline-flex items-center ml-2" scroll={true}>
+                              Read more <ArrowRight className="ml-1 h-4 w-4" />
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </article>

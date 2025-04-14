@@ -81,8 +81,6 @@ interface Blog {
   title?: string;
   description?: string;
   content?: string;
-  category?: string;
-  tags?: string[];
   author?: {
     firstName?: string;
     lastName?: string;
@@ -91,13 +89,55 @@ interface Blog {
     _id?: string;
   };
   image?: string;
+  imageAlt?: string;
+  
+  // Status & Visibility
   isActive?: boolean;
   isFeatured?: boolean;
+  scheduledFor?: string;
+  status?: 'draft' | 'published' | 'archived';
+  
+  // Categorization
+  category?: string;
+  tags?: string[];
+  
+  // Slug
   slug?: string;
+  
+  // Engagement
   views?: number;
+  viewedBy?: string[];
   likes?: string[];
   shares?: string[];
   comments?: Array<unknown>;
+  
+  // SEO Metadata
+  seoTitle?: string;
+  seoDescription?: string;
+  seoKeywords?: string[];
+  canonicalUrl?: string;
+  noIndex?: boolean;
+  
+  // Social Media Meta
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+  
+  // Additional Features
+  estimatedReadTime?: number;
+  wordCount?: number;
+  language?: string;
+  
+  // Revision History
+  revisions?: Array<{
+    updatedAt: string;
+    updatedBy: string;
+    changes: string;
+  }>;
+  
   createdAt?: string;
   updatedAt?: string;
   _id?: string;
@@ -183,7 +223,9 @@ export const BlogAPI = {
     limit?: number,
     category?: string,
     tag?: string,
-    featured?: boolean
+    featured?: boolean,
+    status?: string,
+    language?: string
   }) => {
     return API.get('/api/blogs', { params });
   },
@@ -204,8 +246,23 @@ export const BlogAPI = {
   },
   
   // Search blogs
-  searchBlogs: (searchTerm: string) => {
-    // No direct search endpoint, so we get all blogs and filter client-side
+  searchBlogs: (searchTerm: string, options?: {
+    inTitle?: boolean,
+    inContent?: boolean,
+    inTags?: boolean,
+    language?: string
+  }) => {
+    // If we have a dedicated search endpoint, use it
+    if (options) {
+      return API.get('/api/blogs/search', { 
+        params: { 
+          q: searchTerm,
+          ...options
+        } 
+      });
+    }
+    
+    // Otherwise, fallback to client-side filtering
     return API.get('/api/blogs').then(response => {
       const blogs = response.data;
       const filteredBlogs = blogs.filter((blog: Blog) => {
@@ -215,6 +272,9 @@ export const BlogAPI = {
           blog.description?.toLowerCase().includes(searchLower) ||
           blog.content?.toLowerCase().includes(searchLower) ||
           blog.category?.toLowerCase().includes(searchLower) ||
+          blog.seoTitle?.toLowerCase().includes(searchLower) ||
+          blog.seoDescription?.toLowerCase().includes(searchLower) ||
+          blog.seoKeywords?.some((keyword: string) => keyword.toLowerCase().includes(searchLower)) ||
           blog.tags?.some((tag: string) => tag.toLowerCase().includes(searchLower))
         );
       });
@@ -230,6 +290,21 @@ export const BlogAPI = {
   // Get related blogs
   getRelatedBlogs: (blogId: string, limit = 3) => {
     return API.get(`/api/blogs/${blogId}/related`, { params: { limit } });
+  },
+  
+  // Get blogs by language
+  getBlogsByLanguage: (language = 'en', limit = 10) => {
+    return API.get('/api/blogs', { params: { language, limit } });
+  },
+  
+  // Get blogs by status (admin only)
+  getBlogsByStatus: (status: string, limit = 10) => {
+    return API.get('/api/blogs/admin/by-status', { params: { status, limit } });
+  },
+  
+  // Get blogs scheduled for future publishing (admin only)
+  getScheduledBlogs: () => {
+    return API.get('/api/blogs/admin/scheduled');
   },
   
   // Like a blog post (requires authentication)

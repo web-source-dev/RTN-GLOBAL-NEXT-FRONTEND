@@ -10,6 +10,7 @@ import { formatDate } from "@/lib/utils"
 import { ArrowRight, Search, ChevronLeft, ChevronRight, Loader2, Tag as TagIcon } from "lucide-react"
 import { BlogAPI } from "@/lib/api/api-provider"
 import { useParams, useRouter, useSearchParams, notFound } from "next/navigation"
+const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 // Define interfaces for types
 interface BlogPost {
@@ -18,6 +19,7 @@ interface BlogPost {
   description: string;
   content: string;
   image?: string;
+  imageAlt?: string;
   createdAt: string;
   updatedAt: string;
   author: {
@@ -28,10 +30,63 @@ interface BlogPost {
     role?: string;
     avatar?: string;
   } | null;
+  
+  // Status & Visibility
+  isActive?: boolean;
+  isFeatured?: boolean;
+  scheduledFor?: string;
+  status?: 'draft' | 'published' | 'archived';
+  
+  // Categorization
   category?: string;
   tags?: string[];
+  
+  // Slug
   slug?: string;
-  isFeatured?: boolean;
+  
+  // Engagement
+  views?: number;
+  viewedBy?: string[];
+  likes?: string[];
+  shares?: string[];
+  comments?: Array<{
+    _id: string;
+    content: string;
+    createdAt: string;
+    author: {
+      _id: string;
+      firstName?: string;
+      lastName?: string;
+      avatar?: string;
+    } | null;
+  }>;
+  
+  // SEO Metadata
+  seoTitle?: string;
+  seoDescription?: string;
+  seoKeywords?: string[];
+  canonicalUrl?: string;
+  noIndex?: boolean;
+  
+  // Social Media Meta
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+  
+  // Additional Features
+  estimatedReadTime?: number;
+  wordCount?: number;
+  language?: string;
+  
+  // Revision History
+  revisions?: Array<{
+    updatedAt: string;
+    updatedBy: string;
+    changes: string;
+  }>;
 }
 
 interface TagCount {
@@ -286,13 +341,18 @@ export default function TagPage() {
                         {post.image ? (
                           <OptimizedImage
                             src={post.image}
-                            alt={post.title}
+                            alt={post.imageAlt || post.title}
                             fill
                             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                           />
                         ) : (
                           <div className="bg-muted h-48 flex items-center justify-center">
                             <span className="text-4xl text-muted-foreground opacity-20">{post.category?.[0] || 'B'}</span>
+                          </div>
+                        )}
+                        {post.status && post.status !== 'published' && (
+                          <div className="absolute top-3 left-3 bg-yellow-500/90 text-white text-xs py-1 px-3 rounded-full font-medium">
+                            {post.status.charAt(0).toUpperCase() + post.status.slice(1)}
                           </div>
                         )}
                         {post.isFeatured && (
@@ -318,6 +378,14 @@ export default function TagPage() {
                               >
                                 {post.category}
                               </Link>
+                            </>
+                          )}
+                          {post.estimatedReadTime && (
+                            <>
+                              <span>•</span>
+                              <span title={post.wordCount ? `${post.wordCount} words` : undefined}>
+                                {post.estimatedReadTime} min read
+                              </span>
                             </>
                           )}
                         </div>
@@ -360,12 +428,12 @@ export default function TagPage() {
                           <div className="flex items-center gap-3">
                             {post.author?.avatar ? (
                               <Link href={`/blog?author=${encodeURIComponent(post.author._id)}`} title={`See more posts by ${post.author.name || `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim() || 'RTN Global'}`}>
-                                <div className="relative w-7 h-7 rounded-full overflow-hidden border border-border/50">
+                                <div className="relative w-12 h-12 rounded-full overflow-hidden border border-border/50">
                                   <OptimizedImage
-                                    src={post.author.avatar}
+                                    src={`${API_URL}${post.author.avatar}`}
                                     alt={post.author.name || `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim()}
                                     fill
-                                    className="object-cover"
+                                    className="h-full w-full object-cover"
                                   />
                                 </div>
                               </Link>
@@ -384,13 +452,21 @@ export default function TagPage() {
                                'RTN Global'}
                             </Link>
                           </div>
-                          <Link 
-                            href={`/blog/${post.slug || post._id}`} 
-                            className="text-primary font-medium text-sm inline-flex items-center group-hover:underline"
-                            aria-label={`Read more about ${post.title}`}
-                          >
-                            Read more <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                          </Link>
+                          <div className="flex items-center gap-3">
+                            {post.views !== undefined && (
+                              <span className="text-xs text-muted-foreground flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                                {post.views.toLocaleString()}
+                              </span>
+                            )}
+                            <Link 
+                              href={`/blog/${post.slug || post._id}`} 
+                              className="text-primary font-medium text-sm inline-flex items-center group-hover:underline"
+                              aria-label={`Read more about ${post.title}`}
+                            >
+                              Read more <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </article>
@@ -801,11 +877,12 @@ export default function TagPage() {
                 "position": index + 1,
                 "item": {
                   "@type": "BlogPosting",
-                  "headline": post.title,
-                  "description": post.description,
+                  "headline": post.seoTitle || post.title,
+                  "description": post.seoDescription || post.description,
                   "url": `${typeof window !== 'undefined' ? window.location.origin : ''}/blog/${post.slug || post._id}`,
                   "datePublished": post.createdAt,
                   "dateModified": post.updatedAt,
+                  "image": post.ogImage || post.image,
                   "author": {
                     "@type": "Person",
                     "name": post.author?.name || `${post.author?.firstName || ''} ${post.author?.lastName || ''}`.trim() || 'RTN Global'
@@ -818,8 +895,10 @@ export default function TagPage() {
                       "url": `${typeof window !== 'undefined' ? window.location.origin : ''}/logo.png`
                     }
                   },
-                  "keywords": post.tags?.join(', ') || '',
-                  "articleSection": post.category || 'Blog'
+                  "keywords": post.seoKeywords?.join(', ') || post.tags?.join(', ') || '',
+                  "articleSection": post.category || 'Blog',
+                  "wordCount": post.wordCount,
+                  "inLanguage": post.language || "en"
                 }
               }))
             },

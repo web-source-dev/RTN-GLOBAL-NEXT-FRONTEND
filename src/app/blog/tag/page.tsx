@@ -13,21 +13,75 @@ import { CTASection } from "@/components/sections/cta-section"
 import Script from "next/script"
 
 // Define interfaces
+const API_URL = process.env.NEXT_PUBLIC_API_URL
+
 interface BlogPost {
   _id: string;
   title: string;
   description: string;
+  content?: string;
   image?: string;
+  imageAlt?: string;
   createdAt: string;
+  updatedAt?: string;
   author: {
+    _id?: string;
+    name?: string;
     firstName?: string;
     lastName?: string;
+    role?: string;
     avatar?: string;
   } | null;
+  
+  // Status & Visibility
+  isActive?: boolean;
+  isFeatured?: boolean;
+  scheduledFor?: string;
+  status?: 'draft' | 'published' | 'archived';
+  
+  // Categorization
   category?: string;
   tags?: string[];
+  
+  // Slug
   slug?: string;
-  isFeatured?: boolean;
+  
+  // Engagement
+  views?: number;
+  viewedBy?: string[];
+  likes?: string[];
+  shares?: string[];
+  comments?: Array<{
+    _id: string;
+    content: string;
+    createdAt: string;
+    author: {
+      _id: string;
+      firstName?: string;
+      lastName?: string;
+      avatar?: string;
+    } | null;
+  }>;
+  
+  // SEO Metadata
+  seoTitle?: string;
+  seoDescription?: string;
+  seoKeywords?: string[];
+  canonicalUrl?: string;
+  noIndex?: boolean;
+  
+  // Social Media Meta
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+  
+  // Additional Features
+  estimatedReadTime?: number;
+  wordCount?: number;
+  language?: string;
 }
 
 interface TagWithPosts {
@@ -115,19 +169,56 @@ export default function TagsIndexPage() {
             "position": tagIndex * 3 + postIndex + 1,
             "item": {
               "@type": "BlogPosting",
-              "headline": post.title,
-              "description": post.description,
+              "headline": post.seoTitle || post.title,
+              "description": post.seoDescription || post.description,
               "datePublished": post.createdAt,
+              "dateModified": post.updatedAt || post.createdAt,
               "url": typeof window !== 'undefined' ? `${window.location.origin}/blog/${post.slug || post._id}` : '',
               "author": post.author ? {
                 "@type": "Person",
-                "name": `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim()
-              } : undefined,
-              "keywords": post.tags?.join(", ") || "",
-              "image": post.image || undefined
+                "name": post.author.name || `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim() || "RTN Global Team"
+              } : {
+                "@type": "Organization",
+                "name": "RTN Global"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "RTN Global",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": typeof window !== 'undefined' ? `${window.location.origin}/logo.png` : ''
+                }
+              },
+              "keywords": post.seoKeywords?.join(", ") || post.tags?.join(", ") || "",
+              "image": post.ogImage || post.image || undefined,
+              "wordCount": post.wordCount,
+              "inLanguage": post.language || "en"
             }
           }))
         )
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem", 
+            "position": 1,
+            "name": "Home",
+            "item": typeof window !== 'undefined' ? window.location.origin : ''
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": typeof window !== 'undefined' ? `${window.location.origin}/blog` : ''
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Tags",
+            "item": typeof window !== 'undefined' ? `${window.location.origin}/blog/tag` : ''
+          }
+        ]
       }
     };
     
@@ -212,33 +303,44 @@ export default function TagsIndexPage() {
                   {/* Posts Grid */}
                   <div className="grid md:grid-cols-3 gap-6">
                     {tag.posts.map((post) => (
-                      <article key={post._id} className="bg-card border border-border rounded-lg overflow-hidden">
+                      <article key={post._id} className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-md transition-all duration-300 group">
                         <div className="relative h-40">
                           {post.image ? (
                             <OptimizedImage
                               src={post.image}
-                              alt={post.title}
+                              alt={post.imageAlt || post.title}
                               fill
-                              className="h-full object-cover"
+                              className="h-full object-cover transition-transform group-hover:scale-105 duration-300"
                             />
                           ) : (
                             <div className="bg-muted h-40 flex items-center justify-center">
                               <span className="text-3xl text-muted-foreground opacity-30">{post.category?.[0] || 'B'}</span>
                             </div>
                           )}
+                          {post.status && post.status !== 'published' && (
+                            <div className="absolute top-2 left-2 bg-yellow-500/90 text-white text-xs py-0.5 px-2 rounded-full">
+                              {post.status.charAt(0).toUpperCase() + post.status.slice(1)}
+                            </div>
+                          )}
                           {post.isFeatured && (
-                            <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs py-1 px-2 rounded-full">
+                            <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs py-0.5 px-2 rounded-full">
                               Featured
                             </div>
                           )}
                         </div>
                         <div className="p-4">
-                          <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1 flex-wrap">
                             <span>{formatDate(new Date(post.createdAt))}</span>
                             {post.category && (
                               <>
                                 <span>•</span>
                                 <span>{post.category}</span>
+                              </>
+                            )}
+                            {post.estimatedReadTime && (
+                              <>
+                                <span>•</span>
+                                <span>{post.estimatedReadTime} min read</span>
                               </>
                             )}
                           </div>
@@ -248,9 +350,43 @@ export default function TagsIndexPage() {
                             </Link>
                           </h3>
                           <p className="text-xs text-muted-foreground line-clamp-2 mb-3">{post.description}</p>
-                          <Link href={`/blog/${post.slug || post._id}`} className="text-xs text-primary hover:underline inline-flex items-center">
-                            Explore article: {post.title.length > 30 ? `${post.title.substring(0, 30)}...` : post.title} <ArrowRight className="ml-1 h-3 w-3" />
-                          </Link>
+                          <div className="flex justify-between items-center">
+                            {post.author?.avatar ? (
+                              <Link href={`/blog?author=${encodeURIComponent(post.author._id || '')}`} title={`See more posts by ${post.author.name || `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim() || 'RTN Global'}`}>
+                                <div className="relative w-12 h-12 rounded-full overflow-hidden border border-border/50">
+                                  <OptimizedImage
+                                    src={`${API_URL}${post.author.avatar}`}
+                                    alt={post.author.name || `${post.author.firstName || ''} ${post.author.lastName || ''}`.trim()}
+                                    fill
+                                    className="h-full w-full object-cover"
+                                  />
+                                </div>
+                              </Link>
+                            ) : (
+                              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs">
+                                {(post.author?.name?.[0] || post.author?.firstName?.[0] || 'R')}
+                              </div>
+                            )}
+                            <Link 
+                              href={`/blog?author=${encodeURIComponent(post.author?._id || '')}`}
+                              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                              title={`See more posts by ${post.author?.name || `${post.author?.firstName || ''} ${post.author?.lastName || ''}`.trim() || 'RTN Global'}`}
+                            >
+                              {post.author?.name || 
+                               `${post.author?.firstName || ''} ${post.author?.lastName || ''}`.trim() || 
+                               'RTN Global'}
+                            </Link>
+                            
+                            {post.views !== undefined && (
+                              <span className="text-xs text-muted-foreground flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                                {post.views.toLocaleString()}
+                              </span>
+                            )}
+                            <Link href={`/blog/${post.slug || post._id}`} className="text-xs text-primary hover:underline inline-flex items-center">
+                              Read <ArrowRight className="ml-1 h-3 w-3" />
+                            </Link>
+                          </div>
                         </div>
                       </article>
                     ))}
