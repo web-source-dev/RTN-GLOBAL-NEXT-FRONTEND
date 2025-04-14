@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ChevronRight, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
+import { ChevronRight, Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 import NewsletterForm from '@/components/forms/newsletter-form';
+import { FaTiktok } from 'react-icons/fa';
+import { FaThreads } from 'react-icons/fa6';
 
 export function Footer() {
   const [showScrollButton, setShowScrollButton] = useState(false);
@@ -50,21 +52,22 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-start">
                 <Mail className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                <a href="mailto:info@rtnglobal.com" className="text-sm hover:text-primary transition-colors">
-                  info@rtnglobal.com
+                <a href="mailto:info@rtnglobal.site" className="text-sm hover:text-primary transition-colors">
+                  info@rtnglobal.site
                 </a>
               </div>
               <div className="flex items-start">
                 <Phone className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                <a href="tel:+1234567890" className="text-sm hover:text-primary transition-colors">
-                  +1 (234) 567-890
+                <a href="tel:+15055286780" className="text-sm hover:text-primary transition-colors">
+                  +1 505 528 6780
                 </a>
               </div>
               <div className="flex items-start">
                 <MapPin className="h-5 w-5 text-primary mr-2 mt-0.5" />
                 <address className="text-sm not-italic">
-                  123 Business Street, Suite 100<br />
-                  New York, NY 10001
+                  1209 MOUNTAIN ROAD PLNE, STE R<br />
+                  ALBUQUERQUE, NM 87110<br />
+                  US
                 </address>
               </div>
             </div>
@@ -257,21 +260,24 @@ export function Footer() {
             
             <div className="mt-6">
               <h3 className="text-lg font-medium mb-4">Follow Us</h3>
-              <div className="flex space-x-3">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-muted rounded-full hover:bg-primary/10 transition-colors" aria-label="Facebook">
+              <div className="flex space-x-3 flex-wrap">
+                <a href="https://web.facebook.com/people/RTN-Global/61573828870610/" target="_blank" rel="noopener noreferrer" className="p-2 bg-muted rounded-full hover:bg-primary/10 transition-colors" aria-label="Facebook">
                   <Facebook className="h-5 w-5 text-foreground" />
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-muted rounded-full hover:bg-primary/10 transition-colors" aria-label="Twitter">
-                  <Twitter className="h-5 w-5 text-foreground" />
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-muted rounded-full hover:bg-primary/10 transition-colors" aria-label="Instagram">
+                <a href="https://www.instagram.com/rtnglobalofficial/" target="_blank" rel="noopener noreferrer" className="p-2 bg-muted rounded-full hover:bg-primary/10 transition-colors" aria-label="Instagram">
                   <Instagram className="h-5 w-5 text-foreground" />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-muted rounded-full hover:bg-primary/10 transition-colors" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/rtnglobalofficial/" target="_blank" rel="noopener noreferrer" className="p-2 bg-muted rounded-full hover:bg-primary/10 transition-colors" aria-label="LinkedIn">
                   <Linkedin className="h-5 w-5 text-foreground" />
                 </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="p-2 bg-muted rounded-full hover:bg-primary/10 transition-colors" aria-label="YouTube">
+                <a href="https://www.youtube.com/@RTNGlobal" target="_blank" rel="noopener noreferrer" className="p-2 bg-muted rounded-full hover:bg-primary/10 transition-colors" aria-label="YouTube">
                   <Youtube className="h-5 w-5 text-foreground" />
+                </a>
+                <a href="https://www.tiktok.com/@rtnglobalofficial" target="_blank" rel="noopener noreferrer" className="p-2 bg-muted rounded-full hover:bg-primary/10 transition-colors" aria-label="TikTok">
+                  <FaTiktok className="h-5 w-5 text-foreground" />
+                </a>
+                <a href="https://www.threads.net/@rtnglobalofficial" target="_blank" rel="noopener noreferrer" className="p-2 bg-muted rounded-full hover:bg-primary/10 transition-colors" aria-label="Threads">
+                  <FaThreads className="h-5 w-5 text-foreground" />
                 </a>
               </div>
             </div>
@@ -288,7 +294,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-around items-center">
             <div className="flex items-center gap-4">
               <p className="text-sm text-muted-foreground">
-                © {new Date().getFullYear()} RTN Global. All rights reserved.
+                © {new Date().getFullYear()} RTN Global. All rights reserved. <a href="https://rtnglobal.co/" className="hover:text-primary">rtnglobal.co</a>
               </p>
              
             </div>

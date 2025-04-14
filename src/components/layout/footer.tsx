@@ -56,7 +56,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link 
-              href="/" 
+              href="https://rtnglobal.co/"
               className="text-primary font-bold text-xl flex items-center space-x-2"
             >
               <span>RTN Global</span>
@@ -70,11 +70,11 @@ export function Footer() {
             <div className="mt-6 flex flex-col space-y-2">
               <div className="flex items-center">
                 <MapPinIcon className="h-4 w-4 mr-2 text-primary" />
-                <span className="text-sm">123 Business Street, City, Country</span>
+                <span className="text-sm">1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US</span>
               </div>
               <div className="flex items-center">
                 <PhoneIcon className="h-4 w-4 mr-2 text-primary" />
-                <span className="text-sm">+1 (123) 456-7890</span>
+                <span className="text-sm">‪+1 505 528 6780‬‬</span>
               </div>
               <div className="flex items-center">
                 <MailIcon className="h-4 w-4 mr-2 text-primary" />
@@ -83,20 +83,52 @@ export function Footer() {
             </div>
             
             <div className="mt-6 flex space-x-4">
-              <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <Link href="https://web.facebook.com/people/RTN-Global/61573828870610/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <FacebookIcon className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
               </Link>
-              <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <TwitterIcon className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
-              </Link>
-              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <Link href="https://www.instagram.com/rtnglobalofficial/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <InstagramIcon className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
               </Link>
-              <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <Link href="https://www.linkedin.com/in/rtnglobalofficial/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <LinkedinIcon className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
               </Link>
-              <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <Link href="https://www.youtube.com/@RTNGlobal" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                 <YoutubeIcon className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
+              </Link>
+              <Link href="https://www.tiktok.com/@rtnglobalofficial" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+                  <path d="M4 20V10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/>
+                  <path d="M12 12v-2a2 2 0 0 1 4 0v2"/>
+                  <path d="M18 10V7a2 2 0 0 0-2-2h-3"/>
+                </svg>
+              </Link>
+              <Link href="https://www.threads.net/@rtnglobalofficial" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <path d="M19 7.5c-1-1-2.5-1.5-4-1.5-3 0-5 1.5-6 3-1-1.5-3-3-6-3-1.5 0-3 .5-4 1.5-2 2-2 5.5 0 7.5l10 10 10-10c2-2 2-5.5 0-7.5z"/>
+                </svg>
               </Link>
             </div>
           </div>
