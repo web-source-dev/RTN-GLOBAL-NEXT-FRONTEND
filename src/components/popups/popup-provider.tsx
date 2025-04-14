@@ -68,14 +68,18 @@ export function PopupProvider({ children }: PopupProviderProps) {
     // Check for newsletter popup (expires after 24 hours)
     const newsletterExpired = isExpired('newsletter-displayed');
     
-    // If cookie consent is needed, show it immediately
+    // Show cookie consent after 20 seconds if needed
     if (cookieConsentExpired) {
-      setShowCookieConsent(true);
+      const cookieTimer = setTimeout(() => {
+        setShowCookieConsent(true);
+      }, 20 * 1000); // 20 seconds delay
+      
+      return () => clearTimeout(cookieTimer);
     }
     
     // Show newsletter after 5 minutes if not recently shown
     if (newsletterExpired) {
-      const timer = setTimeout(() => {
+      const newsletterTimer = setTimeout(() => {
         // Only show the newsletter if cookie consent isn't showing
         if (!showCookieConsent) {
           setShowNewsletter(true);
@@ -83,7 +87,7 @@ export function PopupProvider({ children }: PopupProviderProps) {
         }
       }, 5 * 60 * 1000); // 5 minutes
       
-      return () => clearTimeout(timer);
+      return () => clearTimeout(newsletterTimer);
     }
   }, [showCookieConsent]);
 

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import { BlogAPI } from "@/lib/api/api-provider"
 import { OptimizedImage } from "@/components/ui/optimized-image"
+import { Clock, Eye, Heart, MessageSquare } from "lucide-react"
 
 // Blog types
 interface BlogPost {
@@ -12,6 +13,7 @@ interface BlogPost {
   description?: string;
   slug?: string;
   image?: string;
+  imageAlt?: string;
   category?: string;
   tags?: string[];
   createdAt?: string;
@@ -20,6 +22,14 @@ interface BlogPost {
     lastName?: string;
     avatar?: string;
   };
+  views?: number;
+  likes?: string[];
+  comments?: string[];
+  estimatedReadTime?: number;
+  wordCount?: number;
+  language?: string;
+  isFeatured?: boolean;
+  status?: string;
 }
 
 // Tag interface to match backend response
@@ -70,6 +80,12 @@ export function BlogMegaMenu() {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };
     return new Date(dateString).toLocaleDateString('en-US', options);
   };
+
+  // Format numbers with K suffix for better readability
+  const formatNumber = (num?: number): string => {
+    if (num === undefined) return "0";
+    return num >= 1000 ? `${(num / 1000).toFixed(1)}K` : num.toString();
+  };
   
   return (
     <div className="absolute left-0 w-full bg-white shadow-lg rounded-b-lg py-6 z-50">
@@ -97,12 +113,12 @@ export function BlogMegaMenu() {
                     key={post._id || post.slug}
                     href={`/blog/${post.slug}`}
                     className="group"
-                    style={{ border: '1px solid rgb(124, 124, 124)', padding: '15px', borderRadius: '10px' }}
+                    style={{ border: '1px solid rgba(0, 0, 0, 0.18)', padding: '5px', borderRadius: '10px' }}
                   >
                     <div className="relative w-full h-40 mb-3 overflow-hidden rounded-lg border border-zinc-800">
-                    <OptimizedImage
+                      <OptimizedImage
                         src={post.image || '/images/placeholder.jpg'}
-                        alt={post.title || 'Blog post'}
+                        alt={post.imageAlt || post.title || 'Blog post'}
                         fill
                         className="object-cover h-full transition-transform duration-500 group-hover:scale-105"
                       />
@@ -117,20 +133,47 @@ export function BlogMegaMenu() {
                     <h4 className="font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2">
                       {post.title}
                     </h4>
-                    <div className="flex items-center justify-between">
-                        <p className="text-xs text-foreground/70 mt-3">
-                            {post.category}
-                        </p>
-                        <p className="text-xs text-foreground/70 mt-3">
-                            {formatDate(post.createdAt)}
-                        </p>
-                    </div>
-
-                    <p className="text-xs text-foreground/70 mt-3">
-                      {post.author && post.author.firstName && (
+                    
+                    {/* Meta information */}
+                    <div className="flex items-center justify-between flex-wrap mt-2">
+                      <p className="text-xs text-foreground/70">
+                        {post.author && post.author.firstName && (
                         <>By {post.author.firstName} {post.author.lastName}</>
                       )}
-                    </p>
+                      </p>
+                      <p className="text-xs text-foreground/70">
+                        {formatDate(post.createdAt)}
+                      </p>
+                    </div>
+                    {/* Engagement stats */}
+                    {(post.views !== undefined || post.likes !== undefined || post.comments !== undefined || post.estimatedReadTime !== undefined) && (
+                      <div className="flex items-center gap-2 mt-2 text-[10px] text-foreground/60 flex-wrap">
+                        {post.estimatedReadTime !== undefined && (
+                          <span className="flex items-center gap-1">
+                            <Clock className="h-3 w-3" />
+                            {post.estimatedReadTime} min
+                          </span>
+                        )}
+                        {post.views !== undefined && (
+                          <span className="flex items-center gap-1">
+                            <Eye className="h-3 w-3" />
+                            {formatNumber(post.views)}
+                          </span>
+                        )}
+                        {post.likes !== undefined && (
+                          <span className="flex items-center gap-1">
+                            <Heart className="h-3 w-3" />
+                            {formatNumber(post.likes?.length)}
+                          </span>
+                        )}
+                        {post.comments !== undefined && (
+                          <span className="flex items-center gap-1">
+                            <MessageSquare className="h-3 w-3" />
+                            {formatNumber(post.comments?.length)}
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </Link>
                 ))}
               </div>

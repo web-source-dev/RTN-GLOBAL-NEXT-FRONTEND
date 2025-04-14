@@ -4,8 +4,8 @@ This folder contains essential popup components for your agency website. These p
 
 ## Components Overview
 
-1. **Cookie Consent Popup**
-   - Appears immediately on first visit
+1. **Cookie Consent Bottom Bar**
+   - Appears at the bottom of the page after 20 seconds on first visit
    - Allows users to customize cookie preferences
    - Complies with GDPR and privacy regulations
    - Persists user choices for 30 days
