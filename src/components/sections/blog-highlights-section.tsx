@@ -102,11 +102,11 @@ export function BlogHighlightsSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
           <div>
             <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-4">
-              Our Blog
+              Web Development Insights
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Latest Insights & News</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Expert Tips & Tutorials</h2>
             <p className="text-lg text-muted-foreground max-w-2xl">
-              Stay updated with the latest trends, tips, and insights in web development, digital marketing, and technology.
+              Discover the latest trends, best practices, and expert advice on web development, UI/UX design, and creating effective online experiences.
             </p>
           </div>
           <div className="mt-6 md:mt-0">

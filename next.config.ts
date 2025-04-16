@@ -70,9 +70,6 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
-  // Optimize build performance
-  swcMinify: true,
-  
   // Optimize script loading
   experimental: {
     optimizeCss: true, // Minimize CSS

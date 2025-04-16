@@ -15,14 +15,41 @@ import {
   FileText,
   ShoppingBag,
   Share2,
-  TrendingUp
+  TrendingUp,
+  FileSearch,
+  Laptop,
+  Bug,
+  Lightbulb,
+  Globe,
+  Puzzle
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion, useInView } from 'framer-motion'
-import { getFeaturedServices, serviceCategories, Service, IconType } from '@/data/services'
+import { getFeaturedServices, serviceCategories, Service, IconType as ImportedIconType } from '@/data/services'
+
+// Update the IconType to include the new icon types
+type ExtendedIconType = 
+  | 'code' 
+  | 'trending-up' 
+  | 'pen-tool' 
+  | 'settings' 
+  | 'search' 
+  | 'file-text' 
+  | 'share2' 
+  | 'mail' 
+  | 'smartphone' 
+  | 'shopping-bag' 
+  | 'palette' 
+  | 'bar-chart'
+  | 'file-search'
+  | 'laptop'
+  | 'bug'
+  | 'puzzle'
+  | 'lightbulb'
+  | 'globe';
 
 // Icon mapping component
-const ServiceIcon = ({ iconType }: { iconType: IconType }) => {
+const ServiceIcon = ({ iconType }: { iconType: ExtendedIconType }) => {
   switch (iconType) {
     case 'code':
       return <Code className="h-5 w-5" />;
@@ -48,6 +75,18 @@ const ServiceIcon = ({ iconType }: { iconType: IconType }) => {
       return <Palette className="h-5 w-5" />;
     case 'bar-chart':
       return <BarChart className="h-5 w-5" />;
+    case 'file-search':
+      return <FileSearch className="h-5 w-5" />;
+    case 'laptop':
+      return <Laptop className="h-5 w-5" />;
+    case 'bug':
+      return <Bug className="h-5 w-5" />;
+    case 'puzzle':
+      return <Puzzle className="h-5 w-5" />;
+    case 'lightbulb':
+      return <Lightbulb className="h-5 w-5" />;
+    case 'globe':
+      return <Globe className="h-5 w-5" />;
     default:
       return <Code className="h-5 w-5" />;
   }
@@ -169,37 +208,42 @@ const ServicesSection = () => {
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.4 }}
           >
-            Our Services
+            Expert Digital Services
           </motion.div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Comprehensive Digital Solutions</h2>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Tailored Web Solutions For Your Business</h2>
           <p className="text-lg text-muted-foreground">
-            We offer a complete range of digital services to help your business grow and succeed online.
+            From responsive web design to custom development, we deliver results-driven digital solutions that help your business thrive online.
           </p>
         </motion.div>
 
-        {/* Service Categories */}
+        {/* Service Categories - simplified for clarity */}
         <motion.div 
           className="flex flex-wrap justify-center gap-3 mt-10 mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          {serviceCategories.map((category, index) => (
+          {/* Updated category buttons for clearer service offerings */}
+          {["Web Development", "UI/UX Design", "Wix Development", "Bug Fixes", "Custom Solutions"].map((category, index) => (
             <motion.div
-              key={category.id}
+              key={category}
               initial={{ opacity: 0, x: -10 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
               transition={{ duration: 0.4, delay: 0.4 + (index * 0.05) }}
               whileHover={{ scale: 1.05 }}
             >
               <Link 
-                href={`/services#${category.id}`}
+                href={`/services#${category.toLowerCase().replace(/\s+/g, '-')}`}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full hover:bg-primary/5 hover:border-primary/20 transition-colors"
               >
                 <span className="text-primary">
-                  <CategoryIcon iconType={category.icon} />
+                  {index === 0 ? <Code className="h-4 w-4" /> : 
+                   index === 1 ? <Palette className="h-4 w-4" /> : 
+                   index === 2 ? <Globe className="h-4 w-4" /> : 
+                   index === 3 ? <Bug className="h-4 w-4" /> : 
+                   <Puzzle className="h-4 w-4" />}
                 </span>
-                <span className="text-sm font-medium">{category.title}</span>
+                <span className="text-sm font-medium">{category}</span>
               </Link>
             </motion.div>
           ))}
@@ -211,9 +255,197 @@ const ServicesSection = () => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {featuredServices.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
-          ))}
+          {/* Web Development Service Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0 }}
+            whileHover={{ 
+              y: -10, 
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            }}
+            className="group bg-card rounded-xl shadow-sm p-6 border border-border hover:border-primary/30 transition-all duration-300 relative overflow-hidden"
+          >
+            <div className="bg-primary/10 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
+              <Code className="h-5 w-5" />
+            </div>
+            
+            <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Web Development</h3>
+            
+            <div className="w-12 h-1 bg-primary/30 rounded-full mb-4 transition-all duration-300 group-hover:w-20 group-hover:bg-primary"></div>
+            
+            <p className="text-muted-foreground mb-6">
+              Custom, responsive websites built with modern technologies that load fast, convert visitors, and rank well on search engines.
+            </p>
+            
+            <Link 
+              href="/services/web-development" 
+              className="text-primary text-sm font-medium hover:underline inline-flex items-center"
+            >
+              Explore Web Development <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+
+          {/* UI/UX Design Service Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ 
+              y: -10, 
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            }}
+            className="group bg-card rounded-xl shadow-sm p-6 border border-border hover:border-primary/30 transition-all duration-300 relative overflow-hidden"
+          >
+            <div className="bg-primary/10 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
+              <Palette className="h-5 w-5" />
+            </div>
+            
+            <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">UI/UX Design</h3>
+            
+            <div className="w-12 h-1 bg-primary/30 rounded-full mb-4 transition-all duration-300 group-hover:w-20 group-hover:bg-primary"></div>
+            
+            <p className="text-muted-foreground mb-6">
+              Beautiful, intuitive designs that enhance user experience, strengthen your brand, and drive engagement across all platforms.
+            </p>
+            
+            <Link 
+              href="/services/ui-ux-design" 
+              className="text-primary text-sm font-medium hover:underline inline-flex items-center"
+            >
+              Explore UI/UX Design <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+
+          {/* Wix Development Service Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ 
+              y: -10, 
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            }}
+            className="group bg-card rounded-xl shadow-sm p-6 border border-border hover:border-primary/30 transition-all duration-300 relative overflow-hidden"
+          >
+            <div className="bg-primary/10 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
+              <Globe className="h-5 w-5" />
+            </div>
+            
+            <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Wix Development</h3>
+            
+            <div className="w-12 h-1 bg-primary/30 rounded-full mb-4 transition-all duration-300 group-hover:w-20 group-hover:bg-primary"></div>
+            
+            <p className="text-muted-foreground mb-6">
+              Expert Wix website creation and customization with custom code integration for a professional site that stands out from templates.
+            </p>
+            
+            <Link 
+              href="/services/wix-development" 
+              className="text-primary text-sm font-medium hover:underline inline-flex items-center"
+            >
+              Explore Wix Development <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+
+          {/* Bug Fixes Service Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            whileHover={{ 
+              y: -10, 
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            }}
+            className="group bg-card rounded-xl shadow-sm p-6 border border-border hover:border-primary/30 transition-all duration-300 relative overflow-hidden"
+          >
+            <div className="bg-primary/10 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
+              <Bug className="h-5 w-5" />
+            </div>
+            
+            <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Bug Fixes & Optimization</h3>
+            
+            <div className="w-12 h-1 bg-primary/30 rounded-full mb-4 transition-all duration-300 group-hover:w-20 group-hover:bg-primary"></div>
+            
+            <p className="text-muted-foreground mb-6">
+              Quick and effective solutions to fix website bugs, errors, and performance issues, ensuring your site runs smoothly.
+            </p>
+            
+            <Link 
+              href="/services/bug-fixes" 
+              className="text-primary text-sm font-medium hover:underline inline-flex items-center"
+            >
+              Explore Bug Fixes <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+
+          {/* Custom Solutions Service Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            whileHover={{ 
+              y: -10, 
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            }}
+            className="group bg-card rounded-xl shadow-sm p-6 border border-border hover:border-primary/30 transition-all duration-300 relative overflow-hidden"
+          >
+            <div className="bg-primary/10 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
+              <Puzzle className="h-5 w-5" />
+            </div>
+            
+            <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Custom Solutions</h3>
+            
+            <div className="w-12 h-1 bg-primary/30 rounded-full mb-4 transition-all duration-300 group-hover:w-20 group-hover:bg-primary"></div>
+            
+            <p className="text-muted-foreground mb-6">
+              Tailored digital solutions that address your specific business challenges with innovative technology and strategic thinking.
+            </p>
+            
+            <Link 
+              href="/services/custom-solutions" 
+              className="text-primary text-sm font-medium hover:underline inline-flex items-center"
+            >
+              Explore Custom Solutions <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+
+          {/* E-commerce Development Service Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            whileHover={{ 
+              y: -10, 
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+            }}
+            className="group bg-card rounded-xl shadow-sm p-6 border border-border hover:border-primary/30 transition-all duration-300 relative overflow-hidden"
+          >
+            <div className="bg-primary/10 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
+              <ShoppingBag className="h-5 w-5" />
+            </div>
+            
+            <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">E-commerce Development</h3>
+            
+            <div className="w-12 h-1 bg-primary/30 rounded-full mb-4 transition-all duration-300 group-hover:w-20 group-hover:bg-primary"></div>
+            
+            <p className="text-muted-foreground mb-6">
+              High-converting online stores with seamless checkout, inventory management, and secure payment gateways.
+            </p>
+            
+            <Link 
+              href="/services/ecommerce-development" 
+              className="text-primary text-sm font-medium hover:underline inline-flex items-center"
+            >
+              Explore E-commerce Solutions <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
         </motion.div>
         
         <motion.div 

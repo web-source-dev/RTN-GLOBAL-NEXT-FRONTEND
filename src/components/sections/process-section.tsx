@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, Lightbulb, Search, Code, PenTool, BarChart4, Zap } from "lucide-react"
+import { ArrowRight, Lightbulb, Search, Code, PenTool, BarChart4, Zap, Shield, Rocket } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useState, useRef, useEffect } from "react"
@@ -15,38 +15,38 @@ type ProcessStep = {
 const processSteps: ProcessStep[] = [
   {
     id: "discovery",
-    title: "Discovery & Research",
-    description: "We begin by understanding your business, goals, target audience, and competition to establish a solid foundation for your project.",
+    title: "Discovery & Planning",
+    description: "We analyze your business goals, target audience, and competition to create a strategic roadmap for your web project.",
     icon: <Search className="h-6 w-6 md:h-8 md:w-8" />
   },
   {
-    id: "strategy",
-    title: "Strategy Development",
-    description: "Based on our findings, we create a comprehensive strategy tailored to your specific needs and objectives.",
-    icon: <Lightbulb className="h-6 w-6 md:h-8 md:w-8" />
-  },
-  {
     id: "design",
-    title: "Design & Prototyping",
-    description: "Our designers create visually stunning, user-friendly interfaces that align with your brand identity and project goals.",
+    title: "UI/UX Design",
+    description: "Our designers create visually stunning, user-friendly interfaces tailored to your brand and optimized for conversions.",
     icon: <PenTool className="h-6 w-6 md:h-8 md:w-8" />
   },
   {
     id: "development",
-    title: "Development",
-    description: "Our skilled developers bring the designs to life using the latest technologies and best practices.",
+    title: "Web Development",
+    description: "Our developers build your site using clean, efficient code and the latest technologies for optimal performance.",
     icon: <Code className="h-6 w-6 md:h-8 md:w-8" />
   },
   {
     id: "testing",
-    title: "Testing & Optimization",
-    description: "Rigorous testing ensures your product is bug-free, secure, and delivers an exceptional user experience across all devices.",
-    icon: <BarChart4 className="h-6 w-6 md:h-8 md:w-8" />
+    title: "Testing & QA",
+    description: "We rigorously test your site across all devices and browsers to ensure optimal functionality and user experience.",
+    icon: <Shield className="h-6 w-6 md:h-8 md:w-8" />
   },
   {
     id: "launch",
-    title: "Launch & Growth",
-    description: "We don&apos;t just deliver and disappear. We provide ongoing support, updates, and optimizations to ensure long-term success.",
+    title: "Launch & Deployment",
+    description: "Your website goes live with our deployment process that ensures a smooth transition and minimal downtime.",
+    icon: <Rocket className="h-6 w-6 md:h-8 md:w-8" />
+  },
+  {
+    id: "support",
+    title: "Support & Maintenance",
+    description: "We provide ongoing support, updates, and optimization to keep your website secure, fast, and effective.",
     icon: <Zap className="h-6 w-6 md:h-8 md:w-8" />
   }
 ]
@@ -131,15 +131,15 @@ export function ProcessSection() {
           {/* Left column - sticky content only on desktop */}
           <div className="lg:sticky lg:top-24 h-fit max-w-md">
             <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-4">
-              Our Process
+              Our Development Process
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">How We Work</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">How We Create Your Perfect Website</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              We follow a structured yet flexible process designed to deliver exceptional results. Our approach ensures that every project is completed efficiently, on time, and exceeds expectations.
+              We follow a proven, structured approach to web development that delivers exceptional results. Our process ensures your project is completed efficiently, on time, and exceeds your expectations.
             </p>
-            <Link href="/about#process">
+            <Link href="/contact/free-consultation">
               <Button className="gap-2 rounded-lg">
-                Explore Our Development Process <ArrowRight className="h-4 w-4" />
+                Start Your Web Project <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
             
@@ -194,20 +194,20 @@ export function ProcessSection() {
         <div className="mt-16 bg-primary rounded-xl p-6 md:p-8 border border-border shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center md:text-left md:col-span-1">
-              <h3 className="text-xl md:text-2xl font-bold mb-2 text-white">Ready to Start?</h3>
-              <p className="text-muted-foreground text-white">
-                Let&apos;s discuss your project and start building your digital success story.
+              <h3 className="text-xl md:text-2xl font-bold mb-2 text-white">Ready to Begin?</h3>
+              <p className="text-white/90">
+                Let's discuss your web project and create your perfect online presence today.
               </p>
             </div>
             <div className="md:col-span-2 flex flex-col sm:width-full sm:flex-row justify-center md:justify-end gap-4 items-center">
               <Link href="/contact">
                 <Button size="lg" className="gap-2 rounded-lg w-full sm:w-full shadow-sm bg-white text-primary hover:bg-white/80">
-                  Get in Touch <ArrowRight className="h-4 w-4" />
+                  Contact Us Now <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/services">
+              <Link href="/portfolio">
                 <Button variant="outline" size="lg" className="rounded-lg w-full sm:w-full text-white hover:bg-white/30">
-                  Explore Services
+                  View Our Work
                 </Button>
               </Link>
             </div>
