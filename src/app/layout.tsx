@@ -78,6 +78,18 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://rtnglobal.site" />
         <script async src='https://static.mywot.com/website_owners_badges/websiteOwnersBadge.js'></script>
         
+        {/* Trustpilot Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,r,n){w.TrustpilotObject=n;w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)};
+                  a=d.createElement(s);a.async=1;a.src=r;a.type='text/java'+s;f=d.getElementsByTagName(s)[0];
+                  f.parentNode.insertBefore(a,f)})(window,document,'script', 'https://invitejs.trustpilot.com/tp.min.js', 'tp');
+                  tp('register', 'x6BksEp48x1wgNc2');
+            `
+          }}
+        />
+        
         {/* JSON-LD Organization Structured Data */}
         <script
           type="application/ld+json"
