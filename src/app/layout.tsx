@@ -7,16 +7,72 @@ import ChatWidget from "@/components/support/ChatWidget";
 import { Header } from "@/components/layout/header";
 import { BreadcrumbContainer } from "@/components/layout/breadcrumb-container";
 import { Providers } from "./providers";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://rtnglobal.site'),
   title: {
     template: '%s | RTN Global',
     default: 'RTN Global - Web Development & Digital Marketing Agency',
   },
-  description: "We create stunning websites and effective digital marketing strategies for businesses of all sizes.",
-  keywords: ["web development", "digital marketing", "SEO", "social media marketing", "web design", "web agency"],
+  description: "RTN Global is a leading web development and digital marketing agency. We create stunning websites, effective SEO strategies, and powerful digital marketing campaigns for businesses worldwide.",
+  keywords: [
+    "web development", 
+    "digital marketing", 
+    "SEO", 
+    "social media marketing", 
+    "web design", 
+    "web agency",
+    "ecommerce development",
+    "mobile app development",
+    "content marketing",
+    "PPC advertising",
+    "brand identity",
+    "website maintenance"
+  ],
+  authors: [{ name: 'RTN Global Team' }],
+  creator: 'RTN Global',
+  publisher: 'RTN Global',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://rtnglobal.site',
+    siteName: 'RTN Global',
+    title: 'RTN Global - Web Development & Digital Marketing Agency',
+    description: 'RTN Global is a leading web development and digital marketing agency. We create stunning websites, effective SEO strategies, and powerful digital marketing campaigns for businesses worldwide.',
+    images: [
+      {
+        url: 'https://rtnglobal.site/images/hero-img.png',
+        width: 1200,
+        height: 630,
+        alt: 'RTN Global - Web Development & Digital Marketing Agency',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'RTN Global - Web Development & Digital Marketing Agency',
+    description: 'RTN Global is a leading web development and digital marketing agency. We create stunning websites, effective SEO strategies, and powerful digital marketing campaigns for businesses worldwide.',
+    images: ['https://rtnglobal.site/images/hero-img.png'],
+    creator: '@rtnglobalofficial',
+    site: '@rtnglobalofficial',
+  },
+  alternates: {
+    canonical: 'https://rtnglobal.site',
+  },
   manifest: "/manifest.json",
   icons: {
     icon: [
@@ -38,6 +94,11 @@ export const metadata: Metadata = {
     address: true,
     date: true,
     url: true,
+  },
+  verification: {
+    google: 'your-google-verification-code', // Add your Google Search Console verification code
+    yandex: 'your-yandex-verification-code', // Add if needed
+    yahoo: 'your-yahoo-verification-code', // Add if needed
   },
 };
 
@@ -76,6 +137,29 @@ export default function RootLayout({
           type="image/png"
         />
         <link rel="dns-prefetch" href="https://rtnglobal.site" />
+        <link rel="preconnect" href="https://rtnglobal.site" />
+        <link rel="canonical" href="https://rtnglobal.site" />
+        
+        {/* Additional SEO Meta Tags */}
+        <meta name="author" content="RTN Global Team" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="theme-color" content="#2563eb" />
+        <meta name="msapplication-TileColor" content="#2563eb" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        
+        {/* Open Graph Meta Tags */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://rtnglobal.site" />
+        <meta property="og:site_name" content="RTN Global" />
+        <meta property="og:locale" content="en_US" />
+        
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@rtnglobalofficial" />
+        <meta name="twitter:creator" content="@rtnglobalofficial" />
+        
         <script async src='https://static.mywot.com/website_owners_badges/websiteOwnersBadge.js'></script>
         
         {/* Trustpilot Script */}
@@ -98,8 +182,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -140,6 +224,25 @@ export default function RootLayout({
             })
           }}
         />
+        
+        {/* JSON-LD Website Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "RTN Global",
+              "url": "https://rtnglobal.site/",
+              "description": "RTN Global is a leading web development and digital marketing agency.",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://rtnglobal.site/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
       </head>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <Providers>
@@ -154,6 +257,7 @@ export default function RootLayout({
           <Toaster />
           <ChatWidget />
         </Providers>
+        <GoogleAnalytics />
       </body>
     </html>
   );

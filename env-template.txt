@@ -1,0 +1,22 @@
+# SEO & Analytics Configuration
+# Copy this content to .env.local and fill in your actual values
+
+# Google Analytics 4
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+
+# Google Tag Manager
+NEXT_PUBLIC_GTM_ID=GTM-XXXXXXXX
+
+# API Configuration
+NEXT_PUBLIC_API_URL=https://your-api-domain.com
+
+# Google Search Console Verification
+# Add your verification code to layout.tsx metadata.verification.google
+GOOGLE_VERIFICATION_CODE=your-google-verification-code
+
+# Social Media API Keys (if needed)
+TWITTER_API_KEY=your-twitter-api-key
+FACEBOOK_APP_ID=your-facebook-app-id
+
+# Other Configuration
+NODE_ENV=production
