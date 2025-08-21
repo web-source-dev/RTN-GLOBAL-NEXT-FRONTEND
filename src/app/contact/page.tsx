@@ -385,7 +385,7 @@ export default function ContactPage() {
                     <CheckCircle2 className="h-5 w-5 text-primary mr-3 mt-0.5" />
                     <div>
                       <H4 className="font-medium">Expert Consultation</H4>
-                      + q<p className="text-md text-muted-foreground">Get professional advice tailored to your business needs</p>
+                      <p className="text-md text-muted-foreground">Get professional advice tailored to your business needs</p>
                     </div>
                   </div>
                 </div>
