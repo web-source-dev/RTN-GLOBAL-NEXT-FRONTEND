@@ -131,18 +131,23 @@ export function Header() {
             : "bg-background"
         )}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-center h-16 md:h-20">
             {/* Logo */}
             <Link 
               href="/" 
-              className="flex items-center space-x-2 text-primary font-bold text-xl"
+              className="flex items-center space-x-2"
             >
-              <span>RTN Global</span>
+              <img 
+                src="/icons/rtnglobal-logo.png" 
+                alt="RTN Global" 
+                className="h-20 md:h-25 w-auto mix-blend-multiply dark:mix-blend-normal"
+                style={{ filter: 'brightness(1.1) contrast(1.1)' }}
+              />
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-1">
+            <nav className="hidden md:flex space-x-1 ml-8">
               {navItems.map((item) => (
                 <div
                   key={item.name}
@@ -176,7 +181,7 @@ export function Header() {
             </nav>
 
             {/* Desktop Actions */}
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-4 ml-8">
               <Button
                 variant="ghost"
                 size="icon"

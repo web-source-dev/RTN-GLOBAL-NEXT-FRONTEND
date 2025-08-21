@@ -55,7 +55,7 @@ export function TestimonialsSection({
               
               <div className="relative bg-card p-8 rounded-xl shadow-sm border border-border/40 transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1 h-full flex flex-col">
                 {/* Quote icon */}
-                <div className="absolute -top-4 -left-2 text-primary/10 group-hover:text-primary/20 transition-colors duration-300">
+                <div className="absolute -top-4 -left-2 text-primary/70 group-hover:text-primary/100 transition-colors duration-300">
                   <Quote className="h-12 w-12" />
                 </div>
                 

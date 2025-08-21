@@ -645,7 +645,7 @@ export default function BlogPostPage() {
         "url": "https://rtnglobal.site/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://rtnglobal.site/logo.png"
+          "url": "https://rtnglobal.site/icons/rtnglobal-logo.png"
         },
         "founder": {
           "@type": "Person",

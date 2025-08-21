@@ -90,7 +90,7 @@ export default function AboutPage() {
             "@type": "Organization",
             "name": "RTN Global",
             "url": "https://rtnglobal.site/",
-            "logo": "https://rtnglobal.site/logo.png",
+            "logo": "https://rtnglobal.site/icons/rtnglobal-logo.png",
             "description": "RTN Global provides innovative digital solutions for business growth and transformation.",
             "founder": {
                 "@type": "Person",
@@ -128,7 +128,7 @@ export default function AboutPage() {
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
             "name": "RTN Global",
-            "image": "https://rtnglobal.site/logo.png",
+            "image": "https://rtnglobal.site/icons/rtnglobal-logo.png",
             "url": "https://rtnglobal.site/",
             "telephone": "+1 (505) 528 0265",
             "email": "info@rtnglobal.site",

@@ -167,7 +167,7 @@ export default function PricingPage() {
       "@type": "Organization",
       "name": "RTN Global",
       "url": "https://rtnglobal.site/",
-      "logo": "https://rtnglobal.site/logo.png",
+              "logo": "https://rtnglobal.site/icons/rtnglobal-logo.png",
       "founder": {
         "@type": "Person",
         "name": "Muhammad Tayyab"
