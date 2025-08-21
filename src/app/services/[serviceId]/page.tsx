@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Layout } from '@/components/layout/layout'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import { 
   ArrowRight, 
   Check,
@@ -22,9 +23,11 @@ import {
   Briefcase,
   Zap,
   Code,
-  BookOpen
+  BookOpen,
+  CheckCircle
 } from 'lucide-react'
 import { OptimizedImage } from '@/components/ui/optimized-image'
+import { H1, H2, H3, P, Lead } from '@/components/ui/typography'
 import { services, getServicesByCategory, Service } from '@/data/services'
 import { motion } from 'framer-motion'
 
@@ -53,9 +56,9 @@ export default function ServiceDetailPage({
   
   // Generate random statistics for display
   const statistics = [
-    { value: '95%', label: 'Client Satisfaction', icon: <Star className="h-6 w-6 text-primary" /> },
-    { value: '200+', label: 'Projects Delivered', icon: <Briefcase className="h-6 w-6 text-primary" /> },
-    { value: '10+', label: 'Years Experience', icon: <Trophy className="h-6 w-6 text-primary" /> },
+    { value: '98%', label: 'Client Satisfaction', icon: <Star className="h-6 w-6 text-primary" /> },
+    { value: '100+', label: 'Projects Delivered', icon: <Briefcase className="h-6 w-6 text-primary" /> },
+    { value: '7+', label: 'Years Experience', icon: <Trophy className="h-6 w-6 text-primary" /> },
     { value: '24/7', label: 'Client Support', icon: <Shield className="h-6 w-6 text-primary" /> },
   ];
   
@@ -70,12 +73,12 @@ export default function ServiceDetailPage({
             "@type": "Service",
             "name": `${params.serviceId.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} | RTN Global`,
             "serviceType": params.serviceId.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
-            "url": `https://rtnglobal.co/services/${params.serviceId}`,
+            "url": `https://rtnglobal.site/services/${params.serviceId}`,
             "provider": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -91,7 +94,7 @@ export default function ServiceDetailPage({
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               }
             },
@@ -108,7 +111,7 @@ export default function ServiceDetailPage({
               "@type": "ReserveAction",
               "target": {
                 "@type": "EntryPoint",
-                "urlTemplate": "https://rtnglobal.co/contact/free-consultation",
+                "urlTemplate": "https://rtnglobal.site/contact/free-consultation",
                 "inLanguage": "en-US",
                 "actionPlatform": [
                   "http://schema.org/DesktopWebPlatform",
@@ -125,100 +128,127 @@ export default function ServiceDetailPage({
         }}
       />
       
-      {/* Hero Section - Enhanced with better visual hierarchy and trust elements */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-muted/50 to-background relative overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="inline-flex items-center px-3 py-1 bg-primary/10 rounded-full text-primary text-sm font-medium mb-4">
-                {service.category.charAt(0).toUpperCase() + service.category.slice(1)}
-              </div>
-              
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
-                {service.title}
-              </h1>
-              
-              <p className="mt-4 text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed">
-                {service.fullDescription}
-              </p>
-              
-              {service.technologies && (
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {service.technologies.map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-muted hover:bg-primary/10 transition-colors rounded-full text-xs font-medium">
-                      {tech}
-                    </span>
+      {/* Hero Section - Enhanced with professional design and statistics */}
+      <section className="relative py-20 bg-gradient-to-br from-primary/5 via-background to-primary/10 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        
+        {/* Service-specific Illustrations */}
+        <div className="absolute top-10 right-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-20 left-10 w-24 h-24 bg-primary/5 rounded-full blur-xl"></div>
+        <div className="absolute top-1/3 left-1/4 w-16 h-16 bg-primary/10 rounded-full blur-lg"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="w-full">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-10 max-w-2xl">
+                <div className="space-y-6">
+                  <Badge className="px-4 py-2 text-sm font-medium bg-primary/10 text-primary">
+                    {service.category.charAt(0).toUpperCase() + service.category.slice(1)} Services
+                  </Badge>
+                  <H1 className="text-4xl md:text-5xl font-bold leading-tight">
+                    {service.title}
+                  </H1>
+                  <Lead className="text-xl text-muted-foreground leading-relaxed">
+                    {service.fullDescription}
+                  </Lead>
+                </div>
+
+                <div className="grid grid-cols-2 gap-6">
+                  {statistics.map((stat, index) => (
+                    <div key={index} className="bg-card border border-border rounded-xl p-6 text-center hover:shadow-md transition-shadow">
+                      <div className="flex items-center justify-center mb-3">
+                        {stat.icon}
+                      </div>
+                      <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
+                      <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
+                    </div>
                   ))}
                 </div>
-              )}
-              
-              <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                <Link href="/contact/free-consultation">
-                  <Button size="lg" className="gap-2 shadow-md hover:shadow-lg transition-all duration-300 w-full sm:w-auto">
-                    Request a Free Consultation <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </Link>
-                <Link href={`${process.env.NEXT_PUBLIC_ORDERS_URL}`}>
-                  <Button size="lg" variant="outline" className="gap-2 w-full sm:w-auto">
-                     Place an Order <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative h-64 md:h-80 lg:h-96 rounded-xl overflow-hidden shadow-xl"
-            >
-              <OptimizedImage
-                src={service.image}
-                alt={service.title}
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                {service.investment && (
-                  <div className="inline-flex items-center px-4 py-2 bg-white/90 rounded-full text-primary font-bold text-sm shadow-lg">
-                    Starting at {service.investment.startingAt}
+
+                {service.technologies && (
+                  <div className="flex flex-wrap gap-3">
+                    {service.technologies.map((tech) => (
+                      <Badge key={tech} variant="secondary" className="px-4 py-2 text-sm font-medium">
+                        {tech}
+                      </Badge>
+                    ))}
                   </div>
                 )}
+
+                                  <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
+                    <Button asChild size="default" className="h-12 text-base font-semibold">
+                      <Link href="/contact/free-consultation">
+                        Get Free Consultation
+                      </Link>
+                    </Button>
+                  <Button asChild variant="outline" size="default" className="h-12 text-base font-semibold">
+                    <Link href="/portfolio">
+                      View Our Work
+                    </Link>
+                  </Button>
+                </div>
               </div>
-            </motion.div>
+
+              <div className="relative max-w-lg mx-auto">
+                <div className="bg-card border border-border rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow">
+                  <div className="space-y-8">
+                    {/* Service Image */}
+                    <div className="relative h-72 rounded-xl overflow-hidden">
+                      <OptimizedImage
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover w-full h-full"
+                        priority
+                      />
+                    </div>
+
+                    {/* Pricing Card */}
+                    {service.investment && (
+                      <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-8 text-center">
+                        <div className="mb-6">
+                          <Badge className="px-4 py-2 text-sm font-medium bg-primary text-white">
+                            Starting at
+                          </Badge>
+                        </div>
+                        <div className="text-5xl font-bold text-primary mb-3">{service.investment.startingAt}</div>
+                        <div className="text-muted-foreground mb-6 text-base">{service.investment.description}</div>
+                        <div className="text-sm text-muted-foreground">
+                          Custom pricing based on project requirements
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Quick Info */}
+                    <div className="space-y-6">
+                      {service.timeline && (
+                        <div className="flex items-center gap-4">
+                          <Clock className="h-6 w-6 text-primary" />
+                          <span className="text-base font-medium">{service.timeline} timeline</span>
+                        </div>
+                      )}
+                      <div className="flex items-center gap-4">
+                        <CheckCircle className="h-6 w-6 text-primary" />
+                        <span className="text-base font-medium">Professional quality guaranteed</span>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <Shield className="h-6 w-6 text-primary" />
+                        <span className="text-base font-medium">24/7 support included</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/5 rounded-full blur-xl"></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
       
-      {/* Statistics Section - New section to build trust */}
-      <section className="py-12 bg-primary/5 border-y border-primary/10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {statistics.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="flex flex-col items-center text-center p-6 rounded-xl bg-card shadow-sm border border-border"
-              >
-                <div className="mb-4 p-3 bg-primary/10 rounded-full">
-                  {stat.icon}
-                </div>
-                <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
       
       {/* Process Section - Enhanced with better visual hierarchy */}
       {service.process && service.process.steps && service.process.steps.length > 0 && (
@@ -463,6 +493,7 @@ export default function ServiceDetailPage({
                           width={48} 
                           height={48} 
                           alt={service.testimonial.author}
+                          className="object-cover w-full h-full"
                         />
                       </div>
                     ) : (
@@ -513,7 +544,7 @@ export default function ServiceDetailPage({
                         src={caseStudy.image}
                         fill
                         alt={caseStudy.title}
-                        className="object-cover transition-transform group-hover:scale-105 duration-500"
+                        className="object-cover transition-transform group-hover:scale-105 duration-500 w-full h-full"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                       <div className="absolute bottom-0 left-0 p-6">
@@ -567,91 +598,147 @@ export default function ServiceDetailPage({
         </section>
       )}
       
-      {/* Related Services - New section */}
-      {relatedServices.length > 0 && (
-        <section className="py-16 border-t border-border">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Related Services</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Explore other services that complement {service.title}
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {relatedServices.map((relatedService, index) => (
-                <motion.div
-                  key={relatedService.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-card border border-border rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group"
+      
+      
+      {/* Enhanced Similar Services Section */}
+      <section className="py-16 bg-gradient-to-br from-muted/30 via-background to-muted/20 border-t border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 px-4 py-2 text-sm font-medium bg-primary/10 text-primary">
+              Explore More
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Similar Services You Might Need</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Discover complementary services that can enhance your project and drive better results
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {relatedServices.map((relatedService, index) => (
+              <motion.div
+                key={relatedService.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group"
+              >
+                <Link 
+                  href={`/services/${relatedService.id}`}
+                  className="block h-full"
                 >
-                  <Link href={`/services/${relatedService.slug}`}>
-                    <div className="relative h-48 w-full">
-                      <OptimizedImage
-                        src={relatedService.image}
-                        fill
-                        alt={relatedService.title}
-                        className="object-cover transition-transform group-hover:scale-105 duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                      <div className="absolute top-4 left-4">
-                        <div className="inline-flex items-center px-3 py-1 bg-primary/90 rounded-full text-white text-xs font-medium">
-                          {relatedService.category.charAt(0).toUpperCase() + relatedService.category.slice(1)}
+                  <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full group-hover:border-primary/30 relative">
+                    {/* Background decoration */}
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/5 to-transparent rounded-full -translate-y-12 translate-x-12 group-hover:scale-110 transition-transform duration-300"></div>
+                    
+                    <div className="relative">
+                      <div className="aspect-video relative overflow-hidden">
+                        <OptimizedImage
+                          src={relatedService.image}
+                          alt={relatedService.title}
+                          fill
+                          className="object-cover transition-transform group-hover:scale-110 duration-500 w-full h-full"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        
+                        {/* Category badge */}
+                        <div className="absolute top-4 left-4">
+                          <Badge className="bg-primary/90 text-white text-xs font-medium px-3 py-1 rounded-full">
+                            {relatedService.category.charAt(0).toUpperCase() + relatedService.category.slice(1)}
+                          </Badge>
+                        </div>
+                        
+                        {/* Investment info if available */}
+                        {relatedService.investment && (
+                          <div className="absolute bottom-4 right-4">
+                            <div className="bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-primary">
+                              {relatedService.investment.startingAt}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      
+                      <div className="p-6">
+                        <div className="flex items-start justify-between mb-3">
+                          <h3 className="text-xl font-semibold group-hover:text-primary transition-colors duration-300 leading-tight">
+                            {relatedService.shortTitle || relatedService.title}
+                          </h3>
+                          <div className="flex-shrink-0 ml-3">
+                            <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all duration-300" />
+                          </div>
+                        </div>
+                        
+                        <p className="text-muted-foreground mb-4 line-clamp-3 leading-relaxed">
+                          {relatedService.description}
+                        </p>
+                        
+                        {/* Features preview */}
+                        {relatedService.features && relatedService.features.length > 0 && (
+                          <div className="mb-4">
+                            <div className="flex flex-wrap gap-2">
+                              {relatedService.features.slice(0, 3).map((feature, featureIndex) => (
+                                <span 
+                                  key={featureIndex} 
+                                  className="inline-flex items-center px-2 py-1 bg-muted/50 rounded-md text-xs text-muted-foreground"
+                                >
+                                  <Check className="h-3 w-3 mr-1 text-primary" />
+                                  {feature.split(' ').slice(0, 3).join(' ')}
+                                  {feature.split(' ').length > 3 && '...'}
+                                </span>
+                              ))}
+                              {relatedService.features.length > 3 && (
+                                <span className="inline-flex items-center px-2 py-1 bg-primary/10 rounded-md text-xs text-primary font-medium">
+                                  +{relatedService.features.length - 3} more
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                        
+                        {/* Timeline if available */}
+                        {relatedService.timeline && (
+                          <div className="flex items-center text-sm text-muted-foreground mb-4">
+                            <Clock className="h-4 w-4 mr-2 text-primary" />
+                            <span>{relatedService.timeline}</span>
+                          </div>
+                        )}
+                        
+                        {/* CTA Button */}
+                        <div className="inline-flex items-center text-primary font-medium group-hover:underline">
+                          Learn More About This Service
+                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </div>
                       </div>
-                      <div className="absolute bottom-0 left-0 p-6">
-                        <h3 className="text-xl font-bold text-white">{relatedService.shortTitle || relatedService.title}</h3>
-                      </div>
                     </div>
-                    <div className="p-6">
-                      <p className="text-muted-foreground mb-4 line-clamp-2">{relatedService.description}</p>
-                      <div className="inline-flex items-center text-primary font-medium">
-                        Learn more <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </div>
-                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Additional CTA */}
+          <div className="text-center mt-12 +50% -50% -mx-4 sm:-mx-6 lg:-mx-8">
+            <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 p-8 border-y border-primary/20">
+              <h3 className="text-xl font-semibold mb-3">Need a Custom Solution?</h3>
+              <p className="text-muted-foreground mb-6">
+                Can't find exactly what you're looking for? We offer custom development services tailored to your specific requirements.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button asChild size="lg" className="rounded-full px-8">
+                  <Link href="/contact/free-consultation">
+                    Get Custom Quote
                   </Link>
-                </motion.div>
-              ))}
+                </Button>
+                <Button asChild size="lg" variant="outline" className="rounded-full px-8">
+                  <Link href="/services">
+                    View All Services
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
-        </section>
-      )}
-      
-      {/* Similar services */}
-      <div className="mt-8 mb-16">
-        <h3 className="text-2xl font-bold mb-8">Similar Services You Might Need</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {relatedServices.map((relatedService) => (
-            <Link 
-              key={relatedService.id} 
-              href={`/services/${relatedService.id}`}
-              className="group block"
-            >
-              <div className="bg-card border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full">
-                <div className="aspect-video relative overflow-hidden">
-                  <OptimizedImage
-                    src={relatedService.image}
-                    alt={relatedService.title}
-                    fill
-                    className="object-cover transition-transform group-hover:scale-105 duration-500"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                    {relatedService.title}
-                  </h4>
-                  <p className="text-muted-foreground line-clamp-2">
-                    {relatedService.description}
-                  </p>
-                </div>
-              </div>
-            </Link>
-          ))}
         </div>
-      </div>
+      </section>
 
       {/* New section: Related Industries & Use Cases */}
       <section className="py-16 bg-muted/20 border-t border-border">

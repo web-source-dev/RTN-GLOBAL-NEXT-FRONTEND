@@ -19,12 +19,12 @@ export const metadata: Metadata = {
     "website policies"
   ],
   alternates: {
-    canonical: "https://rtnglobal.co/legal",
+    canonical: "https://rtnglobal.site/legal",
   },
   openGraph: {
     title: "Legal Information & Policies | RTN Global",
     description: "Access RTN Global's legal documents including Terms & Conditions, Privacy Policy, Cookie Policy, Refund Policy, and Disclaimer.",
-    url: "https://rtnglobal.co/legal",
+    url: "https://rtnglobal.site/legal",
     siteName: "RTN Global",
     locale: "en_US",
     type: "website",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   other: {
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
   }
 }; 

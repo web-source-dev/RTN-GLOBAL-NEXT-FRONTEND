@@ -30,7 +30,26 @@ const nextConfig: NextConfig = {
   
   // Image optimization configuration
   images: {
-    domains: ['rtnglobal.co', 'localhost', 'backend.mydomain.local'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'rtnglobal.site',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'backend.mydomain.local',
+        port: '',
+        pathname: '/**',
+      },
+    ],
     // Configure image formats used for optimization
     formats: ['image/avif', 'image/webp'],
     // Configure device sizes for responsive images

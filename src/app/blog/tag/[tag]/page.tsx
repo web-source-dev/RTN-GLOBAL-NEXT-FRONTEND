@@ -285,12 +285,12 @@ export default function TagPage() {
             "@type": "CollectionPage",
             "name": "Tag: ${decodeURIComponent(tag as string)} - RTN Global Blog",
             "description": "Browse blog posts tagged with ${decodeURIComponent(tag as string)}",
-            "url": "https://rtnglobal.co/blog/tag/${encodeURIComponent(decodeURIComponent(tag as string))}",
+            "url": "https://rtnglobal.site/blog/tag/${encodeURIComponent(decodeURIComponent(tag as string))}",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -306,7 +306,7 @@ export default function TagPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [
@@ -549,18 +549,18 @@ export default function TagPage() {
                         </li>
                         <li>
                           <Link 
-                            href={`/services/digital-marketing`}
+                            href={`/services/content-marketing`}
                             className="flex items-center text-muted-foreground hover:text-primary transition-colors group"
                           >
                             <span className="w-7 h-7 mr-2 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                               <ChevronRight className="h-4 w-4 text-primary" />
                             </span>
-                            <span className="font-medium">Digital Marketing</span>
+                            <span className="font-medium">Content Marketing</span>
                           </Link>
                         </li>
                         <li>
                           <Link 
-                            href={`/services/seo`}
+                            href={`/services/seo-optimization`}
                             className="flex items-center text-muted-foreground hover:text-primary transition-colors group"
                           >
                             <span className="w-7 h-7 mr-2 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -874,21 +874,21 @@ export default function TagPage() {
                     <ArrowRight className="ml-1 h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                   <Link 
-                    href="/services/digital-marketing"
+                    href="/services/content-marketing"
                     className="px-3 py-2.5 text-sm bg-muted rounded-md hover:bg-primary/10 hover:text-primary transition-colors text-center flex items-center justify-center group"
                   >
                     <span>Marketing</span>
                     <ArrowRight className="ml-1 h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                   <Link 
-                    href="/services/ui-ux-design"
+                    href="/services/ux-design"
                     className="px-3 py-2.5 text-sm bg-muted rounded-md hover:bg-primary/10 hover:text-primary transition-colors text-center flex items-center justify-center group"
                   >
-                    <span>UI/UX</span>
+                    <span>UX Design</span>
                     <ArrowRight className="ml-1 h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                   <Link 
-                    href="/services/seo"
+                    href="/services/seo-optimization"
                     className="px-3 py-2.5 text-sm bg-muted rounded-md hover:bg-primary/10 hover:text-primary transition-colors text-center flex items-center justify-center group"
                   >
                     <span>SEO</span>

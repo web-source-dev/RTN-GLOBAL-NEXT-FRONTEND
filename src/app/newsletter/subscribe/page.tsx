@@ -9,7 +9,7 @@ export default function NewsletterSubscribePage() {
     "@type": "WebPage",
     "name": "Subscribe to RTN Global Newsletter",
     "description": "Stay up-to-date with the latest industry trends, insights, and exclusive content delivered straight to your inbox.",
-    "url": "https://rtnglobal.com/newsletter/subscribe",
+    "url": "https://rtnglobal.sitem/newsletter/subscribe",
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -17,19 +17,19 @@ export default function NewsletterSubscribePage() {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://rtnglobal.com"
+          "item": "https://rtnglobal.sitem"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Newsletter",
-          "item": "https://rtnglobal.com/newsletter"
+          "item": "https://rtnglobal.sitem/newsletter"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Subscribe",
-          "item": "https://rtnglobal.com/newsletter/subscribe"
+          "item": "https://rtnglobal.sitem/newsletter/subscribe"
         }
       ]
     },
@@ -38,7 +38,7 @@ export default function NewsletterSubscribePage() {
       "name": "RTN Global",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rtnglobal.com/images/logo.png"
+        "url": "https://rtnglobal.sitem/images/logo.png"
       }
     },
     "mainEntity": {

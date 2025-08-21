@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Roboto, Poppins } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Footer } from "./footer";
@@ -9,7 +9,20 @@ import { BreadcrumbContainer } from "@/components/layout/breadcrumb-container";
 import { Providers } from "./providers";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
-const inter = Inter({ subsets: ["latin"] });
+// Premium font configuration
+const roboto = Roboto({ 
+  subsets: ["latin"],
+  variable: "--font-roboto",
+  display: "swap",
+  weight: ["300", "400", "500", "700"],
+});
+
+const poppins = Poppins({ 
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://rtnglobal.site'),
@@ -132,7 +145,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="preload"
-          href="/images/hero-img.png"
+          href="/images/hero/home-hero1.jpg"
           as="image"
           type="image/png"
         />
@@ -201,14 +214,14 @@ export default function RootLayout({
                 {
                   "@type": "ContactPoint",
                   "contactType": "customer service",
-                  "telephone": "+1 505 528 6780",
+                  "telephone": "+1 (505) 528 0265",
                   "email": "info@rtnglobal.site",
                   "availableLanguage": ["English"]
                 },
                 {
                   "@type": "ContactPoint",
                   "contactType": "technical support",
-                  "telephone": "+1 505 528 6780",
+                  "telephone": "+1 (505) 528 0265",
                   "email": "support@rtnglobal.site",
                   "availableLanguage": ["English"]
                 }
@@ -244,7 +257,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} flex flex-col min-h-screen`}>
+      <body className={`${roboto.variable} ${poppins.variable} font-sans flex flex-col min-h-screen`}>
         <Providers>
           <Header />
           <div className="pt-5 md:pt-20">

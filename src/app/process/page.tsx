@@ -137,12 +137,12 @@ export default function ProcessPage() {
             "@type": "WebPage",
             "name": "Our Process | RTN Global",
             "description": "Learn about RTN Global's strategic six-step methodology for brand success, combining strategic thinking, creative excellence, and technical expertise.",
-            "url": "https://rtnglobal.co/process",
+            "url": "https://rtnglobal.site/process",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -158,7 +158,7 @@ export default function ProcessPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [

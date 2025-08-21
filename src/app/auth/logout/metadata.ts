@@ -5,19 +5,19 @@ export const metadata: Metadata = {
   description: 'Logging out of your RTN Global account. Secure sign-out from your international RTN Global session.',
   keywords: 'logout, sign out, exit account, end session, RTN Global logout, secure logout',
   alternates: {
-    canonical: 'https://rtnglobal.co/auth/logout',
+    canonical: 'https://rtnglobal.site/auth/logout',
     languages: {
-      'en-US': 'https://rtnglobal.co/auth/logout',
-      'en-GB': 'https://rtnglobal.co/auth/logout',
-      'fr': 'https://rtnglobal.co/fr/auth/logout',
-      'de': 'https://rtnglobal.co/de/auth/logout',
-      'es': 'https://rtnglobal.co/es/auth/logout',
+      'en-US': 'https://rtnglobal.site/auth/logout',
+      'en-GB': 'https://rtnglobal.site/auth/logout',
+      'fr': 'https://rtnglobal.site/fr/auth/logout',
+      'de': 'https://rtnglobal.site/de/auth/logout',
+      'es': 'https://rtnglobal.site/es/auth/logout',
     }
   },
   openGraph: {
     title: 'Logging Out | RTN Global',
     description: 'Logging out of your RTN Global account. Secure sign-out from your international RTN Global session.',
-    url: 'https://rtnglobal.co/auth/logout',
+    url: 'https://rtnglobal.site/auth/logout',
     siteName: 'RTN Global',
     locale: 'en_US',
     type: 'website',

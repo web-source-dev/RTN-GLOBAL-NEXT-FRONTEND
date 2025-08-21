@@ -191,7 +191,7 @@ export const services: Record<string, Service> = {
     category: 'strategy',
     timeline: '3-4 weeks',
     investment: {
-      startingAt: '$5,000',
+      startingAt: '$299',
       description: 'Investment varies based on business size and strategy complexity.'
     },
     featured: true
@@ -252,7 +252,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: 'Ongoing (6-12 month commitment recommended)',
     investment: {
-      startingAt: '$1,500/month',
+      startingAt: '$199/month',
       description: 'Investment varies based on website size, competition, and scope of work.'
     }
   },
@@ -285,7 +285,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: 'Ongoing (3-6 month minimum commitment)',
     investment: {
-      startingAt: '$2,000/month',
+      startingAt: '$249/month',
       description: 'Investment varies based on content volume, complexity, and distribution strategy.'
     }
   },
@@ -318,7 +318,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: 'Ongoing (3 month minimum commitment)',
     investment: {
-      startingAt: '$1,800/month',
+      startingAt: '$199/month',
       description: 'Investment varies based on platform selection, posting frequency, and ad spend management.'
     }
   },
@@ -351,7 +351,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: 'Ongoing (3 month minimum commitment)',
     investment: {
-      startingAt: '$1,500/month + ad spend',
+      startingAt: '$199/month + ad spend',
       description: 'Management fee varies based on campaign complexity and ad spend.'
     }
   },
@@ -384,7 +384,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: 'Ongoing (3 month minimum commitment)',
     investment: {
-      startingAt: '$1,200/month',
+      startingAt: '$599/month',
       description: 'Investment varies based on campaign frequency, complexity, and list size.'
     }
   },
@@ -455,7 +455,7 @@ export const services: Record<string, Service> = {
       '30 days post-launch support'
     ],
     investment: {
-      startingAt: '$10,000',
+      startingAt: '$899',
       description: 'Investment varies based on website complexity and feature requirements.'
     },
     featured: true
@@ -492,7 +492,7 @@ export const services: Record<string, Service> = {
       'React Native', 'Swift', 'Kotlin', 'Firebase', 'Node.js', 'MongoDB'
     ],
     investment: {
-      startingAt: '$25,000',
+      startingAt: '$2,499',
       description: 'Investment varies based on app complexity, features, and platforms.'
     }
   },
@@ -528,7 +528,7 @@ export const services: Record<string, Service> = {
       'Shopify', 'WooCommerce', 'Magento', 'BigCommerce', 'Custom Solutions'
     ],
     investment: {
-      startingAt: '$15,000',
+      startingAt: '$1,499',
       description: 'Investment varies based on store complexity, product volume, and custom features.'
     },
     featured: true
@@ -565,7 +565,7 @@ export const services: Record<string, Service> = {
       'React', 'Next.js', 'Vue.js', 'Angular', 'TypeScript', 'Tailwind CSS', 'Bootstrap'
     ],
     investment: {
-      startingAt: '$8,000',
+      startingAt: '$799',
       description: 'Investment varies based on project complexity and feature requirements.'
     }
   },
@@ -601,7 +601,7 @@ export const services: Record<string, Service> = {
       'Node.js', 'Python', 'PHP', 'Java', 'MongoDB', 'PostgreSQL', 'MySQL', 'AWS', 'Firebase'
     ],
     investment: {
-      startingAt: '$12,000',
+      startingAt: '$1,299',
       description: 'Investment varies based on system complexity and technical requirements.'
     }
   },
@@ -658,7 +658,7 @@ export const services: Record<string, Service> = {
       'JavaScript/TypeScript', 'React', 'Node.js', 'Python', 'MongoDB', 'PostgreSQL', 'AWS', 'Docker'
     ],
     investment: {
-      startingAt: '$20,000',
+      startingAt: '$1,999',
       description: 'Investment varies based on application complexity and feature set.'
     }
   },
@@ -694,7 +694,7 @@ export const services: Record<string, Service> = {
       'WordPress', 'PHP', 'MySQL', 'JavaScript', 'WooCommerce', 'ACF', 'Elementor', 'Beaver Builder'
     ],
     investment: {
-      startingAt: '$8,000',
+      startingAt: '$499',
       description: 'Investment varies based on site complexity and custom functionality.'
     }
   },
@@ -730,7 +730,7 @@ export const services: Record<string, Service> = {
       'Shopify', 'Shopify Plus', 'Liquid', 'JavaScript', 'Shopify API', 'Shopify Apps'
     ],
     investment: {
-      startingAt: '$10,000',
+      startingAt: '$799',
       description: 'Investment varies based on store complexity and custom requirements.'
     }
   },
@@ -787,7 +787,7 @@ export const services: Record<string, Service> = {
       'React', 'Angular', 'Node.js', 'Python', 'PostgreSQL', 'MongoDB', 'AWS', 'Docker', 'Kubernetes'
     ],
     investment: {
-      startingAt: '$25,000',
+      startingAt: '$2,499',
       description: 'Investment varies based on application complexity and feature requirements.'
     },
     featured: true
@@ -824,7 +824,7 @@ export const services: Record<string, Service> = {
       'React', 'Angular', 'Node.js', '.NET', 'Java', 'SQL Server', 'PostgreSQL', 'Azure', 'AWS'
     ],
     investment: {
-      startingAt: '$20,000',
+      startingAt: '$1,999',
       description: 'Investment varies based on portal complexity and integration requirements.'
     }
   },
@@ -878,7 +878,7 @@ export const services: Record<string, Service> = {
     category: 'development',
     timeline: '8-14 weeks',
     investment: {
-      startingAt: '$12,000',
+      startingAt: '$599',
       description: 'Investment varies based on website size, complexity, and redesign scope.'
     }
   },
@@ -914,7 +914,7 @@ export const services: Record<string, Service> = {
       'Lighthouse', 'WebPageTest', 'Google PageSpeed Insights', 'CDN', 'Caching', 'Image Optimization'
     ],
     investment: {
-      startingAt: '$3,500',
+      startingAt: '$199',
       description: 'Investment varies based on website size, current performance, and optimization goals.'
     }
   },
@@ -950,7 +950,7 @@ export const services: Record<string, Service> = {
       'HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Tailwind CSS', 'CSS Grid', 'Flexbox'
     ],
     investment: {
-      startingAt: '$6,000',
+      startingAt: '$499',
       description: 'Investment varies based on website complexity and design requirements.'
     }
   },
@@ -991,7 +991,7 @@ export const services: Record<string, Service> = {
       'Responsive design specifications'
     ],
     investment: {
-      startingAt: '$8,000',
+      startingAt: '$399',
       description: 'Investment varies based on project scope and complexity.'
     }
   },
@@ -1032,7 +1032,7 @@ export const services: Record<string, Service> = {
       'Digital brand assets'
     ],
     investment: {
-      startingAt: '$5,000',
+      startingAt: '$699',
       description: 'Investment varies based on project scope and deliverables.'
     }
   },
@@ -1065,7 +1065,7 @@ export const services: Record<string, Service> = {
     category: 'strategy',
     timeline: 'Ongoing (3 month minimum commitment)',
     investment: {
-      startingAt: '$2,500/month',
+      startingAt: '$399',
       description: 'Investment varies based on website traffic volume and optimization scope.'
     }
   },
@@ -1098,7 +1098,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: '4-8 weeks + ongoing monitoring',
     investment: {
-      startingAt: '$2,000/month',
+      startingAt: '$299/month',
       description: 'Investment varies based on website size, technical issues, and scope of work.'
     }
   },
@@ -1131,7 +1131,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: 'Ongoing (3-6 month commitment recommended)',
     investment: {
-      startingAt: '$1,800/month',
+      startingAt: '$199/month',
       description: 'Investment varies based on site size, content volume, and competition.'
     }
   },
@@ -1164,7 +1164,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: 'Ongoing (6-12 month commitment recommended)',
     investment: {
-      startingAt: '$2,000/month',
+      startingAt: '$199/month',
       description: 'Investment varies based on competition, link building goals, and industry difficulty.'
     }
   },
@@ -1197,7 +1197,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: 'Ongoing (3-6 month minimum commitment)',
     investment: {
-      startingAt: '$1,200/month',
+      startingAt: '$249/month',
       description: 'Investment varies based on number of locations, competition, and service area.'
     }
   },
@@ -1251,7 +1251,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: 'Ongoing (6-12 month commitment recommended)',
     investment: {
-      startingAt: '$2,500/month',
+      startingAt: '$199/month',
       description: 'Investment varies based on store size, number of products, and competition.'
     }
   },
@@ -1284,7 +1284,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: '4-8 weeks + ongoing monitoring',
     investment: {
-      startingAt: '$1,800/month',
+      startingAt: '$299/month',
       description: 'Investment varies based on website size, current mobile performance, and complexity.'
     }
   },
@@ -1338,7 +1338,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: '2-4 weeks',
     investment: {
-      startingAt: '$2,500',
+      startingAt: '$149',
       description: 'Investment varies based on website size, complexity, and audit depth.'
     }
   },
@@ -1371,7 +1371,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: '2-3 weeks',
     investment: {
-      startingAt: '$1,500',
+      startingAt: '$99',
       description: 'Investment varies based on industry, website size, and research scope.'
     }
   },
@@ -1404,7 +1404,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: 'Ongoing (6-12 month commitment recommended)',
     investment: {
-      startingAt: '$2,000/month',
+      startingAt: '$149',
       description: 'Investment varies based on industry competitiveness, link quality targets, and volume goals.'
     }
   },
@@ -1437,7 +1437,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: 'Ongoing (3-6 month minimum commitment)',
     investment: {
-      startingAt: '$2,000/month',
+      startingAt: '$299/month',
       description: 'Investment varies based on industry, business size, and current reputation challenges.'
     }
   },
@@ -1491,7 +1491,7 @@ export const services: Record<string, Service> = {
     category: 'marketing',
     timeline: 'Ongoing (3-6 month minimum commitment)',
     investment: {
-      startingAt: '$3,000/month',
+      startingAt: '$299/month',
       description: 'Investment varies based on website traffic volume, conversion goals, and testing scope.'
     }
   },
@@ -1527,7 +1527,7 @@ export const services: Record<string, Service> = {
       'HubSpot', 'Marketo', 'Mailchimp', 'ActiveCampaign', 'Salesforce Marketing Cloud', 'Pardot', 'Klaviyo'
     ],
     investment: {
-      startingAt: '$3,500 setup + $1,800/month',
+      startingAt: '$399/month',
       description: 'Investment varies based on platform, complexity of automation needs, and ongoing management requirements.'
     }
   },
@@ -1589,7 +1589,7 @@ export const services: Record<string, Service> = {
       'Animation guidelines'
     ],
     investment: {
-      startingAt: '$12,000',
+      startingAt: '$499 setup + $199/month',
       description: 'Investment varies based on app complexity, number of screens, and design requirements.'
     }
   },
@@ -1630,7 +1630,7 @@ export const services: Record<string, Service> = {
       'Design implementation guide'
     ],
     investment: {
-      startingAt: '$4,000',
+      startingAt: '$499',
       description: 'Investment varies based on number of unique page designs, complexity, and revisions.'
     }
   },
@@ -1692,7 +1692,7 @@ export const services: Record<string, Service> = {
       'Governance documentation'
     ],
     investment: {
-      startingAt: '$15,000',
+      startingAt: '$399',
       description: 'Investment varies based on system complexity, number of components, and implementation needs.'
     }
   },
@@ -1725,7 +1725,7 @@ export const services: Record<string, Service> = {
     category: 'development',
     timeline: 'Ongoing monthly service',
     investment: {
-      startingAt: '$250/month',
+      startingAt: '$199/month',
       description: 'Investment varies based on website size, technology stack, and required maintenance level.'
     }
   },
@@ -1779,9 +1779,81 @@ export const services: Record<string, Service> = {
     category: 'development',
     timeline: '4-8 weeks',
     investment: {
-      startingAt: '$5,000',
+      startingAt: '$399',
       description: 'Investment varies based on website complexity, content volume, and migration requirements.'
     }
+  },
+  'react-native': {
+    id: 'react-native',
+    slug: 'react-native',
+    title: 'React Native Development Services',
+    shortTitle: 'React Native',
+    description: 'Cross-platform mobile app development with React Native for iOS and Android.',
+    fullDescription: 'Our React Native development services help you build high-performance, native mobile applications that work seamlessly on both iOS and Android platforms. We leverage React Native\'s powerful framework to create apps that deliver native performance while sharing code across platforms, reducing development time and costs.',
+    icon: 'smartphone',
+    image: '/images/services/react-native.jpg',
+    features: [
+      'Cross-Platform Mobile App Development',
+      'Native Performance Optimization',
+      'Custom UI/UX Design Implementation',
+      'API Integration & Backend Services',
+      'App Store & Google Play Deployment',
+      'Performance Monitoring & Analytics',
+      'Ongoing Maintenance & Updates'
+    ],
+    benefits: [
+      'Single codebase for iOS and Android',
+      'Reduced development time and costs',
+      'Native performance and user experience',
+      'Faster time to market',
+      'Easy maintenance and updates',
+      'Access to native device features'
+    ],
+    process: {
+      title: 'Our React Native Development Process',
+      steps: [
+        {
+          title: 'Requirements Analysis',
+          description: 'We analyze your app requirements, target audience, and platform-specific needs to create a comprehensive development plan.'
+        },
+        {
+          title: 'Design & Prototyping',
+          description: 'We create intuitive UI/UX designs and interactive prototypes that work seamlessly across both platforms.'
+        },
+        {
+          title: 'Development & Testing',
+          description: 'Our developers build your app using React Native best practices, with continuous testing on both platforms.'
+        },
+        {
+          title: 'Deployment & Launch',
+          description: 'We handle app store submissions, deployment, and provide ongoing support and maintenance.'
+        }
+      ]
+    },
+    testimonial: {
+      content: "RTN Global delivered an exceptional React Native app that exceeded our expectations. The cross-platform approach saved us significant development time and costs, while the performance is indistinguishable from native apps.",
+      author: "Jennifer Chen",
+      company: "TechStart Mobile",
+      role: "Product Manager"
+    },
+    category: 'development',
+    timeline: '8-16 weeks',
+    technologies: [
+      'React Native', 'JavaScript/TypeScript', 'Redux', 'Firebase', 'Node.js', 'Expo', 'React Navigation'
+    ],
+    deliverables: [
+      'Cross-platform mobile application',
+      'iOS and Android builds',
+      'App store deployment support',
+      'Performance optimization',
+      'Analytics integration',
+      'Documentation and maintenance guide'
+    ],
+    investment: {
+      startingAt: '$1,499',
+      description: 'Investment varies based on app complexity, features, and platform requirements.'
+    },
+    featured: true
   }
 }
 

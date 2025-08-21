@@ -5,19 +5,19 @@ export const metadata: Metadata = {
   description: 'Reset your RTN Global account password. Create a new secure password for your international RTN Global account.',
   keywords: 'reset password, new password, password change, secure password, RTN Global account, password security',
   alternates: {
-    canonical: 'https://rtnglobal.co/auth/reset-password',
+    canonical: 'https://rtnglobal.site/auth/reset-password',
     languages: {
-      'en-US': 'https://rtnglobal.co/auth/reset-password',
-      'en-GB': 'https://rtnglobal.co/auth/reset-password',
-      'fr': 'https://rtnglobal.co/fr/auth/reset-password',
-      'de': 'https://rtnglobal.co/de/auth/reset-password',
-      'es': 'https://rtnglobal.co/es/auth/reset-password',
+      'en-US': 'https://rtnglobal.site/auth/reset-password',
+      'en-GB': 'https://rtnglobal.site/auth/reset-password',
+      'fr': 'https://rtnglobal.site/fr/auth/reset-password',
+      'de': 'https://rtnglobal.site/de/auth/reset-password',
+      'es': 'https://rtnglobal.site/es/auth/reset-password',
     }
   },
   openGraph: {
     title: 'Reset Password | RTN Global',
     description: 'Reset your RTN Global account password. Create a new secure password for your international RTN Global account.',
-    url: 'https://rtnglobal.co/auth/reset-password',
+    url: 'https://rtnglobal.site/auth/reset-password',
     siteName: 'RTN Global',
     locale: 'en_US',
     type: 'website',

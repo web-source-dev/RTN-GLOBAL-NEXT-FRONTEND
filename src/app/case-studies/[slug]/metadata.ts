@@ -40,19 +40,19 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     description: cleanDescription,
     keywords: keywordsArray.join(', '),
     alternates: {
-      canonical: `https://rtnglobal.co/case-studies/${params.slug}`,
+      canonical: `https://rtnglobal.site/case-studies/${params.slug}`,
       languages: {
-        'en-US': `https://rtnglobal.co/case-studies/${params.slug}`,
-        'en-GB': `https://rtnglobal.co/case-studies/${params.slug}`,
-        'fr': `https://rtnglobal.co/fr/case-studies/${params.slug}`,
-        'de': `https://rtnglobal.co/de/case-studies/${params.slug}`,
-        'es': `https://rtnglobal.co/es/case-studies/${params.slug}`,
+        'en-US': `https://rtnglobal.site/case-studies/${params.slug}`,
+        'en-GB': `https://rtnglobal.site/case-studies/${params.slug}`,
+        'fr': `https://rtnglobal.site/fr/case-studies/${params.slug}`,
+        'de': `https://rtnglobal.site/de/case-studies/${params.slug}`,
+        'es': `https://rtnglobal.site/es/case-studies/${params.slug}`,
       }
     },
     openGraph: {
       title: `${caseStudy.title} | ${caseStudy.client}`,
       description: cleanDescription,
-      url: `https://rtnglobal.co/case-studies/${params.slug}`,
+      url: `https://rtnglobal.site/case-studies/${params.slug}`,
       siteName: 'RTN Global',
       locale: 'en_US',
       type: 'article',
@@ -105,7 +105,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       'twitter:label2': 'Client',
       'twitter:data2': caseStudy.client,
       'contact:email': 'info@rtnglobal.site',
-      'contact:phone': '+1 505 528 6780',
+      'contact:phone': '+1 (505) 528 0265',
       'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
     }
   };

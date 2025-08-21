@@ -35,12 +35,12 @@ export default function SessionExpiredPage() {
             "@type": "WebPage",
             "name": "Session Expired - RTN Global",
             "description": "Your session has expired. Please log in again to continue.",
-            "url": "https://rtnglobal.co/auth/session-expired",
+            "url": "https://rtnglobal.site/auth/session-expired",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -56,7 +56,7 @@ export default function SessionExpiredPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [
@@ -74,15 +74,7 @@ export default function SessionExpiredPage() {
 
       {/* Left column with image - visible on larger screens */}
       <div className="hidden lg:flex lg:flex-col lg:items-center lg:justify-center lg:w-1/2">
-        <div className="relative w-full max-w-md aspect-square">
-          <Image 
-            src="/images/auth/session-expired.svg" 
-            alt="Session expired illustration" 
-            fill
-            priority
-            className="object-contain"
-          />
-        </div>
+
         <div className="mt-8 text-center">
           <h1 className="text-3xl font-bold tracking-tight">Session Expired</h1>
           <p className="text-muted-foreground mt-2">Your session has timed out for security reasons</p>

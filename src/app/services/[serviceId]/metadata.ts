@@ -378,7 +378,7 @@ export function generateMetadata({ params }: Props): Metadata {
       title: serviceInfo.title,
       description: serviceInfo.description,
       type: 'website',
-      url: `https://rtnglobal.co/services/${serviceId}`,
+      url: `https://rtnglobal.site/services/${serviceId}`,
       siteName: 'RTN Global',
       locale: 'en_US',
       images: [
@@ -399,13 +399,13 @@ export function generateMetadata({ params }: Props): Metadata {
       site: '@rtnglobalofficial'
     },
     alternates: {
-      canonical: `https://rtnglobal.co/services/${serviceId}`,
+      canonical: `https://rtnglobal.site/services/${serviceId}`,
       languages: {
-        'en-US': `https://rtnglobal.co/services/${serviceId}`,
-        'en-GB': `https://rtnglobal.co/services/${serviceId}`,
-        'fr': `https://rtnglobal.co/fr/services/${serviceId}`,
-        'de': `https://rtnglobal.co/de/services/${serviceId}`,
-        'es': `https://rtnglobal.co/es/services/${serviceId}`,
+        'en-US': `https://rtnglobal.site/services/${serviceId}`,
+        'en-GB': `https://rtnglobal.site/services/${serviceId}`,
+        'fr': `https://rtnglobal.site/fr/services/${serviceId}`,
+        'de': `https://rtnglobal.site/de/services/${serviceId}`,
+        'es': `https://rtnglobal.site/es/services/${serviceId}`,
       }
     },
     authors: [{ name: 'RTN Global Team' }],
@@ -417,7 +417,7 @@ export function generateMetadata({ params }: Props): Metadata {
       other: {
         'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
         'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
-        me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
+        me: ['https://rtnglobal.site', 'https://www.linkedin.com/in/rtnglobalofficial']
       }
     },
     other: {
@@ -432,7 +432,7 @@ export function generateMetadata({ params }: Props): Metadata {
       'service:features': serviceInfo.features ? serviceInfo.features.join(', ') : 'Custom Solutions',
       'service:id': serviceId,
       'contact:email': 'info@rtnglobal.site',
-      'contact:phone': '+1 505 528 6780',
+      'contact:phone': '+1 (505) 528 0265',
       'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
     }
   }

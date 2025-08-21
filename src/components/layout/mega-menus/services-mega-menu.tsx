@@ -44,7 +44,7 @@ export function ServicesMegaMenu() {
               {serviceCategories.map((category) => (
                 <li key={category.id}>
                   <Link 
-                    href={`/services/categories/${category.id}`}
+                    href={`/services?category=${category.id}`}
                     className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors"
                   >
                     <ServiceIcon icon={category.icon} className="text-primary" />

@@ -86,7 +86,7 @@ export function BenefitsSection() {
   };
   
   return (
-    <section className="py-16 md:py-24 overflow-hidden relative" id="benefits">
+         <section className="py-16 md:py-24 overflow-hidden relative bg-muted/100" id="benefits">
       {/* Background decor elements */}
       <motion.div 
         className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl opacity-60 -z-10"
@@ -130,7 +130,7 @@ export function BenefitsSection() {
           >
             Why Choose Us
           </motion.div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">The RTN Global Advantage</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">The RTN Global Advantage</h2>
           <p className="text-lg text-muted-foreground">
             Discover the benefits of partnering with us for your digital transformation journey.
           </p>
@@ -184,7 +184,7 @@ function BenefitCard({ benefit, index }: { benefit: Benefit; index: number }) {
         {benefit.icon}
       </div>
       
-      <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{benefit.title}</h3>
+      <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">{benefit.title}</h3>
       
       <div className="w-12 h-1 bg-primary/30 rounded-full mb-4 transition-all duration-300 group-hover:w-20 group-hover:bg-primary"></div>
       

@@ -24,6 +24,7 @@ import {
   Puzzle
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { H2, H3, P, Lead } from '@/components/ui/typography'
 import { motion, useInView } from 'framer-motion'
 import { getFeaturedServices, serviceCategories, Service, IconType as ImportedIconType } from '@/data/services'
 
@@ -210,10 +211,10 @@ const ServicesSection = () => {
           >
             Expert Digital Services
           </motion.div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Tailored Web Solutions For Your Business</h2>
-          <p className="text-lg text-muted-foreground">
+          <H2 className="mb-4">Tailored Web Solutions For Your Business</H2>
+          <Lead>
             From responsive web design to custom development, we deliver results-driven digital solutions that help your business thrive online.
-          </p>
+          </Lead>
         </motion.div>
 
         {/* Service Categories - simplified for clarity */}
@@ -271,13 +272,13 @@ const ServicesSection = () => {
               <Code className="h-5 w-5" />
             </div>
             
-            <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Web Development</h3>
+            <H3 className="mb-3 group-hover:text-primary transition-colors">Web Development</H3>
             
             <div className="w-12 h-1 bg-primary/30 rounded-full mb-4 transition-all duration-300 group-hover:w-20 group-hover:bg-primary"></div>
             
-            <p className="text-muted-foreground mb-6">
+            <P className="mb-6">
               Custom, responsive websites built with modern technologies that load fast, convert visitors, and rank well on search engines.
-            </p>
+            </P>
             
             <Link 
               href="/services/web-development" 
@@ -303,7 +304,7 @@ const ServicesSection = () => {
               <Palette className="h-5 w-5" />
             </div>
             
-            <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">UI/UX Design</h3>
+            <H3 className="mb-3 group-hover:text-primary transition-colors">UI/UX Design</H3>
             
             <div className="w-12 h-1 bg-primary/30 rounded-full mb-4 transition-all duration-300 group-hover:w-20 group-hover:bg-primary"></div>
             
@@ -312,10 +313,10 @@ const ServicesSection = () => {
             </p>
             
             <Link 
-              href="/services/ui-ux-design" 
+              href="/services/ux-design" 
               className="text-primary text-sm font-medium hover:underline inline-flex items-center"
             >
-              Explore UI/UX Design <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+              Explore UX Design <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
 
@@ -344,10 +345,10 @@ const ServicesSection = () => {
             </p>
             
             <Link 
-              href="/services/wix-development" 
+              href="/services/wordpress-development" 
               className="text-primary text-sm font-medium hover:underline inline-flex items-center"
             >
-              Explore Wix Development <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+              Explore WordPress Development <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
 
@@ -376,10 +377,10 @@ const ServicesSection = () => {
             </p>
             
             <Link 
-              href="/services/bug-fixes" 
+              href="/services/performance-optimization" 
               className="text-primary text-sm font-medium hover:underline inline-flex items-center"
             >
-              Explore Bug Fixes <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+              Explore Performance Optimization <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
 
@@ -408,10 +409,10 @@ const ServicesSection = () => {
             </p>
             
             <Link 
-              href="/services/custom-solutions" 
+              href="/services/web-app-development" 
               className="text-primary text-sm font-medium hover:underline inline-flex items-center"
             >
-              Explore Custom Solutions <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+              Explore Web App Development <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
 
@@ -440,7 +441,7 @@ const ServicesSection = () => {
             </p>
             
             <Link 
-              href="/services/ecommerce-development" 
+              href="/services/e-commerce" 
               className="text-primary text-sm font-medium hover:underline inline-flex items-center"
             >
               Explore E-commerce Solutions <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />

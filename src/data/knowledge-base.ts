@@ -204,7 +204,7 @@ export const articleData: Record<string, Article> = {
       <ul>
         <li><strong>Didn't receive the reset email?</strong> Check your spam or junk folder. If you still don't see it, try requesting another reset email after 5 minutes.</li>
         <li><strong>Reset link expired?</strong> The reset links are valid for 24 hours. If your link has expired, simply start the process again.</li>
-        <li><strong>Still having trouble?</strong> Contact our support team at support@rtnglobal.com or submit a support ticket through your account.</li>
+        <li><strong>Still having trouble?</strong> Contact our support team at support@rtnglobal.sitem or submit a support ticket through your account.</li>
       </ul>
       
       <h2>Additional Security Recommendations</h2>
@@ -274,7 +274,7 @@ export const articleData: Record<string, Article> = {
         <li>Use the access token to make authenticated API requests.</li>
       </ol>
       <h4>Example Authorization Request</h4>
-      <pre><code>GET https://auth.rtnglobal.com/oauth/authorize
+      <pre><code>GET https://auth.rtnglobal.sitem/oauth/authorize
 ?client_id=YOUR_CLIENT_ID
 &redirect_uri=YOUR_REDIRECT_URI
 &response_type=code
@@ -283,7 +283,7 @@ export const articleData: Record<string, Article> = {
       <h2>Access Token Management</h2>
       <p>Access tokens are temporary credentials that expire after a set time (typically 1 hour). When a token expires, use your refresh token to get a new access token without requiring the user to log in again.</p>
       <h4>Refresh Token Flow</h4>
-      <pre><code>POST https://auth.rtnglobal.com/oauth/token
+      <pre><code>POST https://auth.rtnglobal.sitem/oauth/token
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=refresh_token

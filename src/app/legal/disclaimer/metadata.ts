@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     "user agreement"
   ],
   alternates: {
-    canonical: "https://rtnglobal.co/legal/disclaimer",
+    canonical: "https://rtnglobal.site/legal/disclaimer",
   },
   openGraph: {
     title: "Disclaimer | Legal Notice | RTN Global",
     description: "Read RTN Global's official disclaimer regarding the use of our website, content accuracy, third-party links, and limitation of liability.",
-    url: "https://rtnglobal.co/legal/disclaimer",
+    url: "https://rtnglobal.site/legal/disclaimer",
     siteName: "RTN Global",
     locale: "en_US",
     type: "website",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   other: {
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
   }
 }; 

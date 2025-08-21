@@ -153,7 +153,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "flex items-center px-3 py-2 text-sm font-medium transition-colors hover:text-primary",
+                      "flex items-center px-3 py-2 text-md font-medium transition-colors hover:text-primary",
                       pathname === item.href || pathname.startsWith(`${item.href}/`) 
                         ? "text-primary" 
                         : "text-foreground/80",
@@ -205,14 +205,14 @@ export function Header() {
                   {isUserMenuOpen && (
                     <div className="absolute right-0 mt-2 w-56 bg-white border border-border rounded-md shadow-lg py-1 z-50">
                       <div className="px-4 py-3 border-b border-border">
-                        <p className="text-sm font-medium text-foreground truncate">{user?.firstName} {user?.lastName}</p>
+                        <p className="text-md font-medium text-foreground truncate">{user?.firstName} {user?.lastName}</p>
                         <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
                       </div>
                       
                       <a 
                         onClick={() => setIsUserMenuOpen(false)}
                         href={user?.role === "user" ? `${DASHBOARD_URL}/dashboard/user/profile` : `${ADMIN_URL}/profile`}
-                        className="px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer"
+                        className="px-4 py-2 text-md text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer"
                       >
                         <UserIcon className="h-4 w-4" />
                         <span>Profile</span>
@@ -221,7 +221,7 @@ export function Header() {
                       <a 
                         onClick={() => setIsUserMenuOpen(false)}
                         href={`${DASHBOARD_URL}/dashboard/user`}
-                        className="px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer"
+                        className="px-4 py-2 text-md text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer"
                       >
                         <UserCircle className="h-4 w-4" />
                         <span>Dashboard</span>
@@ -231,7 +231,7 @@ export function Header() {
                         <a 
                           onClick={() => setIsUserMenuOpen(false)}
                           href={`${ADMIN_URL}`}
-                          className="px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer"
+                          className="px-4 py-2 text-md text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer"
                         >
                           <Settings className="h-4 w-4" />
                           <span>Admin Panel</span>
@@ -245,7 +245,7 @@ export function Header() {
                           setIsUserMenuOpen(false);
                           router.push('/auth/logout');
                         }}
-                        className="w-full px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer"
+                        className="w-full px-4 py-2 text-md text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer"
                       >
                         <LogOut className="h-4 w-4" />
                         <span>Logout</span>
@@ -288,7 +288,7 @@ export function Header() {
                   {isUserMenuOpen && (
                     <div className="absolute right-0 mt-2 w-56 bg-white border border-border rounded-md shadow-lg py-1 z-50">
                       <div className="px-4 py-3 border-b border-border">
-                        <p className="text-sm font-medium text-foreground truncate">{user?.firstName} {user?.lastName}</p>
+                        <p className="text-md font-medium text-foreground truncate">{user?.firstName} {user?.lastName}</p>
                         <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
                       </div>
                       <Link
@@ -299,7 +299,7 @@ export function Header() {
                         }
                         onClick={() => setIsUserMenuOpen(false)}
                       >
-                        <div className="px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer">
+                        <div className="px-4 py-2 text-md text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer">
                           <UserIcon className="h-4 w-4" />
                           <span>Profile</span>
                         </div>
@@ -310,7 +310,7 @@ export function Header() {
                           href={`${DASHBOARD_URL}/dashboard/user`}
                           onClick={() => setIsUserMenuOpen(false)}
                         >
-                          <div className="px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer">
+                          <div className="px-4 py-2 text-md text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer">
                             <UserCircle className="h-4 w-4" />
                             <span>Dashboard</span>
                           </div>
@@ -322,7 +322,7 @@ export function Header() {
                           href={`${ADMIN_URL}`}
                           onClick={() => setIsUserMenuOpen(false)}
                         >
-                          <div className="px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer">
+                          <div className="px-4 py-2 text-md text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer">
                             <Settings className="h-4 w-4" />
                             <span>Admin Panel</span>
                           </div>
@@ -336,7 +336,7 @@ export function Header() {
                           setIsUserMenuOpen(false);
                           router.push('/auth/logout');
                         }}
-                        className="w-full px-4 py-2 text-sm text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer"
+                        className="w-full px-4 py-2 text-md text-foreground hover:bg-muted flex items-center gap-2 cursor-pointer"
                       >
                         <LogOut className="h-4 w-4" />
                         <span>Logout</span>
@@ -381,7 +381,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "flex items-center justify-between text-sm font-medium transition-colors hover:text-primary",
+                      "flex items-center justify-between text-md font-medium transition-colors hover:text-primary",
                       pathname === item.href ? "text-primary" : "text-foreground/80"
                     )}
                     onClick={() => setIsMobileMenuOpen(false)}

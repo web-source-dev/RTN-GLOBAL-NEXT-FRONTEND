@@ -98,7 +98,7 @@ export function TeamSection() {
                   src={member.image}
                   fill
                   alt={member.name}
-                  className="object-cover object-center transition-transform group-hover:scale-105 duration-500"
+                  className="object-cover object-center transition-transform group-hover:scale-105 duration-500 w-full h-full"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent pt-20 pb-4 px-6">
                   <h3 className="text-xl font-semibold text-white">{member.name}</h3>

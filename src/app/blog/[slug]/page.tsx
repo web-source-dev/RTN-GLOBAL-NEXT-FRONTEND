@@ -34,6 +34,7 @@ import { AuthAPI } from "@/lib/api/api-provider"
 import { useParams, useRouter, notFound } from "next/navigation"
 import { Comment } from "@/components/blog/comment"
 import { FaEnvelope, FaPinterest, FaReddit, FaWhatsapp } from "react-icons/fa"
+import { H1, H2, H3, H4, P, Lead } from "@/components/ui/typography"
 
 interface Author {
   _id: string;
@@ -641,10 +642,10 @@ export default function BlogPostPage() {
       "publisher": {
         "@type": "Organization",
         "name": "RTN Global",
-        "url": "https://rtnglobal.co/",
+        "url": "https://rtnglobal.site/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://rtnglobal.co/logo.png"
+          "url": "https://rtnglobal.site/logo.png"
         },
         "founder": {
           "@type": "Person",
@@ -661,7 +662,7 @@ export default function BlogPostPage() {
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "customer service",
-          "telephone": "+1 505 528 6780",
+          "telephone": "+1 (505) 528 0265",
           "email": "info@rtnglobal.site"
         },
         "sameAs": [
@@ -675,7 +676,7 @@ export default function BlogPostPage() {
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": post.canonicalUrl || `https://rtnglobal.co/blog/${post.slug}`
+        "@id": post.canonicalUrl || `https://rtnglobal.site/blog/${post.slug}`
       },
       "keywords": post.seoKeywords?.join(", ") || post.tags?.join(", "),
       "articleSection": post.category,
@@ -738,9 +739,9 @@ export default function BlogPostPage() {
               </div>
               
               {/* Title */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+              <H1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
                 {post.title}
-              </h1>
+              </H1>
               
               {/* Meta info */}
               <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-muted-foreground">
@@ -761,8 +762,8 @@ export default function BlogPostPage() {
                     </Avatar>
                   )}
                   <div>
-                    <div className="font-medium text-foreground">{formatAuthorName(post.author)}</div>
-                    {post.author?.role && <div className="text-xs">{post.author.role}</div>}
+                    <P className="font-medium text-foreground">{formatAuthorName(post.author)}</P>
+                    {post.author?.role && <P className="text-xs">{post.author.role}</P>}
                   </div>
                 </div>
                 
@@ -818,9 +819,9 @@ export default function BlogPostPage() {
               )}
               
               {/* Description */}
-              <p className="text-lg text-muted-foreground max-w-3xl">
+              <P className="text-lg text-muted-foreground max-w-3xl">
                 {post.description}
-              </p>
+              </P>
             </div>
           </div>
         </header>
@@ -839,9 +840,9 @@ export default function BlogPostPage() {
             </div>
             
             {post.imageAlt && (
-              <p className="text-sm text-muted-foreground mt-2 text-center italic">
+              <P className="text-sm text-muted-foreground mt-2 text-center italic">
                 {post.imageAlt}
-              </p>
+              </P>
             )}
           </div>
         )}
@@ -888,7 +889,7 @@ export default function BlogPostPage() {
               
               {/* Updated Social Share Buttons with real branded icons */}
               <div className="flex flex-wrap items-center gap-1.5 relative">
-                <p className="sr-only">Share this post</p>
+                <P className="sr-only">Share this post</P>
                 
                 {/* Facebook */}
                 <Button 
@@ -1013,13 +1014,13 @@ export default function BlogPostPage() {
               )}
               
               <div>
-                <h3 className="text-xl font-bold">{formatAuthorName(post.author)}</h3>
+                <H3 className="text-xl font-bold">{formatAuthorName(post.author)}</H3>
                 {post.author.role && (
-                  <p className="text-muted-foreground mb-3">{post.author.role}</p>
+                  <P className="text-muted-foreground mb-3">{post.author.role}</P>
                 )}
-                <p className="text-sm">
+                <P className="text-sm">
                   Expert in web development and digital marketing with over 10 years of experience in creating effective online solutions for businesses of all sizes.
-                </p>
+                </P>
               </div>
             </div>
           </div>
@@ -1028,12 +1029,12 @@ export default function BlogPostPage() {
           <div id="comments-section" className="mt-16 mb-12 scroll-mt-20">
             <div className="flex items-center mb-6">
               <MessageSquare className="h-6 w-6 text-primary mr-3" />
-              <h2 className="text-2xl font-bold">Comments ({post.comments.length})</h2>
+              <H2 className="text-2xl font-bold">Comments ({post.comments.length})</H2>
             </div>
             
             {/* Comment Form with improved styling */}
             <form onSubmit={handleCommentSubmit} className="mb-10 bg-muted/5 p-6 rounded-lg border border-border/50">
-              <h3 className="text-lg font-medium mb-4">Leave a comment</h3>
+              <H3 className="text-lg font-medium mb-4">Leave a comment</H3>
               <Textarea
                 placeholder={isLoggedIn ? "Share your thoughts about this post..." : "Login to comment..."}
                 value={comment}
@@ -1052,9 +1053,9 @@ export default function BlogPostPage() {
                 </Button>
               </div>
               {!isLoggedIn && (
-                <p className="text-sm text-muted-foreground mt-2">
+                <P className="text-sm text-muted-foreground mt-2">
                   Please <Link href="/login" className="text-primary hover:underline">sign in</Link> to join the conversation.
-                </p>
+                </P>
               )}
             </form>
             
@@ -1076,8 +1077,8 @@ export default function BlogPostPage() {
             ) : (
               <div className="text-center py-10 bg-muted/5 rounded-lg border border-dashed border-border">
                 <MessageSquare className="h-12 w-12 text-muted-foreground/40 mx-auto mb-4" />
-                <p className="text-muted-foreground font-medium">No comments yet.</p>
-                <p className="text-muted-foreground text-sm mt-1">Be the first to share your thoughts!</p>
+                <P className="text-muted-foreground font-medium">No comments yet.</P>
+                <P className="text-muted-foreground text-sm mt-1">Be the first to share your thoughts!</P>
               </div>
             )}
           </div>
@@ -1089,11 +1090,11 @@ export default function BlogPostPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center mb-8">
             <TrendingUp className="h-6 w-6 text-primary mr-3" />
-            <h2 className="text-2xl font-bold">Related Articles</h2>
+            <H2 className="text-2xl font-bold">Related Articles</H2>
           </div>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <P className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
             Continue exploring topics related to {post.category || 'this subject'} to expand your knowledge and discover new insights.
-          </p>
+          </P>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {relatedPosts.length > 0 ? (
@@ -1119,9 +1120,9 @@ export default function BlogPostPage() {
                           {relatedPost.category}
                         </span>
                       )}
-                      <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                      <H3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
                         {relatedPost.title}
-                      </h3>
+                      </H3>
                       <div className="flex items-center justify-between text-sm text-muted-foreground mb-3">
                         <div className="flex items-center">
                           <Calendar className="mr-2 h-4 w-4" />
@@ -1134,16 +1135,16 @@ export default function BlogPostPage() {
                           <span>{relatedPost.likes.length}</span>
                         </div>
                       </div>
-                      <p className="text-muted-foreground line-clamp-2 text-sm">
+                      <P className="text-muted-foreground line-clamp-2 text-sm">
                         {relatedPost.description}
-                      </p>
+                      </P>
                     </div>
                   </div>
                 </Link>
               ))
             ) : (
               <div className="col-span-3 text-center py-12 bg-muted/20 rounded-xl border border-dashed border-border">
-                <p className="text-muted-foreground">No related articles found.</p>
+                <P className="text-muted-foreground">No related articles found.</P>
               </div>
             )}
           </div>
@@ -1155,7 +1156,7 @@ export default function BlogPostPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-center mb-8">
               <TrendingUp className="h-6 w-6 text-primary mr-3" />
-              <h2 className="text-2xl font-bold">Popular on Our Blog</h2>
+              <H2 className="text-2xl font-bold">Popular on Our Blog</H2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto">
@@ -1174,12 +1175,12 @@ export default function BlogPostPage() {
                       </div>
                     </div>
                     <div className="p-6">
-                      <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                      <H3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
                         {popularPost.title}
-                      </h3>
-                      <p className="text-muted-foreground line-clamp-2 text-sm mb-4">
+                      </H3>
+                      <P className="text-muted-foreground line-clamp-2 text-sm mb-4">
                         {popularPost.description}
-                      </p>
+                      </P>
                       <div className="flex items-center justify-between text-sm">
                         <div className="flex items-center text-muted-foreground">
                           <Calendar className="mr-1 h-3 w-3" />
@@ -1203,10 +1204,10 @@ export default function BlogPostPage() {
       {/* Related Topics Section - Improved visual design */}
       <section className="py-16 bg-muted/10 border-t border-border">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-center mb-4">Explore Related Content</h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <H2 className="text-2xl font-bold text-center mb-4">Explore Related Content</H2>
+          <P className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
             Discover more resources to help you succeed with your {post.category || 'digital'} projects
-          </p>
+          </P>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto">
             {/* Services */}
@@ -1216,10 +1217,10 @@ export default function BlogPostPage() {
                   <div className="mb-4 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <Briefcase className="h-7 w-7 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Related Services</h3>
-                  <p className="text-muted-foreground mb-4">
+                  <H3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Related Services</H3>
+                  <P className="text-muted-foreground mb-4">
                     Discover our professional services related to {post?.category || 'this topic'}.
-                  </p>
+                  </P>
                   <div className="inline-flex items-center text-primary group-hover:underline font-medium">
                     Explore Services <ArrowLeft className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 rotate-180" />
                   </div>
@@ -1234,10 +1235,10 @@ export default function BlogPostPage() {
                   <div className="mb-4 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <BarChart className="h-7 w-7 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Industry Solutions</h3>
-                  <p className="text-muted-foreground mb-4">
+                  <H3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Industry Solutions</H3>
+                  <P className="text-muted-foreground mb-4">
                     Explore how our expertise applies to your specific industry needs.
-                  </p>
+                  </P>
                   <div className="inline-flex items-center text-primary group-hover:underline font-medium">
                     View Industries <ArrowLeft className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 rotate-180" />
                   </div>
@@ -1252,10 +1253,10 @@ export default function BlogPostPage() {
                   <div className="mb-4 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <Award className="h-7 w-7 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Knowledge Base</h3>
-                  <p className="text-muted-foreground mb-4">
+                  <H3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Knowledge Base</H3>
+                  <P className="text-muted-foreground mb-4">
                     Find detailed guides and tutorials related to this topic.
-                  </p>
+                  </P>
                   <div className="inline-flex items-center text-primary group-hover:underline font-medium">
                     Browse Resources <ArrowLeft className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 rotate-180" />
                   </div>
@@ -1267,7 +1268,7 @@ export default function BlogPostPage() {
           {/* Related Tags with improved design */}
           {post?.tags && post.tags.length > 0 && (
             <div className="mt-16 text-center">
-              <h3 className="text-xl font-bold mb-6">Related Topics</h3>
+              <H3 className="text-xl font-bold mb-6">Related Topics</H3>
               <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
                 {post.tags.map((tag) => (
                   <Link 
@@ -1288,10 +1289,10 @@ export default function BlogPostPage() {
       <section className="py-16 bg-primary/5 border-t border-border">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto text-center bg-card p-10 rounded-2xl border border-border shadow-sm">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Work With Us?</h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-5xl mx-auto">
+            <H2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Work With Us?</H2>
+            <P className="text-lg text-muted-foreground mb-8 max-w-5xl mx-auto">
               Let us help you achieve your business goals with our expert {post?.category || 'digital'} solutions.
-            </p>
+            </P>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg" className="shadow-sm hover:shadow-md transition-all duration-300">
                 <Link href="/contact/free-consultation">
@@ -1304,9 +1305,9 @@ export default function BlogPostPage() {
                 </Link>
               </Button>
             </div>
-            <p className="text-sm text-muted-foreground mt-6">
+            <P className="text-sm text-muted-foreground mt-6">
               No commitment required. Get expert advice for your project.
-            </p>
+            </P>
           </div>
         </div>
       </section>

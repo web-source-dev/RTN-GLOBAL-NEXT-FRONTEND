@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/contact/free-consultation',
+    canonical: 'https://rtnglobal.site/contact/free-consultation',
     languages: {
-      'en-US': 'https://rtnglobal.co/contact/free-consultation',
-      'en-GB': 'https://rtnglobal.co/contact/free-consultation',
-      'fr': 'https://rtnglobal.co/fr/contact/free-consultation',
-      'de': 'https://rtnglobal.co/de/contact/free-consultation',
-      'es': 'https://rtnglobal.co/es/contact/free-consultation',
+      'en-US': 'https://rtnglobal.site/contact/free-consultation',
+      'en-GB': 'https://rtnglobal.site/contact/free-consultation',
+      'fr': 'https://rtnglobal.site/fr/contact/free-consultation',
+      'de': 'https://rtnglobal.site/de/contact/free-consultation',
+      'es': 'https://rtnglobal.site/es/contact/free-consultation',
     }
   },
   openGraph: {
     title: 'Free Consultation with RTN Global Digital Experts',
     description: 'Get expert guidance on your digital project with our free, no-obligation consultation service. Receive tailored solutions and clear strategic direction.',
     type: 'website',
-    url: 'https://rtnglobal.co/contact/free-consultation',
+    url: 'https://rtnglobal.site/contact/free-consultation',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     'twitter:label2': 'Service Type',
     'twitter:data2': 'Complimentary Consultation',
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
   },
   verification: {

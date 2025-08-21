@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     "refund eligibility"
   ],
   alternates: {
-    canonical: "https://rtnglobal.co/legal/refund-policy",
+    canonical: "https://rtnglobal.site/legal/refund-policy",
   },
   openGraph: {
     title: "Refund Policy | Cancellation Terms | RTN Global",
     description: "Learn about RTN Global's refund policy, cancellation terms, and service credit guidelines. Understand when and how refunds are processed for our services.",
-    url: "https://rtnglobal.co/legal/refund-policy",
+    url: "https://rtnglobal.site/legal/refund-policy",
     siteName: "RTN Global",
     locale: "en_US",
     type: "website",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   other: {
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
   }
 }; 

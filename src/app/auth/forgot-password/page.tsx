@@ -88,12 +88,12 @@ export default function ForgotPasswordPage() {
             "@type": "WebPage",
             "name": "Forgot Password - RTN Global",
             "description": "Reset your RTN Global account password",
-            "url": "https://rtnglobal.co/auth/forgot-password",
+            "url": "https://rtnglobal.site/auth/forgot-password",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -109,7 +109,7 @@ export default function ForgotPasswordPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [
@@ -133,7 +133,7 @@ export default function ForgotPasswordPage() {
             alt="Forgot password illustration" 
             fill
             priority
-            className="object-contain drop-shadow-md transition-transform hover:scale-[1.02] duration-700"
+            className="object-contain drop-shadow-md transition-transform hover:scale-[1.02] duration-700 w-full h-full"
           />
         </div>
       </div>

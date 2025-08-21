@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/support',
+    canonical: 'https://rtnglobal.site/support',
     languages: {
-      'en-US': 'https://rtnglobal.co/support',
-      'en-GB': 'https://rtnglobal.co/support',
-      'fr': 'https://rtnglobal.co/fr/support',
-      'de': 'https://rtnglobal.co/de/support',
-      'es': 'https://rtnglobal.co/es/support',
+      'en-US': 'https://rtnglobal.site/support',
+      'en-GB': 'https://rtnglobal.site/support',
+      'fr': 'https://rtnglobal.site/fr/support',
+      'de': 'https://rtnglobal.site/de/support',
+      'es': 'https://rtnglobal.site/es/support',
     }
   },
   openGraph: {
     title: 'Technical Support & Help Center | RTN Global',
     description: 'Get expert assistance for your technical issues. Our dedicated support team is ready to help you resolve problems and answer questions.',
     type: 'website',
-    url: 'https://rtnglobal.co/support',
+    url: 'https://rtnglobal.site/support',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     other: {
       'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
       'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
-      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
+      me: ['https://rtnglobal.site', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     'twitter:label2': 'Support Hours',
     'twitter:data2': 'Monday-Friday, 9AM-6PM',
     'support:email': 'info@rtnglobal.site',
-    'support:phone': '+1 505 528 6780',
+    'support:phone': '+1 (505) 528 0265',
     'support:channels': 'Ticket System, Email, Phone',
     'support:availability': '24/7 for critical issues',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'

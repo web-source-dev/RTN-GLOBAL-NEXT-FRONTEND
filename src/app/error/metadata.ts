@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     'max-snippet': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/error',
+    canonical: 'https://rtnglobal.site/error',
   },
   openGraph: {
     title: 'Error | RTN Global',
     description: 'Something went wrong while processing your request. Our team is working to fix the issue.',
     type: 'website',
-    url: 'https://rtnglobal.co/error',
+    url: 'https://rtnglobal.site/error',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -45,14 +45,14 @@ export const metadata: Metadata = {
     other: {
       'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
       'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
-      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
+      me: ['https://rtnglobal.site', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
     'og:site_name': 'RTN Global',
     'og:type': 'website',
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   }
 } 

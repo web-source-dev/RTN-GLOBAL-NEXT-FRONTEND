@@ -16,6 +16,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { categories, generateArticlesForCategory } from "@/data/knowledge-base";
+import { H1, H2, H3, P, Lead } from "@/components/ui/typography";
 
 type CategoryPageProps = {
   params: {
@@ -49,18 +50,18 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             "@type": "CollectionPage",
             "name": `${categoryInfo.title} - Knowledge Base | RTN Global`,
             "description": categoryInfo.description,
-            "url": `https://rtnglobal.co/knowledge-base/${category}`,
+            "url": `https://rtnglobal.site/knowledge-base/${category}`,
             "hasPart": articles.map(article => ({
               "@type": "Article",
               "headline": article.title,
               "description": article.description,
-              "url": `https://rtnglobal.co${article.path}`
+              "url": `https://rtnglobal.site${article.path}`
             })),
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -76,7 +77,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [
@@ -101,10 +102,10 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               <CategoryIcon className="w-8 h-8" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold tracking-tight mb-2 md:text-4xl">{categoryInfo.title}</h1>
-              <p className="text-muted-foreground max-w-3xl">
+              <H1 className="tracking-tight mb-2 md:text-4xl">{categoryInfo.title}</H1>
+              <P className="text-muted-foreground max-w-3xl">
                 {categoryInfo.description}
-              </p>
+              </P>
               <div className="mt-2 text-sm text-muted-foreground">{categoryInfo.count} articles in this category</div>
             </div>
           </div>
@@ -130,19 +131,19 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       {popularArticles.length > 0 && (
         <section className="py-10 bg-background">
           <div className="container px-4 mx-auto">
-            <h2 className="text-2xl font-bold tracking-tight mb-6">Popular in {categoryInfo.title}</h2>
+            <H2 className="tracking-tight mb-6">Popular in {categoryInfo.title}</H2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {popularArticles.map((article) => (
                 <Link key={article.id} href={article.path}>
                   <Card className="h-full border border-border hover:border-primary/50 hover:shadow-md transition-all duration-300">
                     <div className="p-6">
-                      <h3 className="font-semibold text-lg mb-3 line-clamp-2 hover:text-primary transition-colors">
+                      <H3 className="font-semibold text-lg mb-3 line-clamp-2 hover:text-primary transition-colors">
                         {article.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                      </H3>
+                      <P className="text-muted-foreground text-sm mb-4 line-clamp-2">
                         {article.description}
-                      </p>
+                      </P>
                       <div className="flex justify-between items-center mt-4">
                         <span className="text-sm text-muted-foreground flex items-center">
                           <Clock className="w-4 h-4 mr-1" />
@@ -166,7 +167,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       <section className="py-10 bg-muted/30">
         <div className="container px-4 mx-auto">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold tracking-tight">All Articles</h2>
+            <H2 className="tracking-tight">All Articles</H2>
             <div className="flex items-center">
               <Button variant="outline" size="sm" className="gap-2">
                 <Filter className="h-4 w-4" />
@@ -184,12 +185,12 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               <Link key={article.id} href={article.path}>
                 <Card className="border border-border hover:border-primary/30 transition-colors">
                   <div className="p-6">
-                    <h3 className="font-semibold text-lg mb-2 hover:text-primary transition-colors">
+                    <H3 className="font-semibold text-lg mb-2 hover:text-primary transition-colors">
                       {article.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-4 line-clamp-2">
+                    </H3>
+                    <P className="text-muted-foreground mb-4 line-clamp-2">
                       {article.description}
-                    </p>
+                    </P>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
                         <span className="text-sm text-muted-foreground flex items-center">
@@ -222,7 +223,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       {/* Related Categories */}
       <section className="py-10 bg-background">
         <div className="container px-4 mx-auto">
-          <h2 className="text-2xl font-bold tracking-tight mb-6">Related Categories</h2>
+          <H2 className="tracking-tight mb-6">Related Categories</H2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {Object.values(categories)
@@ -236,11 +237,11 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                         <div className={`w-10 h-10 rounded-full ${relatedCategory.color} flex items-center justify-center flex-shrink-0`}>
                           <relatedCategory.icon className="w-5 h-5" />
                         </div>
-                        <h3 className="font-semibold">{relatedCategory.title}</h3>
+                        <H3 className="font-semibold">{relatedCategory.title}</H3>
                       </div>
-                      <p className="text-muted-foreground text-sm mb-2 line-clamp-2">
+                      <P className="text-muted-foreground text-sm mb-2 line-clamp-2">
                         {relatedCategory.description}
-                      </p>
+                      </P>
                       <div className="flex justify-between items-center mt-2">
                         <span className="text-sm text-muted-foreground">{relatedCategory.count} articles</span>
                         <span className="text-primary text-sm font-medium flex items-center">

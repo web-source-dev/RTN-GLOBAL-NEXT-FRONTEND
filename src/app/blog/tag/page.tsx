@@ -184,7 +184,7 @@ export default function TagsIndexPage() {
               "publisher": {
                 "@type": "Organization",
                 "name": "RTN Global",
-                "url": "https://rtnglobal.co/",
+                "url": "https://rtnglobal.site/",
                 "logo": {
                   "@type": "ImageObject",
                   "url": typeof window !== 'undefined' ? `${window.location.origin}/logo.png` : ''
@@ -204,7 +204,7 @@ export default function TagsIndexPage() {
                 "contactPoint": {
                   "@type": "ContactPoint",
                   "contactType": "customer service",
-                  "telephone": "+1 505 528 6780",
+                  "telephone": "+1 (505) 528 0265",
                   "email": "info@rtnglobal.site"
                 },
                 "sameAs": [

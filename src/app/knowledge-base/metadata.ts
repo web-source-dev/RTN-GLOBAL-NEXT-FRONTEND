@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Knowledge Base & Documentation | RTN Global',
     description: 'Find comprehensive guides, tutorials, and documentation for RTN Global products and services. Access technical articles, troubleshooting tips, and best practices.',
-    url: 'https://rtnglobal.co/knowledge-base',
+    url: 'https://rtnglobal.site/knowledge-base',
     siteName: 'RTN Global',
     images: [
       {
@@ -30,13 +30,13 @@ export const metadata: Metadata = {
     site: '@rtnglobalofficial',
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/knowledge-base',
+    canonical: 'https://rtnglobal.site/knowledge-base',
     languages: {
-      'en-US': 'https://rtnglobal.co/knowledge-base',
-      'en-GB': 'https://rtnglobal.co/knowledge-base',
-      'de-DE': 'https://rtnglobal.co/de/wissensdatenbank',
-      'fr-FR': 'https://rtnglobal.co/fr/base-de-connaissances',
-      'es-ES': 'https://rtnglobal.co/es/base-de-conocimiento',
+      'en-US': 'https://rtnglobal.site/knowledge-base',
+      'en-GB': 'https://rtnglobal.site/knowledge-base',
+      'de-DE': 'https://rtnglobal.site/de/wissensdatenbank',
+      'fr-FR': 'https://rtnglobal.site/fr/base-de-connaissances',
+      'es-ES': 'https://rtnglobal.site/es/base-de-conocimiento',
     },
   },
   robots: {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  metadataBase: new URL('https://rtnglobal.co'),
+  metadataBase: new URL('https://rtnglobal.site'),
   viewport: {
     width: 'device-width',
     initialScale: 1,
@@ -78,34 +78,34 @@ export const metadata: Metadata = {
     'msapplication-tap-highlight': 'no',
     'theme-color': '#0f172a',
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
     'structured-data': JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'RTN Global Knowledge Base',
       description: 'Find comprehensive guides, tutorials, and documentation for RTN Global products and services. Access technical articles, troubleshooting tips, and best practices.',
-      url: 'https://rtnglobal.co/knowledge-base',
+      url: 'https://rtnglobal.site/knowledge-base',
       potentialAction: {
         '@type': 'SearchAction',
         target: {
           '@type': 'EntryPoint',
-          urlTemplate: 'https://rtnglobal.co/knowledge-base/search?q={search_term_string}'
+          urlTemplate: 'https://rtnglobal.site/knowledge-base/search?q={search_term_string}'
         },
         'query-input': 'required name=search_term_string'
       },
       author: {
         '@type': 'Person',
         name: 'Muhammad Tayyab',
-        url: 'https://rtnglobal.co',
+        url: 'https://rtnglobal.site',
       },
       publisher: {
         '@type': 'Organization',
         name: 'RTN Global',
-        url: 'https://rtnglobal.co',
+        url: 'https://rtnglobal.site',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://rtnglobal.co/images/logo.png',
+          url: 'https://rtnglobal.site/images/logo.png',
         },
       },
     }),

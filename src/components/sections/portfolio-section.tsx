@@ -21,13 +21,13 @@ export function PortfolioSection() {
     : caseStudies.filter(study => study.industry === activeCategory)
   
   return (
-    <section className="py-10 md:py-10" id="portfolio">
+    <section className="pt-16 pb-10 md:pt-20 md:pb-10" id="portfolio">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-4">
             Our Case Studies
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Featured Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">Featured Projects</h2>
           <p className="text-lg text-muted-foreground">
             Explore our latest case studies and discover how we&apos;ve helped businesses achieve their digital goals.
           </p>
@@ -50,7 +50,7 @@ export function PortfolioSection() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="sync">
             {filteredItems.map((study, index) => (
               <motion.div
                 key={index}
@@ -59,9 +59,10 @@ export function PortfolioSection() {
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.3 }}
                 layout
+                className="h-full"
               >
                 <div 
-                  className={`group relative bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:shadow-md transition-all duration-300 block h-full ${
+                  className={`group relative bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:shadow-md transition-all duration-300 block h-full flex flex-col ${
                     study.featured ? "ring-2 ring-primary/20" : ""
                   }`}
                 >
@@ -88,13 +89,15 @@ export function PortfolioSection() {
                     )}
                   </div>
 
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                      {study.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-4">
-                      {study.summary}
-                    </p>
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex-grow">
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                        {study.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm mb-4">
+                        {study.summary}
+                      </p>
+                    </div>
 
                     {/* Stats */}
                     <div className="grid grid-cols-2 gap-2 mb-4 text-xs border-t border-border pt-4">

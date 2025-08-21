@@ -40,25 +40,25 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       'max-video-preview': -1,
     },
     alternates: {
-      canonical: `https://rtnglobal.co/portfolio/${slug}`,
+      canonical: `https://rtnglobal.site/portfolio/${slug}`,
       languages: {
-        'en-US': `https://rtnglobal.co/portfolio/${slug}`,
-        'en-GB': `https://rtnglobal.co/portfolio/${slug}`,
-        'fr': `https://rtnglobal.co/fr/portfolio/${slug}`,
-        'de': `https://rtnglobal.co/de/portfolio/${slug}`,
-        'es': `https://rtnglobal.co/es/portfolio/${slug}`,
+        'en-US': `https://rtnglobal.site/portfolio/${slug}`,
+        'en-GB': `https://rtnglobal.site/portfolio/${slug}`,
+        'fr': `https://rtnglobal.site/fr/portfolio/${slug}`,
+        'de': `https://rtnglobal.site/de/portfolio/${slug}`,
+        'es': `https://rtnglobal.site/es/portfolio/${slug}`,
       }
     },
     openGraph: {
       title: project.title,
       description: project.description,
       type: 'article',
-      url: `https://rtnglobal.co/portfolio/${slug}`,
+      url: `https://rtnglobal.site/portfolio/${slug}`,
       siteName: 'RTN Global',
       locale: 'en_US',
       images: [
         {
-          url: project.image.startsWith('/') ? `https://rtnglobal.co${project.image}` : project.image,
+          url: project.image.startsWith('/') ? `https://rtnglobal.site${project.image}` : project.image,
           width: 1200,
           height: 630,
           alt: project.title
@@ -86,7 +86,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       other: {
         'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
         'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
-        me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
+        me: ['https://rtnglobal.site', 'https://www.linkedin.com/in/rtnglobalofficial']
       }
     },
     other: {
@@ -101,7 +101,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       'project:technologies': project.technologies ? project.technologies.join(', ') : 'Various Modern Technologies',
       'project:featured': project.featured ? 'Yes' : 'No',
       'contact:email': 'info@rtnglobal.site',
-      'contact:phone': '+1 505 528 6780',
+      'contact:phone': '+1 (505) 528 0265',
       'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
     }
   }

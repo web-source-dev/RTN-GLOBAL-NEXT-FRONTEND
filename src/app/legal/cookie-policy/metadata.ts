@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     "cookie settings"
   ],
   alternates: {
-    canonical: "https://rtnglobal.co/legal/cookie-policy",
+    canonical: "https://rtnglobal.site/legal/cookie-policy",
   },
   openGraph: {
     title: "Cookie Policy | Data Collection | RTN Global",
     description: "Learn about how RTN Global uses cookies on our website, what data we collect, and how you can manage your cookie preferences.",
-    url: "https://rtnglobal.co/legal/cookie-policy",
+    url: "https://rtnglobal.site/legal/cookie-policy",
     siteName: "RTN Global",
     locale: "en_US",
     type: "website",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   other: {
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
   }
 }; 

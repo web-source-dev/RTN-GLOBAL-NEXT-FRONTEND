@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/support/submit',
+    canonical: 'https://rtnglobal.site/support/submit',
     languages: {
-      'en-US': 'https://rtnglobal.co/support/submit',
-      'en-GB': 'https://rtnglobal.co/support/submit',
-      'fr': 'https://rtnglobal.co/fr/support/submit',
-      'de': 'https://rtnglobal.co/de/support/submit',
-      'es': 'https://rtnglobal.co/es/support/submit',
+      'en-US': 'https://rtnglobal.site/support/submit',
+      'en-GB': 'https://rtnglobal.site/support/submit',
+      'fr': 'https://rtnglobal.site/fr/support/submit',
+      'de': 'https://rtnglobal.site/de/support/submit',
+      'es': 'https://rtnglobal.site/es/support/submit',
     }
   },
   openGraph: {
     title: 'Submit a Support Ticket | Get Expert Help | RTN Global',
     description: 'Need technical assistance? Submit a support ticket and our expert team will address your issue promptly. Our customer support prioritizes quick and effective solutions.',
     type: 'website',
-    url: 'https://rtnglobal.co/support/submit',
+    url: 'https://rtnglobal.site/support/submit',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     other: {
       'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
       'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
-      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
+      me: ['https://rtnglobal.site', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     'support:attachments': 'Screenshots and files accepted',
     'support:tracking': 'Automatic ticket ID generation',
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   }
 }; 

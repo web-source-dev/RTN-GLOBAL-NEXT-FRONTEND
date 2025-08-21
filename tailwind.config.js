@@ -17,6 +17,12 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-roboto)', 'Roboto', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-poppins)', 'Poppins', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+        display: ['var(--font-poppins)', 'Poppins', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -73,25 +79,34 @@ module.exports = {
       },
       typography: {
         DEFAULT: {
-          css: {
-            color: 'hsl(var(--foreground))',
+                      css: {
+              color: 'hsl(var(--foreground))',
+              fontFamily: 'var(--font-roboto), Roboto, system-ui, sans-serif',
+              h1: {
+                fontFamily: 'var(--font-poppins), Poppins, system-ui, sans-serif',
+                color: 'hsl(var(--foreground))',
+                fontWeight: '700',
+              },
+              h2: {
+                fontFamily: 'var(--font-poppins), Poppins, system-ui, sans-serif',
+                color: 'hsl(var(--foreground))',
+                fontWeight: '600',
+              },
+              h3: {
+                fontFamily: 'var(--font-poppins), Poppins, system-ui, sans-serif',
+                color: 'hsl(var(--foreground))',
+                fontWeight: '600',
+              },
+              h4: {
+                fontFamily: 'var(--font-poppins), Poppins, system-ui, sans-serif',
+                color: 'hsl(var(--foreground))',
+                fontWeight: '600',
+              },
             a: {
               color: 'hsl(var(--primary))',
               '&:hover': {
                 color: 'hsl(var(--primary))',
               },
-            },
-            h1: {
-              color: 'hsl(var(--foreground))',
-            },
-            h2: {
-              color: 'hsl(var(--foreground))',
-            },
-            h3: {
-              color: 'hsl(var(--foreground))',
-            },
-            h4: {
-              color: 'hsl(var(--foreground))',
             },
             blockquote: {
               color: 'hsl(var(--muted-foreground))',
@@ -100,20 +115,22 @@ module.exports = {
             strong: {
               color: 'hsl(var(--foreground))',
             },
-            code: {
-              color: 'hsl(var(--foreground))',
-              backgroundColor: 'hsl(var(--muted))',
-              borderRadius: '0.25rem',
-              padding: '0.15rem 0.3rem',
-            },
-            pre: {
-              backgroundColor: 'hsl(var(--muted))',
-              code: {
-                backgroundColor: 'transparent',
-                color: 'currentColor',
-                padding: '0',
+                          code: {
+                fontFamily: 'JetBrains Mono, monospace',
+                color: 'hsl(var(--foreground))',
+                backgroundColor: 'hsl(var(--muted))',
+                borderRadius: '0.25rem',
+                padding: '0.15rem 0.3rem',
               },
-            },
+              pre: {
+                fontFamily: 'JetBrains Mono, monospace',
+                backgroundColor: 'hsl(var(--muted))',
+                code: {
+                  backgroundColor: 'transparent',
+                  color: 'currentColor',
+                  padding: '0',
+                },
+              },
             hr: {
               borderColor: 'hsl(var(--border))',
             },

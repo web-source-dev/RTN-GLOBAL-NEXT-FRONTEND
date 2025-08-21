@@ -20,7 +20,7 @@ export default function KnowledgeBasePage() {
     "@type": ["WebPage", "FAQPage"],
     "name": "RTN Global Knowledge Base & Documentation",
     "description": "Find comprehensive guides, tutorials, and documentation for RTN Global products and services. Access technical articles, troubleshooting tips, and best practices.",
-    "url": "https://rtnglobal.co/knowledge-base",
+    "url": "https://rtnglobal.site/knowledge-base",
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -28,13 +28,13 @@ export default function KnowledgeBasePage() {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://rtnglobal.co"
+          "item": "https://rtnglobal.site"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Knowledge Base",
-          "item": "https://rtnglobal.co/knowledge-base"
+          "item": "https://rtnglobal.site/knowledge-base"
         }
       ]
     },
@@ -43,7 +43,7 @@ export default function KnowledgeBasePage() {
       "name": "RTN Global",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rtnglobal.co/images/logo.png"
+        "url": "https://rtnglobal.site/images/logo.png"
       }
     },
     "mainEntity": [

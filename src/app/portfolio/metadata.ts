@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/portfolio',
+    canonical: 'https://rtnglobal.site/portfolio',
     languages: {
-      'en-US': 'https://rtnglobal.co/portfolio',
-      'en-GB': 'https://rtnglobal.co/portfolio',
-      'fr': 'https://rtnglobal.co/fr/portfolio',
-      'de': 'https://rtnglobal.co/de/portfolio',
-      'es': 'https://rtnglobal.co/es/portfolio',
+      'en-US': 'https://rtnglobal.site/portfolio',
+      'en-GB': 'https://rtnglobal.site/portfolio',
+      'fr': 'https://rtnglobal.site/fr/portfolio',
+      'de': 'https://rtnglobal.site/de/portfolio',
+      'es': 'https://rtnglobal.site/es/portfolio',
     }
   },
   openGraph: {
     title: 'RTN Global Portfolio | Client Success Stories & Projects',
     description: 'Browse our collection of completed projects, featuring responsive designs, custom solutions, and successful digital transformations for clients worldwide.',
     type: 'website',
-    url: 'https://rtnglobal.co/portfolio',
+    url: 'https://rtnglobal.site/portfolio',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     other: {
       'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
       'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
-      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
+      me: ['https://rtnglobal.site', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     'portfolio:itemCount': 'Multiple Projects',
     'portfolio:categories': 'Web, Mobile, Design, Marketing, E-commerce',
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   }
 } 

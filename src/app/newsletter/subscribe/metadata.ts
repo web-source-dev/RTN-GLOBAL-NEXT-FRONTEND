@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/newsletter/subscribe',
+    canonical: 'https://rtnglobal.site/newsletter/subscribe',
     languages: {
-      'en-US': 'https://rtnglobal.co/newsletter/subscribe',
-      'en-GB': 'https://rtnglobal.co/newsletter/subscribe',
-      'fr': 'https://rtnglobal.co/fr/newsletter/subscribe',
-      'de': 'https://rtnglobal.co/de/newsletter/subscribe',
-      'es': 'https://rtnglobal.co/es/newsletter/subscribe',
+      'en-US': 'https://rtnglobal.site/newsletter/subscribe',
+      'en-GB': 'https://rtnglobal.site/newsletter/subscribe',
+      'fr': 'https://rtnglobal.site/fr/newsletter/subscribe',
+      'de': 'https://rtnglobal.site/de/newsletter/subscribe',
+      'es': 'https://rtnglobal.site/es/newsletter/subscribe',
     }
   },
   openGraph: {
     title: 'Join RTN Global\'s Newsletter | Expert Digital Insights & Updates',
     description: 'Subscribe to receive weekly insights, industry trends, expert advice, and exclusive content to help your business thrive in the digital landscape.',
     type: 'website',
-    url: 'https://rtnglobal.co/newsletter/subscribe',
+    url: 'https://rtnglobal.site/newsletter/subscribe',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     other: {
       'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
       'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
-      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
+      me: ['https://rtnglobal.site', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     'newsletter:topics': 'Digital Trends, Web Development, Marketing, Technology',
     'newsletter:unsubscribe': 'Easy one-click unsubscribe anytime',
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   }
 } 

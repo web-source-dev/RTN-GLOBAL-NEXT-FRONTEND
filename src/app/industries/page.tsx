@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { IndustryIcon } from "@/components/ui/industry-icon";
 import { HeroSection } from "@/components/sections/hero-section";
 import { Layout } from "@/components/layout/layout";
+import { H1, H2, H3, H4, P, Lead } from "@/components/ui/typography";
 
 export default function IndustriesPage() {
   const industries = Object.values(getAllIndustries());
@@ -29,12 +30,12 @@ export default function IndustriesPage() {
             "@type": "CollectionPage",
             "name": "Industry Solutions - RTN Global",
             "description": "Explore our specialized industry solutions tailored to meet the unique challenges and opportunities in your sector.",
-            "url": "https://rtnglobal.co/industries",
+            "url": "https://rtnglobal.site/industries",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -50,7 +51,7 @@ export default function IndustriesPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [
@@ -73,7 +74,7 @@ export default function IndustriesPage() {
         primaryCTA={{ text: "Discuss Your Project", href: "/contact" }}
         secondaryCTA={{ text: "Explore Services", href: "/services" }}
         features={featuredIndustries}
-        imageUrl="/images/industries/industries-hero.jpg"
+        imageUrl="/images/hero/industries-heroSection.jpg"
         backgroundClassName="bg-gradient-to-br from-background via-background to-primary/5"
       />
 
@@ -81,11 +82,11 @@ export default function IndustriesPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Our Industry Expertise</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <H2 className="mb-4">Our Industry Expertise</H2>
+            <Lead className="max-w-3xl mx-auto">
               We&apos;ve developed deep industry knowledge across multiple sectors, allowing us to deliver 
               solutions that address the specific challenges and opportunities in your field.
-            </p>
+            </Lead>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -100,11 +101,11 @@ export default function IndustriesPage() {
                     src={industry.image}
                     fill
                     alt={industry.name}
-                    className="object-cover transition-transform group-hover:scale-105 duration-500"
+                    className="object-cover transition-transform group-hover:scale-105 duration-500 w-full h-full"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-white">{industry.name}</h3>
+                      <H3 className="text-white">{industry.name}</H3>
                     </div>
                   </div>
                 </div>
@@ -117,7 +118,7 @@ export default function IndustriesPage() {
                       {industry.services.length} Specialized Services
                     </span>
                   </div>
-                  <p className="text-muted-foreground flex-grow mb-4">{industry.shortDescription}</p>
+                  <P className="flex-grow mb-4">{industry.shortDescription}</P>
                   <div className="flex justify-between items-center mt-auto">
                     <span className="text-primary font-medium group-hover:underline">Learn More</span>
                     <ArrowRight className="h-5 w-5 text-primary transform group-hover:translate-x-1 transition-transform" />
@@ -134,11 +135,11 @@ export default function IndustriesPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Our Industry Approach</h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                We combine deep industry knowledge with technological expertise to deliver solutions 
-                that address your specific challenges and drive meaningful business outcomes.
-              </p>
+              <H2 className="mb-6">Our Industry Approach</H2>
+                              <Lead className="mb-8">
+                  We combine deep industry knowledge with technological expertise to deliver solutions 
+                  that address your specific challenges and drive meaningful business outcomes.
+                </Lead>
               
               <div className="space-y-4">
                 <div className="flex gap-4">
@@ -146,10 +147,10 @@ export default function IndustriesPage() {
                     <span className="font-bold">1</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Industry Assessment</h3>
-                    <p className="text-muted-foreground">
-                      We analyze your industry&apos;s unique challenges, opportunities, and competitive landscape.
-                    </p>
+                    <H3 className="mb-2">Industry Assessment</H3>
+                                          <P>
+                        We analyze your industry&apos;s unique challenges, opportunities, and competitive landscape.
+                      </P>
                   </div>
                 </div>
                 
@@ -158,10 +159,10 @@ export default function IndustriesPage() {
                     <span className="font-bold">2</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Strategic Planning</h3>
-                    <p className="text-muted-foreground">
-                      We develop a tailored strategy that aligns technology solutions with your industry-specific goals.
-                    </p>
+                    <H3 className="mb-2">Strategic Planning</H3>
+                                          <P>
+                        We develop a tailored strategy that aligns technology solutions with your industry-specific goals.
+                      </P>
                   </div>
                 </div>
                 
@@ -170,10 +171,10 @@ export default function IndustriesPage() {
                     <span className="font-bold">3</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Specialized Implementation</h3>
-                    <p className="text-muted-foreground">
-                      We execute solutions with a deep understanding of your industry&apos;s regulatory requirements and best practices.
-                    </p>
+                    <H3 className="mb-2">Specialized Implementation</H3>
+                                          <P>
+                        We execute solutions with a deep understanding of your industry&apos;s regulatory requirements and best practices.
+                      </P>
                   </div>
                 </div>
                 
@@ -182,10 +183,10 @@ export default function IndustriesPage() {
                     <span className="font-bold">4</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Continuous Optimization</h3>
-                    <p className="text-muted-foreground">
-                      We monitor industry trends and evolve your solutions to maintain competitive advantage and compliance.
-                    </p>
+                    <H3 className="mb-2">Continuous Optimization</H3>
+                                          <P>
+                        We monitor industry trends and evolve your solutions to maintain competitive advantage and compliance.
+                      </P>
                   </div>
                 </div>
               </div>
@@ -206,10 +207,10 @@ export default function IndustriesPage() {
       {/* CTA Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Industry?</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            Contact us today to discuss how our industry-specific solutions can help your business thrive in a competitive landscape.
-          </p>
+          <H2 className="mb-4">Ready to Transform Your Industry?</H2>
+                      <Lead className="max-w-2xl mx-auto mb-8">
+              Contact us today to discuss how our industry-specific solutions can help your business thrive in a competitive landscape.
+            </Lead>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
               <Button size="lg" className="rounded-full">Schedule a Consultation</Button>

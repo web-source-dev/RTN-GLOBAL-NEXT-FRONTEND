@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/services/brand-identity',
+    canonical: 'https://rtnglobal.site/services/brand-identity',
     languages: {
-      'en-US': 'https://rtnglobal.co/services/brand-identity',
-      'en-GB': 'https://rtnglobal.co/services/brand-identity',
-      'fr': 'https://rtnglobal.co/fr/services/brand-identity',
-      'de': 'https://rtnglobal.co/de/services/brand-identity',
-      'es': 'https://rtnglobal.co/es/services/brand-identity',
+      'en-US': 'https://rtnglobal.site/services/brand-identity',
+      'en-GB': 'https://rtnglobal.site/services/brand-identity',
+      'fr': 'https://rtnglobal.site/fr/services/brand-identity',
+      'de': 'https://rtnglobal.site/de/services/brand-identity',
+      'es': 'https://rtnglobal.site/es/services/brand-identity',
     }
   },
   openGraph: {
     title: 'Brand Identity & Logo Design Services | RTN Global',
     description: 'Build a powerful brand with our expert identity design services. We create distinctive logos, comprehensive visual systems, and strategic brand guidelines that connect with your audience.',
     type: 'website',
-    url: 'https://rtnglobal.co/services/brand-identity',
+    url: 'https://rtnglobal.site/services/brand-identity',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     other: {
       'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
       'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
-      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
+      me: ['https://rtnglobal.site', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     'service:process': 'Research, Strategy, Design, Implementation',
     'service:industries': 'All Industries',
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   }
 } 

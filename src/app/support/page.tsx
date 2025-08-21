@@ -161,12 +161,12 @@ const SupportPage = () => {
             "@type": "WebPage",
             "name": "Customer Support | RTN Global",
             "description": "Access our support services, submit tickets, check ticket status, browse knowledge base articles, and contact our dedicated support team.",
-            "url": "https://rtnglobal.co/support",
+            "url": "https://rtnglobal.site/support",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -182,7 +182,7 @@ const SupportPage = () => {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [
@@ -211,7 +211,7 @@ const SupportPage = () => {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               }
             }
@@ -514,7 +514,7 @@ const SupportPage = () => {
                   <p className="text-muted-foreground text-sm mb-3">
                     For general inquiries and non-urgent issues
                   </p>
-                  <p className="font-medium">support@rtnglobal.com</p>
+                  <p className="font-medium">support@rtnglobal.sitem</p>
                 </div>
               </Card>
               

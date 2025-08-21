@@ -2,6 +2,8 @@ import React from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { OptimizedImage } from "@/components/ui/optimized-image"
+import Image from "next/image"
+import { H1, Lead, P } from "@/components/ui/typography"
 import { ArrowRight, CheckCircle2 } from "lucide-react"
 
 interface HeroSectionProps {
@@ -31,33 +33,55 @@ export function HeroSection({
   features = [],
   imageUrl,
   className = "",
-  backgroundClassName = "bg-gradient-to-br from-background via-background to-muted/30"
+  backgroundClassName = ""
 }: HeroSectionProps) {
   return (
-    <section className={`relative pt-16 pb-14 md:pb-20 overflow-hidden ${backgroundClassName}`}>
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] pointer-events-none"></div>
-      <div className="container relative">
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+    <section className={`relative min-h-[85vh] overflow-hidden ${backgroundClassName}`}>
+      {/* Background Image with Gradient Overlay */}
+      {imageUrl ? (
+        <div className="absolute inset-0">
+          <Image
+            src={imageUrl}
+            alt="Hero background"
+            fill
+            className="object-cover"
+            priority={true}
+            fetchPriority="high"
+            loading="eager"
+          />
+          {/* Gradient Overlay - Strong on left for text readability, lighter on right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-background/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-transparent to-transparent"></div>
+        </div>
+      ) : (
+        /* Fallback gradient background */
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30"></div>
+      )}
+      
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
+      <div className="container relative flex items-center justify-center min-h-[85vh]">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center justify-center">
           <div className="order-2 md:order-1">
             {subtitle && (
-              <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-6">
+              <div className="inline-block rounded-full bg-primary/10 backdrop-blur-sm px-6 py-2 text-base font-medium text-primary mb-8">
                 {subtitle}
               </div>
             )}
-            <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight mb-6 leading-tight">
+            <H1 className="mb-8 text-foreground drop-shadow-sm text-5xl md:text-6xl lg:text-7xl leading-tight">
               {title}
-            </h1>
+            </H1>
             
             {description && (
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-lg">
+              <Lead className="mb-10 max-w-2xl text-foreground drop-shadow-sm text-lg md:text-xl leading-relaxed">
                 {description}
-              </p>
+              </Lead>
             )}
             
             <div className={`flex flex-col sm:flex-row gap-4 ${features.length > 0 ? 'mb-10' : ''}`}>
               {primaryCTA && (
                 <Link href={primaryCTA.href}>
-                  <Button size="lg" className="w-full sm:w-auto gap-2 rounded-lg shadow-lg shadow-primary/20">
+                  <Button size="lg" className="w-full sm:w-auto gap-2 rounded-lg shadow-lg shadow-primary/20 backdrop-blur-sm">
                     {primaryCTA.text} <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
@@ -65,7 +89,7 @@ export function HeroSection({
               
               {secondaryCTA && (
                 <Link href={secondaryCTA.href}>
-                  <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-lg">
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-lg backdrop-blur-sm">
                     {secondaryCTA.text}
                   </Button>
                 </Link>
@@ -75,29 +99,22 @@ export function HeroSection({
             {features.length > 0 && (
               <div className="flex flex-col gap-3">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary" />
-                    <p className="text-sm md:text-base">{feature}</p>
+                  <div key={index} className="flex items-center gap-3">
+                    <div className="flex-shrink-0 h-7 w-7 rounded-full bg-primary/10 backdrop-blur-sm flex items-center justify-center">
+                      <CheckCircle2 className="h-5 w-5 text-primary" />
+                    </div>
+                    <P className="text-base md:text-lg text-foreground drop-shadow-sm font-medium">{feature}</P>
                   </div>
                 ))}
               </div>
             )}
           </div>
           
-          <div className="order-1 md:order-2 relative">
-            <div className="bg-gradient-to-br from-primary/10 to-transparent rounded-3xl p-4 lg:p-6 relative z-10">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/10">
-                <OptimizedImage
-                  src={imageUrl || "/images/hero-image.jpg"}
-                  width={600}
-                  height={450}
-                  alt="Hero image"
-                  className="object-cover w-full"
-                />
-              </div>
+          {/* Empty div for grid layout balance */}
+          <div className="order-1 md:order-2 relative hidden md:block">
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
             </div>
-            <div className="absolute -top-10 -right-10 w-48 h-48 bg-primary/10 rounded-full filter blur-3xl opacity-50"></div>
-            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-primary/20 rounded-full filter blur-2xl opacity-40"></div>
           </div>
         </div>
         

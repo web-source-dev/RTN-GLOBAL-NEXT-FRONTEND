@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     "terms of service"
   ],
   alternates: {
-    canonical: "https://rtnglobal.co/legal/terms-conditions",
+    canonical: "https://rtnglobal.site/legal/terms-conditions",
   },
   openGraph: {
     title: "Terms & Conditions | User Agreement | RTN Global",
     description: "RTN Global's terms and conditions establish the rules for using our services and website. Understand your rights and responsibilities as a user.",
-    url: "https://rtnglobal.co/legal/terms-conditions",
+    url: "https://rtnglobal.site/legal/terms-conditions",
     siteName: "RTN Global",
     locale: "en_US",
     type: "website",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   other: {
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
   }
 }; 

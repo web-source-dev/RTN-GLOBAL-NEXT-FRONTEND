@@ -60,8 +60,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     "author": {
       "@type": "Organization",
       "name": "RTN Global",
-      "url": "https://rtnglobal.co/",
-      "logo": "https://rtnglobal.co/logo.png"
+      "url": "https://rtnglobal.site/",
+      "logo": "https://rtnglobal.site/logo.png"
     },
     "genre": project.category,
     "keywords": project.tags.join(", "),
@@ -75,11 +75,11 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       "audienceType": project.industry
     },
     "inLanguage": "en",
-    "url": `https://rtnglobal.co/portfolio/${slug}`,
+    "url": `https://rtnglobal.site/portfolio/${slug}`,
     "workExample": {
       "@type": "WebSite",
       "name": project.title,
-      "url": project.link || `https://rtnglobal.co/portfolio/${slug}`
+      "url": project.link || `https://rtnglobal.site/portfolio/${slug}`
     }
   };
   

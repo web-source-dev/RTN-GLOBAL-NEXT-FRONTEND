@@ -343,13 +343,13 @@ export default function ResourcesPage() {
             "@type": "CollectionPage",
             "name": "Digital Resources Hub | RTN Global",
             "description": "Free digital resources, guides, templates, and tools to help you succeed with your digital projects.",
-            "url": "https://rtnglobal.com/resources",
+            "url": "https://rtnglobal.sitem/resources",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://rtnglobal.com/images/logo.png"
+                "url": "https://rtnglobal.sitem/images/logo.png"
               }
             },
             "mainEntity": {
@@ -361,7 +361,7 @@ export default function ResourcesPage() {
                   "@type": "DigitalDocument",
                   "name": resource.title,
                   "description": resource.description,
-                  "url": `https://rtnglobal.com/resources/${resource.id}`,
+                  "url": `https://rtnglobal.sitem/resources/${resource.id}`,
                   "datePublished": resource.publishedDate,
                   "dateModified": resource.updatedDate || resource.publishedDate,
                   "fileFormat": resource.fileFormat,
@@ -382,7 +382,7 @@ export default function ResourcesPage() {
             },
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://rtnglobal.com/resources?search={search_term_string}",
+              "target": "https://rtnglobal.sitem/resources?search={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           })

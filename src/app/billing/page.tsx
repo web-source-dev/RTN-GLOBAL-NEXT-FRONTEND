@@ -37,12 +37,12 @@ export default function BillingPage() {
             "@type": "WebPage",
             "name": "Billing & Payments | RTN Global",
             "description": "Learn about RTN Global's billing and payment processes, invoicing cycles, accepted payment methods, and more.",
-            "url": "https://rtnglobal.co/billing",
+            "url": "https://rtnglobal.site/billing",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -58,7 +58,7 @@ export default function BillingPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [
@@ -333,7 +333,7 @@ export default function BillingPage() {
                   <h3 className="font-semibold text-lg mb-2">How can I update my payment method?</h3>
                   <p className="text-muted-foreground">
                     You can update your payment method by logging into your client portal and navigating to the "Billing" 
-                    section. Alternatively, contact our finance team at billing@rtnglobal.co for assistance.
+                    section. Alternatively, contact our finance team at billing@rtnglobal.site for assistance.
                   </p>
                 </div>
                 
@@ -349,7 +349,7 @@ export default function BillingPage() {
                   <h3 className="font-semibold text-lg mb-2">Can I get a copy of a past invoice?</h3>
                   <p className="text-muted-foreground">
                     Yes, all your past invoices are available in your client portal. You can also request copies by 
-                    emailing our finance team at billing@rtnglobal.co.
+                    emailing our finance team at billing@rtnglobal.site.
                   </p>
                 </div>
                 

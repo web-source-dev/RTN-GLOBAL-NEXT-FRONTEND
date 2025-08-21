@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/faq',
+    canonical: 'https://rtnglobal.site/faq',
     languages: {
-      'en-US': 'https://rtnglobal.co/faq',
-      'en-GB': 'https://rtnglobal.co/faq',
-      'fr': 'https://rtnglobal.co/fr/faq',
-      'de': 'https://rtnglobal.co/de/faq',
-      'es': 'https://rtnglobal.co/es/faq',
+      'en-US': 'https://rtnglobal.site/faq',
+      'en-GB': 'https://rtnglobal.site/faq',
+      'fr': 'https://rtnglobal.site/fr/faq',
+      'de': 'https://rtnglobal.site/de/faq',
+      'es': 'https://rtnglobal.site/es/faq',
     }
   },
   openGraph: {
     title: 'RTN Global Knowledge Base | Frequently Asked Questions',
     description: 'Find quick answers to common questions about our services, development process, technical details, and support options. Get the information you need instantly.',
     type: 'website',
-    url: 'https://rtnglobal.co/faq',
+    url: 'https://rtnglobal.site/faq',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     other: {
       'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
       'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
-      'me': ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial/']
+      'me': ['https://rtnglobal.site', 'https://www.linkedin.com/in/rtnglobalofficial/']
     }
   },
   other: {
@@ -63,11 +63,11 @@ export const metadata: Metadata = {
     'twitter:data1': 'Services, Pricing, Process, Support, Technical',
     'twitter:label2': 'Response Time',
     'twitter:data2': '24/7 Support Available',
-    'support:contact': 'https://rtnglobal.co/contact',
-    'support:phone': '+1 505 528 6780',
+    'support:contact': 'https://rtnglobal.site/contact',
+    'support:phone': '+1 (505) 528 0265',
     'support:email': 'info@rtnglobal.site',
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
   }
 } 

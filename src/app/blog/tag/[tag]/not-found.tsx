@@ -15,12 +15,12 @@ export default function TagNotFound() {
             "@type": "WebPage",
             "name": "Tag Not Found - RTN Global",
             "description": "The requested blog tag could not be found",
-            "url": "https://rtnglobal.co/blog/tag/not-found",
+            "url": "https://rtnglobal.site/blog/tag/not-found",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -36,7 +36,7 @@ export default function TagNotFound() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [

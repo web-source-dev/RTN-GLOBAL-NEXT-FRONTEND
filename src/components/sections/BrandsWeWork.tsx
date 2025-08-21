@@ -37,11 +37,7 @@ const brandImages = [
 ];
 
 // Stats for the counter section
-const stats = [
-  { value: 500, label: 'Happy Clients', icon: <ThumbsUp className="w-5 h-5" /> },
-  { value: 1250, label: 'Projects Completed', icon: <Trophy className="w-5 h-5" /> },
-  { value: 15, label: 'Awards Won', icon: <Star className="w-5 h-5" /> },
-];
+
 
 // Counter animation component
 interface CounterProps {
@@ -112,8 +108,12 @@ const BrandsWeWork = () => {
     ? brandImages.slice(0, 8) 
     : brandImages;
 
+  // Split brands into two rows
+  const firstRowBrands = displayedBrands.slice(0, Math.ceil(displayedBrands.length / 2));
+  const secondRowBrands = displayedBrands.slice(Math.ceil(displayedBrands.length / 2));
+
   return (
-    <section className="py-16 bg-gradient-to-r from-gray-100 to-blue-50 relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-r from-gray-100 to-blue-50 relative overflow-hidden w-screen" style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }}>
       {/* Background elements */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
       
@@ -161,119 +161,141 @@ const BrandsWeWork = () => {
           </motion.p>
         </div>
 
-        {/* Stats Counter Section */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          {stats.map((stat, index) => (
-            <div 
-              key={index} 
-              className="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center hover:shadow-lg transition-shadow duration-300"
-            >
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-blue-600 mb-4">
-                {stat.icon}
-              </div>
-              <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-                <Counter value={stat.value} duration={2500} />
-              </h3>
-              <p className="text-gray-600">{stat.label}</p>
-            </div>
-          ))}
-        </motion.div>
+        
 
-        {/* Logos Grid with improved animations */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-4 md:gap-6 lg:gap-8">
-          {displayedBrands.map((image, index) => (
-            <motion.div 
-              key={index}
-              className="group relative bg-white rounded-lg shadow-md border border-gray-100 p-3 flex items-center justify-center hover:shadow-xl transition-all duration-300 h-32 sm:h-40 overflow-hidden"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-            >
-              {/* Fancy background effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-gray-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              {/* Subtle corner accents */}
-              <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-blue-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-tl-md" />
-              <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-blue-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-br-md" />
-              
-              <div className="relative w-full h-full flex items-center justify-center p-4 z-10">
-                <Image
-                  src={`/industry/${image}`}
-                  alt={`Brand logo ${image.replace(/\.(avif|jpg|png)$/, '')}`}
-                  fill
-                  sizes="(max-width: 640px) 45vw, (max-width: 768px) 30vw, (max-width: 1024px) 20vw, 16vw"
-                  style={{
-                    objectFit: 'contain',
-                    objectPosition: 'center',
-                  }}
-                  className="p-2 transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-            </motion.div>
-          ))}
+        {/* Moving Logos - Two Rows */}
+        <div className="relative overflow-hidden w-screen" style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }}>
+          {/* First row - moving from right to left */}
+          <motion.div 
+            className="flex gap-6 md:gap-8 lg:gap-10 mb-8"
+            animate={{ 
+              x: [0, -1000],
+            }}
+            transition={{ 
+              duration: 30,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          >
+                         {/* First row brands */}
+             {[...firstRowBrands, ...firstRowBrands].map((image, index) => (
+               <motion.div 
+                 key={`first-${index}`}
+                 className="group relative bg-white rounded-lg shadow-md border border-gray-100 p-3 flex items-center justify-center hover:shadow-xl transition-all duration-300 h-32 sm:h-40 w-48 sm:w-56 flex-shrink-0 overflow-hidden"
+                 whileHover={{ y: -5, scale: 1.02 }}
+               >
+                {/* Fancy background effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-gray-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Subtle corner accents */}
+                <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-blue-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-tl-md" />
+                <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-blue-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-br-md" />
+                
+                <div className="relative w-full h-full flex items-center justify-center p-4 z-10">
+                  <Image
+                    src={`/industry/${image}`}
+                    alt={`Brand logo ${image.replace(/\.(avif|jpg|png)$/, '')}`}
+                    fill
+                    sizes="(max-width: 640px) 45vw, (max-width: 768px) 30vw, (max-width: 1024px) 20vw, 16vw"
+                    style={{
+                      objectFit: 'contain',
+                      objectPosition: 'center',
+                    }}
+                    className="p-2 transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+          
+          {/* Second row - moving from right to left (slightly different speed) */}
+          <motion.div 
+            className="flex gap-6 md:gap-8 lg:gap-10"
+            animate={{ 
+              x: [0, -1200],
+            }}
+            transition={{ 
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          >
+                         {/* Second row brands */}
+             {[...secondRowBrands, ...secondRowBrands].map((image, index) => (
+               <motion.div 
+                 key={`second-${index}`}
+                 className="group relative bg-white rounded-lg shadow-md border border-gray-100 p-3 flex items-center justify-center hover:shadow-xl transition-all duration-300 h-32 sm:h-40 w-48 sm:w-56 flex-shrink-0 overflow-hidden"
+                 whileHover={{ y: -5, scale: 1.02 }}
+               >
+                {/* Fancy background effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-gray-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Subtle corner accents */}
+                <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-blue-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-tl-md" />
+                <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-blue-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-br-md" />
+                
+                <div className="relative w-full h-full flex items-center justify-center p-4 z-10">
+                  <Image
+                    src={`/industry/${image}`}
+                    alt={`Brand logo ${image.replace(/\.(avif|jpg|png)$/, '')}`}
+                    fill
+                    sizes="(max-width: 640px) 45vw, (max-width: 768px) 30vw, (max-width: 1024px) 20vw, 16vw"
+                    style={{
+                      objectFit: 'contain',
+                      objectPosition: 'center',
+                    }}
+                    className="p-2 transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
         
-        {/* Mobile "View All" button */}
-        {isMobile && !showAllBrands && (
-          <div className="text-center mt-8">
-            <motion.button
-              onClick={() => setShowAllBrands(true)}
-              className="inline-block px-6 py-2 bg-white border border-blue-500 text-blue-600 font-medium rounded-full hover:bg-blue-50 transition-colors duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              View All Partners
-            </motion.button>
-          </div>
-        )}
 
-        {/* Enhanced CTA section */}
-        <motion.div 
-          className="mt-16 bg-white p-8 rounded-xl shadow-md border border-gray-100"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">Ready to Join Our Success Stories?</h3>
-              <p className="text-gray-600 mb-6">
-                From startups to established brands, we help businesses achieve their digital goals through custom web development, design, and strategic solutions.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/contact">
-                  <Button className="gap-2 rounded-full bg-blue-600 hover:bg-blue-700">
-                    Become Our Partner <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </Link>
-                <Link href="/contact/free-consultation">
-                  <Button variant="outline" className="gap-2 rounded-full border-blue-600 text-blue-600 hover:bg-blue-50">
-                    Get Free Consultation
-                  </Button>
-                </Link>
+
+                 {/* Enhanced CTA section - Full viewport width with prominent background */}
+         <motion.div 
+           className="mt-16 w-screen bg-gradient-to-r from-primary via-primary to-primary/90 p-8 md:p-12 lg:p-16"
+           style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' , marginTop: '8rem', marginBottom: '-4.5rem'}}
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.6, delay: 0.5 }}
+         >
+           <div className="container mx-auto max-w-7xl">
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+              <div>
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-white">Ready to Join Our Success Stories?</h3>
+                <p className="text-white/90 mb-6 text-lg">
+                  From startups to established brands, we help businesses achieve their digital goals through custom web development, design, and strategic solutions.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link href="/contact">
+                    <Button className="gap-2 rounded-full bg-white text-primary text-md hover:bg-white/90 shadow-lg hover:shadow-xl transition-all duration-300">
+                      Become Our Partner <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </Link>
+                  <Link href="/contact/free-consultation">
+                    <Button variant="outline" className="gap-2 rounded-full border-white text-white text-md hover:bg-white hover:text-primary transition-all duration-300">
+                      Get Free Consultation
+                    </Button>
+                  </Link>
+                </div>
               </div>
-            </div>
-            <div className="flex justify-center">
-              <div className="relative w-full max-w-xs">
-                <div className="absolute -top-5 -left-5 w-20 h-20 rounded-full bg-blue-100 opacity-60"></div>
-                <div className="absolute -bottom-5 -right-5 w-28 h-28 rounded-full bg-blue-200 opacity-40"></div>
-                <div className="relative z-10 bg-white rounded-xl p-6 shadow-lg border border-gray-100">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-blue-600 mb-4 mx-auto">
-                    <Star className="w-6 h-6 fill-blue-600" />
+              <div className="flex justify-center">
+                <div className="relative w-full max-w-sm max-h-sm">
+                  <div className="absolute -top-5 -left-5 w-20 h-20 rounded-full bg-white/30 opacity-60"></div>
+                  <div className="absolute -bottom-5 -right-5 w-28 h-28 rounded-full bg-white/30 opacity-40"></div>
+                  <div className="relative z-10 bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-500/20">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white/20 text-white mb-4 mx-auto">
+                      <Star className="w-6 h-6 fill-white" />
+                    </div>
+                    <h4 className="text-lg font-bold text-center text-lg mb-2 text-white">Industry Recognition</h4>
+                    <p className="text-white/80 text-center text-md">
+                      Our work has earned recognition from industry experts and awards for excellence in web development.
+                    </p>
                   </div>
-                  <h4 className="text-lg font-bold text-center mb-2">Industry Recognition</h4>
-                  <p className="text-gray-600 text-center text-sm">
-                    Our work has earned recognition from industry experts and awards for excellence in web development.
-                  </p>
                 </div>
               </div>
             </div>

@@ -5,19 +5,19 @@ export const metadata: Metadata = {
   description: 'Your session has expired. Please log in again to continue using RTN Global services.',
   keywords: 'session expired, timeout, security, login again, RTN Global',
   alternates: {
-    canonical: 'https://rtnglobal.co/auth/session-expired',
+    canonical: 'https://rtnglobal.site/auth/session-expired',
     languages: {
-      'en-US': 'https://rtnglobal.co/auth/session-expired',
-      'en-GB': 'https://rtnglobal.co/auth/session-expired',
-      'fr': 'https://rtnglobal.co/fr/auth/session-expired',
-      'de': 'https://rtnglobal.co/de/auth/session-expired',
-      'es': 'https://rtnglobal.co/es/auth/session-expired',
+      'en-US': 'https://rtnglobal.site/auth/session-expired',
+      'en-GB': 'https://rtnglobal.site/auth/session-expired',
+      'fr': 'https://rtnglobal.site/fr/auth/session-expired',
+      'de': 'https://rtnglobal.site/de/auth/session-expired',
+      'es': 'https://rtnglobal.site/es/auth/session-expired',
     }
   },
   openGraph: {
     title: 'Session Expired | RTN Global',
     description: 'Your session has expired. Please log in again to continue using RTN Global services.',
-    url: 'https://rtnglobal.co/auth/session-expired',
+    url: 'https://rtnglobal.site/auth/session-expired',
     siteName: 'RTN Global',
     locale: 'en_US',
     type: 'website',

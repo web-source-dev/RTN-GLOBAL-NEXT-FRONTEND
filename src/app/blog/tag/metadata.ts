@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: 'Blog Tags | RTN Global - Browse by Topic',
     description: 'Browse articles by topic to find insights on web development, digital marketing, SEO, design, and more.',
     type: 'website',
-    url: 'https://rtnglobal.co/blog/tag',
+    url: 'https://rtnglobal.site/blog/tag',
     siteName: 'RTN Global Blog',
     images: [
       {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     site: '@rtnglobalofficial'
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/blog/tag',
+    canonical: 'https://rtnglobal.site/blog/tag',
   },
   authors: [
     { name: 'Muhammad Tayyab' }
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   },
   other: {
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
   }
 } 

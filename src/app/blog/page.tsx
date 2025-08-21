@@ -306,12 +306,12 @@ export default function BlogPage() {
             "@type": "Blog",
             "name": "RTN Global Blog",
             "description": "Latest articles, insights and updates from RTN Global",
-            "url": "https://rtnglobal.co/blog",
+            "url": "https://rtnglobal.site/blog",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -327,7 +327,7 @@ export default function BlogPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [
@@ -647,15 +647,15 @@ export default function BlogPage() {
                   <div>
                     <h4 className="font-medium text-xs uppercase text-muted-foreground mb-2.5 tracking-wider">Services</h4>
                     <div className="flex flex-wrap gap-2">
-                      <Link href="/services/web-development" className="text-sm bg-muted hover:bg-primary/10 hover:text-primary px-3 py-1.5 rounded-full transition-colors">
-                        Web Development
-                      </Link>
-                      <Link href="/services/digital-marketing" className="text-sm bg-muted hover:bg-primary/10 hover:text-primary px-3 py-1.5 rounded-full transition-colors">
-                        Digital Marketing
-                      </Link>
-                      <Link href="/services/ui-ux-design" className="text-sm bg-muted hover:bg-primary/10 hover:text-primary px-3 py-1.5 rounded-full transition-colors">
-                        UI/UX Design
-                      </Link>
+                                      <Link href="/services/web-development" className="text-sm bg-muted hover:bg-primary/10 hover:text-primary px-3 py-1.5 rounded-full transition-colors">
+                  Web Development
+                </Link>
+                <Link href="/services/content-marketing" className="text-sm bg-muted hover:bg-primary/10 hover:text-primary px-3 py-1.5 rounded-full transition-colors">
+                  Content Marketing
+                </Link>
+                <Link href="/services/ux-design" className="text-sm bg-muted hover:bg-primary/10 hover:text-primary px-3 py-1.5 rounded-full transition-colors">
+                  UX Design
+                </Link>
                     </div>
                   </div>
                   
@@ -751,21 +751,21 @@ export default function BlogPage() {
                     href="/services/web-development" 
                     className="block p-3 hover:bg-primary/5 rounded-md transition-colors"
                   >
-                    <h4 className="font-medium">Web Development</h4>
+                    <h4 className="text-primary text-base font-semibold">Web Development</h4>
                     <p className="text-sm text-muted-foreground mt-1">Custom websites & web applications</p>
                   </Link>
                   <Link 
-                    href="/services/mobile-development" 
+                    href="/services/mobile-apps" 
                     className="block p-3 hover:bg-primary/5 rounded-md transition-colors"
                   >
-                    <h4 className="font-medium">Mobile Apps</h4>
+                    <h4 className="text-primary text-base font-semibold">Mobile Apps</h4>
                     <p className="text-sm text-muted-foreground mt-1">iOS & Android app solutions</p>
                   </Link>
                   <Link 
-                    href="/services/digital-marketing" 
+                    href="/services/content-marketing" 
                     className="block p-3 hover:bg-primary/5 rounded-md transition-colors"
                   >
-                    <h4 className="font-medium">Digital Marketing</h4>
+                    <h4 className="text-primary text-base font-semibold">Content Marketing</h4>
                     <p className="text-sm text-muted-foreground mt-1">SEO, SEM & content strategy</p>
                   </Link>
                 </div>
@@ -802,13 +802,13 @@ export default function BlogPage() {
                   <ArrowRight className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
                   <span>Web Development Solutions</span>
                 </Link>
-                <Link href="/services/digital-marketing" className="flex items-center text-sm hover:text-primary transition-colors">
+                <Link href="/services/content-marketing" className="flex items-center text-sm hover:text-primary transition-colors">
                   <ArrowRight className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
-                  <span>Digital Marketing Strategies</span>
+                  <span>Content Marketing Strategies</span>
                 </Link>
-                <Link href="/services/ui-ux-design" className="flex items-center text-sm hover:text-primary transition-colors">
+                <Link href="/services/ux-design" className="flex items-center text-sm hover:text-primary transition-colors">
                   <ArrowRight className="h-4 w-4 mr-2 text-primary flex-shrink-0" />
-                  <span>UI/UX Design Services</span>
+                  <span>UX Design Services</span>
                 </Link>
               </div>
               <Link 

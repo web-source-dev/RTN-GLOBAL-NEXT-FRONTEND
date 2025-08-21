@@ -29,12 +29,12 @@ export default function SiteMapPage() {
             "@type": "WebPage",
             "name": "Site Map | RTN Global",
             "description": "A complete overview of all pages on the RTN Global website.",
-            "url": "https://rtnglobal.co/site-map",
+            "url": "https://rtnglobal.site/site-map",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -50,7 +50,7 @@ export default function SiteMapPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               }
             },
@@ -61,31 +61,31 @@ export default function SiteMapPage() {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Main Navigation",
-                  "url": "https://rtnglobal.co/site-map#main-navigation"
+                  "url": "https://rtnglobal.site/site-map#main-navigation"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Services",
-                  "url": "https://rtnglobal.co/site-map#services"
+                  "url": "https://rtnglobal.site/site-map#services"
                 },
                 {
                   "@type": "ListItem",
                   "position": 3,
                   "name": "Industries",
-                  "url": "https://rtnglobal.co/site-map#industries"
+                  "url": "https://rtnglobal.site/site-map#industries"
                 },
                 {
                   "@type": "ListItem",
                   "position": 4,
                   "name": "Portfolio & Case Studies",
-                  "url": "https://rtnglobal.co/site-map#portfolio"
+                  "url": "https://rtnglobal.site/site-map#portfolio"
                 },
                 {
                   "@type": "ListItem",
                   "position": 5,
                   "name": "Company",
-                  "url": "https://rtnglobal.co/site-map#company"
+                  "url": "https://rtnglobal.site/site-map#company"
                 }
               ]
             }
@@ -286,7 +286,7 @@ export default function SiteMapPage() {
                     </Link>
                   </li>
                   <li>
-                    <a href="mailto:info@rtnglobal.com" className="text-sm hover:text-primary transition-colors">
+                    <a href="mailto:info@rtnglobal.sitem" className="text-sm hover:text-primary transition-colors">
                       Email Us
                     </a>
                   </li>

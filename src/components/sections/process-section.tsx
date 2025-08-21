@@ -125,7 +125,7 @@ export function ProcessSection() {
   }, [activeStep]); // Adding activeStep as a dependency to re-run when it changes
   
   return (
-    <section className="py-14 md:py-20 bg-gradient-to-br from-background to-muted/30" id="process" ref={sectionRef}>
+    <section className="py-14 md:py-20 bg-muted/100" id="process" ref={sectionRef}>
       <div className="container mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
           {/* Left column - sticky content only on desktop */}
@@ -133,7 +133,7 @@ export function ProcessSection() {
             <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-4">
               Our Development Process
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">How We Create Your Perfect Website</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">How We Create Your Perfect Website</h2>
             <p className="text-lg text-muted-foreground mb-8">
               We follow a proven, structured approach to web development that delivers exceptional results. Our process ensures your project is completed efficiently, on time, and exceeds your expectations.
             </p>
@@ -191,25 +191,27 @@ export function ProcessSection() {
           </div>
         </div>
         
-        <div className="mt-16 bg-primary rounded-xl p-6 md:p-8 border border-border shadow-sm">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center md:text-left md:col-span-1">
-              <h3 className="text-xl md:text-2xl font-bold mb-2 text-white">Ready to Begin?</h3>
-              <p className="text-white/90">
-                Let's discuss your web project and create your perfect online presence today.
-              </p>
-            </div>
-            <div className="md:col-span-2 flex flex-col sm:width-full sm:flex-row justify-center md:justify-end gap-4 items-center">
-              <Link href="/contact">
-                <Button size="lg" className="gap-2 rounded-lg w-full sm:w-full shadow-sm bg-white text-primary hover:bg-white/80">
-                  Contact Us Now <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="/portfolio">
-                <Button variant="outline" size="lg" className="rounded-lg w-full sm:w-full text-white hover:bg-white/30">
-                  View Our Work
-                </Button>
-              </Link>
+        <div className="mt-16 w-screen bg-primary p-6 md:p-8" style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', marginBottom: '-5rem', marginTop: '8rem' }}>
+          <div className="container mx-auto max-w-7xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="text-center md:text-left md:col-span-1">
+                <h3 className="text-xl md:text-2xl font-bold mb-2 text-white">Ready to Begin?</h3>
+                <p className="text-white/90">
+                  Let's discuss your web project and create your perfect online presence today.
+                </p>
+              </div>
+              <div className="md:col-span-2 flex flex-col sm:width-full sm:flex-row justify-center md:justify-end gap-4 items-center">
+                <Link href="/contact">
+                  <Button size="lg" className="gap-2 rounded-lg w-full sm:w-full shadow-sm bg-white text-primary hover:bg-white/80">
+                    Contact Us Now <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/portfolio">
+                  <Button variant="outline" size="lg" className="rounded-lg w-full sm:w-full text-white hover:bg-white/30">
+                    View Our Work
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

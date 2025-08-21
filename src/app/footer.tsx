@@ -36,41 +36,44 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-card border-t border-border mt-auto">
+    <footer className="bg-black/70 border-t border-border mt-auto">
       <div className="container px-4 py-12 mx-auto">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="mb-4">
               <Link href="/" className="flex items-center">
-                <span className="font-bold text-xl">RTN Global</span>
+                <span className="font-bold text-2xl">RTN Global</span>
               </Link>
             </div>
-            <p className="text-sm text-muted-foreground mb-6">
+            <p className="text-md text-white mb-6">
               Providing innovative digital solutions for businesses worldwide. We help brands grow through technology and creative strategy.
             </p>
             <div className="space-y-3">
               <div className="flex items-start">
                 <Mail className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                <a href="mailto:info@rtnglobal.site" className="text-sm hover:text-primary transition-colors">
+                <a href="mailto:info@rtnglobal.site" className="text-md text-white hover:text-primary transition-colors">
                   info@rtnglobal.site
                 </a>
               </div>
               <div className="flex items-start">
                 <Phone className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                <a href="tel:+15055286780" className="text-sm hover:text-primary transition-colors">
-                  +1 505 528 6780
+                <a href="tel:+15055286780" className="text-md text-white hover:text-primary transition-colors">
+                  +1 (505) 528 0265
                 </a>
               </div>
               <div className="flex items-start">
                 <MapPin className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                <address className="text-sm not-italic">
+                <address className="text-md text-white not-italic">
                   1209 MOUNTAIN ROAD PLNE, STE R<br />
                   ALBUQUERQUE, NM 87110<br />
                   US
                 </address>
               </div>
             </div>
+
+
+            
              {/* MyWOT Verification Badge */}
              <a id='wot-badge0' className='wot-badge mt-5' href='https://www.mywot.com/scorecard/rtnglobal.site?wot_badge=0_white' target='_blank' rel="noopener noreferrer">
                 <div className='wot-logo'></div>
@@ -79,66 +82,74 @@ export function Footer() {
                 <div className='wot-vertical'></div>
                 <p className='wot-report'>See Report</p>
               </a>
+
+              <div className="mt-5">
+<div className="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6806cad015b91e8838c555cd" data-style-height="52px" data-style-width="100%" data-token="40da9023-bdb6-484f-b948-8b31eeaf8ff7">
+  <a href="https://www.trustpilot.com/review/rtnglobal.co" target="_blank" rel="noopener">Trustpilot</a>
+</div>
+              </div>
           </div>
+
+          
 
           {/* Quick Links */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-medium mb-4">Quick Links</h3>
+            <h3 className="text-lg font-medium mb-4 text-white">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/about" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/about" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/services" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/blog" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/careers" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/careers" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   Careers
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/contact" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   Contact Us
                 </Link>
               </li>
             </ul>
 
-            <h3 className="text-lg font-medium mb-4 mt-8">Support</h3>
+            <h3 className="text-lg font-medium mb-4 mt-8 text-white">Support</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/support/submit" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/support/submit" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   Submit a Request
                 </Link>
               </li>
               <li>
-                <Link href="/support/ticket-status" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/support/ticket-status" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   Check Ticket Status
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/faq" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="/knowledge-base" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/knowledge-base" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   Knowledge Base
                 </Link>
@@ -148,69 +159,69 @@ export function Footer() {
 
           {/* Services */}
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-medium mb-4">Our Services</h3>
+            <h3 className="text-lg font-medium mb-4 text-white">Our Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/services/web-development" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/services/web-development" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   Web Development
                 </Link>
               </li>
               <li>
-                <Link href="/services/mobile-development" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/services/mobile-apps" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
-                  Mobile App Development
+                  Mobile Apps
                 </Link>
               </li>
               <li>
-                <Link href="/services/ui-ux-design" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/services/ux-design" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
-                  UI/UX Design
+                  UX Design
                 </Link>
               </li>
               <li>
-                <Link href="/services/digital-marketing" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/services/content-marketing" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
-                  Digital Marketing
+                  Content Marketing
                 </Link>
               </li>
               <li>
-                <Link href="/services/seo" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/services/seo-optimization" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   SEO Optimization
                 </Link>
               </li>
               <li>
-                <Link href="/services/content-creation" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/services/content-marketing" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
-                  Content Creation
+                  Content Marketing
                 </Link>
               </li>
             </ul>
 
             {/* Resources Section - New */}
-            <h3 className="text-lg font-medium mb-4 mt-8">Resources</h3>
+            <h3 className="text-lg font-medium mb-4 mt-8 text-white">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/knowledge-base" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/knowledge-base" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   Knowledge Base
                 </Link>
               </li>
               <li>
-                <Link href="/case-studies" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/case-studies" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="/resources" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/resources" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   Resource Center
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio" className="text-sm flex items-center hover:text-primary transition-colors">
+                <Link href="/portfolio" className="text-md text-white flex items-center hover:text-primary transition-colors">
                   <ChevronRight className="h-3 w-3 mr-1" />
                   Portfolio
                 </Link>
@@ -229,37 +240,37 @@ export function Footer() {
             
             {/* Popular Content Section - New */}
             <div className="mb-8">
-              <h3 className="text-lg font-medium mb-4">Popular Content</h3>
+              <h3 className="text-lg font-medium mb-4 text-white">Popular Content</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/industries/e-commerce" className="text-sm flex items-center hover:text-primary transition-colors">
-                    <ChevronRight className="h-3 w-3 mr-1" />
-                    E-Commerce Solutions
-                  </Link>
+                                  <Link href="/industries/e-commerce" className="text-md text-white flex items-center hover:text-primary transition-colors">
+                  <ChevronRight className="h-3 w-3 mr-1" />
+                  E-Commerce Solutions
+                </Link>
                 </li>
                 <li>
-                  <Link href="/services/wix-development" className="text-sm flex items-center hover:text-primary transition-colors">
-                    <ChevronRight className="h-3 w-3 mr-1" />
-                    Wix Development
-                  </Link>
+                                  <Link href="/services/wordpress-development" className="text-md text-white flex items-center hover:text-primary transition-colors">
+                  <ChevronRight className="h-3 w-3 mr-1" />
+                  WordPress Development
+                </Link>
                 </li>
                 <li>
-                  <Link href="/services/mern-stack" className="text-sm flex items-center hover:text-primary transition-colors">
-                    <ChevronRight className="h-3 w-3 mr-1" />
-                    MERN Stack Development
-                  </Link>
+                                  <Link href="/services/full-stack-development" className="text-md text-white flex items-center hover:text-primary transition-colors">
+                  <ChevronRight className="h-3 w-3 mr-1" />
+                  Full Stack Development
+                </Link>
                 </li>
                 <li>
-                  <Link href="/services/react-native" className="text-sm flex items-center hover:text-primary transition-colors">
-                    <ChevronRight className="h-3 w-3 mr-1" />
-                    React Native Apps
-                  </Link>
+                                  <Link href="/services/react-native" className="text-md text-white flex items-center hover:text-primary transition-colors">
+                  <ChevronRight className="h-3 w-3 mr-1" />
+                  React Native Apps
+                </Link>
                 </li>
               </ul>
             </div>
             
             <div className="mt-6">
-              <h3 className="text-lg font-medium mb-4">Follow Us</h3>
+              <h3 className="text-lg font-medium mb-4 text-white">Follow Us</h3>
               <div className="flex space-x-3 flex-wrap">
                 <a href="https://web.facebook.com/people/RTN-Global/61573828870610/" target="_blank" rel="noopener noreferrer" className="p-2 bg-muted rounded-full hover:bg-primary/10 transition-colors" aria-label="Facebook">
                   <Facebook className="h-5 w-5 text-foreground" />
@@ -283,7 +294,7 @@ export function Footer() {
             </div>
             
             <div className="mt-6">
-              <Link href="/contact/free-consultation" className="text-sm font-medium text-primary hover:underline">
+              <Link href="/contact/free-consultation" className="text-md font-medium text-primary hover:underline">
                 Request a Free Consultation →
               </Link>
             </div>
@@ -293,28 +304,28 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-around items-center">
             <div className="flex items-center gap-4">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-md text-white">
                 © {new Date().getFullYear()} RTN Global. All rights reserved. <a href="https://rtnglobal.co/" className="hover:text-primary">rtnglobal.co</a>
               </p>
              
             </div>
             <div className="flex flex-wrap mt-4 md:mt-0 gap-4">
-              <Link href="/legal/terms-conditions" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link href="/legal/terms-conditions" className="text-md text-white hover:text-primary transition-colors">
                 Terms & Conditions
               </Link>
-              <Link href="/legal/privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link href="/legal/privacy-policy" className="text-md text-white hover:text-primary transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/legal/refund-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link href="/legal/refund-policy" className="text-md text-white hover:text-primary transition-colors">
                 Refund Policy
               </Link>
-              <Link href="/legal/cookie-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link href="/legal/cookie-policy" className="text-md text-white hover:text-primary transition-colors">
                 Cookie Policy
               </Link>
-              <Link href="/legal/disclaimer" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link href="/legal/disclaimer" className="text-md text-white hover:text-primary transition-colors">
                 Disclaimer
               </Link>
-              <Link href="/site-map" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link href="/site-map" className="text-md text-white hover:text-primary transition-colors">
                 Site Map
               </Link>
             </div>

@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/services',
+    canonical: 'https://rtnglobal.site/services',
     languages: {
-      'en-US': 'https://rtnglobal.co/services',
-      'en-GB': 'https://rtnglobal.co/services',
-      'fr': 'https://rtnglobal.co/fr/services',
-      'de': 'https://rtnglobal.co/de/services',
-      'es': 'https://rtnglobal.co/es/services',
+      'en-US': 'https://rtnglobal.site/services',
+      'en-GB': 'https://rtnglobal.site/services',
+      'fr': 'https://rtnglobal.site/fr/services',
+      'de': 'https://rtnglobal.site/de/services',
+      'es': 'https://rtnglobal.site/es/services',
     }
   },
   openGraph: {
     title: 'Digital Services | Web Development & Marketing Solutions | RTN Global',
     description: 'Discover our comprehensive range of digital services to transform your online presence. From web development to digital marketing, we provide end-to-end solutions for businesses worldwide.',
     type: 'website',
-    url: 'https://rtnglobal.co/services',
+    url: 'https://rtnglobal.site/services',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     other: {
       'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
       'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
-      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
+      me: ['https://rtnglobal.site', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     'services:customization': 'Tailored to business needs',
     'services:international': 'Available worldwide',
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   }
 } 

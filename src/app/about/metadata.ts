@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: 'About RTN Global | Web Development & Digital Marketing Experts',
     description: 'Meet the passionate team behind RTN Global. With 50+ experts, we\'ve delivered 200+ successful projects since 2017, helping businesses transform digitally with innovative web development and marketing solutions.',
     type: 'website',
-    url: 'https://rtnglobal.co/about',
+    url: 'https://rtnglobal.site/about',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
     images: ['/images/og/about-og.jpg']
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/about',
+    canonical: 'https://rtnglobal.site/about',
     languages: {
-      'en-US': 'https://rtnglobal.co/about',
+      'en-US': 'https://rtnglobal.site/about',
     }
   },
   authors: [
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
   },
   other: {
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780', 
+    'contact:phone': '+1 (505) 528 0265', 
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
   }
 } 

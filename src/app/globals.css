@@ -4,86 +4,184 @@
 @tailwind utilities;
 /* stylelint-enable */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-/* stylelint-disable */
+/* =====================
+   Tailwind Theme Bridge
+===================== */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-/* stylelint-enable */
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --font-sans: var(--font-roboto);
+  --font-serif: var(--font-poppins);
+  --font-mono: var(--font-mono);
 }
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-    
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
- 
-    --primary: 215 90% 45%;
-    --primary-foreground: 0 0% 100%;
- 
-    --secondary: 214 32% 91%;
-    --secondary-foreground: 222 47% 11%;
- 
-    --muted: 214 32% 95%;
-    --muted-foreground: 215 28% 40%;
- 
-    --accent: 215 90% 45%;
-    --accent-foreground: 0 0% 100%;
- 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
- 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 215 90% 45%;
- 
-    --radius: 0.5rem;
-  }
+/* =====================
+   Root Theme Variables
+===================== */
+:root {
+  /* Fonts */
+  --font-roboto: 'Roboto', system-ui, sans-serif;
+  --font-poppins: 'Poppins', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Colors (HSL only) */
+  --background: 0 0% 100%;
+  --foreground: 222 47% 12%; /* dark gray text for readability */
+
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 12%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 12%;
+
+  --primary: 215 90% 45%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 214 25% 90%;
+  --secondary-foreground: 222 47% 15%;
+
+  --muted: 214 20% 94%;
+  --muted-foreground: 222 20% 30%;
+
+  --accent: 215 85% 45%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 72% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Semantic colors */
+  --success: 142 72% 35%;
+  --warning: 38 90% 45%;
+  --info: 200 90% 40%;
+
+  /* Borders & effects */
+  --border: 214 20% 80%;
+  --input: 214 20% 80%;
+  --ring: 215 85% 45%;
+  --radius: 0.5rem;
+
+  /* Typography scale (fluid) */
+  --step--1: clamp(0.8rem, 0.76rem + 0.2vw, 0.9rem);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.15rem + 0.3vw, 1.5rem);
+  --step-2: clamp(1.56rem, 1.4rem + 0.35vw, 1.875rem);
+  --step-3: clamp(1.95rem, 1.7rem + 0.4vw, 2.25rem);
+  --step-4: clamp(2.44rem, 2.1rem + 0.5vw, 3rem);
 }
 
+/* =====================
+   Dark Mode
+===================== */
+.dark {
+  --background: 222 47% 10%;
+  --foreground: 0 0% 98%; /* softer white for less eye strain */
+
+  --card: 222 47% 14%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 222 47% 14%;
+  --popover-foreground: 0 0% 98%;
+
+  --secondary: 222 20% 25%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 222 20% 20%;
+  --muted-foreground: 222 15% 75%;
+
+  --border: 222 20% 35%;
+  --input: 222 20% 35%;
+
+  --primary: 215 85% 60%; /* brighter blue for dark mode */
+  --ring: 215 85% 60%;
+
+  --success: 142 72% 40%;
+  --warning: 38 90% 50%;
+  --info: 200 95% 55%;
+}
+
+/* =====================
+   High Contrast Mode
+===================== */
+.hc {
+  --background: 0 0% 100% !important;
+  --foreground: 0 0% 0% !important;
+
+  --card: 0 0% 100% !important;
+  --card-foreground: 0 0% 0% !important;
+
+  --border: 0 0% 0% !important; /* black borders */
+  --input: 0 0% 0% !important;
+
+  --primary: 220 100% 25% !important;
+  --primary-foreground: 0 0% 100% !important;
+
+  --secondary: 0 0% 95% !important;
+  --secondary-foreground: 0 0% 0% !important;
+
+  --muted: 0 0% 90% !important;
+  --muted-foreground: 0 0% 10% !important;
+
+  --accent: 210 100% 25% !important;
+  --accent-foreground: 0 0% 100% !important;
+
+  --destructive: 0 100% 30% !important;
+  --destructive-foreground: 0 0% 100% !important;
+
+  --success: 120 100% 25% !important;
+  --warning: 40 100% 30% !important;
+  --info: 200 100% 25% !important;
+}
+
+/* =====================
+   Base Styles
+===================== */
 @layer base {
   * {
-    /* stylelint-disable-next-line */
     @apply border-border;
   }
+
   body {
-    /* stylelint-disable-next-line */
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: var(--font-roboto), Arial, Helvetica, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1, "ss02" 1, "ss03" 1;
+    font-variant-numeric: oldstyle-nums;
   }
-  
-  /* Smooth scrolling and text rendering */
+
   html {
     scroll-behavior: smooth;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   }
-  
-  /* Additional utility classes */
-  .text-balance {
-    text-wrap: balance;
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-poppins), system-ui, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
   }
-  
-  .container {
-    /* stylelint-disable-next-line */
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+
+  h1 { font-size: var(--step-4); font-weight: 700; letter-spacing: -0.03em; }
+  h2 { font-size: var(--step-3); }
+  h3 { font-size: var(--step-2); }
+  h4 { font-size: var(--step-1); }
+  h5 { font-size: var(--step-0); }
+  h6 { font-size: var(--step--1); }
+
+  /* Motion accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
   }
+
+  /* Utility classes */
+  .text-balance { text-wrap: balance; }
+  .font-display { font-family: var(--font-poppins), system-ui, sans-serif; }
+  .font-mono { font-family: var(--font-mono); }
+  .container { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
 }

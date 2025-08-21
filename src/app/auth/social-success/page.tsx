@@ -13,6 +13,7 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
+import { H3, P } from '@/components/ui/typography'
 
 export default function SocialAuthSuccessPage() {
   const { user, isLoading: isAuthLoading } = useAuth()
@@ -50,8 +51,8 @@ export default function SocialAuthSuccessPage() {
               <Loader2 className="h-8 w-8 text-primary animate-pulse" />
             </div>
           </div>
-          <h3 className="text-xl font-semibold mb-2">Verifying authentication</h3>
-          <p className="text-muted-foreground">Please wait while we complete your authentication...</p>
+          <H3 className="text-xl font-semibold mb-2">Verifying authentication</H3>
+          <P className="text-muted-foreground">Please wait while we complete your authentication...</P>
         </div>
       </div>
     )
@@ -67,12 +68,12 @@ export default function SocialAuthSuccessPage() {
             "@type": "WebPage",
             "name": "Social Authentication Success - RTN Global",
             "description": "Successful authentication with your social account at RTN Global",
-            "url": "https://rtnglobal.co/auth/social-success",
+            "url": "https://rtnglobal.site/auth/social-success",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -88,7 +89,7 @@ export default function SocialAuthSuccessPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [
@@ -170,7 +171,7 @@ export default function SocialAuthSuccessPage() {
               </div>
               
               <div className="p-4 bg-muted/40 rounded-lg border border-muted/60 text-left mb-6">
-                <h3 className="font-medium mb-2">What happens next?</h3>
+                <H3 className="font-medium mb-2">What happens next?</H3>
                 <ul className="text-sm space-y-2 text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-medium mt-0.5">1</span>
@@ -187,11 +188,11 @@ export default function SocialAuthSuccessPage() {
                 </ul>
               </div>
               
-              <p className="text-muted-foreground mb-6 animate-pulse">
+              <P className="text-muted-foreground mb-6 animate-pulse">
                 {isRedirecting 
                   ? 'Redirecting to dashboard...' 
                   : 'You will be redirected to the dashboard shortly.'}
-              </p>
+              </P>
               
               <div className="relative h-1 w-full bg-muted/50 rounded-full overflow-hidden">
                 <div className={`absolute inset-y-0 left-0 bg-primary transition-all duration-1000 rounded-full ${isRedirecting ? 'w-full' : 'w-0'}`}></div>

@@ -53,7 +53,7 @@ export function OptimizedImage({
   }
 
   return (
-    <div className={cn('relative overflow-hidden', className)}>
+    <div className={cn('relative overflow-hidden w-full h-full', className)}>
       <Image 
         src={error ? '/images/placeholder.jpg' : imageSrc}
         alt={alt || 'Image'}

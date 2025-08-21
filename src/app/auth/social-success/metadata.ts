@@ -5,19 +5,19 @@ export const metadata: Metadata = {
   description: 'Your social authentication was successful. You have successfully logged in to RTN Global using your social account.',
   keywords: 'social login success, authentication successful, social media login, RTN Global social login, login confirmation',
   alternates: {
-    canonical: 'https://rtnglobal.co/auth/social-success',
+    canonical: 'https://rtnglobal.site/auth/social-success',
     languages: {
-      'en-US': 'https://rtnglobal.co/auth/social-success',
-      'en-GB': 'https://rtnglobal.co/auth/social-success',
-      'fr': 'https://rtnglobal.co/fr/auth/social-success',
-      'de': 'https://rtnglobal.co/de/auth/social-success',
-      'es': 'https://rtnglobal.co/es/auth/social-success',
+      'en-US': 'https://rtnglobal.site/auth/social-success',
+      'en-GB': 'https://rtnglobal.site/auth/social-success',
+      'fr': 'https://rtnglobal.site/fr/auth/social-success',
+      'de': 'https://rtnglobal.site/de/auth/social-success',
+      'es': 'https://rtnglobal.site/es/auth/social-success',
     }
   },
   openGraph: {
     title: 'Authentication Successful | RTN Global',
     description: 'Your social authentication was successful. You have successfully logged in to RTN Global using your social account.',
-    url: 'https://rtnglobal.co/auth/social-success',
+    url: 'https://rtnglobal.site/auth/social-success',
     siteName: 'RTN Global',
     locale: 'en_US',
     type: 'website',

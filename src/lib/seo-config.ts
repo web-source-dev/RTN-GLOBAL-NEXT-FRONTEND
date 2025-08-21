@@ -35,7 +35,7 @@ export const seoConfig = {
   
   // Contact information
   contact: {
-    phone: '+1 505 528 6780',
+    phone: '+1 (505) 528 0265',
     email: 'info@rtnglobal.site',
     supportEmail: 'support@rtnglobal.site',
     address: {
@@ -80,14 +80,14 @@ export const structuredData = {
       {
         "@type": "ContactPoint",
         "contactType": "customer service",
-        "telephone": "+1 505 528 6780",
+        "telephone": "+1 (505) 528 0265",
         "email": "info@rtnglobal.site",
         "availableLanguage": ["English"]
       },
       {
         "@type": "ContactPoint",
         "contactType": "technical support",
-        "telephone": "+1 505 528 6780",
+        "telephone": "+1 (505) 528 0265",
         "email": "support@rtnglobal.site",
         "availableLanguage": ["English"]
       }
@@ -121,7 +121,7 @@ export const structuredData = {
     "name": "RTN Global",
     "description": "Web Development & Digital Marketing Agency",
     "url": "https://rtnglobal.site/",
-    "telephone": "+1 505 528 6780",
+    "telephone": "+1 (505) 528 0265",
     "email": "info@rtnglobal.site",
     "address": {
       "@type": "PostalAddress",

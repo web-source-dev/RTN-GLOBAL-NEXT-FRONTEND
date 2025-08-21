@@ -14,12 +14,12 @@ export const metadata: Metadata = {
     "webpage listing"
   ],
   alternates: {
-    canonical: "https://rtnglobal.co/site-map",
+    canonical: "https://rtnglobal.site/site-map",
   },
   openGraph: {
     title: "Website Site Map | RTN Global",
     description: "Find and navigate to any page on the RTN Global website with our complete site map.",
-    url: "https://rtnglobal.co/site-map",
+    url: "https://rtnglobal.site/site-map",
     siteName: "RTN Global",
     locale: "en_US",
     type: "website",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'RTN Global Team' }],
   other: {
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   }
 }; 

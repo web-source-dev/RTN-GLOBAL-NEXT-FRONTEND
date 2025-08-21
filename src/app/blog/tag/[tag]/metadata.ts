@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title,
         description,
         type: 'website',
-        url: `https://rtnglobal.co/blog/tag/${tag}`,
+        url: `https://rtnglobal.site/blog/tag/${tag}`,
         siteName: 'RTN Global Blog',
         images: [
           {
@@ -79,7 +79,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         site: '@rtnglobalofficial'
       },
       alternates: {
-        canonical: `https://rtnglobal.co/blog/tag/${tag}`,
+        canonical: `https://rtnglobal.site/blog/tag/${tag}`,
       },
       robots: {
         index: true,
@@ -106,7 +106,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
       other: {
         'contact:email': 'info@rtnglobal.site',
-        'contact:phone': '+1 505 528 6780',
+        'contact:phone': '+1 (505) 528 0265',
         'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
       }
     };

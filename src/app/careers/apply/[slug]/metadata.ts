@@ -76,19 +76,19 @@ export async function generateMetadata({
     description: `Apply for the ${job.title} position in our ${job.department} department at ${job.location}. Submit your application to join our international team at RTN Global.`,
     keywords: keywords.join(', '),
     alternates: {
-      canonical: `https://rtnglobal.co/careers/apply/${job.slug}`,
+      canonical: `https://rtnglobal.site/careers/apply/${job.slug}`,
       languages: {
-        'en-US': `https://rtnglobal.co/careers/apply/${job.slug}`,
-        'en-GB': `https://rtnglobal.co/careers/apply/${job.slug}`,
-        'fr': `https://rtnglobal.co/fr/careers/apply/${job.slug}`,
-        'de': `https://rtnglobal.co/de/careers/apply/${job.slug}`,
-        'es': `https://rtnglobal.co/es/careers/apply/${job.slug}`,
+        'en-US': `https://rtnglobal.site/careers/apply/${job.slug}`,
+        'en-GB': `https://rtnglobal.site/careers/apply/${job.slug}`,
+        'fr': `https://rtnglobal.site/fr/careers/apply/${job.slug}`,
+        'de': `https://rtnglobal.site/de/careers/apply/${job.slug}`,
+        'es': `https://rtnglobal.site/es/careers/apply/${job.slug}`,
       }
     },
     openGraph: {
       title: `Apply for ${job.title} at RTN Global`,
       description: `Submit your application for the ${job.title} position in our ${job.department} department at ${job.location}. Join our international team today.`,
-      url: `https://rtnglobal.co/careers/apply/${job.slug}`,
+      url: `https://rtnglobal.site/careers/apply/${job.slug}`,
       siteName: 'RTN Global',
       locale: 'en_US',
       type: 'website',
@@ -130,7 +130,7 @@ export async function generateMetadata({
       'job:type': job.type,
       'application:type': 'job',
       'contact:email': 'info@rtnglobal.site',
-      'contact:phone': '+1 505 528 6780',
+      'contact:phone': '+1 (505) 528 0265',
       'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
     }
   };

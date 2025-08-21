@@ -16,7 +16,7 @@ export default function NotFound() {
             "@type": "WebPage",
             "name": "Page Not Found (404) | RTN Global",
             "description": "The page you were looking for doesn't exist or has been moved to a new location.",
-            "url": "https://rtnglobal.co/404",
+            "url": "https://rtnglobal.site/404",
             "breadcrumb": {
               "@type": "BreadcrumbList",
               "itemListElement": [
@@ -24,26 +24,26 @@ export default function NotFound() {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://rtnglobal.co/"
+                  "item": "https://rtnglobal.site/"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Page Not Found",
-                  "item": "https://rtnglobal.co/404"
+                  "item": "https://rtnglobal.site/404"
                 }
               ]
             },
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png"
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png"
             },
             "mainEntity": {
               "@type": "WebSite",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/"
+              "url": "https://rtnglobal.site/"
             }
           })
         }}

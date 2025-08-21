@@ -6,6 +6,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { LinkedinIcon, TwitterIcon, MailIcon, ArrowRight } from "lucide-react"
 import { Metadata } from "next"
+import { OptimizedImage } from "@/components/ui/optimized-image"
+import { H2, H3, P, Lead } from "@/components/ui/typography"
 
 export const metadata: Metadata = {
   title: "Our Team | RTN Global",
@@ -32,7 +34,7 @@ export default function TeamPage() {
       name: "John Smith",
       role: "Founder & Creative Director",
       bio: "With over 15 years of experience in branding and design, John leads our creative team with a passion for transforming businesses through strategic visual identity.",
-      image: "/images/team/john-smith.jpg",
+      image: "/images/team/team-1.jpg",
       expertise: ["Brand Strategy", "Visual Identity", "Creative Direction"],
       social: {
         linkedin: "https://linkedin.com/in/johnsmith",
@@ -44,7 +46,7 @@ export default function TeamPage() {
       name: "Sarah Johnson",
       role: "Brand Strategist",
       bio: "Sarah combines analytical thinking with creative insight to develop brand strategies that resonate with target audiences and drive business results.",
-      image: "/images/team/sarah-johnson.jpg",
+      image: "/images/team/team-2.jpg",
       expertise: ["Market Research", "Brand Positioning", "User Experience"],
       social: {
         linkedin: "https://linkedin.com/in/sarahjohnson",
@@ -56,7 +58,7 @@ export default function TeamPage() {
       name: "Michael Chen",
       role: "Lead Designer",
       bio: "Michael's award-winning design work spans multiple industries and platforms. He specializes in creating cohesive visual systems that express brand values.",
-      image: "/images/team/michael-chen.jpg",
+      image: "/images/team/team-3.jpg",
       expertise: ["Visual Design", "Typography", "Brand Guidelines"],
       social: {
         linkedin: "https://linkedin.com/in/michaelchen",
@@ -67,7 +69,7 @@ export default function TeamPage() {
       name: "Emily Rodriguez",
       role: "Digital Marketing Manager",
       bio: "Emily crafts effective digital strategies that amplify brand presence and engage target audiences across multiple platforms.",
-      image: "/images/team/emily-rodriguez.jpg",
+      image: "/images/team/sarah-johnson.jpg",
       expertise: ["Content Strategy", "Social Media", "SEO"],
       social: {
         linkedin: "https://linkedin.com/in/emilyrodriguez",
@@ -79,7 +81,7 @@ export default function TeamPage() {
       name: "David Wilson",
       role: "Web Development Lead",
       bio: "David brings brands to life online with cutting-edge development expertise, ensuring seamless user experiences across all digital touchpoints.",
-      image: "/images/team/david-wilson.jpg",
+      image: "/images/team/team-5.jpg",
       expertise: ["Front-end Development", "UI/UX", "Web Animation"],
       social: {
         linkedin: "https://linkedin.com/in/davidwilson",
@@ -90,7 +92,7 @@ export default function TeamPage() {
       name: "Olivia Taylor",
       role: "Content Strategist",
       bio: "Olivia develops engaging content that tells brand stories and connects with audiences, with a focus on authentic and compelling messaging.",
-      image: "/images/team/olivia-taylor.jpg",
+      image: "/images/team/team-6.jpg",
       expertise: ["Copywriting", "Brand Voice", "Content Planning"],
       social: {
         linkedin: "https://linkedin.com/in/oliviataylor",
@@ -98,29 +100,6 @@ export default function TeamPage() {
         email: "olivia@rtnglobal.site"
       }
     },
-    {
-      name: "Robert Kim",
-      role: "Motion Designer",
-      bio: "Robert specializes in bringing brands to life through animation and motion design, creating dynamic experiences that capture attention.",
-      image: "/images/team/robert-kim.jpg",
-      expertise: ["Animation", "Video Production", "Visual Effects"],
-      social: {
-        linkedin: "https://linkedin.com/in/robertkim",
-        twitter: "https://twitter.com/robertkim",
-        email: "robert@rtnglobal.site"
-      }
-    },
-    {
-      name: "Julia Martinez",
-      role: "Client Relations Manager",
-      bio: "Julia ensures our clients receive exceptional service throughout their project journey, acting as the bridge between creative teams and client needs.",
-      image: "/images/team/julia-martinez.jpg",
-      expertise: ["Project Management", "Client Communication", "Process Optimization"],
-      social: {
-        linkedin: "https://linkedin.com/in/juliamartinez",
-        email: "julia@rtnglobal.site"
-      }
-    }
   ];
 
   // Stats about the team
@@ -158,12 +137,12 @@ export default function TeamPage() {
             "@type": "WebPage",
             "name": "Our Team | RTN Global",
             "description": "Meet the talented team behind RTN Global, dedicated to delivering exceptional digital solutions.",
-            "url": "https://rtnglobal.co/team",
+            "url": "https://rtnglobal.site/team",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -179,7 +158,7 @@ export default function TeamPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "employee": teamMembers.map(member => ({
@@ -222,16 +201,16 @@ export default function TeamPage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl font-bold mb-6">Passionate Experts in Brand Building</h2>
-            <p className="text-lg text-muted-foreground">
+            <H2 className="text-3xl font-bold mb-6">Passionate Experts in Brand Building</H2>
+            <P className="text-lg text-muted-foreground">
               At RTN Global, our team combines diverse talents and perspectives to create meaningful brand experiences. 
               Each team member brings unique expertise and a shared commitment to excellence, 
               working collaboratively to help our clients stand out in today&apos;s competitive landscape.
-            </p>
+            </P>
           </div>
           
           {/* Team Grid */}
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
             {teamMembers.map((member, index) => (
               <div 
                 key={index} 
@@ -242,13 +221,19 @@ export default function TeamPage() {
                   <div className="absolute inset-0 flex items-center justify-center bg-primary/10 text-5xl font-bold text-background/20">
                     {member.name.split(' ').map(word => word[0]).join('')}
                   </div>
+                  <OptimizedImage
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover w-full h-full"
+                  />
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold">{member.name}</h3>
-                  <p className="text-primary font-medium mt-1">{member.role}</p>
+                  <H3 className="text-xl font-bold">{member.name}</H3>
+                  <P className="text-primary font-medium mt-1">{member.role}</P>
                   
-                  <p className="mt-3 text-muted-foreground text-sm">{member.bio}</p>
+                  <P className="mt-3 text-muted-foreground text-sm">{member.bio}</P>
                   
                   {/* Expertise Tags */}
                   <div className="mt-4 mb-5 flex flex-wrap gap-2">
@@ -306,12 +291,12 @@ export default function TeamPage() {
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold mb-4">Join Our Creative Team</h2>
-                <p className="text-muted-foreground mb-6">
+                <H2 className="text-3xl font-bold mb-4">Join Our Creative Team</H2>
+                <P className="text-muted-foreground mb-6">
                   We&apos;re always looking for talented individuals who are passionate about branding, 
                   design, and digital innovation. Join us in creating impactful brand experiences 
                   that help businesses grow.
-                </p>
+                </P>
                 <div className="flex flex-wrap gap-4">
                   <Button asChild>
                     <Link href="/careers">

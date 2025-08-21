@@ -22,7 +22,7 @@ export function TestimonialsSection({
   description,
   testimonials,
   className = "",
-  backgroundClassName = "bg-muted/30"
+  backgroundClassName = "bg-white"
 }: TestimonialsSectionProps) {
   return (
     <section className={`py-20 md:py-20 relative overflow-hidden ${backgroundClassName}`}>
@@ -38,7 +38,7 @@ export function TestimonialsSection({
             <div className="inline-block mb-4 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary uppercase tracking-wider">
               Client Feedback
             </div>
-            {title && <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl bg-gradient-to-r from-primary/90 to-primary/70 text-transparent bg-clip-text">{title}</h2>}
+            {title && <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl bg-gradient-to-r text-black  bg-clip-text">{title}</h2>}
             {description && (
               <p className="mt-4 text-lg text-muted-foreground">
                 {description}

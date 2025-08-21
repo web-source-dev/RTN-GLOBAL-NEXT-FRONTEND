@@ -23,7 +23,13 @@ const companyLinks = [
 
 const serviceLinks = [
   { name: "Digital Strategy", href: "/services/digital-strategy" },
+  { name: "Web Development", href: "/services/web-development" },
+  { name: "React Native", href: "/services/react-native" },
   { name: "SEO Optimization", href: "/services/seo-optimization" },
+  { name: "Brand Identity", href: "/services/brand-identity" },
+  { name: "E-commerce", href: "/services/e-commerce" },
+  { name: "Mobile Apps", href: "/services/mobile-apps" },
+  { name: "Website Maintenance", href: "/services/website-maintenance" },
   { name: "Content Marketing", href: "/services/content-marketing" },
   { name: "Social Media", href: "/services/social-media" },
   { name: "PPC Management", href: "/services/ppc-management" },
@@ -55,13 +61,13 @@ export function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link 
-              href="https://rtnglobal.co/"
+              href="https://rtnglobal.site/"
               className="text-primary font-bold text-xl flex items-center space-x-2"
             >
               <span>RTN Global</span>
             </Link>
             
-            <p className="mt-4 text-sm">
+            <p className="mt-4 text-base">
               RTN Global offers custom web solutions including Wix development, MERN stack applications, 
               and React Native mobile apps. Our services span web development and digital marketing.
             </p>
@@ -69,15 +75,15 @@ export function Footer() {
             <div className="mt-6 flex flex-col space-y-2">
               <div className="flex items-center">
                 <MapPinIcon className="h-4 w-4 mr-2 text-primary" />
-                <span className="text-sm">1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US</span>
+                <span className="text-base">1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US</span>
               </div>
               <div className="flex items-center">
                 <PhoneIcon className="h-4 w-4 mr-2 text-primary" />
-                <span className="text-sm">‪+1 505 528 6780‬‬</span>
+                <span className="text-base">‪+1 (505) 528 0265‬‬</span>
               </div>
               <div className="flex items-center">
                 <MailIcon className="h-4 w-4 mr-2 text-primary" />
-                <span className="text-sm">info@rtnglobal.site</span>
+                <span className="text-base">info@rtnglobal.site</span>
               </div>
             </div>
             
@@ -140,7 +146,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link 
                     href={link.href}
-                    className="text-sm hover:text-primary transition-colors"
+                    className="text-base hover:text-primary transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -156,7 +162,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link 
                     href={link.href}
-                    className="text-sm hover:text-primary transition-colors"
+                    className="text-base hover:text-primary transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -172,7 +178,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link 
                     href={link.href}
-                    className="text-sm hover:text-primary transition-colors"
+                    className="text-base hover:text-primary transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -186,7 +192,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link 
                     href={link.href}
-                    className="text-sm hover:text-primary transition-colors"
+                    className="text-base hover:text-primary transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -200,7 +206,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-border">
           <div className="max-w-md">
             <h3 className="font-semibold text-foreground">Subscribe to our newsletter</h3>
-            <p className="mt-2 text-sm">
+            <p className="mt-2 text-base">
               Get the latest news and updates from RTN Global delivered to your inbox.
             </p>
             <div className="mt-4 flex gap-2">
@@ -215,7 +221,7 @@ export function Footer() {
         </div>
         
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-border text-sm text-center">
+        <div className="mt-12 pt-8 border-t border-border text-base text-center">
           <p>&copy; {currentYear} RTN Global. All rights reserved.</p>
         </div>
       </div>

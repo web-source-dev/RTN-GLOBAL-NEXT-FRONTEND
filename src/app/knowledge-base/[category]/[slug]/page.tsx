@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 import { categories, generateArticleData, generateTableOfContents, formatContent } from "@/data/knowledge-base";
 import { useState } from "react";
+import { H1, H3, H4, P, Lead } from "@/components/ui/typography";
 
 type ArticlePageProps = {
   params: {
@@ -78,7 +79,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
     "@type": "TechArticle",
     "headline": article.title,
     "description": article.description,
-    "image": "https://rtnglobal.co/images/knowledge-base/default-article.jpg",
+    "image": "https://rtnglobal.site/images/knowledge-base/default-article.jpg",
     "datePublished": article.date || new Date().toISOString(),
     "dateModified": article.lastUpdated || new Date().toISOString(),
     "author": {
@@ -88,8 +89,8 @@ export default function ArticlePage({ params }: ArticlePageProps) {
     "publisher": {
       "@type": "Organization",
       "name": "RTN Global",
-      "url": "https://rtnglobal.co/",
-      "logo": "https://rtnglobal.co/logo.png",
+      "url": "https://rtnglobal.site/",
+      "logo": "https://rtnglobal.site/logo.png",
       "founder": {
         "@type": "Person",
         "name": "Muhammad Tayyab"
@@ -105,7 +106,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
-        "telephone": "+1 505 528 6780",
+        "telephone": "+1 (505) 528 0265",
         "email": "info@rtnglobal.site"
       },
       "sameAs": [
@@ -121,9 +122,9 @@ export default function ArticlePage({ params }: ArticlePageProps) {
     "keywords": article.tags.join(", "),
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://rtnglobal.co/knowledge-base/${category}/${slug}`
+      "@id": `https://rtnglobal.site/knowledge-base/${category}/${slug}`
     },
-    "url": `https://rtnglobal.co/knowledge-base/${category}/${slug}`,
+    "url": `https://rtnglobal.site/knowledge-base/${category}/${slug}`,
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -131,25 +132,25 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://rtnglobal.co"
+          "item": "https://rtnglobal.site"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Knowledge Base",
-          "item": "https://rtnglobal.co/knowledge-base"
+          "item": "https://rtnglobal.site/knowledge-base"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": categoryInfo.title,
-          "item": `https://rtnglobal.co/knowledge-base/${category}`
+          "item": `https://rtnglobal.site/knowledge-base/${category}`
         },
         {
           "@type": "ListItem",
           "position": 4,
           "name": article.title,
-          "item": `https://rtnglobal.co/knowledge-base/${category}/${slug}`
+          "item": `https://rtnglobal.site/knowledge-base/${category}/${slug}`
         }
       ]
     }
@@ -197,8 +198,8 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           
           {/* Article Header */}
           <div className="max-w-3xl">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight">{article.title}</h1>
-            <p className="text-muted-foreground text-lg mb-5">{article.description}</p>
+            <H1 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight">{article.title}</H1>
+            <P className="text-muted-foreground text-lg mb-5">{article.description}</P>
             
             {/* Article Meta */}
             <div className="flex flex-wrap items-center gap-5 text-sm text-muted-foreground">
@@ -225,10 +226,10 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <div className="hidden lg:block lg:col-span-3 lg:row-span-2">
             <div className="sticky top-8">
               <div className="p-5 bg-muted/40 rounded-lg border border-border">
-                <h3 className="font-semibold mb-4 flex items-center gap-2 text-base">
+                <H3 className="font-semibold mb-4 flex items-center gap-2 text-base">
                   <BookOpen className="w-4 h-4" />
                   Table of Contents
-                </h3>
+                </H3>
                 <nav className="space-y-1">
                   {tableOfContents.map((heading) => (
                     <a 
@@ -246,7 +247,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               
               {/* Article Actions */}
               <div className="mt-6 p-5 bg-muted/40 rounded-lg border border-border">
-                <h3 className="font-semibold mb-4 text-base">Article Actions</h3>
+                <H3 className="font-semibold mb-4 text-base">Article Actions</H3>
                 <div className="space-y-2.5">
                   <Button variant="outline" size="sm" className="w-full justify-start gap-2" onClick={handleCopyLink}>
                     {copied ? (
@@ -276,7 +277,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
               {/* Related Articles - Desktop */}
               <div className="mt-6 p-5 bg-muted/40 rounded-lg border border-border">
-                <h3 className="font-semibold mb-4 text-base">Related Articles</h3>
+                <H3 className="font-semibold mb-4 text-base">Related Articles</H3>
                 <div className="space-y-3">
                   {article.relatedArticles.map((relatedArticle, index) => (
                     <Link 
@@ -284,9 +285,9 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                       href={relatedArticle.path}
                       className="block p-3 rounded-md hover:bg-primary/5 transition-colors border border-transparent hover:border-primary/20"
                     >
-                      <h4 className="font-medium text-sm hover:text-primary transition-colors line-clamp-2">
+                      <H4 className="font-medium text-sm hover:text-primary transition-colors line-clamp-2">
                         {relatedArticle.title}
-                      </h4>
+                      </H4>
                     </Link>
                   ))}
                 </div>
@@ -363,7 +364,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               
               {/* Article Feedback */}
               <div className="mt-12 pt-6 border-t border-border">
-                <h3 className="text-lg font-medium mb-4">Was this article helpful?</h3>
+                <H3 className="text-lg font-medium mb-4">Was this article helpful?</H3>
                 <div className="flex items-center gap-4">
                   <Button 
                     variant={feedbackGiven === 'helpful' ? 'default' : 'outline'} 
@@ -386,7 +387,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 </div>
                 {feedbackGiven === 'unhelpful' && (
                   <div className="mt-4">
-                    <p className="text-muted-foreground mb-3">We&apos;re sorry this article wasn&apos;t helpful. You might want to:</p>
+                    <P className="text-muted-foreground mb-3">We&apos;re sorry this article wasn&apos;t helpful. You might want to:</P>
                     <div className="space-y-2">
                       <Link href="/contact" className="text-primary hover:underline flex items-center gap-1.5">
                         <MessageSquare className="h-4 w-4" /> Contact our support team
@@ -401,20 +402,20 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
               {/* Enhanced: Related Services and Industries Section */}
               <div className="mt-12 pt-6 border-t border-border">
-                <h3 className="text-lg font-medium mb-6">Related Services & Industries</h3>
+                <H3 className="text-lg font-medium mb-6">Related Services & Industries</H3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Related Services */}
                   <Link 
                     href="/services"
                     className="p-4 bg-muted/30 rounded-lg hover:bg-primary/5 hover:border-primary/10 border border-transparent transition-colors"
                   >
-                    <h4 className="font-medium mb-2 flex items-center gap-2">
+                    <H4 className="font-medium mb-2 flex items-center gap-2">
                       <FileText className="h-4 w-4 text-primary" />
                       Our Services
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
+                    </H4>
+                    <P className="text-sm text-muted-foreground">
                       Explore our comprehensive range of web development and digital marketing solutions.
-                    </p>
+                    </P>
                   </Link>
                   
                   {/* Related Industries */}
@@ -422,49 +423,49 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                     href="/industries"
                     className="p-4 bg-muted/30 rounded-lg hover:bg-primary/5 hover:border-primary/10 border border-transparent transition-colors"
                   >
-                    <h4 className="font-medium mb-2 flex items-center gap-2">
+                    <H4 className="font-medium mb-2 flex items-center gap-2">
                       <Briefcase className="h-4 w-4 text-primary" />
                       Industry Solutions
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
+                    </H4>
+                    <P className="text-sm text-muted-foreground">
                       Discover how our expertise benefits businesses across different industries.
-                    </p>
+                    </P>
                   </Link>
                 </div>
               </div>
               
               {/* Enhanced: Recommended Reading Section */}
               <div className="mt-12 pt-6 border-t border-border">
-                <h3 className="text-lg font-medium mb-6">Recommended Reading</h3>
+                <H3 className="text-lg font-medium mb-6">Recommended Reading</H3>
                 <div className="space-y-4">
                   <Link 
                     href="/blog"
                     className="block p-4 bg-muted/30 rounded-lg hover:bg-primary/5 hover:border-primary/10 border border-transparent transition-colors"
                   >
-                    <h4 className="font-medium mb-2">Latest Blog Posts</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <H4 className="font-medium mb-2">Latest Blog Posts</H4>
+                    <P className="text-sm text-muted-foreground">
                       Read our latest thoughts, insights, and tips on web development and digital marketing.
-                    </p>
+                    </P>
                   </Link>
                   
                   <Link 
                     href="/case-studies"
                     className="block p-4 bg-muted/30 rounded-lg hover:bg-primary/5 hover:border-primary/10 border border-transparent transition-colors"
                   >
-                    <h4 className="font-medium mb-2">Case Studies</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <H4 className="font-medium mb-2">Case Studies</H4>
+                    <P className="text-sm text-muted-foreground">
                       See real-world examples of how we&apos;ve helped businesses achieve their goals.
-                    </p>
+                    </P>
                   </Link>
                   
                   <Link 
                     href="/knowledge-base"
                     className="block p-4 bg-muted/30 rounded-lg hover:bg-primary/5 hover:border-primary/10 border border-transparent transition-colors"
                   >
-                    <h4 className="font-medium mb-2">Knowledge Base Home</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <H4 className="font-medium mb-2">Knowledge Base Home</H4>
+                    <P className="text-sm text-muted-foreground">
                       Browse all categories and find more helpful guides and resources.
-                    </p>
+                    </P>
                   </Link>
                 </div>
               </div>
@@ -482,10 +483,10 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             
             {/* Next Steps / CTA */}
             <div className="mt-10 p-6 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
-              <h3 className="font-semibold text-xl mb-4">Still have questions?</h3>
-              <p className="text-muted-foreground mb-5">
+              <H3 className="font-semibold text-xl mb-4">Still have questions?</H3>
+              <P className="text-muted-foreground mb-5">
                 If you couldn&apos;t find the information you were looking for, our support team is here to help.
-              </p>
+              </P>
               <div className="flex flex-wrap gap-4">
                 <Button asChild className="gap-2">
                   <Link href="/support/submit">

@@ -18,7 +18,7 @@ export async function generateMetadata({
     };
   }
 
-  const canonicalUrl = `https://rtnglobal.co/knowledge-base/${category}`;
+  const canonicalUrl = `https://rtnglobal.site/knowledge-base/${category}`;
   
   // Create metadata with category information
   return {
@@ -52,11 +52,11 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'en-US': `https://rtnglobal.co/knowledge-base/${category}`,
-        'en-GB': `https://rtnglobal.co/knowledge-base/${category}`,
-        'de-DE': `https://rtnglobal.co/de/wissensdatenbank/${category}`,
-        'fr-FR': `https://rtnglobal.co/fr/base-de-connaissances/${category}`,
-        'es-ES': `https://rtnglobal.co/es/base-de-conocimiento/${category}`,
+        'en-US': `https://rtnglobal.site/knowledge-base/${category}`,
+        'en-GB': `https://rtnglobal.site/knowledge-base/${category}`,
+        'de-DE': `https://rtnglobal.site/de/wissensdatenbank/${category}`,
+        'fr-FR': `https://rtnglobal.site/fr/base-de-connaissances/${category}`,
+        'es-ES': `https://rtnglobal.site/es/base-de-conocimiento/${category}`,
       },
     },
     robots: {
@@ -70,7 +70,7 @@ export async function generateMetadata({
         'max-snippet': -1,
       },
     },
-    metadataBase: new URL('https://rtnglobal.co'),
+    metadataBase: new URL('https://rtnglobal.site'),
     viewport: {
       width: 'device-width',
       initialScale: 1,
@@ -98,7 +98,7 @@ export async function generateMetadata({
       'msapplication-tap-highlight': 'no',
       'theme-color': '#0f172a',
       'contact:email': 'info@rtnglobal.site',
-      'contact:phone': '+1 505 528 6780',
+      'contact:phone': '+1 (505) 528 0265',
       'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
       'structured-data': JSON.stringify({
         '@context': 'https://schema.org',
@@ -109,12 +109,12 @@ export async function generateMetadata({
         provider: {
           '@type': 'Organization',
           name: 'RTN Global',
-          url: 'https://rtnglobal.co',
+          url: 'https://rtnglobal.site',
         },
         isPartOf: {
           '@type': 'WebSite',
           name: 'RTN Global Knowledge Base',
-          url: 'https://rtnglobal.co/knowledge-base',
+          url: 'https://rtnglobal.site/knowledge-base',
         },
         about: {
           '@type': 'Thing',

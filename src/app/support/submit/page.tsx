@@ -36,12 +36,12 @@ export default function SubmitSupportRequestPage() {
             "@type": "WebPage",
             "name": "Submit a Support Request | RTN Global",
             "description": "Submit a support ticket and get assistance from our technical team. Describe your issue, upload screenshots, and track the status of your request.",
-            "url": "https://rtnglobal.co/support/submit",
+            "url": "https://rtnglobal.site/support/submit",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -57,7 +57,7 @@ export default function SubmitSupportRequestPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [

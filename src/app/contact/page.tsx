@@ -18,6 +18,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Separator } from "@/components/ui/separator"
+import { H1, H2, H3, H4, P, Lead } from "@/components/ui/typography"
 
 // Create a schema for contact form validation
 const contactFormSchema = z.object({
@@ -39,7 +40,7 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [serverError, setServerError] = useState<string | null>(null)
   const [formSubmitted, setFormSubmitted] = useState(false)
-  
+
   // Define form with React Hook Form and Zod validation
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -53,12 +54,12 @@ export default function ContactPage() {
       message: "",
     },
   })
-  
+
   const onSubmit = async (data: ContactFormValues) => {
     try {
       setIsSubmitting(true)
       setServerError(null)
-      
+
       // Format data to match backend model
       const formattedData = {
         name: `${data.firstName} ${data.lastName}`,
@@ -68,36 +69,36 @@ export default function ContactPage() {
         service: data.service,
         message: data.message,
       }
-      
+
       // Submit to API
       await FormsAPI.submitContact(formattedData)
-      
+
       toast({
         title: "Message Sent Successfully",
         description: "Thank you for your message. We&apos;ll get back to you soon!",
         variant: "default",
       })
-      
+
       // Reset form and set submitted state
       form.reset()
       setFormSubmitted(true)
-      
+
       // Reset submitted state after 5 seconds
       setTimeout(() => {
         setFormSubmitted(false)
       }, 5000)
     } catch (error: unknown) {
       console.error("Contact form submission error:", error)
-      
+
       if (error instanceof Error) {
         setServerError(
-          error.message || 
+          error.message ||
           "There was an error submitting your message. Please try again later."
         )
       } else {
         setServerError("There was an error submitting your message. Please try again later.")
       }
-      
+
       toast({
         title: "Submission Failed",
         description: "There was a problem sending your message. Please try again.",
@@ -107,13 +108,13 @@ export default function ContactPage() {
       setIsSubmitting(false)
     }
   }
-  
+
   // Animation variants
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
   }
-  
+
   return (
     <Layout>
       {/* JSON-LD structured data */}
@@ -125,12 +126,12 @@ export default function ContactPage() {
             "@type": "ContactPage",
             "name": "Contact Us - RTN Global",
             "description": "Get in touch with RTN Global. Contact us for inquiries, support, or to start your next project.",
-            "url": "https://rtnglobal.co/contact",
+            "url": "https://rtnglobal.site/contact",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -146,7 +147,7 @@ export default function ContactPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [
@@ -161,15 +162,24 @@ export default function ContactPage() {
           })
         }}
       />
-      
+
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 overflow-hidden border-b">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10 z-0" />
-        <div className="absolute inset-0 bg-grid-white/10 z-0" />
-        
+      <section className="relative py-24 md:py-40 overflow-hidden border-b">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <OptimizedImage
+            src="/images/hero/contact-hero.jpg"
+            alt="Contact RTN Global"
+            fill
+            className="object-cover w-full h-full"
+            priority={true}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60" />
+        </div>
+
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="max-w-3xl mx-auto text-center"
+          <motion.div
+            className="max-w-4xl mx-auto text-center"
             initial="hidden"
             animate="visible"
             variants={{
@@ -177,51 +187,83 @@ export default function ContactPage() {
               visible: {
                 opacity: 1,
                 transition: {
-                  staggerChildren: 0.2
+                  staggerChildren: 0.3
                 }
               }
             }}
           >
             <motion.div variants={fadeIn}>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
-                Get in Touch
-              </h1>
+              <div className="inline-block rounded-full bg-primary/10 backdrop-blur-sm px-6 py-2 text-base font-medium text-primary mb-8">
+                Let's Connect
+              </div>
             </motion.div>
-            
+
             <motion.div variants={fadeIn}>
-              <p className="mt-6 text-xl text-muted-foreground">
-                Have a question or want to work with us? We&apos;re here to help you navigate your next digital transformation.
-              </p>
+              <H1 className="text-5xl md:text-6xl lg:text-7xl leading-tight mb-8 text-foreground drop-shadow-sm">
+                Get in Touch
+              </H1>
             </motion.div>
-            
-            <motion.div variants={fadeIn} className="mt-8 flex flex-wrap gap-4 justify-center">
-              <Button asChild size="lg" className="rounded-full">
+
+            <motion.div variants={fadeIn}>
+              <Lead className="mt-6 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-foreground/90 drop-shadow-sm">
+                Have a question or want to work with us? We&apos;re here to help you navigate your next digital transformation. Let's discuss how we can bring your vision to life.
+              </Lead>
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="mt-12 flex flex-wrap gap-6 justify-center">
+              <Button asChild size="lg" className="rounded-full px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <a href="#contact-form">
-                  Send a Message <ArrowRight className="ml-2 h-4 w-4" />
+                  Send a Message <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-full">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="rounded-full px-8 py-6 text-lg bg-white/90 backdrop-blur-sm border-2 hover:bg-white transition-all duration-300 hover:scale-105"
+              >
                 <a href="tel:+1234567890">
-                  <Phone className="mr-2 h-4 w-4" /> Call Us Now
+                  <Phone className="mr-2 h-5 w-5" /> Call Us Now
                 </a>
               </Button>
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+              <div className="flex items-center justify-center gap-3 text-foreground/80">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  <CheckCircle2 className="h-5 w-5 text-primary" />
+                </div>
+                <span className="text-sm font-medium">24/7 Support</span>
+              </div>
+              <div className="flex items-center justify-center gap-3 text-foreground/80">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  <CheckCircle2 className="h-5 w-5 text-primary" />
+                </div>
+                <span className="text-sm font-medium">Quick Response</span>
+              </div>
+              <div className="flex items-center justify-center gap-3 text-foreground/80">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  <CheckCircle2 className="h-5 w-5 text-primary" />
+                </div>
+                <span className="text-sm font-medium">Expert Consultation</span>
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
-      
+
       {/* Contact Information */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">Our Contact Information</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <H2 className="mb-4">Our Contact Information</H2>
+            <Lead className="max-w-2xl mx-auto">
               Connect with us through any of these channels and experience our commitment to exceptional service.
-            </p>
+            </Lead>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -231,20 +273,20 @@ export default function ContactPage() {
               <div className="mx-auto w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
                 <Mail className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Email Us</h3>
+              <H4 className="mb-2">Email Us</H4>
               <p className="text-muted-foreground mb-4">
                 For inquiries, feedback, or support
               </p>
-              <a 
-                href="mailto:info@rtnglobal.com" 
+              <a
+                href="mailto:info@rtnglobal.sitem"
                 className="text-primary hover:underline font-medium inline-flex items-center"
               >
-                info@rtnglobal.com
+                info@rtnglobal.sitem
                 <ArrowRight className="ml-1 h-3 w-3" />
               </a>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -254,20 +296,20 @@ export default function ContactPage() {
               <div className="mx-auto w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
                 <Phone className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Call Us</h3>
+              <H4 className="mb-2">Call Us</H4>
               <p className="text-muted-foreground mb-4">
                 Speak with our customer support team
               </p>
-              <a 
-                href="tel:+1234567890" 
+              <a
+                href="tel:+1234567890"
                 className="text-primary hover:underline font-medium inline-flex items-center"
               >
                 +1 (234) 567-890
                 <ArrowRight className="ml-1 h-3 w-3" />
               </a>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -277,7 +319,7 @@ export default function ContactPage() {
               <div className="mx-auto w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
                 <Clock className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Business Hours</h3>
+              <H4 className="mb-2">Business Hours</H4>
               <p className="text-muted-foreground mb-4">
                 We&apos;re available during these hours
               </p>
@@ -286,8 +328,8 @@ export default function ContactPage() {
                 9:00 AM - 5:00 PM EST
               </span>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -297,7 +339,7 @@ export default function ContactPage() {
               <div className="mx-auto w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
                 <Building className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Headquarters</h3>
+              <H4 className="mb-2">Headquarters</H4>
               <p className="text-muted-foreground mb-4">
                 Visit our main office in person
               </p>
@@ -309,104 +351,105 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      
+
       {/* Contact Form and Map Section */}
       <section id="contact-form" className="py-16 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left side - Info and Map */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold tracking-tight mb-6">How Can We Help?</h2>
-                <p className="text-muted-foreground mb-6">
+                <H2 className="mb-6">How Can We Help?</H2>
+                <P className="mb-6">
                   We&apos;re here to answer your questions and discuss how our solutions can help your business grow. Fill out the form, and we&apos;ll be in touch as soon as possible.
-                </p>
-                
+                </P>
+
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <CheckCircle2 className="h-5 w-5 text-primary mr-3 mt-0.5" />
                     <div>
-                      <h4 className="font-medium">Dedicated Support</h4>
-                      <p className="text-sm text-muted-foreground">Our team is available to provide personalized assistance</p>
+                      <H4 className="font-medium">Dedicated Support</H4>
+                      <p className="text-md text-muted-foreground">Our team is available to provide personalized assistance</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <CheckCircle2 className="h-5 w-5 text-primary mr-3 mt-0.5" />
                     <div>
-                      <h4 className="font-medium">Quick Response</h4>
-                      <p className="text-sm text-muted-foreground">We typically respond to all inquiries within 24 hours</p>
+                      <H4 className="font-medium">Quick Response</H4>
+                      <p className="text-md text-muted-foreground">We typically respond to all inquiries within 24 hours</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start">
                     <CheckCircle2 className="h-5 w-5 text-primary mr-3 mt-0.5" />
                     <div>
-                      <h4 className="font-medium">Expert Consultation</h4>
-                      <p className="text-sm text-muted-foreground">Get professional advice tailored to your business needs</p>
+                      <H4 className="font-medium">Expert Consultation</H4>
+                      + q<p className="text-md text-muted-foreground">Get professional advice tailored to your business needs</p>
                     </div>
                   </div>
                 </div>
               </div>
-              
-              <Separator />
-              
+
               <div>
-                <h3 className="text-xl font-semibold mb-4">Our Location</h3>
+                <H3 className="mb-4">Our Location</H3>
                 <div className="bg-card border border-border rounded-xl overflow-hidden shadow-md">
                   <div className="relative h-80">
-                    <OptimizedImage 
-                      src="/images/map.jpg" 
-                      alt="Office Location Map" 
-                      fill 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
-                      <Button asChild variant="default" size="sm" className="rounded-full shadow-lg">
-                        <a 
-                          href="https://maps.google.com/?q=123+Business+Avenue+New+York+NY+10001" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                        >
-                          <MapPin className="h-4 w-4 mr-2" /> Get Directions
-                        </a>
-                      </Button>
-                    </div>
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2154567890123!2d-74.00601508459372!3d40.71277537933157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1234567890"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="RTN Global Office Location"
+                      className="w-full h-full"
+                    ></iframe>
                   </div>
                   <div className="p-4">
-                    <h4 className="font-medium mb-2">RTN Global Headquarters</h4>
+                    <H4 className="mb-2">RTN Global Headquarters</H4>
                     <address className="text-sm text-muted-foreground not-italic">
                       123 Business Avenue, Suite 100<br />
                       New York, NY 10001<br />
                       United States
                     </address>
+                    <Button asChild variant="outline" size="sm" className="mt-3 w-full">
+                      <a
+                        href="https://maps.google.com/?q=123+Business+Avenue+New+York+NY+10001"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <MapPin className="h-4 w-4 mr-2" /> Get Directions
+                      </a>
+                    </Button>
                   </div>
                 </div>
               </div>
-              </div>
-            
+            </div>
+
             {/* Right side - Contact Form */}
-            <div className="lg:col-span-3 sticky top-20">
+            <div>
               <Card className="border-primary/10 shadow-lg rounded-xl overflow-hidden">
                 <CardHeader className="bg-gradient-to-r from-primary/5 to-primary/10 border-b border-primary/10">
-                  <CardTitle className="text-2xl">Send Us a Message</CardTitle>
+                  <CardTitle className="text-2xl font-display">Send Us a Message</CardTitle>
                   <CardDescription>
                     Fill out the form below and we&apos;ll get back to you as soon as possible.
                   </CardDescription>
                 </CardHeader>
-                
+
                 <CardContent className="pt-6">
                   {formSubmitted ? (
                     <div className="text-center py-8">
                       <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
                         <CheckCircle2 className="h-8 w-8 text-primary" />
                       </div>
-                      <h3 className="text-xl font-semibold mb-2">Thank You!</h3>
+                      <H3 className="mb-2">Thank You!</H3>
                       <p className="text-muted-foreground mb-6">
                         Your message has been sent successfully. We&apos;ll get back to you shortly.
                       </p>
-                      <Button 
-                        variant="outline" 
+                      <Button
+                        variant="outline"
                         onClick={() => setFormSubmitted(false)}
                       >
                         Send Another Message
@@ -421,7 +464,7 @@ export default function ContactPage() {
                             <p>{serverError}</p>
                           </div>
                         )}
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                           <FormField
                             control={form.control}
@@ -436,7 +479,7 @@ export default function ContactPage() {
                               </FormItem>
                             )}
                           />
-                          
+
                           <FormField
                             control={form.control}
                             name="lastName"
@@ -451,7 +494,7 @@ export default function ContactPage() {
                             )}
                           />
                         </div>
-                        
+
                         <FormField
                           control={form.control}
                           name="email"
@@ -465,7 +508,7 @@ export default function ContactPage() {
                             </FormItem>
                           )}
                         />
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                           <FormField
                             control={form.control}
@@ -480,7 +523,7 @@ export default function ContactPage() {
                               </FormItem>
                             )}
                           />
-                          
+
                           <FormField
                             control={form.control}
                             name="company"
@@ -495,7 +538,7 @@ export default function ContactPage() {
                             )}
                           />
                         </div>
-                        
+
                         <FormField
                           control={form.control}
                           name="service"
@@ -522,7 +565,7 @@ export default function ContactPage() {
                             </FormItem>
                           )}
                         />
-                        
+
                         <FormField
                           control={form.control}
                           name="message"
@@ -530,18 +573,18 @@ export default function ContactPage() {
                             <FormItem>
                               <FormLabel>How can we help you?</FormLabel>
                               <FormControl>
-                                <Textarea 
-                                  placeholder="Please describe what you're looking for and any specific requirements you have." 
-                                  className="min-h-[120px] rounded-md" 
-                                  {...field} 
+                                <Textarea
+                                  placeholder="Please describe what you're looking for and any specific requirements you have."
+                                  className="min-h-[260px] rounded-md"
+                                  {...field}
                                 />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
                           )}
                         />
-                        
-                        <Button 
+
+                                                <Button 
                           type="submit" 
                           disabled={isSubmitting} 
                           className="w-full rounded-md"
@@ -560,7 +603,7 @@ export default function ContactPage() {
                     </Form>
                   )}
                 </CardContent>
-                
+
                 <CardFooter className="bg-muted/30 border-t px-6 py-4">
                   <p className="text-sm text-muted-foreground flex items-center">
                     <ShieldCheck className="h-4 w-4 mr-2 text-muted-foreground/70" />
@@ -572,78 +615,78 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      
+
       {/* FAQ Section */}
       <section className="py-16 md:py-24 bg-background border-t">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight">Frequently Asked Questions</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <H2>Frequently Asked Questions</H2>
+            <Lead className="mt-4">
               Find quick answers to common questions about our services and process.
-            </p>
+            </Lead>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all"
             >
-              <h3 className="text-lg font-semibold mb-3">What services do you offer?</h3>
+              <H4 className="mb-3">What services do you offer?</H4>
               <p className="text-muted-foreground">
-                We offer a comprehensive range of web development and digital marketing services, 
-                including custom website development, SEO, content marketing, social media 
+                We offer a comprehensive range of web development and digital marketing services,
+                including custom website development, SEO, content marketing, social media
                 management, PPC advertising, and email marketing.
               </p>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
               className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all"
             >
-              <h3 className="text-lg font-semibold mb-3">How much do your services cost?</h3>
+              <H4 className="mb-3">How much do your services cost?</H4>
               <p className="text-muted-foreground">
-                Our pricing is customized based on your specific needs and project requirements. 
-                We offer competitive rates and flexible packages to accommodate various budgets. 
+                Our pricing is customized based on your specific needs and project requirements.
+                We offer competitive rates and flexible packages to accommodate various budgets.
                 Contact us for a free consultation and quote.
               </p>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
               className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all"
             >
-              <h3 className="text-lg font-semibold mb-3">How long does it take to complete a project?</h3>
+              <H4 className="mb-3">How long does it take to complete a project?</H4>
               <p className="text-muted-foreground">
-                Project timelines vary depending on complexity and scope. A simple website 
-                might take 2-4 weeks, while more complex projects could take 2-3 months. 
+                Project timelines vary depending on complexity and scope. A simple website
+                might take 2-4 weeks, while more complex projects could take 2-3 months.
                 We&apos;ll provide a detailed timeline during our initial consultation.
               </p>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
               className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all"
             >
-              <h3 className="text-lg font-semibold mb-3">Do you work with clients outside the US?</h3>
+              <H4 className="mb-3">Do you work with clients outside the US?</H4>
               <p className="text-muted-foreground">
-                Yes, we work with clients globally. Our team is experienced in managing 
-                remote projects and can accommodate different time zones to ensure 
+                Yes, we work with clients globally. Our team is experienced in managing
+                remote projects and can accommodate different time zones to ensure
                 smooth communication and collaboration.
               </p>
             </motion.div>
           </div>
-          
+
           <div className="text-center mt-12">
             <Button asChild variant="outline" size="lg" className="rounded-full">
               <Link href="/faq">
@@ -653,15 +696,15 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      
+
       {/* CTA Section */}
       <section className="py-16 md:py-24 bg-primary/5 border-y">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold tracking-tight mb-6">Ready to Get Started?</h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <H2 className="mb-6">Ready to Get Started?</H2>
+            <Lead className="mb-8">
               Take the first step toward transforming your digital presence. Contact us today to schedule a free consultation with our experts.
-            </p>
+            </Lead>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg" className="rounded-full">
                 <a href="#contact-form">

@@ -205,7 +205,7 @@ export function BlogMegaMenu() {
                   categories.map((category, idx) => (
                     <div key={idx}>
                       <Link 
-                        href={`/blog/category/${encodeURIComponent(category)}`}
+                        href={`/blog?category=${encodeURIComponent(category)}`}
                         className="text-foreground/80 hover:text-primary transition-colors"
                       >
                         {category}

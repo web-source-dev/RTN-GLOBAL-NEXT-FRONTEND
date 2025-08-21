@@ -32,12 +32,12 @@ export default function SupportTicketStatusPage() {
             "@type": "WebPage",
             "name": "Support Ticket Status | RTN Global",
             "description": "Check the status of your support ticket, view details, and communicate with our support team through comments.",
-            "url": "https://rtnglobal.co/support/ticket-status",
+            "url": "https://rtnglobal.site/support/ticket-status",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -53,7 +53,7 @@ export default function SupportTicketStatusPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [

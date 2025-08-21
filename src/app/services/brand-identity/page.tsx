@@ -143,12 +143,12 @@ export default function BrandIdentityPage() {
             "name": "Brand Identity Design Services | RTN Global",
             "serviceType": "Brand Identity Design",
             "description": "Professional brand identity design services including logo design, brand guidelines, visual identity systems, and brand strategy development.",
-            "url": "https://rtnglobal.co/services/brand-identity",
+            "url": "https://rtnglobal.site/services/brand-identity",
             "provider": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -164,7 +164,7 @@ export default function BrandIdentityPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               }
             },
@@ -466,7 +466,7 @@ export default function BrandIdentityPage() {
                 Develop compelling content that tells your brand story and engages your target audience.
               </p>
               <Button variant="outline" className="w-full" asChild>
-                <Link href="/services/content-strategy">
+                <Link href="/services/content-marketing">
                   Learn More
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -485,7 +485,7 @@ export default function BrandIdentityPage() {
                 Amplify your brand&apos;s reach with strategic digital marketing campaigns that drive engagement and conversion.
               </p>
               <Button variant="outline" className="w-full" asChild>
-                <Link href="/services/digital-marketing">
+                <Link href="/services/content-marketing">
                   Learn More
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

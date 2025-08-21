@@ -92,12 +92,12 @@ export default function LogoutPage() {
             "@type": "WebPage",
             "name": "Logout - RTN Global",
             "description": "Securely sign out from your RTN Global account",
-            "url": "https://rtnglobal.co/auth/logout",
+            "url": "https://rtnglobal.site/auth/logout",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -113,7 +113,7 @@ export default function LogoutPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [

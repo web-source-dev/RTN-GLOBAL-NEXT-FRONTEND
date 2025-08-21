@@ -24,7 +24,7 @@ export default function LegalHomePage() {
     "@type": "WebPage",
     "name": "Legal Information & Policies | RTN Global",
     "description": "Access RTN Global's legal documents including Terms & Conditions, Privacy Policy, and Refund Policy. We are committed to transparency and protecting your rights.",
-    "url": "https://rtnglobal.com/legal",
+    "url": "https://rtnglobal.sitem/legal",
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -32,13 +32,13 @@ export default function LegalHomePage() {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://rtnglobal.com"
+          "item": "https://rtnglobal.sitem"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Legal",
-          "item": "https://rtnglobal.com/legal"
+          "item": "https://rtnglobal.sitem/legal"
         }
       ]
     },
@@ -47,7 +47,7 @@ export default function LegalHomePage() {
       "name": "RTN Global",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rtnglobal.com/images/logo.png"
+        "url": "https://rtnglobal.sitem/images/logo.png"
       }
     },
     "mainEntity": {
@@ -56,19 +56,19 @@ export default function LegalHomePage() {
         {
           "@type": "ListItem",
           "position": 1,
-          "url": "https://rtnglobal.com/legal/terms",
+          "url": "https://rtnglobal.sitem/legal/terms",
           "name": "Terms & Conditions"
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "url": "https://rtnglobal.com/legal/privacy",
+          "url": "https://rtnglobal.sitem/legal/privacy",
           "name": "Privacy Policy"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "url": "https://rtnglobal.com/legal/refund",
+          "url": "https://rtnglobal.sitem/legal/refund",
           "name": "Refund Policy"
         }
       ]

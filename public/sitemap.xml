@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Sitemap Index - References all other sitemaps -->
+  
+  <!-- Static Pages Sitemap -->
+  <sitemap>
+    <loc>https://rtnglobal.site/sitemap-static.xml</loc>
+    <lastmod>2024-01-15</lastmod>
+  </sitemap>
+  
+  <!-- Blog Posts Sitemap -->
+  <sitemap>
+    <loc>https://rtnglobal.site/sitemap-blog.xml</loc>
+    <lastmod>2024-01-15</lastmod>
+  </sitemap>
+  
+  <!-- Dynamic Content Sitemap (Services, Portfolio, Case Studies, Industries, etc.) -->
+  <sitemap>
+    <loc>https://rtnglobal.site/sitemap-dynamic.xml</loc>
+    <lastmod>2024-01-15</lastmod>
+  </sitemap>
+  
+  <!-- Knowledge Base Sitemap -->
+  <sitemap>
+    <loc>https://rtnglobal.site/sitemap-knowledge-base.xml</loc>
+    <lastmod>2024-01-15</lastmod>
+  </sitemap>
+  
+  <!-- Career Jobs Sitemap (for future job pages) -->
+  <sitemap>
+    <loc>https://rtnglobal.site/sitemap-jobs.xml</loc>
+    <lastmod>2024-01-15</lastmod>
+  </sitemap>
+  
+  <!-- Tags Sitemap -->
+  <sitemap>
+    <loc>https://rtnglobal.site/sitemap-tags.xml</loc>
+    <lastmod>2024-01-15</lastmod>
+  </sitemap>
+</sitemapindex>

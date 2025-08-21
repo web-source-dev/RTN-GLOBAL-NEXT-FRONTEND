@@ -111,8 +111,8 @@ export function TechnologiesSection() {
       ref={sectionRef}
     >
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-background to-background"></div>
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-black/70"></div>
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.05] pointer-events-none"></div>
       
       {/* Animated background blobs */}
       <motion.div 
@@ -150,23 +150,23 @@ export function TechnologiesSection() {
           transition={{ duration: 0.6 }}
         >
           <motion.div 
-            className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-4"
+            className="inline-block rounded-full bg-white/20 px-4 py-1.5 text-sm font-medium text-white mb-4"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.4 }}
           >
             Our Tech Stack
           </motion.div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Technologies We Use</h2>
-          <p className="text-lg text-muted-foreground">
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4 text-white">Technologies We Use</h2>
+          <p className="text-lg text-white/90">
             We leverage the latest and most reliable technologies to deliver high-quality, scalable solutions for our clients.
           </p>
         </motion.div>
         
-        <div className="mt-16 flex flex-col items-center gap-8">
+        <div className="mt-16 flex flex-col items-center gap-8 w-screen" style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }}>
           {/* First row of technology icons */}
           <motion.div 
-            className="flex flex-wrap justify-center gap-4 md:gap-6"
+            className="flex flex-wrap justify-center gap-4 md:gap-6 px-4 md:px-8 lg:px-16"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -233,7 +233,7 @@ export function TechnologiesSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <p className="text-muted-foreground max-w-5xl mx-auto mb-8">
+          <p className="text-white/90 max-w-5xl mx-auto mb-8">
             Want to discuss how our technical expertise can benefit your project? Get in touch with our development team.
           </p>
           <Link href="/contact">

@@ -5,19 +5,19 @@ export const metadata: Metadata = {
   description: 'Verify your RTN Global account email address. Activate your international RTN Global account by confirming your email.',
   keywords: 'verify email, email confirmation, account activation, email verification, RTN Global verification, confirm account',
   alternates: {
-    canonical: 'https://rtnglobal.co/auth/verify-email',
+    canonical: 'https://rtnglobal.site/auth/verify-email',
     languages: {
-      'en-US': 'https://rtnglobal.co/auth/verify-email',
-      'en-GB': 'https://rtnglobal.co/auth/verify-email',
-      'fr': 'https://rtnglobal.co/fr/auth/verify-email',
-      'de': 'https://rtnglobal.co/de/auth/verify-email',
-      'es': 'https://rtnglobal.co/es/auth/verify-email',
+      'en-US': 'https://rtnglobal.site/auth/verify-email',
+      'en-GB': 'https://rtnglobal.site/auth/verify-email',
+      'fr': 'https://rtnglobal.site/fr/auth/verify-email',
+      'de': 'https://rtnglobal.site/de/auth/verify-email',
+      'es': 'https://rtnglobal.site/es/auth/verify-email',
     }
   },
   openGraph: {
     title: 'Verify Email | RTN Global',
     description: 'Verify your RTN Global account email address. Activate your international RTN Global account by confirming your email.',
-    url: 'https://rtnglobal.co/auth/verify-email',
+    url: 'https://rtnglobal.site/auth/verify-email',
     siteName: 'RTN Global',
     locale: 'en_US',
     type: 'website',

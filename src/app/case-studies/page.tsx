@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, BarChart3, ArrowUpRight, Clock, Users, Target } from "lucide-react"
 import { caseStudies, getFeaturedCaseStudies } from "@/data/case-studies"
 import { OptimizedImage } from "@/components/ui/optimized-image"
+import { H1, H2, H3, H4, P, Lead } from "@/components/ui/typography"
 
 export default function CaseStudiesPage() {
   // Get data using utility functions from the data file
@@ -22,12 +23,12 @@ export default function CaseStudiesPage() {
             "@type": "CollectionPage",
             "name": "Case Studies - RTN Global",
             "description": "Explore detailed examinations of our client work, showcasing the challenges, solutions, and measurable results we've delivered.",
-            "url": "https://rtnglobal.co/case-studies",
+            "url": "https://rtnglobal.site/case-studies",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -43,7 +44,7 @@ export default function CaseStudiesPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [
@@ -61,14 +62,35 @@ export default function CaseStudiesPage() {
       {/* Hero Section */}
       <HeroSection
         title="Case Studies"
-        description="Explore detailed examinations of our client work, showcasing the challenges, solutions, and measurable results we've delivered."
-        backgroundClassName="bg-muted/30"
+        subtitle="Success Stories"
+        description="Explore detailed examinations of our client work, showcasing the challenges, solutions, and measurable results we've delivered. Discover how we've transformed businesses across industries."
+        imageUrl="/images/hero/case-studies-hero.jpg"
+        backgroundClassName="bg-gradient-to-br from-background via-background to-primary/5"
+        primaryCTA={{
+          text: "View All Case Studies",
+          href: "#featured-studies"
+        }}
+        secondaryCTA={{
+          text: "Get Your Free Consultation",
+          href: "/contact"
+        }}
+        features={[
+          "Real Results & Measurable Impact",
+          "Industry-Specific Solutions",
+          "Proven Success Stories",
+          "Transparent Process & Outcomes"
+        ]}
       />
       
       {/* Featured Case Studies */}
-      <section className="py-16">
+      <section id="featured-studies" className="py-20 bg-gradient-to-b from-background to-muted/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-12 text-center">Featured Success Stories</h2>
+          <div className="text-center mb-16">
+            <H2 className="mb-4">Featured Success Stories</H2>
+            <Lead className="max-w-3xl mx-auto">
+              Discover how we've helped businesses achieve remarkable results through innovative digital solutions and strategic thinking.
+            </Lead>
+          </div>
           
           <div className="grid gap-12">
             {featuredCaseStudies.map((study, index) => (
@@ -92,8 +114,8 @@ export default function CaseStudiesPage() {
                   <div className="space-y-6">
                     <div>
                       <div className="text-sm font-medium text-muted-foreground mb-2">{study.client} • {study.industry}</div>
-                      <h3 className="text-2xl font-bold mb-3">{study.title}</h3>
-                      <p className="text-muted-foreground">{study.summary}</p>
+                      <H3 className="mb-3">{study.title}</H3>
+                                              <P>{study.summary}</P>
                     </div>
                     
                     {/* Key Metric */}
@@ -225,11 +247,11 @@ export default function CaseStudiesPage() {
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold mb-6">Our Results-Driven Approach</h2>
-                <p className="text-muted-foreground mb-6">
-                  Every case study represents our strategic methodology in action. We combine research, 
-                  creativity, and data-driven decision making to deliver measurable results for our clients.
-                </p>
+                <H2 className="mb-6">Our Results-Driven Approach</H2>
+                                  <P className="mb-6">
+                    Every case study represents our strategic methodology in action. We combine research, 
+                    creativity, and data-driven decision making to deliver measurable results for our clients.
+                  </P>
                 
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
@@ -237,8 +259,8 @@ export default function CaseStudiesPage() {
                       <Target className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
-                      <h3 className="font-bold mb-1">Strategic Planning</h3>
-                      <p className="text-sm text-muted-foreground">We develop comprehensive strategies based on research and analysis.</p>
+                      <H4 className="mb-1">Strategic Planning</H4>
+                                              <P className="text-sm">We develop comprehensive strategies based on research and analysis.</P>
                     </div>
                   </div>
                   
@@ -247,8 +269,8 @@ export default function CaseStudiesPage() {
                       <Users className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                     </div>
                     <div>
-                      <h3 className="font-bold mb-1">Audience-Focused</h3>
-                      <p className="text-sm text-muted-foreground">We create solutions that resonate with your specific target audience.</p>
+                                              <H4 className="mb-1">Audience-Focused</H4>
+                                              <P className="text-sm">We create solutions that resonate with your specific target audience.</P>
                     </div>
                   </div>
                   
@@ -257,8 +279,8 @@ export default function CaseStudiesPage() {
                       <BarChart3 className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                     </div>
                     <div>
-                      <h3 className="font-bold mb-1">Metrics-Driven</h3>
-                      <p className="text-sm text-muted-foreground">We measure success through tangible business outcomes and data.</p>
+                                              <H4 className="mb-1">Metrics-Driven</H4>
+                                              <P className="text-sm">We measure success through tangible business outcomes and data.</P>
                     </div>
                   </div>
                 </div>

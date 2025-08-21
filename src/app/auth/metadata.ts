@@ -5,19 +5,19 @@ export const metadata: Metadata = {
   description: 'Secure authentication for RTN Global - Log in, sign up, or reset your password to access our global services platform.',
   keywords: 'authentication, login, register, sign up, RTN Global, secure access, account',
   alternates: {
-    canonical: 'https://rtnglobal.co/auth',
+    canonical: 'https://rtnglobal.site/auth',
     languages: {
-      'en-US': 'https://rtnglobal.co/auth',
-      'en-GB': 'https://rtnglobal.co/auth',
-      'fr': 'https://rtnglobal.co/fr/auth',
-      'de': 'https://rtnglobal.co/de/auth',
-      'es': 'https://rtnglobal.co/es/auth',
+      'en-US': 'https://rtnglobal.site/auth',
+      'en-GB': 'https://rtnglobal.site/auth',
+      'fr': 'https://rtnglobal.site/fr/auth',
+      'de': 'https://rtnglobal.site/de/auth',
+      'es': 'https://rtnglobal.site/es/auth',
     }
   },
   openGraph: {
     title: 'Authentication | RTN Global',
     description: 'Secure authentication for RTN Global - Log in, sign up, or reset your password to access our global services platform.',
-    url: 'https://rtnglobal.co/auth',
+    url: 'https://rtnglobal.site/auth',
     siteName: 'RTN Global',
     locale: 'en_US',
     type: 'website',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   other: {
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
   }
 } 

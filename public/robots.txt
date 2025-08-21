@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://rtnglobal.site/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Allow important pages
+Allow: /services/
+Allow: /portfolio/
+Allow: /case-studies/
+Allow: /industries/
+Allow: /blog/
+Allow: /about/
+Allow: /contact/
+Allow: /pricing/
+Allow: /team/
+Allow: /careers/
+Allow: /resources/
+Allow: /knowledge-base/
+
+# Crawl delay (optional)
+Crawl-delay: 1

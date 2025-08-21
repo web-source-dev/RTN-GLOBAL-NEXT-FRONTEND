@@ -53,19 +53,19 @@ export async function generateMetadata({ params }: { params: { industrySlug: str
       'max-video-preview': -1,
     },
     alternates: {
-      canonical: `https://rtnglobal.co/industries/${params.industrySlug}`,
+      canonical: `https://rtnglobal.site/industries/${params.industrySlug}`,
       languages: {
-        'en-US': `https://rtnglobal.co/industries/${params.industrySlug}`,
-        'en-GB': `https://rtnglobal.co/industries/${params.industrySlug}`,
-        'fr': `https://rtnglobal.co/fr/industries/${params.industrySlug}`,
-        'de': `https://rtnglobal.co/de/industries/${params.industrySlug}`,
-        'es': `https://rtnglobal.co/es/industries/${params.industrySlug}`,
+        'en-US': `https://rtnglobal.site/industries/${params.industrySlug}`,
+        'en-GB': `https://rtnglobal.site/industries/${params.industrySlug}`,
+        'fr': `https://rtnglobal.site/fr/industries/${params.industrySlug}`,
+        'de': `https://rtnglobal.site/de/industries/${params.industrySlug}`,
+        'es': `https://rtnglobal.site/es/industries/${params.industrySlug}`,
       }
     },
     openGraph: {
       title: `${industry.name} Digital Solutions | RTN Global`,
       description: ogDescription,
-      url: `https://rtnglobal.co/industries/${params.industrySlug}`,
+      url: `https://rtnglobal.site/industries/${params.industrySlug}`,
       siteName: 'RTN Global',
       locale: 'en_US',
       type: 'website',
@@ -107,7 +107,7 @@ export async function generateMetadata({ params }: { params: { industrySlug: str
       'industry:services': industry.services.map(service => service.title).join(','),
       'industry:tools': industry.tools.join(','),
       'contact:email': 'info@rtnglobal.site',
-      'contact:phone': '+1 505 528 6780',
+      'contact:phone': '+1 (505) 528 0265',
       'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
     }
   };

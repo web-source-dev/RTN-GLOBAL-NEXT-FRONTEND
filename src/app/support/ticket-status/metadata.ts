@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/support/ticket-status',
+    canonical: 'https://rtnglobal.site/support/ticket-status',
     languages: {
-      'en-US': 'https://rtnglobal.co/support/ticket-status',
-      'en-GB': 'https://rtnglobal.co/support/ticket-status',
-      'fr': 'https://rtnglobal.co/fr/support/ticket-status',
-      'de': 'https://rtnglobal.co/de/support/ticket-status',
-      'es': 'https://rtnglobal.co/es/support/ticket-status',
+      'en-US': 'https://rtnglobal.site/support/ticket-status',
+      'en-GB': 'https://rtnglobal.site/support/ticket-status',
+      'fr': 'https://rtnglobal.site/fr/support/ticket-status',
+      'de': 'https://rtnglobal.site/de/support/ticket-status',
+      'es': 'https://rtnglobal.site/es/support/ticket-status',
     }
   },
   openGraph: {
     title: 'Track Your Support Ticket Status | RTN Global',
     description: 'Monitor the progress of your support request and stay updated on the resolution process. Our ticket tracking system keeps you informed every step of the way.',
     type: 'website',
-    url: 'https://rtnglobal.co/support/ticket-status',
+    url: 'https://rtnglobal.site/support/ticket-status',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     other: {
       'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
       'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
-      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
+      me: ['https://rtnglobal.site', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     'support:privacy': 'Secure access system',
     'support:notifications': 'Email updates available',
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   }
 }; 

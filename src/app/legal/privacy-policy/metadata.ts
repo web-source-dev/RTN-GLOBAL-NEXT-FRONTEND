@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     "privacy practices"
   ],
   alternates: {
-    canonical: "https://rtnglobal.co/legal/privacy-policy",
+    canonical: "https://rtnglobal.site/legal/privacy-policy",
   },
   openGraph: {
     title: "Privacy Policy | Data Protection | RTN Global",
     description: "RTN Global's privacy policy outlines how we collect, use, and protect your personal information when you use our services and website.",
-    url: "https://rtnglobal.co/legal/privacy-policy",
+    url: "https://rtnglobal.site/legal/privacy-policy",
     siteName: "RTN Global",
     locale: "en_US",
     type: "website",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   other: {
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
   }
 }; 

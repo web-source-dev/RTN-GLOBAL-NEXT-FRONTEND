@@ -5,19 +5,19 @@ export const metadata: Metadata = {
   description: 'Create your RTN Global account to access our international services and solutions. Join our global network of businesses and professionals.',
   keywords: 'register, sign up, create account, RTN Global account, join RTN Global, new account',
   alternates: {
-    canonical: 'https://rtnglobal.co/auth/register',
+    canonical: 'https://rtnglobal.site/auth/register',
     languages: {
-      'en-US': 'https://rtnglobal.co/auth/register',
-      'en-GB': 'https://rtnglobal.co/auth/register',
-      'fr': 'https://rtnglobal.co/fr/auth/register',
-      'de': 'https://rtnglobal.co/de/auth/register',
-      'es': 'https://rtnglobal.co/es/auth/register',
+      'en-US': 'https://rtnglobal.site/auth/register',
+      'en-GB': 'https://rtnglobal.site/auth/register',
+      'fr': 'https://rtnglobal.site/fr/auth/register',
+      'de': 'https://rtnglobal.site/de/auth/register',
+      'es': 'https://rtnglobal.site/es/auth/register',
     }
   },
   openGraph: {
     title: 'Register | RTN Global',
     description: 'Create your RTN Global account to access our international services and solutions. Join our global network of businesses and professionals.',
-    url: 'https://rtnglobal.co/auth/register',
+    url: 'https://rtnglobal.site/auth/register',
     siteName: 'RTN Global',
     locale: 'en_US',
     type: 'website',

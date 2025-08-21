@@ -2,6 +2,7 @@ import SearchBar from '@/components/careers/SearchBar';
 import FilterSidebar from '@/components/careers/FilterSidebar';
 import JobList from '@/components/careers/JobList';
 import { Button } from '@/components/ui/button';
+import { OptimizedImage } from '@/components/ui/optimized-image';
 
 async function getJobs() {
   try {
@@ -40,12 +41,12 @@ export default async function CareersPage({
     "@type": "CollectionPage",
     "name": "Careers at RTN Global",
     "description": "Discover career opportunities at RTN Global. Join our team and grow your skills in a collaborative environment.",
-    "url": "https://rtnglobal.co/careers",
+    "url": "https://rtnglobal.site/careers",
     "publisher": {
       "@type": "Organization",
       "name": "RTN Global",
-      "url": "https://rtnglobal.co/",
-      "logo": "https://rtnglobal.co/logo.png",
+      "url": "https://rtnglobal.site/",
+      "logo": "https://rtnglobal.site/logo.png",
       "founder": {
         "@type": "Person",
         "name": "Muhammad Tayyab"
@@ -61,7 +62,7 @@ export default async function CareersPage({
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
-        "telephone": "+1 505 528 6780",
+        "telephone": "+1 (505) 528 0265",
         "email": "info@rtnglobal.site"
       },
       "sameAs": [
@@ -85,6 +86,17 @@ export default async function CareersPage({
 
       {/* Hero Section with search */}
       <section className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-background py-20 md:py-28">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <OptimizedImage
+            src="/images/hero/careers-hero.jpg"
+            alt="Careers at RTN Global"
+            fill
+            className="object-cover opacity-20"
+            priority={true}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-background"></div>
+        </div>
         <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
         <div className="container px-4 mx-auto relative z-10">
           <div className="max-w-3xl mx-auto text-center">

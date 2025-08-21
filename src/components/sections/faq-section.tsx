@@ -49,7 +49,7 @@ export function FAQSection({
                   Support
                 </div>
                 
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-3">
                   Have <span className="text-muted-foreground">Questions?</span>
                 </h2>
                 

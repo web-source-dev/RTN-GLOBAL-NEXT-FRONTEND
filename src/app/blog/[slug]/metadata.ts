@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const modifyDate = new Date(post.updatedAt).toISOString();
     
     // Use canonical URL if provided
-    const canonical = post.canonicalUrl || `https://rtnglobal.co/blog/${slug}`;
+    const canonical = post.canonicalUrl || `https://rtnglobal.site/blog/${slug}`;
     
     // Use OpenGraph fields if available or fallback to defaults
     const ogTitle = post.ogTitle || post.title;
@@ -115,7 +115,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
       other: {
         'contact:email': 'info@rtnglobal.site',
-        'contact:phone': '+1 505 528 6780',
+        'contact:phone': '+1 (505) 528 0265',
         'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
       }
     };

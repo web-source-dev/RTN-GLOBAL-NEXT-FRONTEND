@@ -5,19 +5,19 @@ export const metadata: Metadata = {
   description: 'Log in to your RTN Global account to access our secure international platform and services. Secure and easy access worldwide.',
   keywords: 'login, sign in, account access, RTN Global login, secure login, global access',
   alternates: {
-    canonical: 'https://rtnglobal.co/auth/login',
+    canonical: 'https://rtnglobal.site/auth/login',
     languages: {
-      'en-US': 'https://rtnglobal.co/auth/login',
-      'en-GB': 'https://rtnglobal.co/auth/login',
-      'fr': 'https://rtnglobal.co/fr/auth/login',
-      'de': 'https://rtnglobal.co/de/auth/login',
-      'es': 'https://rtnglobal.co/es/auth/login',
+      'en-US': 'https://rtnglobal.site/auth/login',
+      'en-GB': 'https://rtnglobal.site/auth/login',
+      'fr': 'https://rtnglobal.site/fr/auth/login',
+      'de': 'https://rtnglobal.site/de/auth/login',
+      'es': 'https://rtnglobal.site/es/auth/login',
     }
   },
   openGraph: {
     title: 'Login | RTN Global',
     description: 'Log in to your RTN Global account to access our secure international platform and services. Secure and easy access worldwide.',
-    url: 'https://rtnglobal.co/auth/login',
+    url: 'https://rtnglobal.site/auth/login',
     siteName: 'RTN Global',
     locale: 'en_US',
     type: 'website',

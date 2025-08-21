@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
   },
   alternates: {
-    canonical: 'https://rtnglobal.co/team',
+    canonical: 'https://rtnglobal.site/team',
     languages: {
-      'en-US': 'https://rtnglobal.co/team',
-      'en-GB': 'https://rtnglobal.co/team',
-      'fr': 'https://rtnglobal.co/fr/team',
-      'de': 'https://rtnglobal.co/de/team',
-      'es': 'https://rtnglobal.co/es/team',
+      'en-US': 'https://rtnglobal.site/team',
+      'en-GB': 'https://rtnglobal.site/team',
+      'fr': 'https://rtnglobal.site/fr/team',
+      'de': 'https://rtnglobal.site/de/team',
+      'es': 'https://rtnglobal.site/es/team',
     }
   },
   openGraph: {
     title: 'Meet Our Expert Team | The Faces Behind RTN Global',
     description: 'Discover the talented professionals who make RTN Global an industry leader. Our diverse team combines technical expertise with innovative thinking to deliver outstanding results.',
     type: 'website',
-    url: 'https://rtnglobal.co/team',
+    url: 'https://rtnglobal.site/team',
     siteName: 'RTN Global',
     locale: 'en_US',
     images: [
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     other: {
       'wot-verification': 'd225e0e4ff8e770182408ec60e8d8c24',
       'ms-verify': '9f21e93909e646e0a2f3218d1afeb53c',
-      me: ['https://rtnglobal.co', 'https://www.linkedin.com/in/rtnglobalofficial']
+      me: ['https://rtnglobal.site', 'https://www.linkedin.com/in/rtnglobalofficial']
     }
   },
   other: {
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     'team:culture': 'Innovation-driven',
     'team:values': 'Excellence, Integrity, Client Focus',
     'contact:email': 'info@rtnglobal.site',
-    'contact:phone': '+1 505 528 6780',
+    'contact:phone': '+1 (505) 528 0265',
     'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US'
   },
   applicationName: 'RTN Global',

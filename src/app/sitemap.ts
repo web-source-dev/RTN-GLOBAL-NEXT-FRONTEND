@@ -11,7 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://rtnglobal.site'
   const lastModified = new Date()
 
-  // Static pages
+  // Static pages - Main pages
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -22,31 +22,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: `${baseUrl}/about`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/services`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/portfolio`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/industries`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/case-studies`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
     {
@@ -58,73 +58,73 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: `${baseUrl}/team`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/careers`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/pricing`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/contact`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/contact/free-consultation`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/faq`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/process`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/support`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/support/submit`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'monthly' as const,
       priority: 0.6,
     },
     {
       url: `${baseUrl}/support/ticket-status`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/newsletter/subscribe`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'monthly' as const,
       priority: 0.6,
     },
     {
       url: `${baseUrl}/site-map`,
       lastModified,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
     {
@@ -132,6 +132,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified,
       changeFrequency: 'daily' as const,
       priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/resources`,
+      lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
     },
   ]
 
@@ -175,8 +181,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  // Knowledge base
-  const kbCategories = ["getting-started", "technical", "api", "tutorials", "troubleshooting"];
+  // Knowledge base - Main page, categories, and individual articles
+  const kbCategories = ["getting-started", "technical", "api", "best-practices", "troubleshooting", "releases", "account-access", "billing"];
   const knowledgeBasePages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/knowledge-base`,
@@ -192,11 +198,121 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
-  // Portfolio
+  // Knowledge base individual articles
+  const kbArticles: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/knowledge-base/getting-started/platform-overview`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/knowledge-base/api/authentication`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/knowledge-base/account-access/reset-password`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/knowledge-base/troubleshooting/common-issues`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/knowledge-base/account-access/two-factor-authentication`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/knowledge-base/account-access/account-verification`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/knowledge-base/account-access/login-issues`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/knowledge-base/api/rate-limits`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/knowledge-base/api/error-handling`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/knowledge-base/api/new-endpoints`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+  ];
+
+  // Auth pages
+  const authPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/auth/login`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/auth/register`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/auth/forgot-password`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/auth/reset-password`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/auth/verify-email`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/auth/session-expired`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/auth/social-success`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.3,
+    },
+  ];
+
+  // Portfolio items
   const portfolioRoutes: MetadataRoute.Sitemap = portfolioItems.map((item) => ({
     url: `${baseUrl}/portfolio/${item.slug || item.title.toLowerCase().replace(/\s+/g, "-")}`,
     lastModified,
-    changeFrequency: 'weekly' as const,
+    changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
 
@@ -204,7 +320,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const caseStudyRoutes: MetadataRoute.Sitemap = caseStudies.map((study) => ({
     url: `${baseUrl}/case-studies/${study.slug}`,
     lastModified,
-    changeFrequency: 'weekly' as const,
+    changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
 
@@ -212,41 +328,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const industryRoutes: MetadataRoute.Sitemap = getAllIndustries().map((industry) => ({
     url: `${baseUrl}/industries/${industry.slug}`,
     lastModified,
-    changeFrequency: 'weekly' as const,
+    changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
 
-  // Services
+  // Services - All individual service pages
   const serviceRoutes: MetadataRoute.Sitemap = getAllServices().map((service) => ({
     url: `${baseUrl}/services/${service.slug}`,
     lastModified,
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
   }));
 
-  // Careers (example jobs)
-  const careerRoutes: MetadataRoute.Sitemap = [
+  // Service category pages
+  const serviceCategoryRoutes: MetadataRoute.Sitemap = [
     {
-      url: `${baseUrl}/careers/jobs/senior-frontend-developer`,
+      url: `${baseUrl}/services/brand-identity`,
       lastModified,
-      changeFrequency: 'weekly' as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/careers/jobs/ux-designer`,
-      lastModified,
-      changeFrequency: 'weekly' as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/careers/jobs/project-manager`,
-      lastModified,
-      changeFrequency: 'weekly' as const,
-      priority: 0.6,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
     },
   ];
 
-  // ✅ Blog & Tags get separate sitemaps
+  // Careers - Only main careers page (individual job pages are dynamic and not pre-defined)
+  const careerRoutes: MetadataRoute.Sitemap = [
+    // Note: Individual job pages are generated dynamically based on available job data
+    // They are not included in the sitemap as they depend on actual job listings
+  ];
+
+  // Blog & Tags sitemap references
   const blogAndTagRoutes: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/sitemap-blog.xml`,
@@ -262,15 +372,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
+  // Billing and account pages
+  const accountPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/billing`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    },
+  ];
+
   return [
     ...staticPages,
     ...legalPages,
     ...knowledgeBasePages,
+    ...kbArticles,
+    ...authPages,
     ...portfolioRoutes,
     ...caseStudyRoutes,
     ...industryRoutes,
     ...serviceRoutes,
+    ...serviceCategoryRoutes,
     ...careerRoutes,
     ...blogAndTagRoutes,
+    ...accountPages,
   ];
 } 

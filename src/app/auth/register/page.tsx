@@ -633,12 +633,12 @@ export default function RegisterPage() {
             "@type": "WebPage",
             "name": "Sign Up - RTN Global",
             "description": "Create a new account at RTN Global",
-            "url": "https://rtnglobal.co/auth/register",
+            "url": "https://rtnglobal.site/auth/register",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -654,7 +654,7 @@ export default function RegisterPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [

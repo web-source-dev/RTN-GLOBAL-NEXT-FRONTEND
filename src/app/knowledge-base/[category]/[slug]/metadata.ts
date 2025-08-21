@@ -30,7 +30,7 @@ export async function generateMetadata({
     };
   }
 
-  const canonicalUrl = `https://rtnglobal.co/knowledge-base/${category}/${slug}`;
+  const canonicalUrl = `https://rtnglobal.site/knowledge-base/${category}/${slug}`;
   
   // Create metadata with article information
   return {
@@ -69,11 +69,11 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        'en-US': `https://us.rtnglobal.co/knowledge-base/${category}/${slug}`,
-        'en-GB': `https://uk.rtnglobal.co/knowledge-base/${category}/${slug}`,
-        'de-DE': `https://de.rtnglobal.co/wissensdatenbank/${category}/${slug}`,
-        'fr-FR': `https://fr.rtnglobal.co/base-de-connaissances/${category}/${slug}`,
-        'es-ES': `https://es.rtnglobal.co/base-de-conocimiento/${category}/${slug}`,
+        'en-US': `https://us.rtnglobal.site/knowledge-base/${category}/${slug}`,
+        'en-GB': `https://uk.rtnglobal.site/knowledge-base/${category}/${slug}`,
+        'de-DE': `https://de.rtnglobal.site/wissensdatenbank/${category}/${slug}`,
+        'fr-FR': `https://fr.rtnglobal.site/base-de-connaissances/${category}/${slug}`,
+        'es-ES': `https://es.rtnglobal.site/base-de-conocimiento/${category}/${slug}`,
       },
     },
     robots: {
@@ -87,7 +87,7 @@ export async function generateMetadata({
         'max-snippet': -1,
       },
     },
-    metadataBase: new URL('https://rtnglobal.co'),
+    metadataBase: new URL('https://rtnglobal.site'),
     viewport: {
       width: 'device-width',
       initialScale: 1,
@@ -115,25 +115,25 @@ export async function generateMetadata({
       'msapplication-tap-highlight': 'no',
       'theme-color': '#0f172a',
       'contact:email': 'info@rtnglobal.site',
-      'contact:phone': '+1 505 528 6780',
+      'contact:phone': '+1 (505) 528 0265',
       'contact:address': '1209 MOUNTAIN ROAD PLNE, STE R, ALBUQUERQUE, NM, 87110, US',
       'structured-data': JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'TechArticle',
         headline: article.title,
         description: article.description,
-        image: 'https://rtnglobal.co/images/og-knowledge-base.jpg',
+        image: 'https://rtnglobal.site/images/og-knowledge-base.jpg',
         author: {
           '@type': 'Organization',
           name: 'RTN Global',
-          url: 'https://rtnglobal.co',
+          url: 'https://rtnglobal.site',
         },
         publisher: {
           '@type': 'Organization',
           name: 'RTN Global',
           logo: {
             '@type': 'ImageObject',
-            url: 'https://rtnglobal.co/images/logo.png',
+            url: 'https://rtnglobal.site/images/logo.png',
           },
         },
         datePublished: article.lastUpdated ? new Date(article.lastUpdated).toISOString() : new Date().toISOString(),

@@ -1028,12 +1028,12 @@ export default function SearchPage() {
             "@type": "WebPage",
             "name": "Search Results | RTN Global",
             "description": "Search across RTN Global's services, portfolio, blog posts, and knowledge resources.",
-            "url": "https://rtnglobal.co/search",
+            "url": "https://rtnglobal.site/search",
             "publisher": {
               "@type": "Organization",
               "name": "RTN Global",
-              "url": "https://rtnglobal.co/",
-              "logo": "https://rtnglobal.co/logo.png",
+              "url": "https://rtnglobal.site/",
+              "logo": "https://rtnglobal.site/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Tayyab"
@@ -1049,7 +1049,7 @@ export default function SearchPage() {
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "telephone": "+1 505 528 6780",
+                "telephone": "+1 (505) 528 0265",
                 "email": "info@rtnglobal.site"
               },
               "sameAs": [
@@ -1063,7 +1063,7 @@ export default function SearchPage() {
             },
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://rtnglobal.co/search?q={search_term_string}",
+              "target": "https://rtnglobal.site/search?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           })
