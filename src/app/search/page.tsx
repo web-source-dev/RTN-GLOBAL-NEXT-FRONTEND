@@ -915,41 +915,54 @@ function SearchPageContent() {
       
       {/* No search yet */}
       {!searchParams?.get("q") && (
-        <div className="container mx-auto px-4 py-12">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl font-bold mb-3">Popular Searches</h2>
-              <p className="text-muted-foreground">
-                Browse some of our most popular topics or use the search bar above
+        <div className="container mx-auto px-4 py-16">
+          <div className="max-w-6xl mx-auto">
+            {/* Popular Searches Section */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
+                <Search className="h-8 w-8 text-primary" />
+              </div>
+              <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                Popular Searches
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Discover our most popular topics or explore the search bar above to find exactly what you need
               </p>
             </div>
             
-            <div className="flex flex-wrap justify-center gap-2 mb-12">
-              {["Web Development", "Mobile Apps", "E-commerce", "Digital Marketing", "SEO", "UI/UX Design", "WordPress", "API Integration"].map((term) => (
-                <Button 
-                  key={term} 
-                  variant="outline" 
-                  className="rounded-full" 
-                  onClick={() => {
-                    setSearchQuery(term);
-                    router.push(`/search?q=${encodeURIComponent(term)}`);
-                    performSearch(term);
-                  }}
-                >
-                  {term}
-                </Button>
-              ))}
+            {/* Popular Search Tags */}
+            <div className="mb-16">
+              <div className="flex flex-wrap justify-center gap-3">
+                {["Web Development", "Mobile Apps", "E-commerce", "Digital Marketing", "SEO", "UI/UX Design", "WordPress", "API Integration", "React", "Node.js", "AWS", "Cloud Solutions"].map((term) => (
+                  <Button 
+                    key={term} 
+                    variant="outline" 
+                    size="sm"
+                    className="rounded-full px-6 py-2 hover:bg-primary hover:text-primary-foreground transition-all duration-200 border-primary/20 hover:border-primary" 
+                    onClick={() => {
+                      setSearchQuery(term);
+                      router.push(`/search?q=${encodeURIComponent(term)}`);
+                      performSearch(term);
+                    }}
+                  >
+                    {term}
+                  </Button>
+                ))}
+              </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Category Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <CategoryCard 
                 title="Services" 
                 icon={<Settings className="h-6 w-6" />}
                 href="/services"
+                description="Explore our comprehensive range of digital services"
                 links={[
                   { label: "Web Development", href: "/services/web-development" },
                   { label: "Mobile Apps", href: "/services/mobile-apps" },
-                  { label: "UI/UX Design", href: "/services/ui-ux-design" }
+                  { label: "UI/UX Design", href: "/services/ui-ux-design" },
+                  { label: "Digital Marketing", href: "/services/digital-marketing" }
                 ]}
               />
               
@@ -957,10 +970,12 @@ function SearchPageContent() {
                 title="Portfolio" 
                 icon={<Briefcase className="h-6 w-6" />}
                 href="/portfolio"
+                description="View our latest projects and success stories"
                 links={[
                   { label: "Recent Projects", href: "/portfolio" },
                   { label: "Case Studies", href: "/case-studies" },
-                  { label: "Client Testimonials", href: "/testimonials" }
+                  { label: "Client Testimonials", href: "/testimonials" },
+                  { label: "Industry Solutions", href: "/industries" }
                 ]}
               />
               
@@ -968,10 +983,12 @@ function SearchPageContent() {
                 title="Knowledge Base" 
                 icon={<BookOpen className="h-6 w-6" />}
                 href="/knowledge-base"
+                description="Access helpful guides, tutorials, and resources"
                 links={[
                   { label: "Getting Started", href: "/knowledge-base/getting-started" },
                   { label: "Tutorials", href: "/knowledge-base/tutorials" },
-                  { label: "FAQs", href: "/faq" }
+                  { label: "FAQs", href: "/faq" },
+                  { label: "Best Practices", href: "/knowledge-base/best-practices" }
                 ]}
               />
               
@@ -979,10 +996,12 @@ function SearchPageContent() {
                 title="Industries" 
                 icon={<Layers className="h-6 w-6" />}
                 href="/industries"
+                description="Solutions tailored for specific industries"
                 links={[
                   { label: "Technology", href: "/industries/technology" },
                   { label: "E-commerce", href: "/industries/e-commerce" },
-                  { label: "Healthcare", href: "/industries/healthcare" }
+                  { label: "Healthcare", href: "/industries/healthcare" },
+                  { label: "Finance", href: "/industries/finance" }
                 ]}
               />
               
@@ -990,10 +1009,12 @@ function SearchPageContent() {
                 title="Support" 
                 icon={<MessageSquare className="h-6 w-6" />}
                 href="/support"
+                description="Get help and support when you need it"
                 links={[
                   { label: "Contact Us", href: "/contact" },
                   { label: "Submit a Request", href: "/support/submit" },
-                  { label: "Ticket Status", href: "/support/ticket-status" }
+                  { label: "Ticket Status", href: "/support/ticket-status" },
+                  { label: "Live Chat", href: "/support/chat" }
                 ]}
               />
               
@@ -1001,12 +1022,36 @@ function SearchPageContent() {
                 title="Resources" 
                 icon={<FileText className="h-6 w-6" />}
                 href="/resources"
+                description="Downloadable resources and tools"
                 links={[
                   { label: "Guides & Ebooks", href: "/resources#guides" },
                   { label: "Templates", href: "/resources#templates" },
-                  { label: "Tools", href: "/resources#tools" }
+                  { label: "Tools", href: "/resources#tools" },
+                  { label: "Whitepapers", href: "/resources#whitepapers" }
                 ]}
               />
+            </div>
+            
+            {/* Call to Action */}
+            <div className="mt-16 text-center">
+              <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-2xl p-8 border border-primary/20">
+                <h3 className="text-xl font-semibold mb-3">Can't find what you're looking for?</h3>
+                <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+                  Our team is here to help. Reach out to us for personalized assistance and custom solutions.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button asChild>
+                    <Link href="/contact">
+                      Contact Our Team
+                    </Link>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <Link href="/support">
+                      Get Support
+                    </Link>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1182,27 +1227,33 @@ type CategoryCardProps = {
   title: string;
   icon: React.ReactNode;
   href: string;
+  description?: string;
   links: Array<{ label: string; href: string }>;
 }
 
-const CategoryCard = ({ title, icon, href, links }: CategoryCardProps) => {
+const CategoryCard = ({ title, icon, href, description, links }: CategoryCardProps) => {
   return (
-    <div className="p-6 rounded-lg border border-border bg-card hover:shadow-sm transition-all">
-      <div className="flex items-center gap-2 mb-4">
-        <div className="p-2 rounded-full bg-primary/10 text-primary">
+    <div className="p-6 rounded-lg border border-border bg-card hover:shadow-sm transition-all group hover:border-primary/30">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="p-2 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
           {icon}
         </div>
-        <h3 className="font-semibold">{title}</h3>
+        <div>
+          <h3 className="font-semibold group-hover:text-primary transition-colors">{title}</h3>
+          {description && (
+            <p className="text-sm text-muted-foreground mt-1">{description}</p>
+          )}
+        </div>
       </div>
       
-      <ul className="space-y-2 mb-4">
+      <ul className="space-y-2 mb-6">
         {links.map((link, index) => (
           <li key={index}>
             <Link 
               href={link.href} 
-              className="text-sm flex items-center text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm flex items-center text-muted-foreground hover:text-primary transition-colors group/link"
             >
-              <ChevronRight className="h-3 w-3 mr-1.5 flex-shrink-0" />
+              <ChevronRight className="h-3 w-3 mr-1.5 flex-shrink-0 group-hover/link:translate-x-0.5 transition-transform" />
               {link.label}
             </Link>
           </li>
@@ -1211,9 +1262,10 @@ const CategoryCard = ({ title, icon, href, links }: CategoryCardProps) => {
       
       <Link 
         href={href} 
-        className="text-sm font-medium text-primary hover:underline"
+        className="text-sm font-medium text-primary hover:underline inline-flex items-center group/link"
       >
-        Browse all {title.toLowerCase()} →
+        Browse all {title.toLowerCase()}
+        <ChevronRight className="h-3 w-3 ml-1 group-hover/link:translate-x-0.5 transition-transform" />
       </Link>
     </div>
   );
