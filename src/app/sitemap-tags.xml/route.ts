@@ -1,34 +1,89 @@
-import { MetadataRoute } from "next";
+import { NextResponse } from 'next/server'
 
-export const dynamic = "force-dynamic";
-export const revalidate = 3600; // 1h
+export async function GET() {
+  const baseUrl = 'https://rtnglobal.site'
+  const lastModified = new Date().toISOString().split('T')[0]
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://rtnglobal.site";
-  const lastModified = new Date();
+  const tagsSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Tags Sitemap - Blog Tag Pages -->
+  
+  <!-- Blog Tag Pages -->
+  <url>
+    <loc>${baseUrl}/blog/tags/web-development</loc>
+    <lastmod>${lastModified}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>${baseUrl}/blog/tags/react</loc>
+    <lastmod>${lastModified}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>${baseUrl}/blog/tags/nextjs</loc>
+    <lastmod>${lastModified}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>${baseUrl}/blog/tags/typescript</loc>
+    <lastmod>${lastModified}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>${baseUrl}/blog/tags/seo</loc>
+    <lastmod>${lastModified}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>${baseUrl}/blog/tags/marketing</loc>
+    <lastmod>${lastModified}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>${baseUrl}/blog/tags/design</loc>
+    <lastmod>${lastModified}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>${baseUrl}/blog/tags/ux</loc>
+    <lastmod>${lastModified}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>${baseUrl}/blog/tags/business</loc>
+    <lastmod>${lastModified}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>${baseUrl}/blog/tags/technology</loc>
+    <lastmod>${lastModified}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>`
 
-  const tags = await fetchWithTimeout(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs/tags`, 8000);
-  if (!tags) return [];
-
-  return tags.map((tag: { name: string }) => ({
-    url: `${baseUrl}/blog/tag/${encodeURIComponent(tag.name)}`,
-    lastModified,
-    changeFrequency: "daily" as const,
-    priority: 0.5,
-  }));
-}
-
-// helper
-async function fetchWithTimeout(url: string, ms = 8000) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), ms);
-  try {
-    const res = await fetch(url, { signal: controller.signal });
-    clearTimeout(timeout);
-    if (!res.ok) return null;
-    return res.json();
-  } catch {
-    clearTimeout(timeout);
-    return null;
-  }
+  return new NextResponse(tagsSitemap, {
+    headers: {
+      'Content-Type': 'application/xml',
+      'Cache-Control': 'public, max-age=86400, s-maxage=86400', // Cache for 24 hours
+    },
+  })
 }

@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "optimize-sitemaps": "echo 'Sitemaps have been optimized. Run this after updating content.'",
-    "postbuild": "node scripts/update-sitemaps.js"
+    "optimize-sitemaps": "echo 'Sitemaps have been optimized. Run this after updating content.'"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.1",
