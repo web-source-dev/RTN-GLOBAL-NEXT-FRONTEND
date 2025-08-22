@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -138,9 +139,11 @@ export function Header() {
               href="/" 
               className="flex items-center space-x-2"
             >
-              <img 
+              <Image 
                 src="/icons/rtnglobal-logo.png" 
                 alt="RTN Global" 
+                width={100}
+                height={25}
                 className="h-20 md:h-25 w-auto mix-blend-multiply dark:mix-blend-normal"
                 style={{ filter: 'brightness(1.1) contrast(1.1)' }}
               />

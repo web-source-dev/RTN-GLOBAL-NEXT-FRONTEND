@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import Link from "next/link"
-import { ArrowRight, ExternalLink, Clock, Award, Star, Briefcase, Users2 } from "lucide-react"
+import { ArrowRight, ExternalLink, Clock, Star, Briefcase } from "lucide-react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 

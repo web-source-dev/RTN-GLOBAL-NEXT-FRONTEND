@@ -16,7 +16,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { categories, generateArticlesForCategory } from "@/data/knowledge-base";
-import { H1, H2, H3, P, Lead } from "@/components/ui/typography";
+import { H1, H2, H3, P } from "@/components/ui/typography";
 
 type CategoryPageProps = {
   params: {

@@ -1035,7 +1035,7 @@ function SearchPageContent() {
             {/* Call to Action */}
             <div className="mt-16 text-center">
               <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-2xl p-8 border border-primary/20">
-                <h3 className="text-xl font-semibold mb-3">Can't find what you're looking for?</h3>
+                <h3 className="text-xl font-semibold mb-3">Can&apos;t find what you&apos;re looking for?</h3>
                 <p className="text-muted-foreground mb-6 max-w-md mx-auto">
                   Our team is here to help. Reach out to us for personalized assistance and custom solutions.
                 </p>
@@ -1072,7 +1072,7 @@ export default function SearchPage() {
             "@context": "https://schema.org",
             "@type": "WebPage",
             "name": "Search Results | RTN Global",
-            "description": "Search across RTN Global's services, portfolio, blog posts, and knowledge resources.",
+            "description": "Search across RTN Global&apos;s services, portfolio, blog posts, and knowledge resources.",
             "url": "https://rtnglobal.site/search",
             "publisher": {
               "@type": "Organization",

@@ -105,7 +105,7 @@ export default function BillingPage() {
                     <div>
                       <h3 className="font-semibold text-lg mb-2">Transparent Invoicing</h3>
                       <p className="text-sm text-muted-foreground">
-                        Detailed invoices showing itemized charges, making it easy to understand what you're paying for.
+                        Detailed invoices showing itemized charges, making it easy to understand what you&apos;re paying for.
                       </p>
                     </div>
                   </div>
@@ -194,7 +194,7 @@ export default function BillingPage() {
                     Annual Billing
                   </h3>
                   <p className="text-muted-foreground mb-4">
-                    Our annual billing cycle offers a discounted rate compared to monthly billing. You'll be charged 
+                    Our annual billing cycle offers a discounted rate compared to monthly billing. You&apos;ll be charged 
                     once per year, with a reminder sent 14 days before the renewal date.
                   </p>
                   <ul className="space-y-2">
@@ -229,7 +229,7 @@ export default function BillingPage() {
                     </li>
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 mt-0.5 shrink-0" />
-                      <span>Flexible invoicing aligned with your company's fiscal periods</span>
+                      <span>Flexible invoicing aligned with your company&apos;s fiscal periods</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 mt-0.5 shrink-0" />
@@ -332,7 +332,7 @@ export default function BillingPage() {
                 <div className="p-6 border rounded-lg bg-card">
                   <h3 className="font-semibold text-lg mb-2">How can I update my payment method?</h3>
                   <p className="text-muted-foreground">
-                    You can update your payment method by logging into your client portal and navigating to the "Billing" 
+                    You can update your payment method by logging into your client portal and navigating to the &quot;Billing&quot; 
                     section. Alternatively, contact our finance team at billing@rtnglobal.site for assistance.
                   </p>
                 </div>
@@ -340,7 +340,7 @@ export default function BillingPage() {
                 <div className="p-6 border rounded-lg bg-card">
                   <h3 className="font-semibold text-lg mb-2">What happens if a payment fails?</h3>
                   <p className="text-muted-foreground">
-                    If a payment fails, we'll notify you immediately and attempt to process the payment again after 24 hours. 
+                    If a payment fails, we&apos;ll notify you immediately and attempt to process the payment again after 24 hours. 
                     If the second attempt fails, our team will contact you to resolve the issue and avoid any service interruptions.
                   </p>
                 </div>

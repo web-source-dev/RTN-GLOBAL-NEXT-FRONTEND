@@ -9,15 +9,9 @@ import { useToast } from "@/components/ui/use-toast";
 import {
   Loader2,
   ChevronRight,
-  Star,
-  School,
   DollarSign,
   CheckCircle,
-  BarChart3,
-  Lightbulb,
-  Settings,
   Clock,
-  Table,
   Calendar,
   Phone,
   Mail,
@@ -25,10 +19,7 @@ import {
   Building,
   MessageSquare,
   Sparkles,
-  Award,
-  Zap,
-  Shield,
-  Heart
+  Lightbulb
 } from "lucide-react";
 import API from "@/lib/api/api-provider";
 import { AuthAPI } from "@/lib/api/api-provider";
@@ -50,8 +41,8 @@ import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { format } from "date-fns";
-import { TableHead, TableHeader, TableRow, TableCell, TableBody } from "../ui/table";
-import { H1, H2, H3, H4, P, Lead } from "@/components/ui/typography";
+import { Table, TableHead, TableHeader, TableRow, TableCell, TableBody } from "../ui/table";
+import { H1, H3, H4, P, Lead } from "@/components/ui/typography";
 
 // Consultation data constants
 const consultationTypes = [
@@ -72,28 +63,7 @@ const durationOptions = [
 
 
 
-const consultationProcess = [
-  {
-    title: "Initial Discussion",
-    description: "We start with understanding your needs and challenges through a detailed discussion.",
-    icon: <Lightbulb className="h-6 w-6 text-white" />,
-  },
-  {
-    title: "Analysis & Planning",
-    description: "We analyze your situation and develop a tailored approach for your business.",
-    icon: <BarChart3 className="h-6 w-6 text-white" />,
-  },
-  {
-    title: "Recommendations",
-    description: "We provide actionable recommendations and a clear path forward.",
-    icon: <CheckCircle className="h-6 w-6 text-white" />,
-  },
-  {
-    title: "Implementation Support",
-    description: "Get guidance on implementing the recommended solutions effectively.",
-    icon: <Settings className="h-6 w-6 text-white" />,
-  },
-];
+
 
 interface ConsultationFormData {
   firstName: string;
@@ -139,7 +109,7 @@ export default function FreeConsultationForm() {
   const [errors, setErrors] = useState<Partial<Record<keyof ConsultationFormData, string>>>({});
   const { toast } = useToast();
   const router = useRouter();
-  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+
 
   // Check if user is logged in to prefill form data
   useEffect(() => {
@@ -438,7 +408,7 @@ export default function FreeConsultationForm() {
             </div>
             <div>
               <P className="font-semibold text-green-800 dark:text-green-200">Welcome back!</P>
-              <P className="text-sm text-green-600 dark:text-green-300">You're all set to book your consultation.</P>
+              <P className="text-sm text-green-600 dark:text-green-300">You&apos;re all set to book your consultation.</P>
             </div>
           </div>
         </CardContent>
@@ -453,7 +423,7 @@ export default function FreeConsultationForm() {
           <User className="h-6 w-6 text-primary" />
         </div>
         <H3 className="text-xl font-semibold mb-2">Tell Us About Yourself</H3>
-        <P className="text-muted-foreground">Let's start with your basic information so we can personalize your consultation.</P>
+        <P className="text-muted-foreground">Let&apos;s start with your basic information so we can personalize your consultation.</P>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -926,7 +896,7 @@ export default function FreeConsultationForm() {
 
         <Lead className="text-lg max-w-3xl mx-auto">
           {isFirstConsultation
-            ? "🎉 Book your complimentary 30-minute consultation session with our experts today. Let's discuss how we can help you achieve your goals and transform your business."
+            ? "🎉 Book your complimentary 30-minute consultation session with our experts today. Let&apos;s discuss how we can help you achieve your goals and transform your business."
             : "🚀 Book your follow-up consultation session. Choose the duration that works best for your needs and continue your journey to success."
           }
         </Lead>

@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, Lightbulb, Search, Code, PenTool, BarChart4, Zap, Shield, Rocket } from "lucide-react"
+import { ArrowRight, Search, Code, PenTool, Zap, Shield, Rocket } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useState, useRef, useEffect } from "react"
@@ -197,7 +197,7 @@ export function ProcessSection() {
               <div className="text-center md:text-left md:col-span-1">
                 <h3 className="text-xl md:text-2xl font-bold mb-2 text-white">Ready to Begin?</h3>
                 <p className="text-white/90">
-                  Let's discuss your web project and create your perfect online presence today.
+                  Let&apos;s discuss your web project and create your perfect online presence today.
                 </p>
               </div>
               <div className="md:col-span-2 flex flex-col sm:width-full sm:flex-row justify-center md:justify-end gap-4 items-center">

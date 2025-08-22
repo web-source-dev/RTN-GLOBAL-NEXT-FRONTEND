@@ -83,7 +83,7 @@ export default function SubmitSupportRequestPage() {
             <div className="mb-8 text-center">
               <h1 className="text-3xl font-bold leading-tight md:text-4xl">Submit a Support Request</h1>
               <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-                Fill out the form below to create a support ticket. Our team will review your request and get back to you as soon as possible. We're here to help resolve your issues quickly and efficiently.
+                Fill out the form below to create a support ticket. Our team will review your request and get back to you as soon as possible. We&apos;re here to help resolve your issues quickly and efficiently.
               </p>
             </div>
             
@@ -169,7 +169,7 @@ export default function SubmitSupportRequestPage() {
                     Check Browser Info
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    Include your browser type, version, device, and operating system if relevant to the issue you're experiencing.
+                    Include your browser type, version, device, and operating system if relevant to the issue you&apos;re experiencing.
                   </p>
                 </div>
               </div>

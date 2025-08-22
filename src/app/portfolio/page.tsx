@@ -1,7 +1,7 @@
 "use client"
 
 import { Layout } from "@/components/layout/layout"
-import { HeroSection } from "@/components/sections/hero-section"
+
 import { CTASection } from "@/components/sections/cta-section"
 import Link from "next/link"
 import Script from "next/script"
@@ -15,15 +15,12 @@ import {
   Clock, 
   TrendingUp, 
   Users, 
-  Award,
-  CheckCircle,
   Eye,
   Calendar,
   Building,
   Code,
   Palette,
-  Settings,
-  Zap
+  Settings
 } from "lucide-react"
 import { useState } from "react"
 import { H1, H2, H3, P, Lead } from "@/components/ui/typography"

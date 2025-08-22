@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, Trophy, ThumbsUp, Star } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 // Define featured brands (first 8 will be shown on mobile)
@@ -39,45 +39,7 @@ const brandImages = [
 // Stats for the counter section
 
 
-// Counter animation component
-interface CounterProps {
-  value: number;
-  duration?: number;
-}
 
-const Counter = ({ value, duration = 2000 }: CounterProps) => {
-  const [count, setCount] = useState(0);
-  const countRef = useRef(null);
-  const isInView = useInView(countRef, { once: true, margin: "-100px" });
-  
-  useEffect(() => {
-    let start = 0;
-    let timeoutId: NodeJS.Timeout | null = null;
-    
-    // If element is in view and count is not yet at value
-    if (isInView && count < value) {
-      // Calculate step based on value and duration
-      const step = Math.ceil(value / (duration / 50));
-      
-      const updateCount = () => {
-        start = Math.min(start + step, value);
-        setCount(start);
-        
-        if (start < value) {
-          timeoutId = setTimeout(updateCount, 50);
-        }
-      };
-      
-      updateCount();
-    }
-    
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-  }, [isInView, value, duration, count]);
-  
-  return <span ref={countRef}>{count.toLocaleString()}+</span>;
-};
 
 const BrandsWeWork = () => {
   const [showAllBrands, setShowAllBrands] = useState(false);
@@ -156,8 +118,8 @@ const BrandsWeWork = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            We've helped businesses of all sizes transform their digital presence with custom web development, 
-            stunning designs, and strategic solutions. Here are some of the companies we're proud to work with.
+                            We&apos;ve helped businesses of all sizes transform their digital presence with custom web development,
+                stunning designs, and strategic solutions. Here are some of the companies we&apos;re proud to work with.
           </motion.p>
         </div>
 

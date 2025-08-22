@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ChevronRight, Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 import NewsletterForm from '@/components/forms/newsletter-form';
 import { FaTiktok } from 'react-icons/fa';
@@ -43,9 +44,11 @@ export function Footer() {
           <div className="lg:col-span-1">
             <div className="mb-4">
               <Link href="/" className="flex items-center">
-                <img 
+                <Image 
                   src="/icons/rtnglobal-logo.png" 
                   alt="RTN Global" 
+                  width={100}
+                  height={20}
                   className="h-20 w-auto mix-blend-multiply dark:mix-blend-normal"
                   style={{ filter: 'brightness(1.1) contrast(1.1)' }}
                 />

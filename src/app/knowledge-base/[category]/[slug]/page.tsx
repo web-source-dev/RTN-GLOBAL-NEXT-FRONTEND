@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 import { categories, generateArticleData, generateTableOfContents, formatContent } from "@/data/knowledge-base";
 import { useState } from "react";
-import { H1, H3, H4, P, Lead } from "@/components/ui/typography";
+import { H1, H3, H4, P } from "@/components/ui/typography";
 
 type ArticlePageProps = {
   params: {

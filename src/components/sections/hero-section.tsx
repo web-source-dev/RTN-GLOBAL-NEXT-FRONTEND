@@ -1,7 +1,7 @@
 import React from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { OptimizedImage } from "@/components/ui/optimized-image"
+
 import Image from "next/image"
 import { H1, Lead, P } from "@/components/ui/typography"
 import { ArrowRight, CheckCircle2 } from "lucide-react"

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { IndustryIcon } from "@/components/ui/industry-icon";
 import { HeroSection } from "@/components/sections/hero-section";
 import { Layout } from "@/components/layout/layout";
-import { H1, H2, H3, H4, P, Lead } from "@/components/ui/typography";
+import { H2, H3, P, Lead } from "@/components/ui/typography";
 
 export default function IndustriesPage() {
   const industries = Object.values(getAllIndustries());

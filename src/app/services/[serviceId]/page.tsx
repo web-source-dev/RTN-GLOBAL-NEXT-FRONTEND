@@ -27,7 +27,7 @@ import {
   CheckCircle
 } from 'lucide-react'
 import { OptimizedImage } from '@/components/ui/optimized-image'
-import { H1, H2, H3, P, Lead } from '@/components/ui/typography'
+import { H1, Lead } from '@/components/ui/typography'
 import { services, getServicesByCategory, Service } from '@/data/services'
 import { motion } from 'framer-motion'
 
@@ -721,7 +721,7 @@ export default function ServiceDetailPage({
             <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 p-8 border-y border-primary/20">
               <h3 className="text-xl font-semibold mb-3">Need a Custom Solution?</h3>
               <p className="text-muted-foreground mb-6">
-                Can't find exactly what you're looking for? We offer custom development services tailored to your specific requirements.
+                Can&apos;t find exactly what you&apos;re looking for? We offer custom development services tailored to your specific requirements.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button asChild size="lg" className="rounded-full px-8">

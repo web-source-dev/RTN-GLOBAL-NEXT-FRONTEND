@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import Script from 'next/script'
 import { useSearchParams, useRouter } from 'next/navigation'
@@ -27,7 +27,7 @@ import {
   TrendingUp 
 } from 'lucide-react'
 import { getAllServices, getServicesByCategory, serviceCategories, Service, IconType } from '@/data/services'
-import { H1, H2, H3, H4, P, Lead } from '@/components/ui/typography'
+import { H2, H3, P } from '@/components/ui/typography'
 
 // Icon mapping component
 const ServiceIcon = ({ iconType }: { iconType: IconType }) => {
@@ -61,7 +61,8 @@ const ServiceIcon = ({ iconType }: { iconType: IconType }) => {
   }
 };
 
-export default function ServicesPage() {
+// Client component that uses useSearchParams
+function ServicesPageContent() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const searchParams = useSearchParams();
@@ -388,4 +389,13 @@ function ServiceCard({ service }: { service: Service }) {
       </div>
     </motion.div>
   )
-} 
+}
+
+// Main page component with Suspense
+export default function ServicesPage() {
+  return (
+    <Suspense fallback={<div>Loading services...</div>}>
+      <ServicesPageContent />
+    </Suspense>
+  )
+}

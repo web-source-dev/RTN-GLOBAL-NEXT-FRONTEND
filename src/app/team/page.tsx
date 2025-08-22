@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { LinkedinIcon, TwitterIcon, MailIcon, ArrowRight } from "lucide-react"
 import { Metadata } from "next"
 import { OptimizedImage } from "@/components/ui/optimized-image"
-import { H2, H3, P, Lead } from "@/components/ui/typography"
+import { H2, H3, P } from "@/components/ui/typography"
 
 export const metadata: Metadata = {
   title: "Our Team | RTN Global",

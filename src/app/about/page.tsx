@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { OptimizedImage } from "@/components/ui/optimized-image"
 import Link from "next/link"
 import { ArrowRight, CheckCircle, Users, ChevronRight, Star, Coffee, Code, Building, Zap, Target } from "lucide-react"
-import { StatsSection } from "@/components/sections/stats-section"
+
 import { TeamSection } from "@/components/sections/team-section"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
 import { useRef, useEffect, useState } from "react"
@@ -288,7 +288,7 @@ export default function AboutPage() {
                     Get in Touch <ArrowRight className="h-5 w-5 ml-1" aria-hidden="true" />
                   </Button>
                 </Link>
-                <Link href="#our-story" aria-label="Learn about RTN Global's story">
+                <Link href="#our-story" aria-label="Learn about RTN Global&apos;s story">
                   <Button
                     size="lg"
                     variant="outline"
@@ -463,7 +463,7 @@ export default function AboutPage() {
               </H2>
               <div className="w-32 h-1.5 bg-primary/30 rounded-full mx-auto mb-8"></div>
               <Lead className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
-                Over the years, we've achieved remarkable results for our clients and built a reputation for excellence in digital transformation.
+                Over the years, we&apos;ve achieved remarkable results for our clients and built a reputation for excellence in digital transformation.
               </Lead>
             </motion.div>
 
@@ -819,7 +819,7 @@ export default function AboutPage() {
               className="relative z-10"
             >
               <div className="inline-block rounded-full bg-white/10 backdrop-blur-sm px-6 py-2 text-base font-medium text-white mb-8">
-                Let's Get Started
+                Let&apos;s Get Started
               </div>
             </motion.div>
 

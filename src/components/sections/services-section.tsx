@@ -4,152 +4,27 @@ import React, { useRef } from 'react'
 import Link from 'next/link'
 import { 
   ArrowRight,
-  BarChart,
   Code,
-  Search,
-  Settings,
-  SmartphoneIcon,
-  Mail,
-  PenTool,
   Palette,
-  FileText,
-  ShoppingBag,
-  Share2,
-  TrendingUp,
-  FileSearch,
-  Laptop,
   Bug,
-  Lightbulb,
   Globe,
-  Puzzle
+  Puzzle,
+  ShoppingBag
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { H2, H3, P, Lead } from '@/components/ui/typography'
 import { motion, useInView } from 'framer-motion'
-import { getFeaturedServices, serviceCategories, Service, IconType as ImportedIconType } from '@/data/services'
 
-// Update the IconType to include the new icon types
-type ExtendedIconType = 
-  | 'code' 
-  | 'trending-up' 
-  | 'pen-tool' 
-  | 'settings' 
-  | 'search' 
-  | 'file-text' 
-  | 'share2' 
-  | 'mail' 
-  | 'smartphone' 
-  | 'shopping-bag' 
-  | 'palette' 
-  | 'bar-chart'
-  | 'file-search'
-  | 'laptop'
-  | 'bug'
-  | 'puzzle'
-  | 'lightbulb'
-  | 'globe';
 
-// Icon mapping component
-const ServiceIcon = ({ iconType }: { iconType: ExtendedIconType }) => {
-  switch (iconType) {
-    case 'code':
-      return <Code className="h-5 w-5" />;
-    case 'trending-up':
-      return <TrendingUp className="h-5 w-5" />;
-    case 'pen-tool':
-      return <PenTool className="h-5 w-5" />;
-    case 'settings':
-      return <Settings className="h-5 w-5" />;
-    case 'search':
-      return <Search className="h-5 w-5" />;
-    case 'file-text':
-      return <FileText className="h-5 w-5" />;
-    case 'share2':
-      return <Share2 className="h-5 w-5" />;
-    case 'mail':
-      return <Mail className="h-5 w-5" />;
-    case 'smartphone':
-      return <SmartphoneIcon className="h-5 w-5" />;
-    case 'shopping-bag':
-      return <ShoppingBag className="h-5 w-5" />;
-    case 'palette':
-      return <Palette className="h-5 w-5" />;
-    case 'bar-chart':
-      return <BarChart className="h-5 w-5" />;
-    case 'file-search':
-      return <FileSearch className="h-5 w-5" />;
-    case 'laptop':
-      return <Laptop className="h-5 w-5" />;
-    case 'bug':
-      return <Bug className="h-5 w-5" />;
-    case 'puzzle':
-      return <Puzzle className="h-5 w-5" />;
-    case 'lightbulb':
-      return <Lightbulb className="h-5 w-5" />;
-    case 'globe':
-      return <Globe className="h-5 w-5" />;
-    default:
-      return <Code className="h-5 w-5" />;
-  }
-};
 
-// Category icon component
-const CategoryIcon = ({ iconType }: { iconType: string }) => {
-  switch (iconType) {
-    case 'code':
-      return <Code className="h-5 w-5" />;
-    case 'trending-up':
-      return <TrendingUp className="h-5 w-5" />;
-    case 'pen-tool':
-      return <PenTool className="h-5 w-5" />;
-    case 'settings':
-      return <Settings className="h-5 w-5" />;
-    default:
-      return <Code className="h-5 w-5" />;
-  }
-};
 
-const ServiceCard = ({ service, index }: { service: Service; index: number }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ 
-        y: -10, 
-        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-      }}
-      className="group bg-card rounded-xl shadow-sm p-6 border border-border hover:border-primary/30 transition-all duration-300 relative overflow-hidden"
-    >
-      {/* Gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-      
-      <div className="bg-primary/10 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
-        <ServiceIcon iconType={service.icon} />
-      </div>
-      
-      <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{service.shortTitle || service.title}</h3>
-      
-      <div className="w-12 h-1 bg-primary/30 rounded-full mb-4 transition-all duration-300 group-hover:w-20 group-hover:bg-primary"></div>
-      
-      <p className="text-muted-foreground mb-6">
-        {service.description}
-      </p>
-      
-      <Link 
-        href={`/services/${service.slug}`} 
-        className="text-primary text-sm font-medium hover:underline inline-flex items-center"
-      >
-        Explore {service.shortTitle || service.title} services <ArrowRight className="ml-1 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-      </Link>
-    </motion.div>
-  )
-}
+
+
+
+
 
 const ServicesSection = () => {
-  // Get featured or all services
-  const featuredServices = getFeaturedServices().slice(0, 3);
+
   
   // Animation variants for staggered animations
   const containerVariants = {

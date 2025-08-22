@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, BarChart3, ArrowUpRight, Clock, Users, Target } from "lucide-react"
 import { caseStudies, getFeaturedCaseStudies } from "@/data/case-studies"
 import { OptimizedImage } from "@/components/ui/optimized-image"
-import { H1, H2, H3, H4, P, Lead } from "@/components/ui/typography"
+import { H2, H3, H4, P, Lead } from "@/components/ui/typography"
 
 export default function CaseStudiesPage() {
   // Get data using utility functions from the data file
@@ -88,7 +88,7 @@ export default function CaseStudiesPage() {
           <div className="text-center mb-16">
             <H2 className="mb-4">Featured Success Stories</H2>
             <Lead className="max-w-3xl mx-auto">
-              Discover how we've helped businesses achieve remarkable results through innovative digital solutions and strategic thinking.
+              Discover how we&apos;ve helped businesses achieve remarkable results through innovative digital solutions and strategic thinking.
             </Lead>
           </div>
           

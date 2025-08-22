@@ -147,7 +147,7 @@ export default function SupportTicketStatusPage() {
                   <p className="text-muted-foreground">
                     Your ticket number was sent to the email address you provided when creating the ticket. 
                     It follows the format TKT-XXXXXXXXX. You can also find it in your account dashboard under 
-                    "My Support Tickets" if you submitted the ticket while logged in.
+                    &quot;My Support Tickets&quot; if you submitted the ticket while logged in.
                   </p>
                 </div>
                 

@@ -7,25 +7,11 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { 
-  ArrowRight, 
-  Check,
   Clock, 
-  CreditCard, 
-  Tag, 
-  MessageSquare,
-  ChevronRight,
-  Trophy,
   Star,
-  Shield,
-  Users,
-  BarChart,
-  FileText,
   Briefcase,
-  Zap,
   Code,
-  BookOpen,
   Smartphone,
-  SmartphoneIcon,
   Globe,
   Layers,
   Cpu,
@@ -33,29 +19,14 @@ import {
   Wifi,
   Lock,
   Palette,
-  Settings,
   Rocket,
   Target,
-  TrendingUp,
-  Award,
   CheckCircle,
   Play,
-  Download,
   Share2,
-  Heart,
-  Eye,
-  Calendar,
-  Building,
-  ShoppingBag,
-  SmartphoneIcon as Phone,
-  Tablet,
-  Monitor,
-  Laptop,
-  SmartphoneIcon as Mobile,
-  SmartphoneIcon as App,
-  SmartphoneIcon as Device
+  ShoppingBag
 } from 'lucide-react'
-import { OptimizedImage } from '@/components/ui/optimized-image'
+
 import { H1, H2, H3, P, Lead } from '@/components/ui/typography'
 
 export default function ReactNativeServicePage() {
@@ -517,7 +488,7 @@ export default function ReactNativeServicePage() {
           <div className="max-w-4xl mx-auto text-center">
             <H2 className="text-4xl font-bold mb-4">Ready to Build Your React Native App?</H2>
             <Lead className="text-xl text-white/90 mb-8">
-              Let's discuss your app idea and create a custom React Native solution that drives your business forward.
+              Let&apos;s discuss your app idea and create a custom React Native solution that drives your business forward.
             </Lead>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" variant="secondary">

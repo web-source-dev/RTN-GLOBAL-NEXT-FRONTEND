@@ -7,8 +7,6 @@ import {
   CheckCircle, 
   Star, 
   Users, 
-  Award, 
-  TrendingUp,
   Code,
   Palette,
   Bug,
@@ -16,17 +14,10 @@ import {
   Zap,
   Shield,
   Clock,
-  Globe,
-  BarChart,
-  Lightbulb,
-  Target,
-  Heart,
-  ChevronRight
+  BarChart
 } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
 import { HeroSection } from "@/components/sections/hero-section"
-import ServicesSection from "@/components/sections/services-section"
 import { TechnologiesSection } from "@/components/sections/technologies-section"
 import { BenefitsSection } from "@/components/sections/benefits-section"
 import { ProcessSection } from "@/components/sections/process-section"
@@ -35,7 +26,7 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { FAQSection } from "@/components/sections/faq-section"
 import { CTASection } from "@/components/sections/cta-section"
 import BrandsWeWork from "@/components/sections/BrandsWeWork"
-import { H1, H2, H3, P, Lead } from "@/components/ui/typography"
+import { H2, H3, P, Lead } from "@/components/ui/typography"
 
 export const metadata: Metadata = {
   title: "RTN Global - Web Development & Digital Marketing Services",
@@ -299,7 +290,7 @@ export default function HomePage() {
                       <div className="p-2 bg-primary/20 rounded-lg">
                         <Star className="h-5 w-5 text-primary" />
                       </div>
-                      <H3 className="text-lg font-semibold">What's Included</H3>
+                      <H3 className="text-lg font-semibold">What&apos;s Included</H3>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {[
@@ -443,7 +434,7 @@ export default function HomePage() {
       {/* CTA Section */}
       <CTASection 
         title="Ready to Transform Your Digital Presence?"
-        description="Let's discuss how we can help you achieve your business goals with our custom web development and design services."
+        description="Let&apos;s discuss how we can help you achieve your business goals with our custom web development and design services."
         primaryButton={{
           text: "Schedule a Consultation",
           href: "/contact",

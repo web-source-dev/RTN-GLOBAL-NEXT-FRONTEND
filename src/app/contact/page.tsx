@@ -17,7 +17,7 @@ import * as z from "zod"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Separator } from "@/components/ui/separator"
+
 import { H1, H2, H3, H4, P, Lead } from "@/components/ui/typography"
 
 // Create a schema for contact form validation
@@ -194,7 +194,7 @@ export default function ContactPage() {
           >
             <motion.div variants={fadeIn}>
               <div className="inline-block rounded-full bg-primary/10 backdrop-blur-sm px-6 py-2 text-base font-medium text-primary mb-8">
-                Let's Connect
+                Let&apos;s Connect
               </div>
             </motion.div>
 
@@ -206,7 +206,7 @@ export default function ContactPage() {
 
             <motion.div variants={fadeIn}>
               <Lead className="mt-6 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto text-foreground/90 drop-shadow-sm">
-                Have a question or want to work with us? We&apos;re here to help you navigate your next digital transformation. Let's discuss how we can bring your vision to life.
+                Have a question or want to work with us? We&apos;re here to help you navigate your next digital transformation. Let&apos;s discuss how we can bring your vision to life.
               </Lead>
             </motion.div>
 

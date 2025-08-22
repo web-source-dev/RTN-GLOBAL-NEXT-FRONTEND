@@ -29,7 +29,7 @@ export default function BlogPostNotFound() {
               <div className="text-6xl md:text-8xl font-bold text-primary/20 mb-6">404</div>
               <H1 className="mb-6">Blog Post Not Found</H1>
               <P className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                The blog post you're looking for doesn't exist or may have been moved. Let's help you find what you're looking for.
+                The blog post you&apos;re looking for doesn&apos;t exist or may have been moved. Let&apos;s help you find what you&apos;re looking for.
               </P>
             </div>
 

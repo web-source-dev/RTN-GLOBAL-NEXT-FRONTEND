@@ -1,10 +1,9 @@
 import { Layout } from "@/components/layout/layout"
-import { HeroSection } from "@/components/sections/hero-section"
-import { Check, Calendar, MessageCircle, Clock, BarChart, Zap, HelpCircle, Star, Award, Shield, Users, Rocket, Target, TrendingUp } from "lucide-react"
+import { Check, MessageCircle, Clock, Star, Shield, Users, Rocket, TrendingUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { H1, H2, H3, H4, P, Lead } from "@/components/ui/typography"
+import { H1, H2, H3, P, Lead } from "@/components/ui/typography"
 import Link from "next/link"
 
 export default function PricingPage() {
@@ -387,7 +386,7 @@ export default function PricingPage() {
           <div className="text-center max-w-3xl mx-auto mb-16 animate-in fade-in slide-in-from-bottom-4 duration-600">
             <H2 className="mb-6">What Our Clients Say</H2>
             <Lead className="text-lg">
-              Don't just take our word for it. Here's what our clients have to say about working with us.
+              Don&apos;t just take our word for it. Here&apos;s what our clients have to say about working with us.
             </Lead>
             </div>
             
@@ -404,7 +403,7 @@ export default function PricingPage() {
                   ))}
                 </div>
                 <blockquote className="text-muted-foreground mb-6 italic">
-                  "{testimonial.content}"
+                  &quot;{testimonial.content}&quot;
                 </blockquote>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -447,7 +446,7 @@ export default function PricingPage() {
                 },
                 {
                   question: "Do you offer custom pricing for specific requirements?",
-                  answer: "Absolutely! Every business has unique needs. We provide custom quotes for projects that don't fit our standard packages. Contact us for a personalized consultation and quote.",
+                  answer: "Absolutely! Every business has unique needs. We provide custom quotes for projects that don&apos;t fit our standard packages. Contact us for a personalized consultation and quote.",
                   icon: "🎯",
                   category: "Pricing"
                 },
@@ -471,7 +470,7 @@ export default function PricingPage() {
                 },
                 {
                   question: "What if I'm not satisfied with the result?",
-                  answer: "We offer a 100% satisfaction guarantee with unlimited revisions until you're completely happy. If you're still not satisfied, we'll refund your money - no questions asked.",
+                  answer: "We offer a 100% satisfaction guarantee with unlimited revisions until you&apos;re completely happy. If you&apos;re still not satisfied, we&apos;ll refund your money - no questions asked.",
                   icon: "✅",
                   category: "Guarantee"
                 },
@@ -483,7 +482,7 @@ export default function PricingPage() {
                 },
                 {
                   question: "Can you redesign my existing website?",
-                  answer: "Absolutely! We specialize in website redesigns and can modernize your existing site while preserving your content and SEO rankings. We'll analyze your current site and provide recommendations.",
+                  answer: "Absolutely! We specialize in website redesigns and can modernize your existing site while preserving your content and SEO rankings. We&apos;ll analyze your current site and provide recommendations.",
                   icon: "🎨",
                   category: "Services"
                 },
@@ -507,7 +506,7 @@ export default function PricingPage() {
                 },
                 {
                   question: "What happens after I purchase a plan?",
-                  answer: "After purchase, we'll schedule a detailed consultation to understand your requirements, create a project timeline, and begin development. You'll have regular updates throughout the process.",
+                  answer: "After purchase, we&apos;ll schedule a detailed consultation to understand your requirements, create a project timeline, and begin development. You&apos;ll have regular updates throughout the process.",
                   icon: "🚀",
                   category: "Process"
                 }
@@ -549,7 +548,7 @@ export default function PricingPage() {
               <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl p-8 border border-primary/20">
                 <H3 className="mb-4">Still Have Questions?</H3>
                 <P className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                  Can't find the answer you're looking for? Our team is here to help with any questions about our services, pricing, or process.
+                  Can&apos;t find the answer you&apos;re looking for? Our team is here to help with any questions about our services, pricing, or process.
                 </P>
                 <div className="flex flex-wrap justify-center gap-4">
                   <Button asChild size="lg" className="rounded-full px-8">
@@ -571,7 +570,7 @@ export default function PricingPage() {
           <div className="text-center max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-600">
             <H2 className="mb-6 text-white">Ready to Get Started?</H2>
             <Lead className="mb-8 text-white/90 text-lg">
-              Contact us today for a free consultation and let's discuss how we can help your business succeed online.
+                              Contact us today for a free consultation and let&apos;s discuss how we can help your business succeed online.
             </Lead>
             <div className="flex flex-wrap justify-center gap-4">
               <Button asChild size="lg" variant="secondary" className="rounded-full px-8">

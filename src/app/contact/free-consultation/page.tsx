@@ -1,5 +1,5 @@
 import FreeConsultationForm from '@/components/forms/free-consultation-form';
-import { H1, H2, H3, P } from '@/components/ui/typography';
+import { H2, H3, P } from '@/components/ui/typography';
 
 export default function FreeConsultationPage() {
   return (

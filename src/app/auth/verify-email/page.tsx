@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { H1, P } from "@/components/ui/typography"
+import { P } from "@/components/ui/typography"
 
 export const metadata: Metadata = {
   title: "Verify Your Email - RTN Global",
@@ -34,7 +34,7 @@ export default function VerifyEmailPage() {
           <Button className="w-full">Verify Email</Button>
           <div className="text-center space-y-2">
             <P className="text-sm text-muted-foreground">
-              Didn't receive the code?
+              Didn&apos;t receive the code?
             </P>
             <Button variant="link" className="text-sm">
               Resend Code

@@ -34,7 +34,7 @@ import { AuthAPI } from "@/lib/api/api-provider"
 import { useParams, useRouter, notFound } from "next/navigation"
 import { Comment } from "@/components/blog/comment"
 import { FaEnvelope, FaPinterest, FaReddit, FaWhatsapp } from "react-icons/fa"
-import { H1, H2, H3, H4, P, Lead } from "@/components/ui/typography"
+import { H1, H2, H3, P } from "@/components/ui/typography"
 
 interface Author {
   _id: string;
@@ -251,9 +251,9 @@ export default function BlogPostPage() {
         console.error("Error fetching blog post:", apiError);
         
         if (apiError.message?.includes('not found')) {
-          setError("The blog post you're looking for doesn't exist or has been removed.");
+          setError("The blog post you&apos;re looking for doesn&apos;t exist or has been removed.");
         } else if (apiError.response?.status === 403) {
-          setError("You don't have permission to view this blog post.");
+          setError("You don&apos;t have permission to view this blog post.");
         } else {
           setError("Failed to load blog post. Please try again later.");
         }
