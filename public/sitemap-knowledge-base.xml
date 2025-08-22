@@ -5,7 +5,7 @@
   <!-- Main Knowledge Base -->
   <url>
     <loc>https://rtnglobal.site/knowledge-base</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -13,56 +13,56 @@
   <!-- Knowledge Base Categories -->
   <url>
     <loc>https://rtnglobal.site/knowledge-base/getting-started</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/technical</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/api</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/best-practices</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/troubleshooting</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/releases</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/account-access</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/billing</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -70,70 +70,70 @@
   <!-- Knowledge Base Individual Articles -->
   <url>
     <loc>https://rtnglobal.site/knowledge-base/getting-started/platform-overview</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/api/authentication</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/account-access/reset-password</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/troubleshooting/common-issues</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/account-access/two-factor-authentication</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/account-access/account-verification</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/account-access/login-issues</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/api/rate-limits</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/api/error-handling</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://rtnglobal.site/knowledge-base/api/new-endpoints</loc>
-    <lastmod>2024-01-15</lastmod>
+    <lastmod>2025-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -6,7 +6,6 @@ Sitemap: https://rtnglobal.site/sitemap.xml
 
 # Disallow admin and private areas
 Disallow: /admin/
-Disallow: /api/
 Disallow: /_next/
 Disallow: /private/
 
