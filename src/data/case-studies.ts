@@ -243,30 +243,30 @@ export const caseStudies: CaseStudy[] = [
       "/images/case-studies/002225.png",
       "/images/case-studies/002244.png"
     ],
-    beforeAfterImages: [
-      {
-        before: {
-          src: "/images/case-studies/Screenshot 2025-04-12 112204.png",
-          alt: "Before: Manual spreadsheet system"
-        },
-        after: {
-          src: "/images/case-studies/Screenshot 2025-04-12 112254.png",
-          alt: "After: Digital coop management platform"
-        },
-        description: "Transition from manual spreadsheet-based order management to a streamlined digital platform"
-      },
-      {
-        before: {
-          src: "/images/case-studies/Screenshot 2025-04-12 112313.png",
-          alt: "Before: Paper-based inventory tracking"
-        },
-        after: {
-          src: "/images/case-studies/Screenshot 2025-04-12 112335.png",
-          alt: "After: Real-time digital inventory management"
-        },
-        description: "Modernized inventory tracking with real-time updates and analytics"
-      }
-    ],
+    // beforeAfterImages: [
+    //   {
+    //     before: {
+    //       src: "/images/case-studies/Screenshot 2025-04-12 112204.png",
+    //       alt: "Before: Manual spreadsheet system"
+    //     },
+    //     after: {
+    //       src: "/images/case-studies/Screenshot 2025-04-12 112254.png",
+    //       alt: "After: Digital coop management platform"
+    //     },
+    //     description: "Transition from manual spreadsheet-based order management to a streamlined digital platform"
+    //   },
+    //   {
+    //     before: {
+    //       src: "/images/case-studies/Screenshot 2025-04-12 112313.png",
+    //       alt: "Before: Paper-based inventory tracking"
+    //     },
+    //     after: {
+    //       src: "/images/case-studies/Screenshot 2025-04-12 112335.png",
+    //       alt: "After: Real-time digital inventory management"
+    //     },
+    //     description: "Modernized inventory tracking with real-time updates and analytics"
+    //   }
+    // ],
     tags: ["Web Application", "Grocery", "Food Distribution", "Inventory Management", "Collaboration Tools"],
     featured: true
   },
